@@ -194,32 +194,32 @@ func apply_class_tinting():
     var class_color = get_class_color(character.character_class)
     character_sprite.modulate = class_color
 
-func get_class_color(class_name: String) -> Color:
-    match class_name.to_lower():
+func get_class_color(class_type: String) -> Color:
+    match class_type.to_lower():
         "barbarian":
-            return Color(0.8, 0.2, 0.2)  # Red
+            return Color(0.8, 0.2, 0.2) # Red
         "bard":
-            return Color(0.8, 0.2, 0.8)  # Purple
+            return Color(0.8, 0.2, 0.8) # Purple
         "cleric":
-            return Color(1.0, 1.0, 0.2)  # Yellow
+            return Color(1.0, 1.0, 0.2) # Yellow
         "druid":
-            return Color(0.2, 0.8, 0.2)  # Green
+            return Color(0.2, 0.8, 0.2) # Green
         "fighter":
-            return Color(0.5, 0.5, 0.5)  # Gray
+            return Color(0.5, 0.5, 0.5) # Gray
         "monk":
-            return Color(0.8, 0.6, 0.2)  # Orange
+            return Color(0.8, 0.6, 0.2) # Orange
         "paladin":
-            return Color(0.2, 0.2, 0.8)  # Blue
+            return Color(0.2, 0.2, 0.8) # Blue
         "ranger":
-            return Color(0.2, 0.6, 0.2)  # Dark Green
+            return Color(0.2, 0.6, 0.2) # Dark Green
         "rogue":
-            return Color(0.3, 0.3, 0.3)  # Dark Gray
+            return Color(0.3, 0.3, 0.3) # Dark Gray
         "sorcerer":
-            return Color(0.8, 0.4, 0.8)  # Magenta
+            return Color(0.8, 0.4, 0.8) # Magenta
         "warlock":
-            return Color(0.4, 0.2, 0.8)  # Dark Purple
+            return Color(0.4, 0.2, 0.8) # Dark Purple
         "wizard":
-            return Color(0.2, 0.4, 0.8)  # Light Blue
+            return Color(0.2, 0.4, 0.8) # Light Blue
         _:
             return Color.WHITE
 

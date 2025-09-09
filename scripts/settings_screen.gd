@@ -123,18 +123,3 @@ func _on_theme_selected(index: int):
         settings_data.theme = themes[index]
         ThemeManager.apply_theme(themes[index])
         print("Theme changed to: " + themes[index])
-
-func _on_master_volume_changed(value: float):
-    settings_data.master_volume = value / 100.0
-    AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
-                                 linear_to_db(settings_data.master_volume))
-
-func _on_music_volume_changed(value: float):
-    settings_data.music_volume = value / 100.0
-    AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),
-                                 linear_to_db(settings_data.music_volume))
-
-func _on_sfx_volume_changed(value: float):
-    settings_data.sfx_volume = value / 100.0
-    AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),
-                                 linear_to_db(settings_data.sfx_volume))

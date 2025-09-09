@@ -15,6 +15,13 @@ run/main_scene="res://scenes/start_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CharacterManager="*res://scripts/character_manager.gd"
+GameEvents="*res://scripts/game_events.gd"
+AnimationManager="*res://scripts/animation_manager.gd"
+ThemeManager="*res://scripts/theme_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -24,10 +31,3 @@ window/stretch/aspect="expand"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-
-[autoload]
-
-CharacterManager="*res://scripts/character_manager.gd"
-GameEvents="*res://scripts/game_events.gd"
-AnimationManager="*res://scripts/animation_manager.gd"
-ThemeManager="*res://scripts/theme_manager.gd"

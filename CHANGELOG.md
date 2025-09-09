@@ -54,6 +54,40 @@ All notable changes to this project will be documented in this file.
 - Adventuring activities system based on D&D wiki content (crafting, profession, training)
 - Currency system with gold tracking and lifestyle expenses
 - Comprehensive test coverage for equipment and faction systems
+- Spellbook screen for viewing and learning spells from wiki/Spells directory
+- Character Journal screen with roleplay notes, campaign tracking, and timeline events
+- Racial traits integration from wiki/Meta/Races applied at character creation
+- Enhanced character model with spellbook, buffs, racial traits, and spell slots
+- Starting equipment assignment based on class and background from wiki
+- Comprehensive activities system with 30+ activities across all ability scores
+- Activities screen with organized tabs for each ability (Strength, Dexterity, Intelligence, Wisdom, Charisma, Constitution)
+- Non-ability specific activities (Travel, Faction Work, Social Events, Rest & Recovery, Shopping, Gambling, Religious Services)
+- Activity requirements, costs, rewards, and progress tracking
+- Real-time activity processing with daily progress and completion rewards
+- Offline progress tracking with time-based rewards and ability score scaling
+- Language learning system with 16 D&D languages and permanent unlocks
+- Level 20 cap with exponential experience requirements (355,000 XP for max level)
+- Class abilities and leveling system with proper progression for all classes
+- General Store with 20+ items, search/filter functionality, and rarity system
+- Bank system for wealth management with deposit/withdrawal and wealth tiers
+- Experience tracking for all ability scores with automatic improvements
+- Character progression with hit point increases and class feature unlocks
+- Comprehensive inventory system with visual organization and item stacking
+- Inventory screen with search, filter, sort, and item management functionality
+- Item categories (Weapons, Armor, Consumables, Tools, Adventuring Gear, Treasure, Spell Components)
+- Stackable items (potions, ammunition, food) and unique items (weapons, armor, tools)
+- Starting equipment integration with class-specific items for all character classes
+- Item effects system for consumables, food, and scrolls
+- Inventory weight and value tracking with summary display
+- Monster Glossary system with comprehensive D&D monster database
+- Monster browsing with search, filter, and detailed stat display
+- Comprehensive test suite for all major subsystems
+- Enhanced test coverage for inventory, activities, language, and leveling systems
+- Code optimization and bug fixes for better stability
+- Leveling UI system with class feature choices and upgrades
+- Enhanced character sheet with class abilities, spell slots, and buff timers
+- D&D-compliant currency system with proper coinage denominations
+- Comprehensive racial traits system with wiki integration
 - Faction quest system with reputation rewards
 - Faction benefits and membership system
 
@@ -72,10 +106,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Fixed 4,675+ linting errors (99.98% reduction)
-- Fixed tab/space indentation inconsistencies across all files
-- Fixed line length violations in long function calls and arrays
-- Fixed trailing whitespace issues
 - Fixed script syntax errors and class name conflicts
 - Fixed autoload singleton configuration issues
 - Fixed test runner compilation errors

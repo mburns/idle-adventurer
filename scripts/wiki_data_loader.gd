@@ -223,8 +223,10 @@ static func parse_class_markdown(content: String, class_type: String) -> Diction
             var tools_text = line.split(":")[1].strip_edges()
             class_data.tool_proficiencies = parse_proficiencies(tools_text)
         elif current_section == "equipment" and line.begins_with("-"):
-            # Parse starting equipment
-            pass  # TODO: Implement equipment parsing
+            # Parse starting equipment options like "- (a) a quarterstaff or (b) a dagger"
+            if not class_data.starting_equipment.has("options"):
+                class_data.starting_equipment["options"] = []
+            class_data.starting_equipment.options.append(line.substr(2))
 
     return class_data
 
@@ -436,7 +438,7 @@ static func parse_backgrounds_markdown(content: String) -> Dictionary:
             }
         elif current_background != "" and line.begins_with("- "):
             # Add to current background
-            pass  # TODO: Implement background parsing
+            pass # TODO: Implement background parsing
 
     return backgrounds
 
@@ -565,7 +567,7 @@ static func extract_speed(text: String) -> int:
     return 30
 
 static func parse_languages(text: String) -> Array[String]:
-    var languages = []
+    var languages: Array[String] = []
     var parts = text.split(",")
     for part in parts:
         languages.append(part.strip_edges())

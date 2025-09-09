@@ -109,6 +109,21 @@ func _on_equipment_button_pressed():
 func _on_journal_button_pressed():
     get_tree().change_scene_to_file("res://scenes/journal_screen.tscn")
 
+func _on_activities_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/activities_screen.tscn")
+
+func _on_general_store_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/general_store_screen.tscn")
+
+func _on_inventory_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/inventory_screen.tscn")
+
+func _on_monster_glossary_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/monster_glossary_screen.tscn")
+
+func _on_leveling_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/leveling_screen.tscn")
+
 func _on_settings_button_pressed():
     get_tree().change_scene_to_file("res://scenes/settings_screen.tscn")
 
@@ -123,3 +138,6 @@ func _on_faction_button_pressed():
 
 func _on_achievements_button_pressed():
     get_tree().change_scene_to_file("res://scenes/achievements_screen.tscn")
+
+func _on_spellbook_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/spellbook_screen.tscn")

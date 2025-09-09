@@ -1,0 +1,162 @@
+[gd_scene load_steps=3 format=3 uid="uid://inventory_screen"]
+
+[ext_resource type="Script" path="res://scripts/inventory_screen.gd" id="1_inventory_screen"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="InventoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_inventory_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="MainContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -450.0
+offset_right = 700.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Title" type="Label" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "Character Inventory"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TopContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SearchContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SearchLabel" type="Label" parent="MainContainer/VBoxContainer/TopContainer/SearchContainer"]
+layout_mode = 2
+text = "Search Items:"
+theme_override_font_sizes/font_size = 14
+
+[node name="SearchInput" type="LineEdit" parent="MainContainer/VBoxContainer/TopContainer/SearchContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search by name or description..."
+
+[node name="FilterContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FilterLabel" type="Label" parent="MainContainer/VBoxContainer/TopContainer/FilterContainer"]
+layout_mode = 2
+text = "Filter by Category:"
+theme_override_font_sizes/font_size = 14
+
+[node name="CategoryFilter" type="OptionButton" parent="MainContainer/VBoxContainer/TopContainer/FilterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SortContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SortLabel" type="Label" parent="MainContainer/VBoxContainer/TopContainer/SortContainer"]
+layout_mode = 2
+text = "Sort by:"
+theme_override_font_sizes/font_size = 14
+
+[node name="SortDropdown" type="OptionButton" parent="MainContainer/VBoxContainer/TopContainer/SortContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InventoryGrid" type="ScrollContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MainContainer/VBoxContainer/InventoryGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 6
+
+[node name="SummaryContainer" type="Panel" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SummaryLabel" type="Label" parent="MainContainer/VBoxContainer/SummaryContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inventory: 0/30 items | Value: 0 gp | Weight: 0 lbs"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UseItemButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Use Selected Item"
+
+[node name="DropItemButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Drop Selected Item"
+
+[node name="BackButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Back to Main"
+
+[connection signal="text_changed" from="MainContainer/VBoxContainer/TopContainer/SearchContainer/SearchInput" to="." method="_on_search_text_changed"]
+[connection signal="item_selected" from="MainContainer/VBoxContainer/TopContainer/FilterContainer/CategoryFilter" to="." method="_on_category_filter_selected"]
+[connection signal="item_selected" from="MainContainer/VBoxContainer/TopContainer/SortContainer/SortDropdown" to="." method="_on_sort_dropdown_selected"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/UseItemButton" to="." method="_on_use_item_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/DropItemButton" to="." method="_on_drop_item_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

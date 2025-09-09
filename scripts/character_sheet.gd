@@ -21,6 +21,11 @@ var ability_modifiers: Dictionary = {}
 @onready var initiative_value: Label
 @onready var proficiency_value: Label
 
+# Class Abilities UI
+@onready var class_abilities_container: VBoxContainer
+@onready var spell_slots_container: HBoxContainer
+@onready var active_buffs_container: VBoxContainer
+
 # Dice Roller UI
 @onready var dice_input: LineEdit
 @onready var roll_result: Label
@@ -41,6 +46,9 @@ func _ready():
 
     # Update display
     update_character_sheet()
+
+    # Setup timers for buffs and abilities
+    setup_timers()
 
 func setup_ui_references():
     # Get main info labels
@@ -103,6 +111,11 @@ func update_character_sheet():
 
     # Update combat stats
     update_combat_stats()
+
+    # Update class abilities and buffs
+    update_class_abilities()
+    update_spell_slots()
+    update_active_buffs()
 
 func show_default_sheet():
     name_label.text = "No Character"
@@ -380,3 +393,135 @@ func export_character_sheet():
 func print_character_sheet():
     # TODO: Implement print functionality
     print("Printing character sheet...")
+
+func update_class_abilities():
+    """Update class abilities display"""
+    if not class_abilities_container:
+        return
+
+    # Clear existing abilities
+    for child in class_abilities_container.get_children():
+        child.queue_free()
+
+    # Get class features for current level
+    var class_data = WikiDataLoader.load_class_from_wiki(character.character_class)
+    var all_features = class_data.get("features", {})
+
+    # Show features up to current level
+    for feature_name in all_features.keys():
+        var feature_data = all_features[feature_name]
+        var feature_level = feature_data.get("level", 1)
+
+        if feature_level <= character.level:
+            var feature_label = Label.new()
+            feature_label.text = feature_name + " (Level " + str(feature_level) + ")"
+            feature_label.add_theme_font_size_override("font_size", 14)
+            class_abilities_container.add_child(feature_label)
+
+            var description_label = Label.new()
+            description_label.text = "  " + feature_data.get("description", "")
+            description_label.add_theme_font_size_override("font_size", 12)
+            description_label.add_theme_color_override("font_color", Color.LIGHT_GRAY)
+            description_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+            class_abilities_container.add_child(description_label)
+
+func update_spell_slots():
+    """Update spell slots display"""
+    if not spell_slots_container:
+        return
+
+    # Clear existing slots
+    for child in spell_slots_container.get_children():
+        child.queue_free()
+
+    # Check if character is a spellcaster
+    var spellcasting_classes = ["wizard", "sorcerer", "cleric", "druid", "bard", "warlock"]
+    if not character.character_class.to_lower() in spellcasting_classes:
+        var no_spells_label = Label.new()
+        no_spells_label.text = "Not a spellcasting class"
+        no_spells_label.add_theme_color_override("font_color", Color.LIGHT_GRAY)
+        spell_slots_container.add_child(no_spells_label)
+        return
+
+    # Display spell slots
+    var spell_slots = character.spell_slots if character.has_method("get") and character.get("spell_slots") != null else {}
+    if spell_slots.is_empty():
+        # Calculate spell slots for current level
+        var leveling_system = LevelingSystem.new()
+        spell_slots = leveling_system.calculate_spell_slots(character.character_class, character.level)
+
+    for level in spell_slots.keys():
+        var count = spell_slots[level]
+        if count > 0:
+            var slot_container = VBoxContainer.new()
+
+            var level_label = Label.new()
+            level_label.text = level
+            level_label.add_theme_font_size_override("font_size", 12)
+            level_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+            slot_container.add_child(level_label)
+
+            var count_label = Label.new()
+            count_label.text = str(count)
+            count_label.add_theme_font_size_override("font_size", 16)
+            count_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+            slot_container.add_child(count_label)
+
+            spell_slots_container.add_child(slot_container)
+
+func update_active_buffs():
+    """Update active buffs display with timers"""
+    if not active_buffs_container:
+        return
+
+    # Clear existing buffs
+    for child in active_buffs_container.get_children():
+        child.queue_free()
+
+    var active_buffs = character.active_buffs if character.has_method("get") and character.get("active_buffs") != null else []
+    if active_buffs.is_empty():
+        var no_buffs_label = Label.new()
+        no_buffs_label.text = "No active buffs"
+        no_buffs_label.add_theme_color_override("font_color", Color.LIGHT_GRAY)
+        active_buffs_container.add_child(no_buffs_label)
+        return
+
+    for buff in active_buffs:
+        var buff_container = HBoxContainer.new()
+
+        var buff_name_label = Label.new()
+        buff_name_label.text = buff.get("name", "Unknown Buff")
+        buff_name_label.add_theme_font_size_override("font_size", 14)
+        buff_container.add_child(buff_name_label)
+
+        var buff_timer_label = Label.new()
+        var expires_at = buff.get("expires_at", 0)
+        var time_remaining = expires_at - Time.get_unix_time_from_system()
+
+        if time_remaining > 0:
+            var minutes = int(time_remaining / 60)
+            var seconds = int(time_remaining) % 60
+            buff_timer_label.text = str(minutes) + ":" + str(seconds).pad_zeros(2)
+            buff_timer_label.add_theme_color_override("font_color", Color.GREEN)
+        else:
+            buff_timer_label.text = "Expired"
+            buff_timer_label.add_theme_color_override("font_color", Color.RED)
+
+        buff_timer_label.add_theme_font_size_override("font_size", 12)
+        buff_container.add_child(buff_timer_label)
+
+        active_buffs_container.add_child(buff_container)
+
+func setup_timers():
+    """Setup timers for updating buffs and abilities"""
+    # Create a timer to update buff timers every second
+    var buff_timer = Timer.new()
+    buff_timer.wait_time = 1.0
+    buff_timer.timeout.connect(_on_buff_timer_timeout)
+    buff_timer.autostart = true
+    add_child(buff_timer)
+
+func _on_buff_timer_timeout():
+    """Update buff timers every second"""
+    if character and active_buffs_container:
+        update_active_buffs()

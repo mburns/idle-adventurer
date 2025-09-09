@@ -40,8 +40,8 @@ func add_visual_effects():
 func add_button_hover_effect(button: Button):
     """Add hover effect to a button"""
     button.mouse_entered.connect(func():
-        AnimationManager.animate_bounce(button, 1.05, 0.2)
+        AnimationManager.animate_bounce(button)
     )
     button.mouse_exited.connect(func():
-        AnimationManager.animate_bounce(button, 1.0, 0.2)
+        AnimationManager.animate_bounce(button)
     )

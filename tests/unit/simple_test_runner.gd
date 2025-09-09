@@ -22,6 +22,10 @@ func _init():
     test_character_manager()
     test_dnd_data()
     test_character_sheet()
+    test_inventory_system()
+    test_enhanced_activities()
+    test_language_system()
+    test_leveling_system()
 
     # Print results
     print_test_summary()
@@ -128,6 +132,127 @@ func test_character_sheet():
 
     print("✅ Character sheet tests passed")
     print()
+
+func test_inventory_system():
+    print("Testing Inventory System...")
+
+    # Test inventory system creation
+    var inventory_system = preload("res://scripts/inventory_system.gd").new()
+    var character = Character.new()
+    character.name = "TestCharacter"
+
+    # Test adding items
+    var potion = {
+        "id": "healing_potion",
+        "name": "Healing Potion",
+        "type": "potion",
+        "weight": 0.5,
+        "value": 50.0
+    }
+
+    var result = inventory_system.add_item(character, potion, 1)
+    if not result:
+        print("❌ Failed to add item to inventory")
+        return false
+
+    # Test inventory retrieval
+    var inventory = inventory_system.get_character_inventory(character)
+    if inventory["items"].is_empty():
+        print("❌ Inventory should contain items")
+        return false
+
+    print("  ✓ Inventory system creation")
+    print("  ✓ Item addition")
+    print("  ✓ Inventory retrieval")
+    print("✅ Inventory system tests passed")
+    print()
+    return true
+
+func test_enhanced_activities():
+    print("Testing Enhanced Activities...")
+
+    # Test activities system creation
+    var activities_system = preload("res://scripts/enhanced_activities.gd").new()
+    var character = Character.new()
+    character.name = "TestCharacter"
+    character.strength = 15
+
+    # Test getting activities
+    var strength_activities = activities_system.get_activities_for_ability("strength")
+    if strength_activities.is_empty():
+        print("❌ Should have strength activities")
+        return false
+
+    # Test starting activity
+    var activity = strength_activities[0]
+    var result = activities_system.start_activity(character, activity["name"], "strength")
+    if not result:
+        print("❌ Should be able to start activity")
+        return false
+
+    print("  ✓ Activities system creation")
+    print("  ✓ Activity retrieval")
+    print("  ✓ Activity starting")
+    print("✅ Enhanced activities tests passed")
+    print()
+    return true
+
+func test_language_system():
+    print("Testing Language System...")
+
+    # Test language system creation
+    var language_system = preload("res://scripts/language_system.gd").new()
+    var character = Character.new()
+    character.name = "TestCharacter"
+    character.known_languages = ["Common"]
+
+    # Test getting languages
+    var languages = language_system.get_all_languages()
+    if languages.is_empty():
+        print("❌ Should have languages available")
+        return false
+
+    # Test learning language
+    var result = language_system.learn_language(character, "Elvish")
+    if not result:
+        print("❌ Should be able to learn language")
+        return false
+
+    print("  ✓ Language system creation")
+    print("  ✓ Language retrieval")
+    print("  ✓ Language learning")
+    print("✅ Language system tests passed")
+    print()
+    return true
+
+func test_leveling_system():
+    print("Testing Leveling System...")
+
+    # Test leveling system creation
+    var leveling_system = preload("res://scripts/leveling_system.gd").new()
+    var character = Character.new()
+    character.name = "TestCharacter"
+    character.level = 1
+    character.experience_points = 0
+
+    # Test experience requirements
+    var xp_for_level_2 = leveling_system.get_experience_for_level(2)
+    if xp_for_level_2 <= 0:
+        print("❌ Level 2 should require XP")
+        return false
+
+    # Test adding experience
+    leveling_system.add_experience(character, 100)
+    if character.experience_points != 100:
+        print("❌ Experience should be added")
+        return false
+
+    print("  ✓ Leveling system creation")
+    print("  ✓ Experience requirements")
+    print("  ✓ Experience addition")
+    print("✅ Leveling system tests passed")
+    print()
+    return true
 
 func roll_dice(count: int, sides: int) -> int:
     var total = 0

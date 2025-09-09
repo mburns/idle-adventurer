@@ -15,8 +15,8 @@ func populate_dropdowns():
 
     # Populate class dropdown
     var classes = DnDData.get_class_names()
-    for class_name in classes:
-        %ClassOptionButton.add_item(class_name)
+    for class_type in classes:
+        %ClassOptionButton.add_item(class_type)
 
     # Populate background dropdown
     var backgrounds = DnDData.get_background_names()

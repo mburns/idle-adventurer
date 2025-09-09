@@ -27,6 +27,26 @@ extends Resource
 @export var gold: int = 0
 @export var spell_slots: Array[int] = []
 
+# Race-derived
+@export var size: String = "Medium"
+@export var speed: int = 30
+@export var racial_traits: Array[Dictionary] = [] # [{"name": String, "description": String}]
+
+# Spells and buffs
+@export var known_spells: Array[String] = []
+@export var spellbook: Dictionary = {} # spell_name -> spell_data
+@export var active_buffs: Array[Dictionary] = [] # [{"name": String, "expires_at": float}]
+
+# Experience and progression
+@export var strength_experience: float = 0.0
+@export var dexterity_experience: float = 0.0
+@export var constitution_experience: float = 0.0
+@export var intelligence_experience: float = 0.0
+@export var wisdom_experience: float = 0.0
+@export var charisma_experience: float = 0.0
+@export var known_languages: Array[String] = ["Common"] # Start with Common
+@export var activity_progress: float = 0.0
+
 # Proficiencies
 @export var skill_proficiencies: Array[String] = []
 @export var tool_proficiencies: Array[String] = []
@@ -114,6 +134,27 @@ func level_up():
     update_derived_stats()
     # TODO: Add class-specific level up features
     print("Level up! Now level ", level)
+
+# Spells API
+func learn_spell(spell_name: String, spell_data: Dictionary = {}):
+    if not (spell_name in known_spells):
+        known_spells.append(spell_name)
+    spellbook[spell_name] = spell_data
+
+func forget_spell(spell_name: String):
+    if spell_name in known_spells:
+        known_spells.erase(spell_name)
+    if spell_name in spellbook:
+        spellbook.erase(spell_name)
+
+# Buffs API
+func add_buff(buff_name: String, duration_seconds: float):
+    var expires_at = Time.get_unix_time_from_system() + duration_seconds
+    active_buffs.append({"name": buff_name, "expires_at": expires_at})
+
+func remove_expired_buffs():
+    var now = Time.get_unix_time_from_system()
+    active_buffs = active_buffs.filter(func(b): return b.get("expires_at", 0.0) > now)
 
 # Start an activity
 func start_activity(activity_name: String, duration: float):
