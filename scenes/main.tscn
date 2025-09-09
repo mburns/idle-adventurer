@@ -265,6 +265,20 @@ theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Settings"
 
+[node name="CharacterDisplayButton" type="Button" parent="NavigationButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Character Display"
+
+[node name="CharacterSheetButton" type="Button" parent="NavigationButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "D&D Character Sheet"
+
 [node name="TabContainer" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
@@ -488,3 +502,5 @@ placeholder_text = "Dear Diary,
 [connection signal="pressed" from="NavigationButtons/EquipmentButton" to="." method="_on_equipment_button_pressed"]
 [connection signal="pressed" from="NavigationButtons/JournalButton" to="." method="_on_journal_button_pressed"]
 [connection signal="pressed" from="NavigationButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/CharacterDisplayButton" to="." method="_on_character_display_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/CharacterSheetButton" to="." method="_on_character_sheet_button_pressed"]

@@ -1,29 +1,47 @@
 extends Control
 
 func _ready():
-	# Check if there's a save file and enable/disable load button accordingly
-	var character_manager = CharacterManager.new()
-	if character_manager.has_save_file():
-		%LoadCharacterButton.disabled = false
-	else:
-		%LoadCharacterButton.disabled = true
+    # Apply theme
+    ThemeManager.apply_theme_to_children(self)
+
+    # Check if there's a save file and enable/disable load button accordingly
+    if CharacterManager.has_save_file():
+        %LoadCharacterButton.disabled = false
+    else:
+        %LoadCharacterButton.disabled = true
+
+    # Add some visual polish
+    add_visual_effects()
 
 func _on_new_character_button_pressed():
-	# Switch to character creation screen
-	get_tree().change_scene_to_file("res://character_creation.tscn")
+    # Switch to character creation screen
+    get_tree().change_scene_to_file("res://scenes/character_creation.tscn")
 
 func _on_load_character_button_pressed():
-	# Load character and go to main game
-	var character_manager = CharacterManager.new()
-	if character_manager.load_character():
-		get_tree().change_scene_to_file("res://main.tscn")
-	else:
-		print("Failed to load character")
+    # Go to character selection screen
+    get_tree().change_scene_to_file("res://scenes/character_selection.tscn")
 
 func _on_settings_button_pressed():
-	# Switch to settings screen
-	get_tree().change_scene_to_file("res://settings_screen.tscn")
+    # Switch to settings screen
+    get_tree().change_scene_to_file("res://scenes/settings_screen.tscn")
 
 func _on_quit_button_pressed():
-	# Quit the game
-	get_tree().quit()
+    # Quit the game
+    get_tree().quit()
+
+func add_visual_effects():
+    """Add visual effects to enhance the UI"""
+    # Add subtle animation to buttons
+    var buttons = [%NewCharacterButton, %LoadCharacterButton, %SettingsButton, %QuitButton]
+    for button in buttons:
+        if button:
+            add_button_hover_effect(button)
+
+func add_button_hover_effect(button: Button):
+    """Add hover effect to a button"""
+    button.mouse_entered.connect(func():
+        AnimationManager.animate_bounce(button, 1.05, 0.2)
+    )
+    button.mouse_exited.connect(func():
+        AnimationManager.animate_bounce(button, 1.0, 0.2)
+    )

@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  dev:
+    build: .
+    volumes:
+      - .:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+    working_dir: /workspace
+    command: bash
+
+  test:
+    build: .
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: godot --headless --script run_tests.gd --quit
+
+  lint:
+    build: .
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: godot --headless --script scripts/lint.gd --quit

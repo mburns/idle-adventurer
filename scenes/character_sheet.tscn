@@ -1,0 +1,439 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8x7y2z1a3b4c5d7"]
+
+[ext_resource type="Script" path="res://scripts/character_sheet.gd" id="1_0a1b2"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.1, 0.1, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CharacterSheet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_0a1b2")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="LeftPanel" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CharacterInfo" type="Panel" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="CharacterInfoContainer" type="VBoxContainer" parent="MainContainer/LeftPanel/CharacterInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="NameLabel" type="Label" parent="MainContainer/LeftPanel/CharacterInfo/CharacterInfoContainer"]
+layout_mode = 2
+text = "Character Name"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 24
+
+[node name="LevelClassLabel" type="Label" parent="MainContainer/LeftPanel/CharacterInfo/CharacterInfoContainer"]
+layout_mode = 2
+text = "Level 1 Class"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+
+[node name="RaceBackgroundLabel" type="Label" parent="MainContainer/LeftPanel/CharacterInfo/CharacterInfoContainer"]
+layout_mode = 2
+text = "Race • Background"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="AbilityScores" type="Panel" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 300)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="AbilityScoresContainer" type="VBoxContainer" parent="MainContainer/LeftPanel/AbilityScores"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="AbilityScoresLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+text = "Ability Scores"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 20
+
+[node name="StrengthContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+
+[node name="StrengthLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
+layout_mode = 2
+text = "STR"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="StrengthValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="StrengthModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
+layout_mode = 2
+text = "(+0)"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="StrengthRoll" type="Button" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="DexterityContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+
+[node name="DexterityLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer"]
+layout_mode = 2
+text = "DEX"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="DexterityValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="DexterityModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer"]
+layout_mode = 2
+text = "(+0)"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="DexterityRoll" type="Button" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="ConstitutionContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+
+[node name="ConstitutionLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer"]
+layout_mode = 2
+text = "CON"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="ConstitutionValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="ConstitutionModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer"]
+layout_mode = 2
+text = "(+0)"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="ConstitutionRoll" type="Button" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="IntelligenceContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+
+[node name="IntelligenceLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer"]
+layout_mode = 2
+text = "INT"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="IntelligenceValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="IntelligenceModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer"]
+layout_mode = 2
+text = "(+0)"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="IntelligenceRoll" type="Button" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="WisdomContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+
+[node name="WisdomLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer"]
+layout_mode = 2
+text = "WIS"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="WisdomValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="WisdomModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer"]
+layout_mode = 2
+text = "(+0)"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="WisdomRoll" type="Button" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="CharismaContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+layout_mode = 2
+
+[node name="CharismaLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer"]
+layout_mode = 2
+text = "CHA"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="CharismaValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="CharismaModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer"]
+layout_mode = 2
+text = "(+0)"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="CharismaRoll" type="Button" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="RightPanel" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CombatStats" type="Panel" parent="MainContainer/RightPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 200)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="CombatStatsContainer" type="VBoxContainer" parent="MainContainer/RightPanel/CombatStats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="CombatStatsLabel" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer"]
+layout_mode = 2
+text = "Combat Stats"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 20
+
+[node name="HitPointsContainer" type="HBoxContainer" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer"]
+layout_mode = 2
+
+[node name="HitPointsLabel" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/HitPointsContainer"]
+layout_mode = 2
+text = "Hit Points:"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="HitPointsValue" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/HitPointsContainer"]
+layout_mode = 2
+text = "10/10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="ArmorClassContainer" type="HBoxContainer" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer"]
+layout_mode = 2
+
+[node name="ArmorClassLabel" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/ArmorClassContainer"]
+layout_mode = 2
+text = "Armor Class:"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="ArmorClassValue" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/ArmorClassContainer"]
+layout_mode = 2
+text = "10"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="InitiativeContainer" type="HBoxContainer" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer"]
+layout_mode = 2
+
+[node name="InitiativeLabel" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/InitiativeContainer"]
+layout_mode = 2
+text = "Initiative:"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="InitiativeValue" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/InitiativeContainer"]
+layout_mode = 2
+text = "+0"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="InitiativeRoll" type="Button" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/InitiativeContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="ProficiencyContainer" type="HBoxContainer" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer"]
+layout_mode = 2
+
+[node name="ProficiencyLabel" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/ProficiencyContainer"]
+layout_mode = 2
+text = "Proficiency:"
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="ProficiencyValue" type="Label" parent="MainContainer/RightPanel/CombatStats/CombatStatsContainer/ProficiencyContainer"]
+layout_mode = 2
+text = "+2"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="DiceRoller" type="Panel" parent="MainContainer/RightPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 200)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="DiceRollerContainer" type="VBoxContainer" parent="MainContainer/RightPanel/DiceRoller"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="DiceRollerLabel" type="Label" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer"]
+layout_mode = 2
+text = "Dice Roller"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 20
+
+[node name="DiceInputContainer" type="HBoxContainer" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer"]
+layout_mode = 2
+
+[node name="DiceInput" type="LineEdit" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/DiceInputContainer"]
+layout_mode = 2
+placeholder_text = "1d20+5"
+size_flags_horizontal = 3
+
+[node name="RollButton" type="Button" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/DiceInputContainer"]
+layout_mode = 2
+text = "Roll"
+custom_minimum_size = Vector2(60, 30)
+
+[node name="RollResult" type="Label" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer"]
+layout_mode = 2
+text = "Roll some dice!"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+
+[node name="QuickRolls" type="VBoxContainer" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer"]
+layout_mode = 2
+
+[node name="QuickRollsLabel" type="Label" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls"]
+layout_mode = 2
+text = "Quick Rolls:"
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 16
+
+[node name="AttackRoll" type="Button" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls"]
+layout_mode = 2
+text = "Attack Roll (1d20+STR)"
+custom_minimum_size = Vector2(0, 30)
+
+[node name="DamageRoll" type="Button" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls"]
+layout_mode = 2
+text = "Damage Roll (1d8+STR)"
+custom_minimum_size = Vector2(0, 30)
+
+[node name="SavingThrow" type="Button" parent="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls"]
+layout_mode = 2
+text = "Saving Throw (1d20+CON)"
+custom_minimum_size = Vector2(0, 30)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -50.0
+offset_right = 120.0
+offset_bottom = -20.0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer/StrengthRoll" to="." method="_on_strength_roll_pressed"]
+[connection signal="pressed" from="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer/DexterityRoll" to="." method="_on_dexterity_roll_pressed"]
+[connection signal="pressed" from="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer/ConstitutionRoll" to="." method="_on_constitution_roll_pressed"]
+[connection signal="pressed" from="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer/IntelligenceRoll" to="." method="_on_intelligence_roll_pressed"]
+[connection signal="pressed" from="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer/WisdomRoll" to="." method="_on_wisdom_roll_pressed"]
+[connection signal="pressed" from="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer/CharismaRoll" to="." method="_on_charisma_roll_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/CombatStats/CombatStatsContainer/InitiativeContainer/InitiativeRoll" to="." method="_on_initiative_roll_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/DiceInputContainer/RollButton" to="." method="_on_roll_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls/AttackRoll" to="." method="_on_attack_roll_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls/DamageRoll" to="." method="_on_damage_roll_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/DiceRoller/DiceRollerContainer/QuickRolls/SavingThrow" to="." method="_on_saving_throw_pressed"]
