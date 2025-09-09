@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://f8fnnxg04bphy"]
+
+[ext_resource type="Script" path="res://scripts/journal_screen.gd" id="1_journal_screen"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="JournalScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_journal_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/Header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 36
+text = "Journal"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Header"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Activity Log" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="ActivityLogTitle" type="Label" parent="TabContainer/Activity Log"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 24
+text = "Recent Activities"
+horizontal_alignment = 1
+
+[node name="ActivityLog" type="RichTextLabel" parent="TabContainer/Activity Log"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "No activities recorded yet."
+
+[node name="Achievements" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="AchievementsTitle" type="Label" parent="TabContainer/Achievements"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 24
+text = "Achievements"
+horizontal_alignment = 1
+
+[node name="AchievementsList" type="RichTextLabel" parent="TabContainer/Achievements"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "No achievements unlocked yet."
+
+[node name="Statistics" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="StatisticsTitle" type="Label" parent="TabContainer/Statistics"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 24
+text = "Statistics"
+horizontal_alignment = 1
+
+[node name="StatisticsList" type="RichTextLabel" parent="TabContainer/Statistics"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "No statistics available yet."
+
+[node name="Notes" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="NotesTitle" type="Label" parent="TabContainer/Notes"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 24
+text = "Personal Notes"
+horizontal_alignment = 1
+
+[node name="NotesText" type="TextEdit" parent="TabContainer/Notes"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Write your personal notes here..."
+
+[connection signal="pressed" from="VBoxContainer/Header/BackButton" to="." method="_on_back_button_pressed"]

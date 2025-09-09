@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://e6llx5m8xkwy"]
+[gd_scene load_steps=9 format=3 uid="uid://e6llx5m8xkwy"]
 
 [ext_resource type="Texture2D" uid="uid://ctg5o08o7x8ii" path="res://assets/icons/warlord-helmet.svg" id="1_u0x4l"]
 [ext_resource type="Script" path="res://main.gd" id="1_u34hy"]
 [ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
 [ext_resource type="Texture2D" uid="uid://db1nl5kxnewob" path="res://assets/icons/two-coins.svg" id="3_ohurj"]
-[ext_resource type="Script" path="res://scripts/skill_buttons.gd" id="4_skill_buttons"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_634im"]
 bg_color = Color(0.960784, 0.317647, 0.654902, 1)
@@ -47,15 +46,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u34hy")
 
-[node name="SkillButtons" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_skill_buttons")
-
 [node name="PlayerInfoBox" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 20.0
@@ -92,8 +82,7 @@ grow_vertical = 2
 texture = ExtResource("1_u0x4l")
 expand_mode = 1
 
-[node name="CharacterNameLabel" type="Label" parent="PlayerInfoBox"]
-unique_name_in_owner = true
+[node name="Nickname" type="Label" parent="PlayerInfoBox"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.340753
@@ -107,53 +96,7 @@ theme_override_font_sizes/font_size = 48
 text = "Bob"
 metadata/_edit_use_anchors_ = true
 
-[node name="CharacterLevelLabel" type="Label" parent="PlayerInfoBox"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.340753
-anchor_top = 0.4
-anchor_right = 0.6
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 24
-text = "Level 1"
-metadata/_edit_use_anchors_ = true
-
-[node name="CharacterClassLabel" type="Label" parent="PlayerInfoBox"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.6
-anchor_top = 0.4
-anchor_right = 0.955479
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 24
-text = "Human Barbarian"
-metadata/_edit_use_anchors_ = true
-
-[node name="CurrentActivityLabel" type="Label" parent="PlayerInfoBox"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.340753
-anchor_top = 0.5
-anchor_right = 0.955479
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Idle"
-metadata/_edit_use_anchors_ = true
-
-[node name="ActivityProgressBar" type="ProgressBar" parent="PlayerInfoBox"]
-unique_name_in_owner = true
+[node name="ExperienceProgress" type="ProgressBar" parent="PlayerInfoBox"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -165,7 +108,7 @@ offset_right = -10.0
 offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
-value = 0.0
+value = 69.0
 
 [node name="CoinBox" type="Panel" parent="."]
 layout_mode = 1
@@ -207,7 +150,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 48
-text = "0"
+text = "???"
 metadata/_edit_use_anchors_ = true
 
 [node name="GrantCoinsButton" type="Button" parent="CoinBox"]
@@ -224,46 +167,9 @@ offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
-text = "Test"
+text = "more
 
-[node name="NavigationButtons" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_top = 250.0
-offset_right = -20.0
-offset_bottom = 400.0
-grow_horizontal = 0
-
-[node name="CharacterProfileButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Character Profile"
-
-[node name="EquipmentButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Equipment"
-
-[node name="JournalButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Journal"
-
-[node name="SettingsButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Settings"
+"
 
 [node name="TabContainer" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(200, 50)
@@ -484,7 +390,3 @@ placeholder_text = "Dear Diary,
 "
 
 [connection signal="pressed" from="CoinBox/GrantCoinsButton" to="." method="_on_grant_coins_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/CharacterProfileButton" to="." method="_on_character_profile_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/EquipmentButton" to="." method="_on_equipment_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/JournalButton" to="." method="_on_journal_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

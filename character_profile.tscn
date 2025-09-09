@@ -1,0 +1,245 @@
+[gd_scene load_steps=3 format=3 uid="uid://d8fnnxg04bphy"]
+
+[ext_resource type="Script" path="res://scripts/character_profile.gd" id="1_char_profile"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="CharacterProfile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_char_profile")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ScrollContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "Character Profile"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="ScrollContainer/VBoxContainer/Header"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterInfo" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterNameLabel" type="Label" parent="ScrollContainer/VBoxContainer/CharacterInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "Character Name"
+horizontal_alignment = 1
+
+[node name="CharacterDetails" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/CharacterInfo"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="ScrollContainer/VBoxContainer/CharacterInfo/CharacterDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Level 1"
+
+[node name="ClassLabel" type="Label" parent="ScrollContainer/VBoxContainer/CharacterInfo/CharacterDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Human Barbarian"
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatsContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AbilityScores" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AbilityScoresTitle" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Ability Scores"
+horizontal_alignment = 1
+
+[node name="StrengthLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Strength: 15 (+2)"
+
+[node name="DexterityLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Dexterity: 14 (+2)"
+
+[node name="ConstitutionLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Constitution: 13 (+1)"
+
+[node name="IntelligenceLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Intelligence: 12 (+1)"
+
+[node name="WisdomLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Wisdom: 10 (+0)"
+
+[node name="CharismaLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/AbilityScores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Charisma: 8 (-1)"
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+
+[node name="CombatStats" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CombatStatsTitle" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/CombatStats"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Combat Stats"
+horizontal_alignment = 1
+
+[node name="HitPointsLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/CombatStats"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Hit Points: 15/15"
+
+[node name="ArmorClassLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/CombatStats"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Armor Class: 12"
+
+[node name="ProficiencyBonusLabel" type="Label" parent="ScrollContainer/VBoxContainer/StatsContainer/CombatStats"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Proficiency Bonus: +2"
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProficienciesContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Skills" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ProficienciesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillsTitle" type="Label" parent="ScrollContainer/VBoxContainer/ProficienciesContainer/Skills"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Skill Proficiencies"
+horizontal_alignment = 1
+
+[node name="SkillsList" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/ProficienciesContainer/Skills"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+bbcode_enabled = true
+text = "Athletics\nIntimidation"
+
+[node name="VSeparator2" type="VSeparator" parent="ScrollContainer/VBoxContainer/ProficienciesContainer"]
+layout_mode = 2
+
+[node name="Tools" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ProficienciesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToolsTitle" type="Label" parent="ScrollContainer/VBoxContainer/ProficienciesContainer/Tools"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Tool Proficiencies"
+horizontal_alignment = 1
+
+[node name="ToolsList" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/ProficienciesContainer/Tools"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+bbcode_enabled = true
+text = "None"
+
+[node name="VSeparator3" type="VSeparator" parent="ScrollContainer/VBoxContainer/ProficienciesContainer"]
+layout_mode = 2
+
+[node name="Languages" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ProficienciesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LanguagesTitle" type="Label" parent="ScrollContainer/VBoxContainer/ProficienciesContainer/Languages"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Languages"
+horizontal_alignment = 1
+
+[node name="LanguagesList" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/ProficienciesContainer/Languages"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+bbcode_enabled = true
+text = "Common"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Header/BackButton" to="." method="_on_back_button_pressed"]

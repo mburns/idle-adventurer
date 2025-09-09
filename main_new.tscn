@@ -226,45 +226,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Test"
 
-[node name="NavigationButtons" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_top = 250.0
-offset_right = -20.0
-offset_bottom = 400.0
-grow_horizontal = 0
-
-[node name="CharacterProfileButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Character Profile"
-
-[node name="EquipmentButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Equipment"
-
-[node name="JournalButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Journal"
-
-[node name="SettingsButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
-theme_override_fonts/font = ExtResource("2_cxec1")
-theme_override_font_sizes/font_size = 18
-text = "Settings"
-
 [node name="TabContainer" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
@@ -484,7 +445,3 @@ placeholder_text = "Dear Diary,
 "
 
 [connection signal="pressed" from="CoinBox/GrantCoinsButton" to="." method="_on_grant_coins_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/CharacterProfileButton" to="." method="_on_character_profile_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/EquipmentButton" to="." method="_on_equipment_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/JournalButton" to="." method="_on_journal_button_pressed"]
-[connection signal="pressed" from="NavigationButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

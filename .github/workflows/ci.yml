@@ -1,0 +1,86 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [published]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Godot
+      uses: abarichello/godot-ci@4.4.1-stable
+      with:
+        godot-version: "4.2"
+        godot-platform: "linux"
+    
+    - name: Run Unit Tests
+      run: |
+        godot --headless --script run_tests.gd --quit
+      env:
+        GODOT_DEBUG: 1
+    
+    - name: Run Integration Tests
+      run: |
+        godot --headless --script tests/test_integration.gd --quit
+      env:
+        GODOT_DEBUG: 1
+    
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: test-results/
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Godot
+      uses: abarichello/godot-ci@4.4.1-stable
+      with:
+        godot-version: "4.2"
+        godot-platform: "linux"
+    
+    - name: Run Linting
+      run: |
+        godot --headless --script scripts/lint.gd --quit
+      env:
+        GODOT_DEBUG: 1
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    
+    strategy:
+      matrix:
+        platform: [linux, windows, macos, web]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Godot
+      uses: abarichello/godot-ci@4.4.1-stable
+      with:
+        godot-version: "4.2"
+        godot-platform: ${{ matrix.platform }}
+    
+    - name: Build Game
+      run: |
+        godot --headless --script scripts/build_system.gd build ${{ matrix.platform }}
+    
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: idle-adventurer-${{ matrix.platform }}
+        path: builds/
