@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, idlerpg ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, idlerpg ]
   release:
     types: [published]
 
