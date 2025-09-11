@@ -45,9 +45,67 @@ func create_character(character_name: String, race: String, character_class: Str
 
 	return character
 
-# Create a default character for testing
+# Create a random character for testing
 func create_default_character() -> Character:
-	return create_character("Bob", "Human", "Barbarian", "Folk Hero")
+	return create_random_character()
+
+# Create a random character with random stats
+func create_random_character() -> Character:
+	# Generate random name
+	var names_data = DataLoader.load_json_data("names")
+	var character_name = "Adventurer"
+	if names_data and names_data.has("first_names") and names_data.has("last_names"):
+		var first_names = names_data["first_names"]
+		var last_names = names_data["last_names"]
+		var random_first = first_names[randi() % first_names.size()]
+		var random_last = last_names[randi() % last_names.size()]
+		character_name = random_first + " " + random_last
+
+	# Generate random race
+	var races = DataLoader.get_race_names()
+	var random_race = "Human"
+	if races.size() > 0:
+		random_race = races[randi() % races.size()]
+
+	# Generate random class
+	var classes = DataLoader.get_class_names()
+	var random_class = "Barbarian"
+	if classes.size() > 0:
+		random_class = classes[randi() % classes.size()]
+
+	# Generate random background
+	var backgrounds = DataLoader.get_background_names()
+	var random_background = "Folk Hero"
+	if backgrounds.size() > 0:
+		random_background = backgrounds[randi() % backgrounds.size()]
+
+	# Create character with random stats
+	var character = create_character(character_name, random_race, random_class, random_background)
+
+	# Generate random ability scores (4d6 drop lowest)
+	character.strength = roll_4d6_drop_lowest()
+	character.dexterity = roll_4d6_drop_lowest()
+	character.constitution = roll_4d6_drop_lowest()
+	character.intelligence = roll_4d6_drop_lowest()
+	character.wisdom = roll_4d6_drop_lowest()
+	character.charisma = roll_4d6_drop_lowest()
+
+	# Give some starting gold
+	character.gold = randi_range(50, 200)
+
+	# Update derived stats
+	character.update_derived_stats()
+
+	return character
+
+# Roll 4d6 and drop the lowest die
+func roll_4d6_drop_lowest() -> int:
+	var rolls = []
+	for i in range(4):
+		rolls.append(randi_range(1, 6))
+	rolls.sort()
+	rolls.pop_front() # Remove lowest
+	return rolls[0] + rolls[1] + rolls[2]
 
 # Apply race bonuses to character
 func apply_race_bonuses(character: Character, race: String) -> void:

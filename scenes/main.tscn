@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_u34hy"]
 [ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
 [ext_resource type="Texture2D" uid="uid://db1nl5kxnewob" path="res://assets/icons/two-coins.svg" id="3_ohurj"]
-[ext_resource type="Script" path="res://scripts/skill_buttons.gd" id="4_skill_buttons"]
+[ext_resource type="Script" path="res://scripts/dynamic_main_ui.gd" id="4_dynamic_ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_634im"]
 bg_color = Color(0.960784, 0.317647, 0.654902, 1)
@@ -37,8 +37,10 @@ corner_radius_bottom_left = 6
 shadow_size = 13
 
 [sub_resource type="Theme" id="Theme_wr2kh"]
+default_font = ExtResource("2_cxec1")
+default_font_size = 18
 
-[node name="Control" type="Control"]
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +49,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u34hy")
 
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
 
 [node name="PlayerInfoBox" type="Panel" parent="."]
 layout_mode = 0
@@ -58,31 +68,30 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_634im")
 
 [node name="AvatarFrame" type="Panel" parent="PlayerInfoBox"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -91.0
-offset_right = 192.0
-offset_bottom = 95.0
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -196.0
+offset_right = 193.0
+offset_bottom = -14.0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_q5i0o")
 
 [node name="Avatar" type="TextureRect" parent="PlayerInfoBox/AvatarFrame"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -92.0
-offset_top = -105.0
-offset_right = 97.0
-offset_bottom = 99.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_u0x4l")
-expand_mode = 1
+expand_mode = 3
+stretch_mode = 6
 
 [node name="CharacterNameLabel" type="Label" parent="PlayerInfoBox"]
 unique_name_in_owner = true
@@ -139,6 +148,7 @@ anchor_right = 0.955479
 anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Idle"
@@ -157,7 +167,6 @@ offset_right = -10.0
 offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
-value = 0.0
 
 [node name="CoinBox" type="Panel" parent="."]
 layout_mode = 1
@@ -215,8 +224,43 @@ offset_right = 144.5
 offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 24
 text = "Test"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 250.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wr2kh")
+theme_override_constants/icon_separation = 5
+theme_override_constants/icon_max_width = 64
+
+[node name="Rest" type="GridContainer" parent="TabContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="ShortRest" type="Button" parent="TabContainer/Rest"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Short rest (15 minutes)"
+
+[node name="LongRest" type="Button" parent="TabContainer/Rest"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Long rest (8 hours)"
+
+[node name="DynamicUIGenerator" type="Node" parent="."]
+script = ExtResource("4_dynamic_ui")
 
 [node name="NavigationButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -230,752 +274,144 @@ offset_bottom = 400.0
 grow_horizontal = 0
 
 [node name="CharacterProfileButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Character Profile"
 
 [node name="EquipmentButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Equipment"
 
 [node name="JournalButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Journal"
 
 [node name="SettingsButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Settings"
 
 [node name="CharacterDisplayButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "Character Display"
 
 [node name="CharacterSheetButton" type="Button" parent="NavigationButtons"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 18
 text = "D&D Character Sheet"
 
-[node name="TabContainer" type="TabContainer" parent="."]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.966
-anchor_bottom = 5.154
-offset_top = -414.0
-offset_right = -15.8321
-offset_bottom = -387.792
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_wr2kh")
-theme_override_constants/icon_separation = 5
-theme_override_constants/icon_max_width = 64
-
-[node name="Strength" type="GridContainer" parent="TabContainer"]
+[node name="ActivitiesButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Activities"
 
-[node name="PushARock" type="Button" parent="TabContainer/Strength"]
-custom_minimum_size = Vector2(200, 50)
+[node name="GeneralStoreButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Push a rock"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "General Store"
 
-[node name="PushARockProgressBar" type="ProgressBar" parent="TabContainer/Strength/PushARock"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="TipOverAStatue" type="Button" parent="TabContainer/Strength"]
-custom_minimum_size = Vector2(200, 50)
+[node name="InventoryButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Tip over a statue"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Inventory"
 
-[node name="TipOverAStatueProgressBar" type="ProgressBar" parent="TabContainer/Strength/TipOverAStatue"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Athletics" type="Button" parent="TabContainer/Strength"]
-custom_minimum_size = Vector2(200, 50)
+[node name="MonsterGlossaryButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Athletics"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Monster Glossary"
 
-[node name="AthleticsProgressBar" type="ProgressBar" parent="TabContainer/Strength/Athletics"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Dexterity" type="GridContainer" parent="TabContainer"]
+[node name="LevelingButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-columns = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Leveling"
 
-[node name="DoAKickflip" type="Button" parent="TabContainer/Dexterity"]
-custom_minimum_size = Vector2(200, 50)
+[node name="FactionButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Do a kickflip"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Faction"
 
-[node name="DoAKickflipProgressBar" type="ProgressBar" parent="TabContainer/Dexterity/DoAKickflip"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Acrobatics" type="Button" parent="TabContainer/Dexterity"]
-custom_minimum_size = Vector2(200, 50)
+[node name="AchievementsButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Acrobatics"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Achievements"
 
-[node name="AcrobaticsProgressBar" type="ProgressBar" parent="TabContainer/Dexterity/Acrobatics"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="SleightOfHand" type="Button" parent="TabContainer/Dexterity"]
-custom_minimum_size = Vector2(200, 50)
+[node name="SpellbookButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Sleight of Hand"
-
-[node name="SleightOfHandProgressBar" type="ProgressBar" parent="TabContainer/Dexterity/SleightOfHand"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Stealth" type="Button" parent="TabContainer/Dexterity"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Stealth"
-
-[node name="StealthProgressBar" type="ProgressBar" parent="TabContainer/Dexterity/Stealth"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="PickALock" type="Button" parent="TabContainer/Dexterity"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Pick a lock"
-
-[node name="PickALockProgressBar" type="ProgressBar" parent="TabContainer/Dexterity/PickALock"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="PlayStringedInstrument" type="Button" parent="TabContainer/Dexterity"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Play a stringed instrument"
-
-[node name="PlayStringedInstrumentProgressBar" type="ProgressBar" parent="TabContainer/Dexterity/PlayStringedInstrument"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Constitution" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="HoldYourBreath" type="Button" parent="TabContainer/Constitution"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Hold your breath"
-
-[node name="HoldYourBreathProgressBar" type="ProgressBar" parent="TabContainer/Constitution/HoldYourBreath"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="QuaffAnAle" type="Button" parent="TabContainer/Constitution"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Quaff an entire stein of ale in one go"
-
-[node name="QuaffAnAleProgressBar" type="ProgressBar" parent="TabContainer/Constitution/QuaffAnAle"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Intelligence" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="Arcana" type="Button" parent="TabContainer/Intelligence"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Arcana"
-
-[node name="ArcanaProgressBar" type="ProgressBar" parent="TabContainer/Intelligence/Arcana"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="History" type="Button" parent="TabContainer/Intelligence"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "History"
-
-[node name="HistoryProgressBar" type="ProgressBar" parent="TabContainer/Intelligence/History"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Investigation" type="Button" parent="TabContainer/Intelligence"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Investigation"
-
-[node name="InvestigationProgressBar" type="ProgressBar" parent="TabContainer/Intelligence/Investigation"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Nature" type="Button" parent="TabContainer/Intelligence"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Nature"
-
-[node name="NatureProgressBar" type="ProgressBar" parent="TabContainer/Intelligence/Nature"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Religion" type="Button" parent="TabContainer/Intelligence"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Religion"
-
-[node name="ReligionProgressBar" type="ProgressBar" parent="TabContainer/Intelligence/Religion"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Forge a document" type="Button" parent="TabContainer/Intelligence"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Forge a document"
-
-[node name="ForgeADocumentProgressBar" type="ProgressBar" parent="TabContainer/Intelligence/Forge a document"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Wisdom" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="AnimalHandling" type="Button" parent="TabContainer/Wisdom"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Animal handling"
-
-[node name="AnimalHandlingProgressBar" type="ProgressBar" parent="TabContainer/Wisdom/AnimalHandling"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Insight" type="Button" parent="TabContainer/Wisdom"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Insight"
-
-[node name="InsightProgressBar" type="ProgressBar" parent="TabContainer/Wisdom/Insight"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Medicine" type="Button" parent="TabContainer/Wisdom"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Medicine"
-
-[node name="MedicineProgressBar" type="ProgressBar" parent="TabContainer/Wisdom/Medicine"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Perception" type="Button" parent="TabContainer/Wisdom"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Perception"
-
-[node name="PerceptionProgressBar" type="ProgressBar" parent="TabContainer/Wisdom/Perception"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Survival" type="Button" parent="TabContainer/Wisdom"]
-visible = false
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Survival"
-
-[node name="DetermineIfUndead" type="Button" parent="TabContainer/Wisdom"]
-visible = false
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "determine if undead"
-
-[node name="Charisma" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="Deception" type="Button" parent="TabContainer/Charisma"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Deception"
-
-[node name="DeceptionProgressBar" type="ProgressBar" parent="TabContainer/Charisma/Deception"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Intimidation" type="Button" parent="TabContainer/Charisma"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Intimidation"
-
-[node name="IntimidationProgressBar" type="ProgressBar" parent="TabContainer/Charisma/Intimidation"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Performance" type="Button" parent="TabContainer/Charisma"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Performance"
-
-[node name="PerformanceProgressBar" type="ProgressBar" parent="TabContainer/Charisma/Performance"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Persuasion" type="Button" parent="TabContainer/Charisma"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Persuasion"
-
-[node name="PersuasionProgressBar" type="ProgressBar" parent="TabContainer/Charisma/Persuasion"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Blend into a crowd" type="Button" parent="TabContainer/Charisma"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Blend into a crowd	"
-
-[node name="Crafting" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 3
-
-[node name="Blacksmithing" type="Button" parent="TabContainer/Crafting"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Blacksmithing"
-
-[node name="BlacksmithingProgressBar" type="ProgressBar" parent="TabContainer/Crafting/Blacksmithing"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="JewelryMaking" type="Button" parent="TabContainer/Crafting"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Jewelry Making"
-
-[node name="JewelryMakingProgressBar" type="ProgressBar" parent="TabContainer/Crafting/JewelryMaking"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Leatherworking" type="Button" parent="TabContainer/Crafting"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Leatherworking"
-
-[node name="LeatherworkingProgressBar" type="ProgressBar" parent="TabContainer/Crafting/Leatherworking"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Pottery" type="Button" parent="TabContainer/Crafting"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Pottery"
-
-[node name="PotteryProgressBar" type="ProgressBar" parent="TabContainer/Crafting/Pottery"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Weaving" type="Button" parent="TabContainer/Crafting"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Weaving"
-
-[node name="WeavingProgressBar" type="ProgressBar" parent="TabContainer/Crafting/Weaving"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Woodworking" type="Button" parent="TabContainer/Crafting"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Woodworking"
-
-[node name="WoodworkingProgressBar" type="ProgressBar" parent="TabContainer/Crafting/Woodworking"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Profession" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 3
-
-[node name="Artisan" type="Button" parent="TabContainer/Profession"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Artisan"
-
-[node name="ArtisanProgressBar" type="ProgressBar" parent="TabContainer/Profession/Artisan"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Merchant" type="Button" parent="TabContainer/Profession"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Merchant"
-
-[node name="MerchantProgressBar" type="ProgressBar" parent="TabContainer/Profession/Merchant"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Scholar" type="Button" parent="TabContainer/Profession"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Scholar"
-
-[node name="ScholarProgressBar" type="ProgressBar" parent="TabContainer/Profession/Scholar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Guard" type="Button" parent="TabContainer/Profession"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Guard"
-
-[node name="GuardProgressBar" type="ProgressBar" parent="TabContainer/Profession/Guard"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Priest" type="Button" parent="TabContainer/Profession"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Priest"
-
-[node name="PriestProgressBar" type="ProgressBar" parent="TabContainer/Profession/Priest"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Entertainer" type="Button" parent="TabContainer/Profession"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Entertainer"
-
-[node name="EntertainerProgressBar" type="ProgressBar" parent="TabContainer/Profession/Entertainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Training" type="GridContainer" parent="TabContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 3
-
-[node name="LearnLanguage" type="Button" parent="TabContainer/Training"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Learn Language"
-
-[node name="LearnLanguageProgressBar" type="ProgressBar" parent="TabContainer/Training/LearnLanguage"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="ToolProficiency" type="Button" parent="TabContainer/Training"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Tool Proficiency"
-
-[node name="ToolProficiencyProgressBar" type="ProgressBar" parent="TabContainer/Training/ToolProficiency"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="SkillTraining" type="Button" parent="TabContainer/Training"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Skill Training"
-
-[node name="SkillTrainingProgressBar" type="ProgressBar" parent="TabContainer/Training/SkillTraining"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-max_value = 1.0
-value = 0.0
-show_percentage = false
-mouse_filter = 2
-
-[node name="Rest" type="GridContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-columns = 3
-
-[node name="Short Rest" type="Button" parent="TabContainer/Rest"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Short rest (15 minutes)"
-
-[node name="Long Rest" type="Button" parent="TabContainer/Rest"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "Long rest (8 hours)"
-
-[node name="Journal" type="Control" parent="TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/Journal"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-placeholder_text = "Dear Diary,
-"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Spellbook"
 
 [connection signal="pressed" from="CoinBox/GrantCoinsButton" to="." method="_on_grant_coins_button_pressed"]
 [connection signal="pressed" from="NavigationButtons/CharacterProfileButton" to="." method="_on_character_profile_button_pressed"]
@@ -984,42 +420,11 @@ placeholder_text = "Dear Diary,
 [connection signal="pressed" from="NavigationButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="NavigationButtons/CharacterDisplayButton" to="." method="_on_character_display_button_pressed"]
 [connection signal="pressed" from="NavigationButtons/CharacterSheetButton" to="." method="_on_character_sheet_button_pressed"]
-[connection signal="pressed" from="TabContainer/Strength/PushARock" to="." method="_on_push_a_rock_pressed"]
-[connection signal="pressed" from="TabContainer/Strength/TipOverAStatue" to="." method="_on_tip_over_statue_pressed"]
-[connection signal="pressed" from="TabContainer/Strength/Athletics" to="." method="_on_athletics_pressed"]
-[connection signal="pressed" from="TabContainer/Dexterity/DoAKickflip" to="." method="_on_do_a_kickflip_pressed"]
-[connection signal="pressed" from="TabContainer/Dexterity/Acrobatics" to="." method="_on_practice_acrobatics_pressed"]
-[connection signal="pressed" from="TabContainer/Dexterity/PickALock" to="." method="_on_pick_locks_pressed"]
-[connection signal="pressed" from="TabContainer/Dexterity/Stealth" to="." method="_on_stealth_training_pressed"]
-[connection signal="pressed" from="TabContainer/Dexterity/PlayStringedInstrument" to="." method="_on_play_instrument_pressed"]
-[connection signal="pressed" from="TabContainer/Constitution/HoldYourBreath" to="." method="_on_hold_your_breath_pressed"]
-[connection signal="pressed" from="TabContainer/Constitution/QuaffAnAle" to="." method="_on_drink_ale_pressed"]
-[connection signal="pressed" from="TabContainer/Intelligence/Arcana" to="." method="_on_study_arcana_pressed"]
-[connection signal="pressed" from="TabContainer/Intelligence/History" to="." method="_on_research_history_pressed"]
-[connection signal="pressed" from="TabContainer/Intelligence/Investigation" to="." method="_on_investigate_pressed"]
-[connection signal="pressed" from="TabContainer/Intelligence/Nature" to="." method="_on_study_nature_pressed"]
-[connection signal="pressed" from="TabContainer/Intelligence/Religion" to="." method="_on_research_religion_pressed"]
-[connection signal="pressed" from="TabContainer/Intelligence/Forge a document" to="." method="_on_forge_document_pressed"]
-[connection signal="pressed" from="TabContainer/Wisdom/AnimalHandling" to="." method="_on_animal_handling_pressed"]
-[connection signal="pressed" from="TabContainer/Wisdom/Insight" to="." method="_on_practice_insight_pressed"]
-[connection signal="pressed" from="TabContainer/Wisdom/Medicine" to="." method="_on_study_medicine_pressed"]
-[connection signal="pressed" from="TabContainer/Wisdom/Perception" to="." method="_on_practice_perception_pressed"]
-[connection signal="pressed" from="TabContainer/Charisma/Deception" to="." method="_on_practice_deception_pressed"]
-[connection signal="pressed" from="TabContainer/Charisma/Intimidation" to="." method="_on_practice_intimidation_pressed"]
-[connection signal="pressed" from="TabContainer/Charisma/Performance" to="." method="_on_performance_practice_pressed"]
-[connection signal="pressed" from="TabContainer/Charisma/Persuasion" to="." method="_on_practice_persuasion_pressed"]
-[connection signal="pressed" from="TabContainer/Crafting/Blacksmithing" to="." method="_on_blacksmithing_pressed"]
-[connection signal="pressed" from="TabContainer/Crafting/JewelryMaking" to="." method="_on_jewelry_making_pressed"]
-[connection signal="pressed" from="TabContainer/Crafting/Leatherworking" to="." method="_on_leatherworking_pressed"]
-[connection signal="pressed" from="TabContainer/Crafting/Pottery" to="." method="_on_pottery_pressed"]
-[connection signal="pressed" from="TabContainer/Crafting/Weaving" to="." method="_on_weaving_pressed"]
-[connection signal="pressed" from="TabContainer/Crafting/Woodworking" to="." method="_on_woodworking_pressed"]
-[connection signal="pressed" from="TabContainer/Profession/Artisan" to="." method="_on_artisan_pressed"]
-[connection signal="pressed" from="TabContainer/Profession/Merchant" to="." method="_on_merchant_pressed"]
-[connection signal="pressed" from="TabContainer/Profession/Scholar" to="." method="_on_scholar_pressed"]
-[connection signal="pressed" from="TabContainer/Profession/Guard" to="." method="_on_guard_pressed"]
-[connection signal="pressed" from="TabContainer/Profession/Priest" to="." method="_on_priest_pressed"]
-[connection signal="pressed" from="TabContainer/Profession/Entertainer" to="." method="_on_entertainer_pressed"]
-[connection signal="pressed" from="TabContainer/Training/LearnLanguage" to="." method="_on_learn_language_pressed"]
-[connection signal="pressed" from="TabContainer/Training/ToolProficiency" to="." method="_on_tool_proficiency_pressed"]
-[connection signal="pressed" from="TabContainer/Training/SkillTraining" to="." method="_on_skill_training_pressed"]
+[connection signal="pressed" from="NavigationButtons/ActivitiesButton" to="." method="_on_activities_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/GeneralStoreButton" to="." method="_on_general_store_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/MonsterGlossaryButton" to="." method="_on_monster_glossary_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/LevelingButton" to="." method="_on_leveling_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/FactionButton" to="." method="_on_faction_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/AchievementsButton" to="." method="_on_achievements_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/SpellbookButton" to="." method="_on_spellbook_button_pressed"]

@@ -127,7 +127,7 @@ func get_class_data(class_name_param: String) -> Dictionary:
 func get_background_data(background_name: String) -> Dictionary:
 	return backgrounds_data.get(background_name, {})
 
-# Load activities data from ability-based JSON files
+# Load activities data from all JSON files in the activities directory
 func load_activities():
 	# Initialize activities data structure by ability
 	activities_data = {
@@ -140,36 +140,59 @@ func load_activities():
 		"general": {}
 	}
 
-	# Load each ability's activities from their respective JSON files
-	var abilities = ["strength", "dexterity", "intelligence", "wisdom", "charisma", "constitution", "general"]
+	# Load all activity files from the activities directory
+	var activities_dir = "res://data/activities/"
+	var dir = DirAccess.open(activities_dir)
+	if dir == null:
+		print("Error: Could not open activities directory")
+		return
 
-	for ability in abilities:
-		var file_path = "res://data/activities/" + ability + ".json"
-		var file = FileAccess.open(file_path, FileAccess.READ)
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".json"):
+			var file_path = activities_dir + file_name
+			_load_activities_from_file(file_path)
 
-		if file:
-			var json_string = file.get_as_text()
-			file.close()
+	print("Loaded ", _count_total_activities(), " activities from all JSON files")
 
-			var json = JSON.new()
-			var parse_result = json.parse(json_string)
+func _load_activities_from_file(file_path: String):
+	"""Load activities from a single JSON file"""
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if not file:
+		print("Error opening ", file_path)
+		return
 
-			if parse_result == OK:
-				var activities_array = json.data
+	var json_string = file.get_as_text()
+	file.close()
 
-				# Convert array to dictionary keyed by activity ID
-				for activity_data in activities_array:
-					var activity_id = activity_data.get("id", "")
-					if activity_id != "":
-						activities_data[ability][activity_id] = activity_data
-					else:
-						print("Activity missing ID in ", ability, ".json")
-			else:
-				print("Error parsing ", ability, ".json: ", json.error_string)
-		else:
-			print("Error opening ", ability, ".json")
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
 
-	print("Loaded ", _count_total_activities(), " activities from ability-based JSON files")
+	if parse_result != OK:
+		print("Error parsing ", file_path, ": ", json.error_string)
+		return
+
+	var activities_array = json.data
+	if not activities_array is Array:
+		print("Error: ", file_path, " does not contain an array")
+		return
+
+	# Process each activity in the file
+	for activity_data in activities_array:
+		var activity_id = activity_data.get("id", "")
+		var ability = activity_data.get("ability", "general")
+
+		if activity_id == "":
+			print("Activity missing ID in ", file_path)
+			continue
+
+		# Ensure ability is valid
+		if not ability in activities_data:
+			print("Invalid ability '", ability, "' for activity '", activity_id, "' in ", file_path)
+			ability = "general"
+
+		# Store the activity
+		activities_data[ability][activity_id] = activity_data
 
 # Count total activities loaded
 func _count_total_activities() -> int:

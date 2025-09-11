@@ -207,5 +207,23 @@
     "requirements": {
       "charisma": 11
     }
+  },
+  {
+    "id": "royal_court_attendance",
+    "name": "Royal Court Attendance",
+    "description": "Attend royal court events and ceremonies to build political connections",
+    "ability": "charisma",
+    "daily_progress": 0.06,
+    "cost_per_day": 2.0,
+    "rewards": {
+      "charisma_exp": 20,
+      "reputation": 5,
+      "political_connections": 2,
+      "gold": 15
+    },
+    "requirements": {
+      "charisma": 16,
+      "gold": 500
+    }
   }
 ]

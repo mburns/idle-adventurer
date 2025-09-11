@@ -26,83 +26,119 @@ func _ready():
 		CharacterManager.create_default_character()
 
 	character = CharacterManager.get_current_character()
-	setup_button_progress_bars()
+
+	# Wait for dynamic UI to be created
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	# setup_button_progress_bars()  # Disabled - dynamic UI handles progress bar creation and registration
+	# setup_dynamic_button_connections()  # Disabled - dynamic UI handles button connections
 	update_ui()
 
 func setup_button_progress_bars():
-	"""Setup progress bars for each activity button"""
-	# Map activity names to progress bar node paths
-	var activity_to_progress_bar = {
-		# Strength activities
-		"Push a Rock": "TabContainer/Strength/PushARock/PushARockProgressBar",
-		"Tip Over a Statue": "TabContainer/Strength/TipOverAStatue/TipOverAStatueProgressBar",
-		"Lift Weights": "TabContainer/Strength/Athletics/AthleticsProgressBar",
+	"""Setup progress bars dynamically from JSON data - no more hardcoded mappings!"""
+	# Clear existing progress bars
+	button_progress_bars.clear()
 
-		# Dexterity activities
-		"Do a Kickflip": "TabContainer/Dexterity/DoAKickflip/DoAKickflipProgressBar",
-		"Practice Acrobatics": "TabContainer/Dexterity/Acrobatics/AcrobaticsProgressBar",
-		"Pick Locks": "TabContainer/Dexterity/PickALock/PickALockProgressBar",
-		"Stealth Training": "TabContainer/Dexterity/Stealth/StealthProgressBar",
-		"Play Instrument": "TabContainer/Dexterity/PlayStringedInstrument/PlayStringedInstrumentProgressBar",
+	# Get all activities from the enhanced activities system
+	var enhanced_activities = EnhancedActivities.new()
+	var all_activities = enhanced_activities.get_all_activities()
 
-		# Constitution activities
-		"Hold Your Breath": "TabContainer/Constitution/HoldYourBreath/HoldYourBreathProgressBar",
-		"Drink Ale": "TabContainer/Constitution/QuaffAnAle/QuaffAnAleProgressBar",
+	# Find progress bars dynamically by searching for nodes with "ProgressBar" in their name
+	_find_progress_bars_recursively(self, all_activities)
 
-		# Intelligence activities
-		"Study Arcana": "TabContainer/Intelligence/Arcana/ArcanaProgressBar",
-		"Research History": "TabContainer/Intelligence/History/HistoryProgressBar",
-		"Investigate": "TabContainer/Intelligence/Investigation/InvestigationProgressBar",
-		"Study Nature": "TabContainer/Intelligence/Nature/NatureProgressBar",
-		"Research Religion": "TabContainer/Intelligence/Religion/ReligionProgressBar",
-		"Forge Document": "TabContainer/Intelligence/ForgeADocument/ForgeADocumentProgressBar",
-
-		# Wisdom activities
-		"Animal Handling": "TabContainer/Wisdom/AnimalHandling/AnimalHandlingProgressBar",
-		"Practice Insight": "TabContainer/Wisdom/Insight/InsightProgressBar",
-		"Study Medicine": "TabContainer/Wisdom/Medicine/MedicineProgressBar",
-		"Practice Perception": "TabContainer/Wisdom/Perception/PerceptionProgressBar",
-		"Survival Training": "TabContainer/Wisdom/Survival/SurvivalProgressBar",
-
-		# Charisma activities
-		"Practice Deception": "TabContainer/Charisma/Deception/DeceptionProgressBar",
-		"Practice Intimidation": "TabContainer/Charisma/Intimidation/IntimidationProgressBar",
-		"Performance Practice": "TabContainer/Charisma/Performance/PerformanceProgressBar",
-		"Practice Persuasion": "TabContainer/Charisma/Persuasion/PersuasionProgressBar",
-
-		# Crafting activities
-		"Blacksmithing": "TabContainer/Crafting/Blacksmithing/BlacksmithingProgressBar",
-		"Jewelry Making": "TabContainer/Crafting/JewelryMaking/JewelryMakingProgressBar",
-		"Leatherworking": "TabContainer/Crafting/Leatherworking/LeatherworkingProgressBar",
-		"Pottery": "TabContainer/Crafting/Pottery/PotteryProgressBar",
-		"Weaving": "TabContainer/Crafting/Weaving/WeavingProgressBar",
-		"Woodworking": "TabContainer/Crafting/Woodworking/WoodworkingProgressBar",
-
-		# Profession activities
-		"Artisan": "TabContainer/Profession/Artisan/ArtisanProgressBar",
-		"Merchant": "TabContainer/Profession/Merchant/MerchantProgressBar",
-		"Scholar": "TabContainer/Profession/Scholar/ScholarProgressBar",
-		"Guard": "TabContainer/Profession/Guard/GuardProgressBar",
-		"Priest": "TabContainer/Profession/Priest/PriestProgressBar",
-		"Entertainer": "TabContainer/Profession/Entertainer/EntertainerProgressBar",
-
-		# Training activities
-		"Learn Language": "TabContainer/Training/LearnLanguage/LearnLanguageProgressBar",
-		"Tool Proficiency": "TabContainer/Training/ToolProficiency/ToolProficiencyProgressBar",
-		"Skill Training": "TabContainer/Training/SkillTraining/SkillTrainingProgressBar"
-	}
-
-	for activity_name in activity_to_progress_bar.keys():
-		var progress_bar_path = activity_to_progress_bar[activity_name]
-		var progress_bar = get_node_or_null(progress_bar_path)
-		if progress_bar:
-			button_progress_bars[activity_name] = progress_bar
+	# Style all found progress bars
+	print("Found ", button_progress_bars.size(), " progress bars")
+	for activity_name in button_progress_bars.keys():
+		var progress_bar = button_progress_bars[activity_name]
+		if progress_bar and is_instance_valid(progress_bar):
+			print("Setting up progress bar for: ", activity_name)
 			# Style the progress bar to be more visible
-			progress_bar.add_theme_color_override("background_color", Color(0.3, 0.3, 0.3, 0.9))
-			progress_bar.add_theme_color_override("fill_color", Color(0.0, 1.0, 0.0, 0.9))
+			progress_bar.add_theme_color_override("background_color", Color(0.2, 0.2, 0.2, 1.0))
+			progress_bar.add_theme_color_override("fill_color", Color(0.0, 0.8, 0.0, 1.0))
 			# Make sure the progress bar is visible
 			progress_bar.visible = true
-			progress_bar.modulate = Color(1.0, 1.0, 1.0, 0.7) # Semi-transparent
+			progress_bar.modulate = Color(1.0, 1.0, 1.0, 1.0) # Fully opaque
+			# Start with empty progress bar
+			progress_bar.value = 0.0
+
+func _find_progress_bars_recursively(node: Node, all_activities: Dictionary):
+	"""Recursively find progress bar nodes and match them to activities"""
+	if node is ProgressBar:
+		print("Found ProgressBar: ", node.name)
+		# Try to match this progress bar to an activity
+		var activity_name = _match_progress_bar_to_activity(node, all_activities)
+		if activity_name != "":
+			print("Matched progress bar to activity: ", activity_name)
+			button_progress_bars[activity_name] = node
+		else:
+			print("Could not match progress bar: ", node.name)
+
+	# Recursively search children
+	for child in node.get_children():
+		_find_progress_bars_recursively(child, all_activities)
+
+func register_progress_bar(activity_name: String, progress_bar: ProgressBar):
+	"""Register a progress bar created by the dynamic UI"""
+	print("Registering progress bar for activity: ", activity_name)
+	button_progress_bars[activity_name] = progress_bar
+	# Style the progress bar
+	progress_bar.add_theme_color_override("background_color", Color(0.2, 0.2, 0.2, 1.0))
+	progress_bar.add_theme_color_override("fill_color", Color(0.0, 0.8, 0.0, 1.0))
+	progress_bar.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	progress_bar.visible = true
+	progress_bar.value = 0.0
+	print("Progress bar registered. Total progress bars: ", button_progress_bars.size())
+
+func _match_progress_bar_to_activity(progress_bar: ProgressBar, all_activities: Dictionary) -> String:
+	"""Try to match a progress bar node to an activity name"""
+	var node_name = progress_bar.name
+
+	# Remove "ProgressBar" suffix if present
+	var activity_name = node_name.replace("ProgressBar", "")
+
+	# Check if this matches any activity name in our data
+	for ability in all_activities.keys():
+		for activity_id in all_activities[ability].keys():
+			var activity_data = all_activities[ability][activity_id]
+			var activity_name_from_data = activity_data.get("name", "")
+
+			# Try exact match first
+			if activity_name == activity_name_from_data:
+				return activity_name_from_data
+
+			# Try partial match (remove spaces, special chars)
+			var clean_activity_name = activity_name.replace(" ", "").replace("_", "").to_lower()
+			var clean_data_name = activity_name_from_data.replace(" ", "").replace("_", "").to_lower()
+
+			if clean_activity_name == clean_data_name:
+				return activity_name_from_data
+
+	return ""
+
+func setup_dynamic_button_connections():
+	"""Automatically connect activity buttons to the dynamic handler"""
+	# Get all activities from JSON data to know which buttons to look for
+	var enhanced_activities = EnhancedActivities.new()
+	var all_activities = enhanced_activities.get_all_activities()
+
+	# Find and connect all activity buttons
+	_connect_activity_buttons_recursively(self, all_activities)
+
+func _connect_activity_buttons_recursively(node: Node, all_activities: Dictionary):
+	"""Recursively find and connect activity buttons"""
+	if node is Button:
+		# Check if this button corresponds to an activity
+		var activity_name = _find_activity_name_for_button(node.name)
+		if activity_name != "":
+			# Connect the button to our dynamic handler
+			if not node.pressed.is_connected(_on_activity_button_pressed):
+				node.pressed.connect(func(): _on_activity_button_pressed(node.name))
+				print("Connected button '", node.name, "' to activity '", activity_name, "'")
+
+	# Recursively search children
+	for child in node.get_children():
+		_connect_activity_buttons_recursively(child, all_activities)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -165,6 +201,10 @@ func update_activity_progress():
 		var progress_bar = button_progress_bars[character.current_activity]
 		if progress_bar:
 			progress_bar.value = progress
+			print("Updated progress bar for ", character.current_activity, " to ", progress)
+	else:
+		print("No progress bar found for activity: ", character.current_activity)
+		print("Available progress bars: ", button_progress_bars.keys())
 
 	# Update the main progress bar to show level progress
 	update_level_progress()
@@ -253,134 +293,53 @@ func _on_achievements_button_pressed():
 func _on_spellbook_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/spellbook_screen.tscn")
 
-# Activity button handlers
-func _on_push_a_rock_pressed():
-	start_activity("Push a Rock")
-
-func _on_tip_over_statue_pressed():
-	start_activity("Tip Over a Statue")
-
-func _on_athletics_pressed():
-	start_activity("Lift Weights")
-
-# Dexterity activity handlers
-func _on_do_a_kickflip_pressed():
-	start_activity("Do a Kickflip")
-
-func _on_practice_acrobatics_pressed():
-	start_activity("Practice Acrobatics")
-
-func _on_pick_locks_pressed():
-	start_activity("Pick Locks")
-
-func _on_stealth_training_pressed():
-	start_activity("Stealth Training")
-
-func _on_play_instrument_pressed():
-	start_activity("Play Instrument")
-
-# Constitution activity handlers
-func _on_hold_your_breath_pressed():
-	start_activity("Hold Your Breath")
-
-func _on_drink_ale_pressed():
-	start_activity("Drink Ale")
-
-# Intelligence activity handlers
-func _on_study_arcana_pressed():
-	start_activity("Study Arcana")
-
-func _on_research_history_pressed():
-	start_activity("Research History")
-
-func _on_investigate_pressed():
-	start_activity("Investigate")
-
-func _on_study_nature_pressed():
-	start_activity("Study Nature")
-
-func _on_research_religion_pressed():
-	start_activity("Research Religion")
-
-func _on_forge_document_pressed():
-	start_activity("Forge Document")
-
-# Wisdom activity handlers
-func _on_animal_handling_pressed():
-	start_activity("Animal Handling")
-
-func _on_practice_insight_pressed():
-	start_activity("Practice Insight")
-
-func _on_study_medicine_pressed():
-	start_activity("Study Medicine")
-
-func _on_practice_perception_pressed():
-	start_activity("Practice Perception")
-
-# Charisma activity handlers
-func _on_practice_deception_pressed():
-	start_activity("Practice Deception")
-
-func _on_practice_intimidation_pressed():
-	start_activity("Practice Intimidation")
-
-func _on_performance_practice_pressed():
-	start_activity("Performance Practice")
-
-func _on_practice_persuasion_pressed():
-	start_activity("Practice Persuasion")
-
-# Crafting activity handlers
-func _on_blacksmithing_pressed():
-	start_activity("Blacksmithing")
-
-func _on_jewelry_making_pressed():
-	start_activity("Jewelry Making")
-
-func _on_leatherworking_pressed():
-	start_activity("Leatherworking")
-
-func _on_pottery_pressed():
-	start_activity("Pottery")
-
-func _on_weaving_pressed():
-	start_activity("Weaving")
-
-func _on_woodworking_pressed():
-	start_activity("Woodworking")
-
-# Profession activity handlers
-func _on_artisan_pressed():
-	start_activity("Artisan")
-
-func _on_merchant_pressed():
-	start_activity("Merchant")
-
-func _on_scholar_pressed():
-	start_activity("Scholar")
-
-func _on_guard_pressed():
-	start_activity("Guard")
-
-func _on_priest_pressed():
-	start_activity("Priest")
-
-func _on_entertainer_pressed():
-	start_activity("Entertainer")
-
-# Training activity handlers
-func _on_learn_language_pressed():
-	start_activity("Learn Language")
-
-func _on_tool_proficiency_pressed():
-	start_activity("Tool Proficiency")
-
-func _on_skill_training_pressed():
-	start_activity("Skill Training")
-
-# Generic activity handler for all other activities
+# Dynamic activity button handler - replaces all individual handlers!
 func _on_activity_button_pressed(button_name: String):
-	"""Handle any activity button press"""
-	var activity_name = button_name.replace("_", " ").capitalize()
-	start_activity(activity_name)
+	"""Dynamic handler for all activity button presses"""
+	var activity_name = _find_activity_name_for_button(button_name)
+	if activity_name != "":
+		start_activity(activity_name)
+	else:
+		print("Warning: Could not find activity for button: ", button_name)
+
+func _find_activity_name_for_button(button_name: String) -> String:
+	"""Find the activity name that corresponds to a button name"""
+	# Get all activities from JSON data
+	var enhanced_activities = EnhancedActivities.new()
+	var all_activities = enhanced_activities.get_all_activities()
+
+	# Clean the button name for matching
+	var clean_button_name = button_name.replace("_", " ").to_lower()
+
+	# Search through all activities to find a match
+	for ability in all_activities.keys():
+		for activity_id in all_activities[ability].keys():
+			var activity_data = all_activities[ability][activity_id]
+			var activity_name = activity_data.get("name", "")
+			var clean_activity_name = activity_name.replace(" ", " ").to_lower()
+
+			# Try exact match first
+			if clean_button_name == clean_activity_name:
+				return activity_name
+
+			# Try partial match (remove common prefixes/suffixes)
+			var button_words = clean_button_name.split(" ")
+			var activity_words = clean_activity_name.split(" ")
+
+			# Check if button name is contained in activity name
+			if _is_button_name_in_activity_name(button_words, activity_words):
+				return activity_name
+
+	return ""
+
+func _is_button_name_in_activity_name(button_words: Array, activity_words: Array) -> bool:
+	"""Check if button name words are contained in activity name"""
+	for button_word in button_words:
+		var found = false
+		for activity_word in activity_words:
+			if button_word == activity_word or activity_word.begins_with(button_word):
+				found = true
+				break
+		if not found:
+			return false
+	return true

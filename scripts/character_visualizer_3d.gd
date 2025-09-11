@@ -362,7 +362,10 @@ func create_idle_animation():
 	animation.track_insert_key(chest_track, 1.5, Vector3(0, 0.52, 0))
 	animation.track_insert_key(chest_track, 3.0, Vector3(0, 0.5, 0))
 
-	animation_player.add_animation("idle", animation)
+	# Create animation library and add animation
+	var library = AnimationLibrary.new()
+	library.add_animation("idle", animation)
+	animation_player.add_animation_library("default", library)
 
 func create_working_animation():
 	"""Create working animation with arm movement"""
@@ -377,7 +380,12 @@ func create_working_animation():
 	animation.track_insert_key(left_arm_track, 1.0, Quaternion.from_euler(Vector3(0, 0, 0.3)))
 	animation.track_insert_key(left_arm_track, 2.0, Quaternion.from_euler(Vector3(0, 0, 0)))
 
-	animation_player.add_animation("working", animation)
+	# Add to existing library or create new one
+	var library = animation_player.get_animation_library("default")
+	if library == null:
+		library = AnimationLibrary.new()
+		animation_player.add_animation_library("default", library)
+	library.add_animation("working", animation)
 
 func create_combat_animation():
 	"""Create combat ready pose"""
@@ -393,7 +401,12 @@ func create_combat_animation():
 	animation.track_set_path(right_arm_track, NodePath("CharacterSkeleton:RightUpperArm"))
 	animation.track_insert_key(right_arm_track, 0.0, Quaternion.from_euler(Vector3(0, 0, 0.5)))
 
-	animation_player.add_animation("combat_ready", animation)
+	# Add to existing library or create new one
+	var library = animation_player.get_animation_library("default")
+	if library == null:
+		library = AnimationLibrary.new()
+		animation_player.add_animation_library("default", library)
+	library.add_animation("combat_ready", animation)
 
 func update_character_visualization(new_character: Character):
 	"""Update the 3D character visualization based on character data"""

@@ -10,7 +10,7 @@ var progress_bars: Dictionary = {} # activity_id -> progress_bar
 var tab_container: TabContainer
 var ability_icons: Dictionary = {
     "strength": "💪",
-    "dexterity": "🏃", 
+    "dexterity": "🏃",
     "intelligence": "🧠",
     "wisdom": "👁️",
     "charisma": "🗣️",
@@ -55,37 +55,37 @@ func generate_dynamic_tabs():
     # Clear existing tabs
     for child in tab_container.get_children():
         child.queue_free()
-    
+
     # Get all activities data
     var all_activities = enhanced_activities.get_all_activities()
-    
+
     # Create tabs for each ability that has activities
     for ability in all_activities.keys():
         var activities = all_activities[ability]
-        if activities.size() > 0:  # Only create tab if there are activities
+        if activities.size() > 0: # Only create tab if there are activities
             create_tab_for_ability(ability, activities)
 
-func create_tab_for_ability(ability: String, activities: Dictionary):
+func create_tab_for_ability(ability: String, _activities: Dictionary):
     """Create a tab and container for a specific ability"""
     # Create the tab control
     var tab_control = Control.new()
     tab_control.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    
+
     # Create scroll container
     var scroll_container = ScrollContainer.new()
     scroll_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     tab_control.add_child(scroll_container)
-    
+
     # Create activities container
     var activities_container = VBoxContainer.new()
     activities_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     scroll_container.add_child(activities_container)
-    
+
     # Add tab to container
     var tab_title = ability_icons.get(ability, "📋") + " " + ability.capitalize()
     tab_container.add_child(tab_control)
     tab_container.set_tab_title(tab_container.get_tab_count() - 1, tab_title)
-    
+
     # Store reference to activities container
     activity_containers[ability] = activities_container
 
@@ -185,7 +185,41 @@ func create_activity_panel(ability: String, activity_id: String, activity: Dicti
     if rewards_container:
         container.add_child(rewards_container)
 
-    # Action buttons with progress bar
+    # Dynamic action buttons and progress bar
+    var button_container = create_dynamic_action_buttons(ability, activity_id, activity)
+    container.add_child(button_container)
+
+    panel.add_child(container)
+    return panel
+
+func create_rewards_display(rewards: Dictionary) -> HBoxContainer:
+    """Create dynamic rewards display from JSON data"""
+    if rewards.is_empty():
+        return null
+
+    var rewards_container = HBoxContainer.new()
+    var rewards_label = Label.new()
+    rewards_label.text = "Rewards: "
+    rewards_label.add_theme_font_size_override("font_size", 11)
+    rewards_label.add_theme_color_override("font_color", Color.YELLOW)
+    rewards_container.add_child(rewards_label)
+
+    var reward_items = []
+    for reward_type in rewards.keys():
+        var amount = rewards[reward_type]
+        var reward_text = reward_type.replace("_", " ").capitalize() + ": " + str(amount)
+        reward_items.append(reward_text)
+
+    var rewards_text_label = Label.new()
+    rewards_text_label.text = ", ".join(reward_items)
+    rewards_text_label.add_theme_font_size_override("font_size", 11)
+    rewards_text_label.add_theme_color_override("font_color", Color.YELLOW)
+    rewards_container.add_child(rewards_text_label)
+
+    return rewards_container
+
+func create_dynamic_action_buttons(ability: String, activity_id: String, _activity: Dictionary) -> VBoxContainer:
+    """Create dynamic action buttons and progress bar based on activity state"""
     var button_container = VBoxContainer.new()
 
     # Check if character can start this activity
@@ -196,25 +230,9 @@ func create_activity_panel(ability: String, activity_id: String, activity: Dicti
         can_start = enhanced_activities.can_start_activity(character, activity_id, ability)
         is_active = is_activity_active(activity_id)
 
-    # Add progress bar for active activities
+    # Add dynamic progress bar for active activities
     if is_active:
-        var progress_bar_container = HBoxContainer.new()
-
-        var progress_label = Label.new()
-        progress_label.text = "Progress:"
-        progress_label.add_theme_font_size_override("font_size", 12)
-        progress_bar_container.add_child(progress_label)
-
-        var progress_bar = ProgressBar.new()
-        progress_bar.custom_minimum_size = Vector2(200, 20)
-        progress_bar.max_value = 1.0
-        progress_bar.value = get_activity_progress(activity_id)
-        progress_bar.show_percentage = true
-        progress_bar_container.add_child(progress_bar)
-
-        # Store progress bar reference for updates
-        progress_bars[activity_id] = progress_bar
-
+        var progress_bar_container = create_dynamic_progress_bar(activity_id)
         button_container.add_child(progress_bar_container)
 
         var action_buttons = HBoxContainer.new()
@@ -245,10 +263,28 @@ func create_activity_panel(ability: String, activity_id: String, activity: Dicti
         cant_start_label.add_theme_color_override("font_color", Color.GRAY)
         button_container.add_child(cant_start_label)
 
-    container.add_child(button_container)
+    return button_container
 
-    panel.add_child(container)
-    return panel
+func create_dynamic_progress_bar(activity_id: String) -> HBoxContainer:
+    """Create a dynamic progress bar for an active activity"""
+    var progress_bar_container = HBoxContainer.new()
+
+    var progress_label = Label.new()
+    progress_label.text = "Progress:"
+    progress_label.add_theme_font_size_override("font_size", 12)
+    progress_bar_container.add_child(progress_label)
+
+    var progress_bar = ProgressBar.new()
+    progress_bar.custom_minimum_size = Vector2(200, 20)
+    progress_bar.max_value = 1.0
+    progress_bar.value = get_activity_progress(activity_id)
+    progress_bar.show_percentage = true
+    progress_bar_container.add_child(progress_bar)
+
+    # Store progress bar reference for updates
+    progress_bars[activity_id] = progress_bar
+
+    return progress_bar_container
 
 func get_requirements_text(requirements: Dictionary) -> String:
     """Get formatted requirements text"""
@@ -302,7 +338,7 @@ func start_activity(ability: String, activity_id: String):
         # Refresh display
         display_all_activities()
 
-func stop_activity(activity_id: String):
+func stop_activity(_activity_id: String):
     """Stop an activity"""
     enhanced_activities.stop_activity(character.name, "Stopped by player")
     # Refresh display
@@ -354,13 +390,13 @@ func show_activity_progress(activity_id: String):
     add_child(dialog)
     dialog.popup_centered()
 
-func _on_activity_started(activity_name: String, character: Character, ability: String):
+func _on_activity_started(activity_name: String, _character: Character, _ability: String):
     """Handle activity started signal"""
     print("Activity started: " + activity_name + " for " + character.name)
     # Refresh display
     display_all_activities()
 
-func _on_activity_completed(activity_name: String, character: Character, rewards: Dictionary):
+func _on_activity_completed(activity_name: String, _character: Character, rewards: Dictionary):
     """Handle activity completed signal"""
     print("Activity completed: " + activity_name + " for " + character.name)
 
@@ -372,7 +408,7 @@ func _on_activity_completed(activity_name: String, character: Character, rewards
     # Refresh display
     display_all_activities()
 
-func _on_activity_progress(activity_name: String, character: Character, progress: float):
+func _on_activity_progress(_activity_name: String, _character: Character, _progress: float):
     """Handle activity progress signal"""
     # Update progress bars in real-time
     _update_progress_bars()
