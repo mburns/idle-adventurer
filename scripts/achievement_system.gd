@@ -56,18 +56,18 @@ class Achievement:
         rewards = achievement_rewards
 
 var achievements: Dictionary = {}
-var character_achievements: Dictionary = {}  # character_name -> achievement_data
+var character_achievements: Dictionary = {} # character_name -> achievement_data
 var achievement_templates: Dictionary = {}
 
-func _init():
+func _init() -> void:
     setup_achievement_system()
 
-func setup_achievement_system():
+func setup_achievement_system() -> void:
     """Initialize the achievement system with predefined achievements"""
     create_achievement_templates()
     load_character_achievements()
 
-func create_achievement_templates():
+func create_achievement_templates() -> void:
     """Create template achievements for different categories"""
 
     # Character Level Achievements
@@ -150,12 +150,12 @@ func create_achievement_templates():
 
 func create_achievement_template(id: String, name: String, description: String,
                                 category: AchievementCategory, rarity: AchievementRarity,
-                                requirements: Dictionary, rewards: Dictionary):
+                                requirements: Dictionary, rewards: Dictionary) -> void:
     """Create an achievement template"""
     var achievement = Achievement.new(id, name, description, category, rarity, requirements, rewards)
     achievement_templates[id] = achievement
 
-func initialize_character_achievements(character: Character):
+func initialize_character_achievements(character: Character) -> void:
     """Initialize achievements for a new character"""
     var character_data = {
         "achievements": {},
@@ -176,7 +176,7 @@ func initialize_character_achievements(character: Character):
     character_achievements[character.name] = character_data
     print("Initialized achievements for " + character.name)
 
-func check_achievements(character: Character, event_type: String, event_data: Dictionary):
+func check_achievements(character: Character, event_type: String, event_data: Dictionary) -> void:
     """Check and update achievements based on character events"""
     if not character.name in character_achievements:
         initialize_character_achievements(character)
@@ -238,7 +238,7 @@ func calculate_achievement_progress(achievement: Achievement, character: Charact
 
     return progress
 
-func unlock_achievement(character: Character, achievement: Achievement):
+func unlock_achievement(character: Character, achievement: Achievement) -> void:
     """Unlock an achievement and grant rewards"""
     achievement.unlocked = true
     achievement.unlocked_at = Time.get_unix_time_from_system()
@@ -254,7 +254,7 @@ func unlock_achievement(character: Character, achievement: Achievement):
 
     print("Achievement unlocked: " + achievement.name + " for " + character.name)
 
-func grant_achievement_rewards(character: Character, achievement: Achievement):
+func grant_achievement_rewards(character: Character, achievement: Achievement) -> void:
     """Grant rewards for unlocking an achievement"""
     var rewards = achievement.rewards
 

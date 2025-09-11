@@ -25,10 +25,10 @@ var coin_weights = {
     "pp": 0.02
 }
 
-func _init():
+func _init() -> void:
     setup_currency_system()
 
-func setup_currency_system():
+func setup_currency_system() -> void:
     """Initialize the currency system"""
     print("Currency System initialized")
 
@@ -42,7 +42,7 @@ func get_character_currency(character: Character) -> Dictionary:
         "pp": character.platinum_pieces
     }
 
-func add_currency(character: Character, coin_type: String, amount: int):
+func add_currency(character: Character, coin_type: String, amount: int) -> void:
     """Add currency to character"""
     var old_currency = get_character_currency(character)
 

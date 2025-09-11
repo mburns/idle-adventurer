@@ -28,10 +28,10 @@ var equipment_sets: Dictionary = {}
 var equipped_items: Dictionary = {}
 var character: Character
 
-func _init():
+func _init() -> void:
     setup_equipment_sets()
 
-func setup_equipment_sets():
+func setup_equipment_sets() -> void:
     """Define equipment sets and their bonuses"""
     equipment_sets = {
         "Leather Armor Set": {
@@ -141,7 +141,7 @@ func can_attune_item(character: Character, item: EquipmentResource) -> bool:
     # Characters can attune to up to 3 items
     return attuned_count < 3
 
-func apply_item_stats(character: Character, item: EquipmentResource, equip: bool):
+func apply_item_stats(character: Character, item: EquipmentResource, equip: bool) -> void:
     """Apply or remove item stat modifications"""
     var multiplier = 1 if equip else -1
 
@@ -167,7 +167,7 @@ func apply_item_stats(character: Character, item: EquipmentResource, equip: bool
             var bonus = bonuses[save] * multiplier
             # character.add_saving_throw_bonus(save, bonus)
 
-func check_equipment_sets(character: Character):
+func check_equipment_sets(character: Character) -> void:
     """Check for equipment set bonuses"""
     var active_sets = get_active_equipment_sets()
 
@@ -198,7 +198,7 @@ func get_active_equipment_sets() -> Array[String]:
 
     return active_sets
 
-func apply_set_bonuses(character: Character, set_data: Dictionary, apply: bool):
+func apply_set_bonuses(character: Character, set_data: Dictionary, apply: bool) -> void:
     """Apply or remove equipment set bonuses"""
     var multiplier = 1 if apply else -1
     var bonuses = set_data.bonuses

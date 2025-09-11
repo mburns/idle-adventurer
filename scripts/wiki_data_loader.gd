@@ -31,7 +31,7 @@ static func load_equipment_from_wiki() -> Dictionary:
         weapons_file.close()
 
     # Load other equipment
-    var equipment_files = [
+    var equipment_files: Array[String] = [
         "res://wiki/Equipment/Adventuring Gear.md",
         "res://wiki/Equipment/Tools.md",
         "res://wiki/Equipment/Coinage.md"
@@ -78,7 +78,7 @@ static func load_spells_from_wiki() -> Dictionary:
 
 static func load_abilities_from_wiki() -> Dictionary:
     var abilities = {}
-    var ability_files = [
+    var ability_files: Array[String] = [
         "res://wiki/Gameplay/Abilities/Strength.md",
         "res://wiki/Gameplay/Abilities/Dexterity.md",
         "res://wiki/Gameplay/Abilities/Constitution.md",
@@ -232,7 +232,7 @@ static func parse_class_markdown(content: String, class_type: String) -> Diction
 
 # Parse equipment markdown content
 static func parse_equipment_markdown(content: String) -> Array[Dictionary]:
-    var equipment = []
+    var equipment: Array[Dictionary] = []
     var lines = content.split("\n")
 
     for line in lines:

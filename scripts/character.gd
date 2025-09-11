@@ -66,7 +66,7 @@ extends Resource
 @export var faction_reputation: Dictionary = {}
 
 # Initialize character with default values
-func _init():
+func _init() -> void:
     update_derived_stats()
 
 # Calculate ability score modifier
@@ -93,7 +93,7 @@ func get_charisma_modifier() -> int:
     return get_ability_modifier(charisma)
 
 # Update derived stats based on ability scores and level
-func update_derived_stats():
+func update_derived_stats() -> void:
     # Update proficiency bonus based on level
     proficiency_bonus = 2 + floor((level - 1) / 4.0)
 
@@ -130,34 +130,34 @@ func calculate_level_from_xp(xp: int) -> int:
     return 1
 
 # Handle level up
-func level_up():
+func level_up() -> void:
     update_derived_stats()
     # TODO: Add class-specific level up features
     print("Level up! Now level ", level)
 
 # Spells API
-func learn_spell(spell_name: String, spell_data: Dictionary = {}):
+func learn_spell(spell_name: String, spell_data: Dictionary = {}) -> void:
     if not (spell_name in known_spells):
         known_spells.append(spell_name)
     spellbook[spell_name] = spell_data
 
-func forget_spell(spell_name: String):
+func forget_spell(spell_name: String) -> void:
     if spell_name in known_spells:
         known_spells.erase(spell_name)
     if spell_name in spellbook:
         spellbook.erase(spell_name)
 
 # Buffs API
-func add_buff(buff_name: String, duration_seconds: float):
+func add_buff(buff_name: String, duration_seconds: float) -> void:
     var expires_at = Time.get_unix_time_from_system() + duration_seconds
     active_buffs.append({"name": buff_name, "expires_at": expires_at})
 
-func remove_expired_buffs():
+func remove_expired_buffs() -> void:
     var now = Time.get_unix_time_from_system()
     active_buffs = active_buffs.filter(func(b): return b.get("expires_at", 0.0) > now)
 
 # Start an activity
-func start_activity(activity_name: String, duration: float):
+func start_activity(activity_name: String, duration: float) -> void:
     current_activity = activity_name
     activity_start_time = Time.get_unix_time_from_system()
     activity_duration = duration
@@ -169,7 +169,7 @@ func is_activity_complete() -> bool:
     return (Time.get_unix_time_from_system() - activity_start_time) >= activity_duration
 
 # Complete current activity
-func complete_activity():
+func complete_activity() -> void:
     if is_activity_complete():
         # TODO: Add activity-specific rewards
         current_activity = ""
@@ -184,7 +184,7 @@ func get_activity_time_remaining() -> float:
     return max(0.0, activity_duration - elapsed)
 
 # Add gold
-func add_gold(amount: int):
+func add_gold(amount: int) -> void:
     gold += amount
 
 # Spend gold

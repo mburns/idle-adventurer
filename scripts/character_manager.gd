@@ -6,7 +6,7 @@ const DnDData = preload("res://scripts/dnd_data.gd")
 
 # Singleton for managing the current character
 var current_character: Character
-var save_file_path = "user://character_save.dat"
+var save_file_path: String = "user://character_save.dat"
 
 # Signal emitted when character changes
 signal character_changed(character: Character)
@@ -14,7 +14,7 @@ signal character_created(character: Character)
 signal character_loaded(character: Character)
 
 # Initialize with a default character
-func _ready():
+func _ready() -> void:
     if current_character == null:
         create_default_character()
 
@@ -52,7 +52,7 @@ func create_default_character() -> Character:
     return create_character("Bob", "Human", "Barbarian", "Folk Hero")
 
 # Apply race bonuses to character
-func apply_race_bonuses(character: Character, race: String):
+func apply_race_bonuses(character: Character, race: String) -> void:
     var race_data = DnDData.get_race(race)
     if race_data.is_empty():
         return
@@ -63,7 +63,7 @@ func apply_race_bonuses(character: Character, race: String):
         character.set(ability, character.get(ability) + increase)
 
     # Add languages
-    var languages = race_data.get("languages", [])
+    var languages: Array[String] = race_data.get("languages", [])
     for language in languages:
         character.language_proficiencies.append(language)
 
@@ -71,7 +71,7 @@ func apply_race_bonuses(character: Character, race: String):
     character.size = race_data.get("size", "Medium")
     character.speed = race_data.get("speed", 30)
 
-func apply_racial_traits(character: Character, race: String):
+func apply_racial_traits(character: Character, race: String) -> void:
     """Apply racial traits based on wiki data"""
     var races_data = WikiDataLoader.load_races_from_wiki()
     var race_data = races_data.get(race.to_lower(), {})
@@ -91,9 +91,9 @@ func apply_racial_traits(character: Character, race: String):
     # Apply languages
     apply_racial_languages(character, race_data)
 
-func apply_ability_score_increases(character: Character, race_data: Dictionary):
+func apply_ability_score_increases(character: Character, race_data: Dictionary) -> void:
     """Apply ability score increases from race"""
-    var traits = race_data.get("traits", [])
+    var traits: Array[Dictionary] = race_data.get("traits", [])
 
     for race_trait in traits:
         if race_trait.get("name", "").to_lower().find("ability score increase") != -1:
@@ -116,9 +116,9 @@ func apply_ability_score_increases(character: Character, race_data: Dictionary):
                 character.intelligence += 1
             # Add more parsing for other races as needed
 
-func apply_size_and_speed(character: Character, race_data: Dictionary):
+func apply_size_and_speed(character: Character, race_data: Dictionary) -> void:
     """Apply size and speed from race"""
-    var traits = race_data.get("traits", [])
+    var traits: Array[Dictionary] = race_data.get("traits", [])
 
     for race_trait in traits:
         var trait_name = race_trait.get("name", "").to_lower()
@@ -140,9 +140,9 @@ func apply_size_and_speed(character: Character, race_data: Dictionary):
             if result:
                 character.speed = result.get_string(1).to_int()
 
-func apply_racial_abilities(character: Character, race_data: Dictionary):
+func apply_racial_abilities(character: Character, race_data: Dictionary) -> void:
     """Apply racial abilities and traits"""
-    var traits = race_data.get("traits", [])
+    var traits: Array[Dictionary] = race_data.get("traits", [])
     var racial_abilities: Array[Dictionary] = []
 
     for race_trait in traits:
@@ -162,10 +162,10 @@ func apply_racial_abilities(character: Character, race_data: Dictionary):
 
     character.racial_traits = racial_abilities
 
-func apply_racial_languages(character: Character, race_data: Dictionary):
+func apply_racial_languages(character: Character, race_data: Dictionary) -> void:
     """Apply racial languages"""
-    var traits = race_data.get("traits", [])
-    var known_languages = character.known_languages if character.has_method("get") and character.get("known_languages") != null else ["Common"]
+    var traits: Array[Dictionary] = race_data.get("traits", [])
+    var known_languages: Array[String] = character.known_languages if character.has_method("get") and character.get("known_languages") != null else ["Common"]
 
     for race_trait in traits:
         var trait_name = race_trait.get("name", "").to_lower()
@@ -185,13 +185,13 @@ func apply_racial_languages(character: Character, race_data: Dictionary):
     character.set("known_languages", known_languages)
 
 # Apply class features to character
-func apply_class_features(character: Character, class_type: String):
+func apply_class_features(character: Character, class_type: String) -> void:
     var class_data = DnDData.get_class_data(class_type)
     if class_data.is_empty():
         return
 
     # Add skill proficiencies
-    var skill_options = class_data.get("skill_options", [])
+    var skill_options: Array[String] = class_data.get("skill_options", [])
     var skill_choices = class_data.get("skill_choices", 0)
 
     # For now, just add the first few skills (in a real game, player would choose)
@@ -217,7 +217,7 @@ func apply_class_features(character: Character, class_type: String):
     var saving_throws = class_data.get("saving_throws", [])
     character.set("saving_throws", saving_throws)
 
-func apply_starting_spell_slots(character: Character, class_type: String):
+func apply_starting_spell_slots(character: Character, class_type: String) -> void:
     var class_data = DnDData.get_class_data(class_type)
     if class_data.is_empty():
         return
@@ -226,7 +226,7 @@ func apply_starting_spell_slots(character: Character, class_type: String):
         character.spell_slots = slots[0]
 
 # Apply background features to character
-func apply_background_features(character: Character, background: String):
+func apply_background_features(character: Character, background: String) -> void:
     var background_data = DnDData.get_background(background)
     if background_data.is_empty():
         return
@@ -246,7 +246,7 @@ func apply_background_features(character: Character, background: String):
     for language in languages:
         character.language_proficiencies.append(language)
 
-func assign_starting_equipment(character: Character, class_type: String, background: String):
+func assign_starting_equipment(character: Character, class_type: String, background: String) -> void:
     # Pull starting equipment from class (and background if applicable)
     var class_data = DnDData.get_class_data(class_type)
     if not class_data.is_empty():
@@ -380,7 +380,7 @@ func load_character() -> bool:
     print("Character loaded successfully")
     return true
 
-func apply_starting_equipment(character: Character, class_type: String, background: String):
+func apply_starting_equipment(character: Character, class_type: String, background: String) -> void:
     """Add starting equipment to character inventory"""
     # Add basic starting items
     add_starting_items(character, class_type)
@@ -394,7 +394,7 @@ func apply_starting_equipment(character: Character, class_type: String, backgrou
         if item_data:
             add_item_to_character(character, item_data)
 
-func add_starting_items(character: Character, class_type: String):
+func add_starting_items(character: Character, class_type: String) -> void:
     """Add basic starting items to character inventory"""
     var inventory_system = get_inventory_system()
 
@@ -464,7 +464,7 @@ func add_starting_items(character: Character, class_type: String):
         "ranger":
             add_ranger_starting_items(character)
 
-func add_fighter_starting_items(character: Character):
+func add_fighter_starting_items(character: Character) -> void:
     """Add fighter-specific starting items"""
     var inventory_system = get_inventory_system()
 
@@ -504,7 +504,7 @@ func add_fighter_starting_items(character: Character):
     for item in fighter_items:
         inventory_system.add_item(character, item, 1)
 
-func add_wizard_starting_items(character: Character):
+func add_wizard_starting_items(character: Character) -> void:
     """Add wizard-specific starting items"""
     var inventory_system = get_inventory_system()
 
@@ -542,7 +542,7 @@ func add_wizard_starting_items(character: Character):
     for item in wizard_items:
         inventory_system.add_item(character, item, 1)
 
-func add_rogue_starting_items(character: Character):
+func add_rogue_starting_items(character: Character) -> void:
     """Add rogue-specific starting items"""
     var inventory_system = get_inventory_system()
 
@@ -581,7 +581,7 @@ func add_rogue_starting_items(character: Character):
     for item in rogue_items:
         inventory_system.add_item(character, item, 1)
 
-func add_cleric_starting_items(character: Character):
+func add_cleric_starting_items(character: Character) -> void:
     """Add cleric-specific starting items"""
     var inventory_system = get_inventory_system()
 
@@ -621,7 +621,7 @@ func add_cleric_starting_items(character: Character):
     for item in cleric_items:
         inventory_system.add_item(character, item, 1)
 
-func add_ranger_starting_items(character: Character):
+func add_ranger_starting_items(character: Character) -> void:
     """Add ranger-specific starting items"""
     var inventory_system = get_inventory_system()
 
@@ -677,7 +677,7 @@ func create_item_from_name(item_name: String) -> Dictionary:
         "rarity": "common"
     }
 
-func add_item_to_character(character: Character, item_data: Dictionary):
+func add_item_to_character(character: Character, item_data: Dictionary) -> void:
     """Add item to character's inventory"""
     var inventory_system = get_inventory_system()
     inventory_system.add_item(character, item_data, 1)
@@ -703,6 +703,6 @@ func get_current_character() -> Character:
     return current_character
 
 # Set current character
-func set_current_character(character: Character):
+func set_current_character(character: Character) -> void:
     current_character = character
     character_changed.emit(character)

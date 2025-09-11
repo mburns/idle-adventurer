@@ -44,10 +44,10 @@ var unique_types = [
 
 var character_inventories: Dictionary = {} # character_name -> inventory_data
 
-func _init():
+func _init() -> void:
     setup_inventory_system()
 
-func setup_inventory_system():
+func setup_inventory_system() -> void:
     """Initialize the inventory system"""
     print("Inventory System initialized")
 
@@ -163,7 +163,7 @@ func use_item(character: Character, item_id: String, quantity: int = 1) -> bool:
     print(character.name + " used " + str(quantity) + "x " + item_data.get("name", "Unknown Item"))
     return true
 
-func apply_item_effects(character: Character, item: Dictionary, quantity: int):
+func apply_item_effects(character: Character, item: Dictionary, quantity: int) -> void:
     """Apply the effects of using an item"""
     var item_type = item.get("type", "")
     var item_name = item.get("name", "")
@@ -178,7 +178,7 @@ func apply_item_effects(character: Character, item: Dictionary, quantity: int):
         _:
             print("Used " + item_name + " (no special effects)")
 
-func apply_consumable_effects(character: Character, item: Dictionary, quantity: int):
+func apply_consumable_effects(character: Character, item: Dictionary, quantity: int) -> void:
     """Apply effects of consumable items"""
     var item_name = item.get("name", "").to_lower()
 
@@ -199,7 +199,7 @@ func apply_consumable_effects(character: Character, item: Dictionary, quantity: 
         character.active_buffs.append(buff)
         print(character.name + " gained poison resistance for 1 hour")
 
-func apply_food_effects(character: Character, item: Dictionary, quantity: int):
+func apply_food_effects(character: Character, item: Dictionary, quantity: int) -> void:
     """Apply effects of food items"""
     var item_name = item.get("name", "").to_lower()
 
@@ -207,7 +207,7 @@ func apply_food_effects(character: Character, item: Dictionary, quantity: int):
         # Rations provide sustenance (tracked separately)
         print(character.name + " ate " + str(quantity) + " days of rations")
 
-func apply_scroll_effects(character: Character, item: Dictionary, quantity: int):
+func apply_scroll_effects(character: Character, item: Dictionary, quantity: int) -> void:
     """Apply effects of scroll items"""
     var spell_name = item.get("spell", "")
     if spell_name != "":

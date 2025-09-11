@@ -148,14 +148,14 @@ var class_features = {
 
 var character_experience: Dictionary = {} # character_name -> total_experience
 
-func _init():
+func _init() -> void:
     setup_leveling_system()
 
-func setup_leveling_system():
+func setup_leveling_system() -> void:
     """Initialize the leveling system"""
     print("Leveling System initialized")
 
-func add_experience(character: Character, amount: float):
+func add_experience(character: Character, amount: float) -> void:
     """Add experience to a character and check for level up"""
     var current_exp = character_experience.get(character.name, 0.0)
     var new_exp = current_exp + amount
@@ -195,7 +195,7 @@ func get_experience_to_next_level(character: Character) -> int:
 
     return max(0, required_exp - int(current_exp))
 
-func level_up_character(character: Character, new_level: int):
+func level_up_character(character: Character, new_level: int) -> void:
     """Level up a character and apply benefits"""
     var old_level = character.level
     character.level = new_level
@@ -212,7 +212,7 @@ func level_up_character(character: Character, new_level: int):
     level_up.emit(character, new_level)
     print(character.name + " leveled up to " + str(new_level) + "!")
 
-func apply_class_features(character: Character, level: int):
+func apply_class_features(character: Character, level: int) -> void:
     """Apply class features for a level"""
     var character_class = character.character_class.to_lower()
     var features = class_features.get(character_class, {})
@@ -222,7 +222,7 @@ func apply_class_features(character: Character, level: int):
         unlock_class_feature(character, feature)
         class_feature_unlocked.emit(character, feature)
 
-func unlock_class_feature(character: Character, feature: String):
+func unlock_class_feature(character: Character, feature: String) -> void:
     """Unlock a specific class feature"""
     if not character.has_method("add_class_feature"):
         # Add to character's class features if the method exists
@@ -230,7 +230,7 @@ func unlock_class_feature(character: Character, feature: String):
     else:
         character.add_class_feature(feature)
 
-func apply_ability_score_improvements(character: Character, level: int):
+func apply_ability_score_improvements(character: Character, level: int) -> void:
     """Apply ability score improvements at certain levels"""
     var improvement_levels = [4, 6, 8, 12, 14, 16, 19]
 
@@ -253,7 +253,7 @@ func apply_ability_score_improvements(character: Character, level: int):
             ability_score_increase.emit(character, highest_ability, highest_score + 1)
             print(character.name + " increased " + highest_ability + " to " + str(highest_score + 1))
 
-func update_hit_points(character: Character, new_level: int):
+func update_hit_points(character: Character, new_level: int) -> void:
     """Update hit points for level up"""
     var constitution_modifier = get_ability_modifier(character.constitution)
     var hit_die = get_class_hit_die(character.character_class)
