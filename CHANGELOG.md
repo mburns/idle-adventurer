@@ -6,6 +6,88 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- **Bug Fix Test Suite**: Comprehensive test coverage for all bug fixes
+
+  - Tests for lambda capture fixes
+  - Tests for missing function errors
+  - Tests for property access issues
+  - Tests for division by zero prevention
+  - Tests for node reference corrections
+  - Tests for file operation error handling
+  - Tests for array bounds safety
+  - Tests for signal connection safety
+
+- **Bug Fix Documentation**: Detailed documentation of fixes and prevention strategies
+
+  - Created `docs/BUG_FIXES.md` with comprehensive bug tracking
+  - Documented root causes and solutions for each issue
+  - Added best practices for preventing similar issues
+  - Included code examples of fixes
+
+- **CharacterManager Comprehensive Testing**: Complete test suite for CharacterManager functionality
+
+  - Tests for character creation, saving/loading, equipment assignment
+  - Tests for race bonuses, class features, and background traits
+  - Tests for inventory system integration and signal handling
+  - Tests for edge cases and error handling
+  - Performance tests for character operations
+
+- **Code Quality Improvements**: Enhanced type safety and code organization
+  - Comprehensive type hints added to CharacterManager
+  - Dead code removal and cleanup of outdated references
+  - Consistent use of DataLoader throughout the project
+
+### Fixed
+
+- **Lambda Capture Issues**: Resolved "Lambda capture at index 0 was freed" errors
+
+  - Fixed button hover effects in `start_screen.gd` using WeakRef approach
+  - Fixed button connections in `skill_buttons.gd` with safe lambda usage
+  - Fixed tween callbacks in `animation_manager.gd` with helper functions
+
+- **Missing Function Errors**: Added missing functions that were being called
+
+  - Added `ThemeManager.apply_theme_to_children()` function
+  - Added `DataLoader.load_json_data()` function for generic JSON loading
+
+- **Property Access Issues**: Fixed "Invalid call. Nonexistent function 'get'" errors
+
+  - Replaced generic `character.get()` calls with explicit property access
+  - Fixed race bonus application in `character_manager.gd`
+  - Fixed spell slots and buffs access in `character_sheet.gd` and `leveling_screen.gd`
+
+- **Division by Zero**: Added safety checks for mathematical operations
+
+  - Fixed experience bar calculation in `leveling_screen.gd`
+  - Added null checks before division operations
+
+- **Node Reference Issues**: Corrected incorrect node references
+  - Fixed `%NameLineEdit` to `%CharacterNameInput` in character creation
+  - Ensured all node references match actual scene node names
+
+### Changed
+
+- **Data Loading System**: Migrated from legacy WikiDataLoader and DnDData to unified DataLoader
+  - Updated all test files to use DataLoader instead of deprecated classes
+  - Updated UI screens to use DataLoader for consistent data access
+  - Removed references to non-existent classes in documentation
+
+### Removed
+
+- **Dead Code Cleanup**: Removed obsolete files and references
+  - Deleted test files for non-existent WikiDataLoader and DnDData classes
+  - Removed duplicate cleanup scripts from scripts/ directory
+  - Cleaned up outdated references in documentation
+
+### Fixed
+
+- **CharacterManager Dependencies**: Fixed missing dependency issues
+  - Resolved "CharacterManager not available yet" error
+  - Updated all data loading calls to use existing DataLoader autoload
+  - Fixed parameter naming to resolve linter warnings
+
+### Added
+
 - **Enhanced Data Structure**: Individual JSON files for all game data
 
   - Classes: 12 individual class files with complete spell lists and features

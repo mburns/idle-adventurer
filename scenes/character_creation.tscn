@@ -109,6 +109,24 @@ custom_minimum_size = Vector2(0, 40)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
 
+[node name="DescriptionSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="ScrollContainer/VBoxContainer/DescriptionSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Description"
+
+[node name="DescriptionTextArea" type="TextEdit" parent="ScrollContainer/VBoxContainer/DescriptionSection"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+readonly = true
+placeholder_text = "Select a race, class, or background to see its description"
+
 [node name="AbilityScoresSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -243,14 +261,69 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
 text = "(-1)"
 
+[node name="PhysicalCharacteristicsSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PhysicalCharacteristicsLabel" type="Label" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Physical Characteristics"
+
+[node name="PhysicalCharacteristicsGrid" type="GridContainer" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="HeightLabel" type="Label" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Height (inches):"
+
+[node name="HeightSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 30.0
+max_value = 100.0
+value = 60.0
+
+[node name="HeightSpacer" type="Control" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+
+[node name="WeightLabel" type="Label" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Weight (pounds):"
+
+[node name="WeightSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 30.0
+max_value = 500.0
+value = 150.0
+
+[node name="WeightSpacer" type="Control" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+
 [node name="ButtonContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="RandomizeButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Randomize"
 
 [node name="BackButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 60)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Back"
 
 [node name="CreateCharacterButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonContainer"]
@@ -258,7 +331,12 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 60)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Create Character"
 
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/RaceSection/RaceOptionButton" to="." method="_on_race_option_button_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/ClassSection/ClassOptionButton" to="." method="_on_class_option_button_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/BackgroundSection/BackgroundOptionButton" to="." method="_on_background_option_button_item_selected"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonContainer/RandomizeButton" to="." method="_on_randomize_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonContainer/CreateCharacterButton" to="." method="_on_create_character_button_pressed"]

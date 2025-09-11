@@ -89,5 +89,53 @@
     "requirements": {
       "wisdom": 10
     }
+  },
+  {
+    "id": "practice_insight",
+    "name": "Practice Insight",
+    "description": "Practice reading people and understanding motivations",
+    "ability": "wisdom",
+    "daily_progress": 0.08,
+    "cost_per_day": 0.1,
+    "rewards": {
+      "insight_skill": 1,
+      "wisdom_exp": 10,
+      "gold": 2
+    },
+    "requirements": {
+      "wisdom": 10
+    }
+  },
+  {
+    "id": "study_medicine",
+    "name": "Study Medicine",
+    "description": "Study healing techniques and medical knowledge",
+    "ability": "wisdom",
+    "daily_progress": 0.09,
+    "cost_per_day": 0.5,
+    "rewards": {
+      "medicine_skill": 1,
+      "wisdom_exp": 20,
+      "gold": 4
+    },
+    "requirements": {
+      "wisdom": 12
+    }
+  },
+  {
+    "id": "practice_perception",
+    "name": "Practice Perception",
+    "description": "Practice noticing details and staying alert",
+    "ability": "wisdom",
+    "daily_progress": 0.11,
+    "cost_per_day": 0.2,
+    "rewards": {
+      "perception_skill": 1,
+      "wisdom_exp": 12,
+      "gold": 2
+    },
+    "requirements": {
+      "wisdom": 10
+    }
   }
 ]

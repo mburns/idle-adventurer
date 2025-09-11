@@ -94,6 +94,7 @@ theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 20
 
 [node name="StrengthContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="StrengthLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
@@ -104,12 +105,14 @@ theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 16
 
 [node name="StrengthValue" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "10"
 theme_override_fonts/font = ExtResource("2_cxec1")
 theme_override_font_sizes/font_size = 16
 
 [node name="StrengthModifier" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "(+0)"
 theme_override_fonts/font = ExtResource("2_cxec1")
@@ -202,6 +205,7 @@ text = "Roll"
 custom_minimum_size = Vector2(60, 30)
 
 [node name="WisdomContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="WisdomLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer"]
@@ -229,6 +233,7 @@ text = "Roll"
 custom_minimum_size = Vector2(60, 30)
 
 [node name="CharismaContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="CharismaLabel" type="Label" parent="MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer"]

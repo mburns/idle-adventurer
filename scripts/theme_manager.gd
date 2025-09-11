@@ -33,14 +33,14 @@ func create_default_theme() -> Theme:
     var theme = Theme.new()
 
     # Colors
-    var primary_color = Color(0.2, 0.4, 0.8)  # Deep blue
-    var secondary_color = Color(0.8, 0.6, 0.2)  # Gold
-    var accent_color = Color(0.9, 0.9, 0.9)  # Light gray
-    var background_color = Color(0.95, 0.95, 0.95)  # Very light gray
-    var text_color = Color(0.1, 0.1, 0.1)  # Dark gray
-    var button_color = Color(0.7, 0.7, 0.7)  # Medium gray
-    var button_hover_color = Color(0.8, 0.8, 0.8)  # Light gray
-    var button_pressed_color = Color(0.6, 0.6, 0.6)  # Dark gray
+    var primary_color = Color(0.2, 0.4, 0.8) # Deep blue
+    var secondary_color = Color(0.8, 0.6, 0.2) # Gold
+    var accent_color = Color(0.9, 0.9, 0.9) # Light gray
+    var background_color = Color(0.95, 0.95, 0.95) # Very light gray
+    var text_color = Color(0.1, 0.1, 0.1) # Dark gray
+    var button_color = Color(0.7, 0.7, 0.7) # Medium gray
+    var button_hover_color = Color(0.8, 0.8, 0.8) # Light gray
+    var button_pressed_color = Color(0.6, 0.6, 0.6) # Dark gray
 
     # Font
     var font = load("res://assets/Grundschrift-Normal.otf")
@@ -176,6 +176,10 @@ func apply_theme_to_node(node: Node):
 
     for child in node.get_children():
         apply_theme_to_node(child)
+
+func apply_theme_to_children(node: Node):
+    """Apply theme to all children of a node (alias for apply_theme_to_node)"""
+    apply_theme_to_node(node)
 
 func get_theme_color(color_name: String, control_type: String = "Label") -> Color:
     """Get a color from the current theme"""

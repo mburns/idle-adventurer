@@ -9,7 +9,7 @@ static var activities = {
     "Push a Rock": {
         "ability": "strength",
         "skill": "Athletics",
-        "base_duration": 300.0, # 5 minutes
+        "base_duration": 10.0, # 10 seconds for testing
         "base_xp": 10,
         "base_gold": 2,
         "description": "Push a heavy rock to build strength and endurance"
@@ -17,7 +17,7 @@ static var activities = {
     "Tip Over a Statue": {
         "ability": "strength",
         "skill": "Athletics",
-        "base_duration": 180.0, # 3 minutes
+        "base_duration": 10.0, # 10 seconds for testing
         "base_xp": 8,
         "base_gold": 1,
         "description": "Practice toppling statues to improve your strength"
@@ -25,7 +25,7 @@ static var activities = {
     "Lift Weights": {
         "ability": "strength",
         "skill": "Athletics",
-        "base_duration": 600.0, # 10 minutes
+        "base_duration": 10.0, # 10 seconds for testing
         "base_xp": 15,
         "base_gold": 3,
         "description": "Regular weight training to build muscle"
@@ -63,6 +63,14 @@ static var activities = {
         "base_xp": 15,
         "base_gold": 8,
         "description": "Practice playing a musical instrument"
+    },
+    "Do a Kickflip": {
+        "ability": "dexterity",
+        "skill": "Acrobatics",
+        "base_duration": 10.0, # 10 seconds for testing
+        "base_xp": 12,
+        "base_gold": 2,
+        "description": "Practice kickflips to improve dexterity and acrobatics"
     },
 
     # Constitution activities
@@ -231,6 +239,132 @@ static var activities = {
         "base_xp": 10,
         "base_gold": 2,
         "description": "Practice blending in with crowds and going unnoticed"
+    },
+
+    # Crafting activities
+    "Blacksmithing": {
+        "ability": "strength",
+        "skill": "Crafting",
+        "base_duration": 1800.0, # 30 minutes
+        "base_xp": 20,
+        "base_gold": 8,
+        "description": "Craft weapons and armor using smith's tools"
+    },
+    "Jewelry Making": {
+        "ability": "dexterity",
+        "skill": "Crafting",
+        "base_duration": 2400.0, # 40 minutes
+        "base_xp": 25,
+        "base_gold": 12,
+        "description": "Craft delicate jewelry and precision items"
+    },
+    "Leatherworking": {
+        "ability": "dexterity",
+        "skill": "Crafting",
+        "base_duration": 1200.0, # 20 minutes
+        "base_xp": 15,
+        "base_gold": 6,
+        "description": "Craft leather armor and accessories"
+    },
+    "Pottery": {
+        "ability": "intelligence",
+        "skill": "Crafting",
+        "base_duration": 1500.0, # 25 minutes
+        "base_xp": 18,
+        "base_gold": 5,
+        "description": "Craft pottery and ceramic items"
+    },
+    "Weaving": {
+        "ability": "dexterity",
+        "skill": "Crafting",
+        "base_duration": 1800.0, # 30 minutes
+        "base_xp": 20,
+        "base_gold": 7,
+        "description": "Weave cloth and textiles"
+    },
+    "Woodworking": {
+        "ability": "strength",
+        "skill": "Crafting",
+        "base_duration": 2100.0, # 35 minutes
+        "base_xp": 22,
+        "base_gold": 9,
+        "description": "Craft wooden furniture and tools"
+    },
+
+    # Profession activities
+    "Artisan": {
+        "ability": "intelligence",
+        "skill": "Profession",
+        "base_duration": 3600.0, # 60 minutes
+        "base_xp": 30,
+        "base_gold": 15,
+        "description": "Work as a skilled artisan, maintaining modest lifestyle"
+    },
+    "Merchant": {
+        "ability": "charisma",
+        "skill": "Profession",
+        "base_duration": 4200.0, # 70 minutes
+        "base_xp": 35,
+        "base_gold": 20,
+        "description": "Work as a merchant, trading goods and services"
+    },
+    "Scholar": {
+        "ability": "intelligence",
+        "skill": "Profession",
+        "base_duration": 4800.0, # 80 minutes
+        "base_xp": 40,
+        "base_gold": 12,
+        "description": "Work as a scholar, researching and teaching"
+    },
+    "Guard": {
+        "ability": "strength",
+        "skill": "Profession",
+        "base_duration": 5400.0, # 90 minutes
+        "base_xp": 25,
+        "base_gold": 18,
+        "description": "Work as a city guard, maintaining security"
+    },
+    "Priest": {
+        "ability": "wisdom",
+        "skill": "Profession",
+        "base_duration": 3600.0, # 60 minutes
+        "base_xp": 30,
+        "base_gold": 10,
+        "description": "Work as a priest, providing religious services"
+    },
+    "Entertainer": {
+        "ability": "charisma",
+        "skill": "Profession",
+        "base_duration": 3000.0, # 50 minutes
+        "base_xp": 35,
+        "base_gold": 25,
+        "description": "Work as an entertainer, supporting wealthy lifestyle"
+    },
+
+    # Training activities
+    "Learn Language": {
+        "ability": "intelligence",
+        "skill": "Training",
+        "base_duration": 14400.0, # 4 hours (250 days = 4 hours for testing)
+        "base_xp": 50,
+        "base_gold": - 250, # Costs 1 gp per day
+        "description": "Learn a new language with an instructor"
+    },
+    "Tool Proficiency": {
+        "ability": "intelligence",
+        "skill": "Training",
+        "base_duration": 14400.0, # 4 hours (250 days = 4 hours for testing)
+        "base_xp": 50,
+        "base_gold": - 250, # Costs 1 gp per day
+        "description": "Gain proficiency with a new set of tools"
+    },
+    "Skill Training": {
+        "ability": "intelligence",
+        "skill": "Training",
+        "base_duration": 14400.0, # 4 hours (250 days = 4 hours for testing)
+        "base_xp": 50,
+        "base_gold": - 250, # Costs 1 gp per day
+        "description": "Train to gain proficiency in a new skill"
     },
 
     # Rest activities

@@ -93,5 +93,119 @@
       "charisma": 14,
       "gold": 200
     }
+  },
+  {
+    "id": "stand_up_comedy",
+    "name": "Stand-Up Comedy",
+    "description": "Perform comedy routines at taverns",
+    "ability": "charisma",
+    "daily_progress": 0.12,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "performance_skill": 2,
+      "charisma_exp": 15,
+      "gold": 6
+    },
+    "requirements": {
+      "charisma": 13
+    }
+  },
+  {
+    "id": "court_intrigue",
+    "name": "Court Intrigue",
+    "description": "Navigate noble politics and royal courts",
+    "ability": "charisma",
+    "daily_progress": 0.08,
+    "cost_per_day": 0.5,
+    "rewards": {
+      "persuasion_skill": 1,
+      "charisma_exp": 12,
+      "reputation": 4,
+      "gold": 8
+    },
+    "requirements": {
+      "charisma": 15,
+      "gold": 100
+    }
+  },
+  {
+    "id": "merchant_negotiation",
+    "name": "Merchant Negotiation",
+    "description": "Bargain with traders and merchants",
+    "ability": "charisma",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "persuasion_skill": 1,
+      "charisma_exp": 10,
+      "gold": 5
+    },
+    "requirements": {
+      "charisma": 12
+    }
+  },
+  {
+    "id": "practice_deception",
+    "name": "Practice Deception",
+    "description": "Practice lying and misleading others",
+    "ability": "charisma",
+    "daily_progress": 0.08,
+    "cost_per_day": 0.2,
+    "rewards": {
+      "deception_skill": 1,
+      "charisma_exp": 10,
+      "gold": 3
+    },
+    "requirements": {
+      "charisma": 11
+    }
+  },
+  {
+    "id": "practice_intimidation",
+    "name": "Practice Intimidation",
+    "description": "Practice threatening and intimidating others",
+    "ability": "charisma",
+    "daily_progress": 0.09,
+    "cost_per_day": 0.3,
+    "rewards": {
+      "intimidation_skill": 1,
+      "charisma_exp": 8,
+      "gold": 2
+    },
+    "requirements": {
+      "charisma": 13
+    }
+  },
+  {
+    "id": "performance_practice",
+    "name": "Performance Practice",
+    "description": "Practice performing for audiences",
+    "ability": "charisma",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "performance_skill": 1,
+      "charisma_exp": 15,
+      "gold": 8
+    },
+    "requirements": {
+      "charisma": 12
+    }
+  },
+  {
+    "id": "practice_persuasion",
+    "name": "Practice Persuasion",
+    "description": "Practice convincing others through diplomacy",
+    "ability": "charisma",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.1,
+    "rewards": {
+      "persuasion_skill": 1,
+      "charisma_exp": 12,
+      "gold": 4
+    },
+    "requirements": {
+      "charisma": 11
+    }
   }
 ]

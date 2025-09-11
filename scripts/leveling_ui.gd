@@ -113,7 +113,7 @@ func get_class_features(character: Character, new_level: int) -> Array:
     var features = []
 
     # Get features from wiki data
-    var class_data = WikiDataLoader.load_class_from_wiki(class_type)
+    var class_data = DataLoader.get_class_data(class_type)
     var class_features = class_data.get("features", {})
 
     # Check for features at this level

@@ -10,6 +10,14 @@
   },
   "size": "Medium",
   "speed": 30,
+  "height_range": {
+    "min": 60,
+    "max": 78
+  },
+  "weight_range": {
+    "min": 120,
+    "max": 200
+  },
   "languages": [
     "Common",
     "Elvish",

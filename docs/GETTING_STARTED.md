@@ -174,7 +174,7 @@ godot --path . --scene start_screen.tscn
 ### Adding a New D&D Class
 
 1. Create resource file in `resources/`
-2. Add to `DnDData.classes` in `scripts/dnd_data.gd`
+2. Add to DataLoader in `scripts/data_loader.gd`
 3. Update character creation screen
 4. Write tests for the new class
 

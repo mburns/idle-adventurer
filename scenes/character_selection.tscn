@@ -72,6 +72,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Back"
 
 [node name="CreateButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
@@ -79,6 +80,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Create New"
 
 [connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

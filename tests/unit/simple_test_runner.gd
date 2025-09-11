@@ -5,7 +5,7 @@ extends SceneTree
 # Preload required scripts
 const Character = preload("res://scripts/character.gd")
 const CharacterManager = preload("res://scripts/character_manager.gd")
-const DnDData = preload("res://scripts/dnd_data.gd")
+# Using DataLoader autoload instead of DnDData
 
 var test_results: Dictionary = {}
 var total_tests: int = 0
@@ -91,15 +91,15 @@ func test_dnd_data():
     print("Testing D&D Data...")
 
     # Test race data
-    var human_data = DnDData.get_race("Human")
+    var human_data = DataLoader.get_race_data("Human")
     assert_true(not human_data.is_empty(), "Human race data loaded")
 
     # Test class data
-    var fighter_data = DnDData.get_class_data("Fighter")
+    var fighter_data = DataLoader.get_class_data("Fighter")
     assert_true(not fighter_data.is_empty(), "Fighter class data loaded")
 
     # Test background data
-    var folk_hero_data = DnDData.get_background("Folk Hero")
+    var folk_hero_data = DataLoader.get_background_data("Folk Hero")
     assert_true(not folk_hero_data.is_empty(), "Folk Hero background data loaded")
 
     print("✅ D&D data tests passed")

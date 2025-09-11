@@ -35,7 +35,7 @@ var dice_history: Array[Dictionary] = []
 
 func _ready():
     # Get character manager and current character
-    character_manager = CharacterManager.new()
+    character_manager = CharacterManager
     character = character_manager.get_current_character()
 
     # Setup UI references
@@ -58,30 +58,30 @@ func setup_ui_references():
 
     # Get ability score UI
     ability_containers = {
-        "strength": %StrengthContainer,
-        "dexterity": %DexterityContainer,
-        "constitution": %ConstitutionContainer,
-        "intelligence": %IntelligenceContainer,
-        "wisdom": %WisdomContainer,
-        "charisma": %CharismaContainer
+        "strength": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer"),
+        "dexterity": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer"),
+        "constitution": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer"),
+        "intelligence": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer"),
+        "wisdom": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer"),
+        "charisma": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer")
     }
 
     ability_values = {
-        "strength": %StrengthValue,
-        "dexterity": %DexterityValue,
-        "constitution": %ConstitutionValue,
-        "intelligence": %IntelligenceValue,
-        "wisdom": %WisdomValue,
-        "charisma": %CharismaValue
+        "strength": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer/StrengthValue"),
+        "dexterity": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer/DexterityValue"),
+        "constitution": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer/ConstitutionValue"),
+        "intelligence": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer/IntelligenceValue"),
+        "wisdom": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer/WisdomValue"),
+        "charisma": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer/CharismaValue")
     }
 
     ability_modifiers = {
-        "strength": %StrengthModifier,
-        "dexterity": %DexterityModifier,
-        "constitution": %ConstitutionModifier,
-        "intelligence": %IntelligenceModifier,
-        "wisdom": %WisdomModifier,
-        "charisma": %CharismaModifier
+        "strength": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/StrengthContainer/StrengthModifier"),
+        "dexterity": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/DexterityContainer/DexterityModifier"),
+        "constitution": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/ConstitutionContainer/ConstitutionModifier"),
+        "intelligence": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/IntelligenceContainer/IntelligenceModifier"),
+        "wisdom": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/WisdomContainer/WisdomModifier"),
+        "charisma": get_node("MainContainer/LeftPanel/AbilityScores/AbilityScoresContainer/CharismaContainer/CharismaModifier")
     }
 
     # Get combat stats UI
@@ -404,7 +404,7 @@ func update_class_abilities():
         child.queue_free()
 
     # Get class features for current level
-    var class_data = WikiDataLoader.load_class_from_wiki(character.character_class)
+    var class_data = DataLoader.get_class_data(character.character_class)
     var all_features = class_data.get("features", {})
 
     # Show features up to current level
@@ -444,7 +444,7 @@ func update_spell_slots():
         return
 
     # Display spell slots
-    var spell_slots = character.spell_slots if character.has_method("get") and character.get("spell_slots") != null else {}
+    var spell_slots = character.spell_slots
     if spell_slots.is_empty():
         # Calculate spell slots for current level
         var leveling_system = LevelingSystem.new()
@@ -478,7 +478,7 @@ func update_active_buffs():
     for child in active_buffs_container.get_children():
         child.queue_free()
 
-    var active_buffs = character.active_buffs if character.has_method("get") and character.get("active_buffs") != null else []
+    var active_buffs = character.active_buffs
     if active_buffs.is_empty():
         var no_buffs_label = Label.new()
         no_buffs_label.text = "No active buffs"

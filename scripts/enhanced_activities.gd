@@ -18,9 +18,8 @@ var data_loader: Node
 var active_activities: Dictionary = {} # character_id -> activity_data
 
 func _init():
-    # Initialize data loader
-    data_loader = DataLoader.new()
-    add_child(data_loader)
+    # Use the autoload DataLoader
+    data_loader = DataLoader
     setup_activity_system()
 
 func setup_activity_system():
@@ -217,9 +216,25 @@ func complete_activity(character: Character, activity: Dictionary):
         apply_daily_rewards(character, {reward_type: amount})
 
     activity_completed.emit(activity["name"], character, rewards)
-    stop_activity(character.name, "Activity completed")
 
-    print(character.name + " completed " + activity["name"])
+    # Instead of stopping, restart the activity
+    restart_activity(character, activity)
+
+    print(character.name + " completed " + activity["name"] + " and restarted")
+
+func restart_activity(character: Character, activity: Dictionary):
+    """Restart an activity by resetting its progress"""
+    var activity_id = activity.get("id", "")
+    var ability = activity.get("ability", "general")
+
+    # Reset progress to 0
+    activity["progress"] = 0.0
+    activity["last_payment"] = Time.get_unix_time_from_system()
+
+    # Keep the activity active
+    active_activities[character.name] = activity
+
+    print(character.name + " restarted " + activity["name"])
 
 func stop_activity(character_name: String, reason: String = ""):
     """Stop an activity for a character"""

@@ -8,6 +8,8 @@ extends Resource
 @export var background: String = ""
 @export var level: int = 1
 @export var experience_points: int = 0
+@export var height: int = 0 # Height in inches
+@export var weight: int = 0 # Weight in pounds
 
 # Ability Scores
 @export var strength: int = 10

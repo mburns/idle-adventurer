@@ -61,5 +61,35 @@
       "constitution": 14,
       "gold": 100
     }
+  },
+  {
+    "id": "hold_your_breath",
+    "name": "Hold Your Breath",
+    "description": "Practice holding your breath to build endurance",
+    "ability": "constitution",
+    "daily_progress": 0.15,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "constitution_exp": 8,
+      "gold": 1
+    },
+    "requirements": {
+      "constitution": 10
+    }
+  },
+  {
+    "id": "drink_ale",
+    "name": "Drink Ale",
+    "description": "Quaff ale to build tolerance and constitution",
+    "ability": "constitution",
+    "daily_progress": 0.2,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "constitution_exp": 5,
+      "gold": 3
+    },
+    "requirements": {
+      "constitution": 10
+    }
   }
 ]

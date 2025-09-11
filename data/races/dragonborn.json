@@ -6,6 +6,14 @@
   },
   "size": "Medium",
   "speed": 30,
+  "height_range": {
+    "min": 66,
+    "max": 84
+  },
+  "weight_range": {
+    "min": 150,
+    "max": 250
+  },
   "languages": [
     "Common",
     "Draconic"

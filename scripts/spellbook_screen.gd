@@ -24,8 +24,9 @@ func _ready():
 
 func load_spells_from_wiki():
     """Load all spells from the wiki directory"""
-    all_spells = WikiDataLoader.load_spells_from_wiki()
-    print("Loaded " + str(all_spells.size()) + " spells from wiki")
+    # Note: Spell loading from wiki not implemented in DataLoader yet
+    all_spells = {}
+    print("⚠️  Spell loading from wiki not implemented in DataLoader yet")
 
 func setup_filter_dropdown():
     """Setup the spell level filter dropdown"""

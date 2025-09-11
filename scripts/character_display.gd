@@ -2,7 +2,7 @@ extends Control
 
 # Character display screen that shows a visual representation of the character
 
-@onready var character_visualizer: CharacterVisualizer
+@onready var character_visualizer: CharacterVisualizer3D
 @onready var character_info_panel: VBoxContainer
 @onready var equipment_panel: VBoxContainer
 
@@ -29,7 +29,7 @@ var equipment_labels: Dictionary = {}
 
 func _ready():
     # Get character manager
-    character_manager = CharacterManager.new()
+    character_manager = CharacterManager
     character = character_manager.get_current_character()
 
     # Get UI references
@@ -73,10 +73,10 @@ func setup_ui_references():
 
 func setup_character_visualizer():
     # Find or create character visualizer
-    character_visualizer = %CharacterVisualizer
+    character_visualizer = %CharacterVisualizer3D
     if not character_visualizer:
-        character_visualizer = CharacterVisualizer.new()
-        %CharacterContainer.add_child(character_visualizer)
+        character_visualizer = CharacterVisualizer3D.new()
+        %SubViewport.add_child(character_visualizer)
 
 func connect_to_character_events():
     # Connect to character manager events
@@ -118,6 +118,29 @@ func update_character_info():
     name_label.text = character.name
     level_class_label.text = "Level %d %s" % [character.level, character.character_class.capitalize()]
     race_label.text = character.race.capitalize()
+
+    # Update physical characteristics
+    update_physical_characteristics()
+
+func update_physical_characteristics():
+    """Update physical characteristics display"""
+    if character == null:
+        return
+
+    # Convert height from inches to feet and inches
+    var feet = character.height / 12
+    var inches = character.height % 12
+    var height_text = "Height: %d'%d\"" % [feet, inches]
+
+    # Update height label
+    var height_label = %HeightLabel
+    if height_label:
+        height_label.text = height_text
+
+    # Update weight label
+    var weight_label = %WeightLabel
+    if weight_label:
+        weight_label.text = "Weight: %d lbs" % character.weight
 
 func update_stats_display():
     if character == null:
@@ -172,7 +195,7 @@ func _on_back_button_pressed():
 # Animation and visual effects
 func animate_character_level_up():
     if character_visualizer:
-        character_visualizer.set_visual_state(CharacterVisualizer.VisualState.COMBAT_READY)
+        character_visualizer.set_visual_state(CharacterVisualizer3D.VisualState.COMBAT_READY)
 
         # Add level up particle effect
         create_level_up_effect()
@@ -214,15 +237,15 @@ func set_character_pose(pose: String):
     if character_visualizer:
         match pose:
             "idle":
-                character_visualizer.set_visual_state(CharacterVisualizer.VisualState.IDLE)
+                character_visualizer.set_visual_state(CharacterVisualizer3D.VisualState.IDLE)
             "working":
-                character_visualizer.set_visual_state(CharacterVisualizer.VisualState.WORKING)
+                character_visualizer.set_visual_state(CharacterVisualizer3D.VisualState.WORKING)
             "combat":
-                character_visualizer.set_visual_state(CharacterVisualizer.VisualState.COMBAT_READY)
+                character_visualizer.set_visual_state(CharacterVisualizer3D.VisualState.COMBAT_READY)
             "casting":
-                character_visualizer.set_visual_state(CharacterVisualizer.VisualState.CASTING)
+                character_visualizer.set_visual_state(CharacterVisualizer3D.VisualState.CASTING)
             "resting":
-                character_visualizer.set_visual_state(CharacterVisualizer.VisualState.RESTING)
+                character_visualizer.set_visual_state(CharacterVisualizer3D.VisualState.RESTING)
 
 # Input handling for character interaction
 func _input(event):
@@ -234,13 +257,20 @@ func handle_character_click(click_position: Vector2):
     if not character_visualizer:
         return
 
-    # Convert screen position to local position
-    var local_pos = character_visualizer.to_local(click_position)
+    # Convert screen position to 3D world position
+    var camera = %Camera3D
+    if camera:
+        var from = camera.project_ray_origin(click_position)
+        var to = from + camera.project_ray_normal(click_position) * 1000
+        var space_state = %SubViewport.get_world_3d().direct_space_state
+        var query = PhysicsRayQueryParameters3D.create(from, to)
+        var result = space_state.intersect_ray(query)
 
-    # Check if clicking on equipment
-    var equipment_slot = character_visualizer.get_equipment_at_position(local_pos)
-    if equipment_slot != "":
-        on_equipment_clicked(equipment_slot)
+        if result:
+            var world_pos = result.position
+            var equipment_slot = character_visualizer.get_equipment_at_position(world_pos)
+            if equipment_slot != "":
+                on_equipment_clicked(equipment_slot)
 
 func on_equipment_clicked(slot: String):
     # Handle equipment interaction

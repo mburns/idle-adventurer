@@ -5,7 +5,7 @@ extends SceneTree
 # Preload all required scripts
 const Character = preload("res://scripts/character.gd")
 const CharacterManager = preload("res://scripts/character_manager.gd")
-const DnDData = preload("res://scripts/dnd_data.gd")
+# Using DataLoader autoload instead of DnDData
 
 var test_results: Dictionary = {}
 var total_tests: int = 0
@@ -162,11 +162,11 @@ func test_character_manager_save_load():
 func test_dnd_race_data():
     print("Testing D&D Race Data...")
 
-    var human_data = DnDData.get_race("Human")
+    var human_data = DataLoader.get_race_data("Human")
     assert_true(not human_data.is_empty(), "Human race data loaded")
     assert_true(human_data.has("ability_increases"), "Human has ability increases")
 
-    var elf_data = DnDData.get_race("Elf")
+    var elf_data = DataLoader.get_race_data("Elf")
     assert_true(not elf_data.is_empty(), "Elf race data loaded")
 
     print("✅ D&D race data tests passed")
@@ -174,11 +174,11 @@ func test_dnd_race_data():
 func test_dnd_class_data():
     print("Testing D&D Class Data...")
 
-    var fighter_data = DnDData.get_class_data("Fighter")
+    var fighter_data = DataLoader.get_class_data("Fighter")
     assert_true(not fighter_data.is_empty(), "Fighter class data loaded")
     assert_true(fighter_data.has("hit_die"), "Fighter has hit die")
 
-    var wizard_data = DnDData.get_class_data("Wizard")
+    var wizard_data = DataLoader.get_class_data("Wizard")
     assert_true(not wizard_data.is_empty(), "Wizard class data loaded")
 
     print("✅ D&D class data tests passed")
@@ -186,7 +186,7 @@ func test_dnd_class_data():
 func test_dnd_background_data():
     print("Testing D&D Background Data...")
 
-    var folk_hero_data = DnDData.get_background("Folk Hero")
+    var folk_hero_data = DataLoader.get_background_data("Folk Hero")
     assert_true(not folk_hero_data.is_empty(), "Folk Hero background data loaded")
     assert_true(folk_hero_data.has("feature"), "Folk Hero has feature")
 
@@ -230,7 +230,7 @@ func test_dnd_character_integration():
     character.level = 5
 
     # Apply race bonuses
-    var race_data = DnDData.get_race("Human")
+    var race_data = DataLoader.get_race_data("Human")
     if not race_data.is_empty():
         var ability_increases = race_data.get("ability_increases", {})
         for ability in ability_increases.keys():
@@ -274,10 +274,10 @@ func test_dnd_data_loading_performance():
 
     # Load all race data
     for i in range(100):
-        var human_data = DnDData.get_race("Human")
-        var elf_data = DnDData.get_race("Elf")
-        var fighter_data = DnDData.get_class_data("Fighter")
-        var wizard_data = DnDData.get_class_data("Wizard")
+        var human_data = DataLoader.get_race_data("Human")
+        var elf_data = DataLoader.get_race_data("Elf")
+        var fighter_data = DataLoader.get_class_data("Fighter")
+        var wizard_data = DataLoader.get_class_data("Wizard")
 
     var end_time = Time.get_ticks_msec()
     var duration = end_time - start_time

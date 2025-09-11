@@ -53,7 +53,9 @@ func update_experience_display():
     var xp_needed = xp_for_next - xp_for_current
     var xp_progress = current_xp - xp_for_current
 
-    var progress_percent = (xp_progress / xp_needed) * 100.0
+    var progress_percent = 0.0
+    if xp_needed > 0:
+        progress_percent = (float(xp_progress) / float(xp_needed)) * 100.0
     %ExperienceBar.value = progress_percent
     %ExperienceText.text = str(xp_progress) + " / " + str(xp_needed) + " XP"
 
@@ -69,7 +71,7 @@ func update_class_features():
         child.queue_free()
 
     # Get class features for current level
-    var class_data = WikiDataLoader.load_class_from_wiki(character.character_class)
+    var class_data = DataLoader.get_class_data(character.character_class)
     var all_features = class_data.get("features", {})
 
     # Show features up to current level
@@ -108,7 +110,7 @@ func update_spell_slots():
         return
 
     # Display spell slots
-    var spell_slots = character.spell_slots if character.has_method("get") and character.get("spell_slots") != null else {}
+    var spell_slots = character.spell_slots
     if spell_slots.is_empty():
         # Calculate spell slots for current level
         spell_slots = leveling_system.calculate_spell_slots(character.character_class, character.level)
@@ -138,7 +140,7 @@ func _on_level_up_completed(character: Character, new_level: int):
 
     print(character.name + " reached level " + str(new_level) + "!")
 
-func _on_level_up_ui_completed(character: Character, new_level: int):
+func _on_level_up_ui_completed(_character: Character, _new_level: int):
     """Handle level up completion from leveling UI"""
     # Update displays
     setup_character_info()

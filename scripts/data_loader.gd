@@ -1,107 +1,131 @@
 extends Node
 
-# Load D&D data from JSON files
-var races_data: Array[Dictionary] = []
-var classes_data: Array[Dictionary] = []
-var backgrounds_data: Array[Dictionary] = []
+# Load D&D data from individual JSON files
+var races_data: Dictionary = {} # race_name -> race_data
+var classes_data: Dictionary = {} # class_name -> class_data
+var backgrounds_data: Dictionary = {} # background_name -> background_data
 var activities_data: Dictionary = {}
 
 func _ready():
 	load_all_data()
 
-# Load all data from JSON files
+# Load all data from individual JSON files
 func load_all_data():
 	load_races()
 	load_classes()
 	load_backgrounds()
 	load_activities()
 
-# Load race data
+# Load race data from individual files
 func load_races():
-	var file = FileAccess.open("res://data/races.json", FileAccess.READ)
-	if file:
-		var json_string = file.get_as_text()
-		file.close()
-		var json = JSON.new()
-		var parse_result = json.parse(json_string)
-		if parse_result == OK:
-			races_data = json.data
-		else:
-			print("Error parsing races.json: ", json.error_string)
-	else:
-		print("Error opening races.json")
+	var races_dir = "res://data/races/"
+	var dir = DirAccess.open(races_dir)
+	if dir == null:
+		print("Error: Could not open races directory")
+		return
 
-# Load class data
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".json"):
+			var race_name = file_name.replace(".json", "").capitalize()
+			var file_path = races_dir + file_name
+			var race_data = load_json_file(file_path)
+			if not race_data.is_empty():
+				races_data[race_name] = race_data
+				print("Loaded race: " + race_name)
+
+# Load class data from individual files
 func load_classes():
-	var file = FileAccess.open("res://data/classes.json", FileAccess.READ)
-	if file:
-		var json_string = file.get_as_text()
-		file.close()
-		var json = JSON.new()
-		var parse_result = json.parse(json_string)
-		if parse_result == OK:
-			classes_data = json.data
-		else:
-			print("Error parsing classes.json: ", json.error_string)
-	else:
-		print("Error opening classes.json")
+	var classes_dir = "res://data/classes/"
+	var dir = DirAccess.open(classes_dir)
+	if dir == null:
+		print("Error: Could not open classes directory")
+		return
 
-# Load background data
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".json"):
+			var class_name_str = file_name.replace(".json", "").capitalize()
+			var file_path = classes_dir + file_name
+			var class_data = load_json_file(file_path)
+			if not class_data.is_empty():
+				classes_data[class_name_str] = class_data
+				print("Loaded class: " + class_name_str)
+
+# Load background data from individual files
 func load_backgrounds():
-	var file = FileAccess.open("res://data/backgrounds.json", FileAccess.READ)
-	if file:
-		var json_string = file.get_as_text()
-		file.close()
-		var json = JSON.new()
-		var parse_result = json.parse(json_string)
-		if parse_result == OK:
-			backgrounds_data = json.data
-		else:
-			print("Error parsing backgrounds.json: ", json.error_string)
-	else:
-		print("Error opening backgrounds.json")
+	var backgrounds_dir = "res://data/backgrounds/"
+	var dir = DirAccess.open(backgrounds_dir)
+	if dir == null:
+		print("Error: Could not open backgrounds directory")
+		return
+
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".json"):
+			var background_name = file_name.replace(".json", "").replace("_", " ").capitalize()
+			var file_path = backgrounds_dir + file_name
+			var background_data = load_json_file(file_path)
+			if not background_data.is_empty():
+				backgrounds_data[background_name] = background_data
+				print("Loaded background: " + background_name)
+
+# Helper function to load a JSON file
+func load_json_file(file_path: String) -> Dictionary:
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file == null:
+		print("Error: Could not open file: " + file_path)
+		return {}
+
+	var json_string = file.get_as_text()
+	file.close()
+
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	if parse_result != OK:
+		print("Error parsing " + file_path + ": " + json.get_error_message())
+		return {}
+
+	return json.get_data()
+
+# Load JSON data by name (generic function for any JSON file)
+func load_json_data(data_name: String) -> Dictionary:
+	"""Load JSON data by name from the data directory"""
+	var file_path = "res://data/" + data_name + ".json"
+	return load_json_file(file_path)
 
 # Get race names
 func get_race_names() -> Array[String]:
 	var names: Array[String] = []
-	for race in races_data:
-		names.append(race.get("name", ""))
+	for key in races_data.keys():
+		names.append(str(key))
 	return names
 
 # Get class names
 func get_class_names() -> Array[String]:
 	var names: Array[String] = []
-	for class_data in classes_data:
-		names.append(class_data.get("name", ""))
+	for key in classes_data.keys():
+		names.append(str(key))
 	return names
 
 # Get background names
 func get_background_names() -> Array[String]:
 	var names: Array[String] = []
-	for background in backgrounds_data:
-		names.append(background.get("name", ""))
+	for key in backgrounds_data.keys():
+		names.append(str(key))
 	return names
 
 # Get race data by name
 func get_race_data(race_name: String) -> Dictionary:
-	for race in races_data:
-		if race.get("name", "") == race_name:
-			return race
-	return {}
+	return races_data.get(race_name, {})
 
 # Get class data by name
 func get_class_data(class_name_param: String) -> Dictionary:
-	for class_data in classes_data:
-		if class_data.get("name", "") == class_name_param:
-			return class_data
-	return {}
+	return classes_data.get(class_name_param, {})
 
 # Get background data by name
 func get_background_data(background_name: String) -> Dictionary:
-	for background in backgrounds_data:
-		if background.get("name", "") == background_name:
-			return background
-	return {}
+	return backgrounds_data.get(background_name, {})
 
 # Load activities data from ability-based JSON files
 func load_activities():

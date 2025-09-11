@@ -5,6 +5,14 @@
   },
   "size": "Small",
   "speed": 25,
+  "height_range": {
+    "min": 30,
+    "max": 42
+  },
+  "weight_range": {
+    "min": 30,
+    "max": 60
+  },
   "languages": [
     "Common",
     "Halfling"
