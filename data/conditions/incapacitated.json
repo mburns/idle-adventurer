@@ -1,0 +1,9 @@
+{
+  "name": "Incapacitated",
+  "type": "condition",
+  "description": "",
+  "effects": [
+    "An incapacitated creature can't take actions or reactions."
+  ],
+  "category": "condition"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Elf, Drow",
+  "size": "Medium humanoid (elf)",
+  "type": "neutral evil",
+  "alignment": "",
+  "armor_class": "15 (chain shirt)",
+  "hit_points": "13 (3d8)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 10,
+    "dexterity": 14,
+    "constitution": 10,
+    "intelligence": 11,
+    "wisdom": 11,
+    "charisma": 12
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +2",
+    "Stealth +4"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 120 ft., passive Perception 12",
+  "languages": "Elvish, Undercommon",
+  "challenge_rating": "1/4",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Shortsword***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing dama",
+      "description": ""
+    },
+    {
+      "name": "Hand Crossbow***. *Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6+2) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the target is also unconscious while poisoned in this way. The target wakes up if it takes damage or if another creature takes an action to shake it awa",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

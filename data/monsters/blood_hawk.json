@@ -1,0 +1,41 @@
+{
+  "name": "Blood Hawk",
+  "size": "Small beast",
+  "type": "unaligned",
+  "alignment": "",
+  "armor_class": "12",
+  "hit_points": "7 (2d6)",
+  "speed": "10 ft., fly 60 ft.",
+  "abilities": {
+    "strength": 6,
+    "dexterity": 14,
+    "constitution": 10,
+    "intelligence": 3,
+    "wisdom": 14,
+    "charisma": 5
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +4"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "passive Perception 14",
+  "languages": "-",
+  "challenge_rating": "1/8",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Beak***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) piercing dama",
+      "description": "Taking its name from its crimson feathers and aggressive nature, the **blood hawk** fearlessly attacks almost any animal, stabbing it with its daggerlike beak. Blood hawks flock together in large numbers, attacking as a pack to take down prey."
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

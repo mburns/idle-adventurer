@@ -1,0 +1,39 @@
+{
+  "name": "Tribal Warrior",
+  "size": "Medium humanoid (any race)",
+  "type": "any alignment",
+  "alignment": "",
+  "armor_class": "12 (hide armor)",
+  "hit_points": "11 (2d8 + 2)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 13,
+    "dexterity": 11,
+    "constitution": 12,
+    "intelligence": 8,
+    "wisdom": 11,
+    "charisma": 8
+  },
+  "saving_throws": [],
+  "skills": [],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "passive Perception 10",
+  "languages": "any one language",
+  "challenge_rating": "1/8",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Spear***. *Melee or Ranged Weapon Attack:* +3 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee atta",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

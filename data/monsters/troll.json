@@ -1,0 +1,49 @@
+{
+  "name": "Troll",
+  "size": "Large giant",
+  "type": "chaotic evil",
+  "alignment": "",
+  "armor_class": "15 (natural armor)",
+  "hit_points": "84 (8d10+40)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 18,
+    "dexterity": 13,
+    "constitution": 20,
+    "intelligence": 7,
+    "wisdom": 9,
+    "charisma": 7
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +2"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 60 ft., passive Perception 12",
+  "languages": "Giant",
+  "challenge_rating": "5",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Multiattack***. The troll makes three attacks: one with its bite and two with its cla",
+      "description": ""
+    },
+    {
+      "name": "Bite***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 7 (1d6+4) piercing dama",
+      "description": ""
+    },
+    {
+      "name": "Claw***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6+4) slashing dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

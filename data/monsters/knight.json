@@ -1,0 +1,59 @@
+{
+  "name": "Knight",
+  "size": "Medium humanoid (any race)",
+  "type": "any alignment",
+  "alignment": "",
+  "armor_class": "18 (plate)",
+  "hit_points": "52 (8d8 + 16)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 16,
+    "dexterity": 11,
+    "constitution": 14,
+    "intelligence": 11,
+    "wisdom": 11,
+    "charisma": 15
+  },
+  "saving_throws": [
+    "Con +4",
+    "Wis +2"
+  ],
+  "skills": [],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "passive Perception 10",
+  "languages": "any one language (usually Common)",
+  "challenge_rating": "3",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Multiattack***. The knight makes two melee attac",
+      "description": ""
+    },
+    {
+      "name": "Greatsword***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) slashing dama",
+      "description": ""
+    },
+    {
+      "name": "Heavy Crossbow***. *Ranged Weapon Attack:* +2 to hit, range 100/400 ft., one target. *Hit:* 5 (1d10) piercing dama",
+      "description": ""
+    },
+    {
+      "name": "Leadership (Recharges after a Short or Long Rest)***. For 1 minute, the knight can utter a special command or warning whenever a nonhostile creature that it can see within 30 feet of it makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand the knight. A creature can benefit from only one Leadership die at a time. This effect ends if the knight is incapacitat",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [
+    {
+      "name": "Parry***. The knight adds 2 to its AC against one melee attack that would hit it. To do so, the knight must see the attacker and be wielding a melee weap",
+      "description": ""
+    }
+  ],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

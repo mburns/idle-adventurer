@@ -1,0 +1,46 @@
+{
+  "name": "Giant Frog",
+  "size": "Medium beast",
+  "type": "unaligned",
+  "alignment": "",
+  "armor_class": "11",
+  "hit_points": "18 (4d8)",
+  "speed": "30 ft., swim 30 ft.",
+  "abilities": {
+    "strength": 12,
+    "dexterity": 13,
+    "constitution": 11,
+    "intelligence": 2,
+    "wisdom": 10,
+    "charisma": 3
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +2",
+    "Stealth +3"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 30 ft., passive Perception 12",
+  "languages": "-",
+  "challenge_rating": "1/4",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Bite***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 4 (1d6+1) piercing damage, and the target is grappled (escape DC 11). Until this grapple ends, the target is restrained, and the frog can't bite another targ",
+      "description": ""
+    },
+    {
+      "name": "Swallow***. The frog makes one bite attack against a Small or smaller target it is grappling. If the attack hits, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the frog, and it takes 5 (2d4) acid damage at the start of each of the frog's turns. The frog can have only one target swallowed at a ti",
+      "description": "If the frog dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 feet of movement, exiting prone."
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

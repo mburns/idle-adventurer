@@ -1,0 +1,19 @@
+{
+  "name": "Sailor",
+  "skill_proficiencies": [
+    "Athletics",
+    "Perception"
+  ],
+  "languages": [
+    "One of your choice"
+  ],
+  "equipment": [
+    "A belaying pin (club)",
+    "50 feet of silk rope",
+    "a lucky charm such as a rabbit foot or a small stone with a hole in it (or you may roll for a random trinket on the Trinkets table in chapter 5)",
+    "a set of common clothes",
+    "and a belt pouch containing 10 gp"
+  ],
+  "feature": "Ship's Passage",
+  "suggested_characteristics": {}
+}

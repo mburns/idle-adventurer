@@ -1,0 +1,10 @@
+{
+  "name": "Potion of Clairvoyance",
+  "type": "Potion",
+  "rarity": "Common",
+  "attunement": false,
+  "description": "*Potion, rare*\n\nWhen you drink this potion, you gain the effect of the *clairvoyance* spell. An eyeball bobs in this yellowish liquid but vanishes when the potion is opened.",
+  "effects": [],
+  "duration": "",
+  "category": "potion"
+}

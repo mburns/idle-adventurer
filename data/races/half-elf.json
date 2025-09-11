@@ -1,0 +1,18 @@
+{
+  "name": "Half-Elf",
+  "ability_increases": {
+    "charisma": 2
+  },
+  "size": "Medium",
+  "speed": 30,
+  "languages": [
+    "Common",
+    "Elvish",
+    "One extra language"
+  ],
+  "traits": [
+    "Darkvision",
+    "Fey Ancestry",
+    "Skill Versatility"
+  ]
+}

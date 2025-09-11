@@ -1,9 +1,5 @@
 extends Node
 
-# Preload required classes
-const Character = preload("res://scripts/character.gd")
-const DnDData = preload("res://scripts/dnd_data.gd")
-
 # Singleton for managing the current character
 var current_character: Character
 var save_file_path: String = "user://character_save.dat"

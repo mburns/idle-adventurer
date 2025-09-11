@@ -6,6 +6,113 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- **Enhanced Data Structure**: Individual JSON files for all game data
+
+  - Classes: 12 individual class files with complete spell lists and features
+  - Races: 9 individual race files with racial traits and abilities
+  - Spells: 319 individual spell files with full descriptions and mechanics
+  - Equipment: 7 category files with 175+ items including weapons, armor, and gear
+  - Backgrounds: 12 individual background files with features and equipment
+  - Feats: 1 feat file with prerequisites and benefits
+  - Alignments: 9 alignment files with morality and attitude descriptions
+  - Conditions: 15 condition files with effects and descriptions
+
+- **Comprehensive Test Suite**: Enhanced testing framework
+
+  - Comprehensive test runner with detailed reporting
+  - Performance tests for memory usage and loading times
+  - Integration tests for full game flow
+  - 100% test pass rate maintained
+
+- **Improved Documentation**: Professional README and project documentation
+
+  - Complete feature overview with badges and status indicators
+  - Quick start guide with installation instructions
+  - Project structure documentation
+  - Contributing guidelines and development workflow
+  - Support and community information
+
+- **Data Extraction System**: Automated data extraction from D&D SRD
+  - Python scripts for extracting data from markdown files
+  - Automatic JSON generation with proper formatting
+  - Data validation and consistency checks
+  - Support for all D&D 5e content types
+
+### Changed
+
+- **Data Organization**: Restructured data into individual files for better maintainability
+- **JSON Formatting**: Improved JSON structure with proper indentation and line breaks
+- **Test Coverage**: Enhanced test suite with comprehensive coverage
+- **Code Quality**: Removed redundant code and optimized file structure
+- **Documentation**: Updated README with professional open source project standards
+
+### Fixed
+
+- **Data Consistency**: Fixed markdown artifacts in JSON files
+- **File Structure**: Cleaned up redundant and duplicate files
+- **JSON Parsing**: Fixed JSON formatting issues and validation errors
+- **Test Reliability**: Improved test stability and error handling
+
+### Removed
+
+- **Redundant Files**: Removed old consolidated data files
+- **Duplicate Scripts**: Cleaned up old extraction scripts
+- **Empty Directories**: Removed unused directory structures
+
+## [0.2.0] - Data Structure Overhaul
+
+### Added
+
+- **Individual Data Files**: Each class, race, spell, and item now has its own JSON file
+- **Enhanced Spell System**: Complete spell parsing with level-based organization
+- **Equipment Categories**: Organized equipment into weapons, armor, and gear
+- **Data Validation**: Comprehensive data validation and consistency checks
+- **Automated Extraction**: Python scripts for extracting data from wiki markdown files
+
+### Changed
+
+- **Data Loading**: Updated data loader to work with individual files
+- **File Organization**: Restructured data directory with subdirectories
+- **JSON Structure**: Improved JSON formatting and organization
+- **Test Coverage**: Enhanced test suite for new data structure
+
+## [0.1.0] - Initial Version
+
+### Added
+
+- **Quest System**: Comprehensive quest system with storylines, objectives, and meaningful rewards
+  - Quest templates for different types (faction, profession, social, personal, community)
+  - Quest objectives with progress tracking
+  - Quest rewards including reputation, gold, and experience
+  - Quest requirements and availability based on character progression
+- **NPC System**: NPCs, companions, and social relationship mechanics
+  - 10+ NPCs with different types (merchant, craftsman, scholar, noble, guard, priest, entertainer, informant, mentor, companion)
+  - Social interaction system with relationship tracking
+  - NPC schedules and availability
+  - Social events and gatherings
+- **Town System**: Town locations and local services
+  - 10+ town locations (market square, taverns, guild halls, temple, library, smithy, town hall, guard barracks, noble district, residential)
+  - Location-based services with costs and requirements
+  - Town events and activities
+  - Location access based on reputation and requirements
+- **Profession System**: Profession activities with income and reputation
+  - 10+ professions across different types (artisan, merchant, scholar, guard, priest, entertainer, healer, informant, administrator, servant)
+  - Daily work with income and reputation gains
+  - Professional advancement and benefits
+  - Work quality based on character stats
+- **Lifestyle System**: Lifestyle expenses and living standards
+  - 7 lifestyle levels from Wretched to Aristocratic
+  - Daily expense tracking and sustainability
+  - Lifestyle benefits and penalties
+  - Social status and reputation effects
+- **Random Events System**: Random encounters and dynamic events
+  - 20+ random events across different types (social, economic, mystical, criminal, political, natural, professional, personal, community, adventure hooks)
+  - Event rarity system with weighted selection
+  - Skill checks and consequences
+  - Event cooldowns and history tracking
+- **Enhanced Documentation**: Updated screen flow and project documentation
+- **Comprehensive Testing**: Unit tests for all new systems
+
 - TODO.md and CHANGELOG.md files for project tracking
 - Initial analysis of existing codebase and D&D wiki structure
 - Complete D&D 5e character system with races, classes, and backgrounds
@@ -114,10 +221,3 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - None yet
-
-## [0.1.0] - Initial Version
-
-- Basic coin system with manual increment
-- Tab-based skill interface with D&D ability scores
-- Simple UI with player info box and coin display
-- Basic skill activities for each ability score

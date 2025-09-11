@@ -1,0 +1,965 @@
+{
+  "category": "Gear",
+  "items": [
+    {
+      "name": "Item",
+      "cost": "Cost",
+      "weight": "Weight",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "----------------------------",
+      "cost": "--------",
+      "weight": "------------",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Abacus",
+      "cost": "2 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Acid (vial)",
+      "cost": "25 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Alchemist's fire (flask)",
+      "cost": "50 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "*Ammunition*",
+      "cost": "",
+      "weight": "",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Arrows (20)",
+      "cost": "1 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Blowgun needles (50)",
+      "cost": "1 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Crossbow bolts (20)",
+      "cost": "1 gp",
+      "weight": "1½ lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Sling bullets (20)",
+      "cost": "4 cp",
+      "weight": "1½ lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Antitoxin (vial)",
+      "cost": "50 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "*Arcane focus*",
+      "cost": "",
+      "weight": "",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Crystal",
+      "cost": "10 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Orb",
+      "cost": "20 gp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Rod",
+      "cost": "10 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Staff",
+      "cost": "5 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Wand",
+      "cost": "10 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Backpack",
+      "cost": "2 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Ball bearings (bag of 1,000)",
+      "cost": "1 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Barrel",
+      "cost": "2 gp",
+      "weight": "70 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Basket",
+      "cost": "4 sp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Bedroll",
+      "cost": "1 gp",
+      "weight": "7 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Bell",
+      "cost": "1 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Blanket",
+      "cost": "5 sp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Block and tackle",
+      "cost": "1 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Book",
+      "cost": "25 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Bottle, glass",
+      "cost": "2 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Bucket",
+      "cost": "5 cp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Caltrops (bag of 20)",
+      "cost": "1 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Candle",
+      "cost": "1 cp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Case, crossbow bolt",
+      "cost": "1 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Case, map or scroll",
+      "cost": "1 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Chain (10 feet)",
+      "cost": "5 gp",
+      "weight": "10 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Chalk (1 piece)",
+      "cost": "1 cp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Chest",
+      "cost": "5 gp",
+      "weight": "25 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Climber's kit",
+      "cost": "25 gp",
+      "weight": "12 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Clothes, common",
+      "cost": "5 sp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Clothes, costume",
+      "cost": "5 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Clothes, fine",
+      "cost": "15 gp",
+      "weight": "6 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Clothes, traveler's",
+      "cost": "2 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Component pouch",
+      "cost": "25 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Crowbar",
+      "cost": "2 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "*Druidic focus*",
+      "cost": "",
+      "weight": "",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Sprig of mistletoe",
+      "cost": "1 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Totem",
+      "cost": "1 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Wooden staff",
+      "cost": "5 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Yew wand",
+      "cost": "10 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Fishing tackle",
+      "cost": "1 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Flask or tankard",
+      "cost": "2 cp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Grappling hook",
+      "cost": "2 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Hammer",
+      "cost": "1 gp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Hammer, sledge",
+      "cost": "2 gp",
+      "weight": "10 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Healer's kit",
+      "cost": "5 gp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "*Holy symbol*",
+      "cost": "",
+      "weight": "",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Amulet",
+      "cost": "5 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Emblem",
+      "cost": "5 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "~ Reliquary",
+      "cost": "5 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Holy water (flask)",
+      "cost": "25 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Hourglass",
+      "cost": "25 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Hunting trap",
+      "cost": "5 gp",
+      "weight": "25 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Ink (1 ounce bottle)",
+      "cost": "10 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Ink pen",
+      "cost": "2 cp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Jug or pitcher",
+      "cost": "2 cp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Ladder (10-foot)",
+      "cost": "1 sp",
+      "weight": "25 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Lamp",
+      "cost": "5 sp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Lantern, bullseye",
+      "cost": "10 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Lantern, hooded",
+      "cost": "5 gp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Lock",
+      "cost": "10 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Magnifying glass",
+      "cost": "100 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Manacles",
+      "cost": "2 gp",
+      "weight": "6 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Mess kit",
+      "cost": "2 sp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Mirror, steel",
+      "cost": "5 gp",
+      "weight": "1/2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Oil (flask)",
+      "cost": "1 sp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Paper (one sheet)",
+      "cost": "2 sp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Parchment (one sheet)",
+      "cost": "1 sp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Perfume (vial)",
+      "cost": "5 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Pick, miner's",
+      "cost": "2 gp",
+      "weight": "10 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Piton",
+      "cost": "5 cp",
+      "weight": "1/4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Poison, basic (vial)",
+      "cost": "100 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Pole (10-foot)",
+      "cost": "5 cp",
+      "weight": "7 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Pot, iron",
+      "cost": "2 gp",
+      "weight": "10 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Potion of healing 5",
+      "cost": "0 gp",
+      "weight": "1/2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Pouch",
+      "cost": "5 sp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Quiver",
+      "cost": "1 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Ram, portable",
+      "cost": "4 gp",
+      "weight": "35 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Rations (1 day)",
+      "cost": "5 sp",
+      "weight": "2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Robes",
+      "cost": "1 gp",
+      "weight": "4 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Rope, hempen (50 feet)",
+      "cost": "1 gp",
+      "weight": "10 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Rope, silk (50 feet)",
+      "cost": "10 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Sack",
+      "cost": "1 cp",
+      "weight": "1/2 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Scale, merchant's",
+      "cost": "5 gp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Sealing wax",
+      "cost": "5 sp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Shovel",
+      "cost": "2 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Signal whistle",
+      "cost": "5 cp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Signet ring",
+      "cost": "5 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Soap",
+      "cost": "2 cp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Spellbook",
+      "cost": "50 gp",
+      "weight": "3 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Spikes, iron (10)",
+      "cost": "1 gp",
+      "weight": "5 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Spyglass",
+      "cost": "1,000 gp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Tent, two-person",
+      "cost": "2 gp",
+      "weight": "20 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Tinderbox",
+      "cost": "5 sp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Torch",
+      "cost": "1 cp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Vial",
+      "cost": "1 gp",
+      "weight": "-",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Waterskin",
+      "cost": "2 sp",
+      "weight": "5 lb. (full)",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Whetstone",
+      "cost": "1 cp",
+      "weight": "1 lb.",
+      "description": "",
+      "category": "Adventuring Gear",
+      "type": "gear"
+    },
+    {
+      "name": "Container",
+      "cost": "Capacity",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "----------------",
+      "cost": "--------------------------------------",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Backpack*",
+      "cost": "1 cubic foot/30 pounds of gear",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Barrel",
+      "cost": "40 gallons liquid, 4 cubic feet solid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Basket",
+      "cost": "2 cubic feet/40 pounds of gear",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Bottle",
+      "cost": "1½ pints liquid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Bucket",
+      "cost": "3 gallons liquid, 1/2 cubic foot solid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Chest",
+      "cost": "12 cubic feet/300 pounds of gear",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Flask or tankard",
+      "cost": "1 pint liquid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Jug or pitcher",
+      "cost": "1 gallon liquid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Pot, iron",
+      "cost": "1 gallon liquid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Pouch",
+      "cost": "1/5 cubic foot/6 pounds of gear",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Sack",
+      "cost": "1 cubic foot/30 pounds of gear",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Vial",
+      "cost": "4 ounces liquid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    },
+    {
+      "name": "Waterskin",
+      "cost": "4 pints liquid",
+      "weight": "",
+      "description": "",
+      "category": "Container Capacity",
+      "type": "gear"
+    }
+  ]
+}

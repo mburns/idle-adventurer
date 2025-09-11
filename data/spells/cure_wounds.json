@@ -1,0 +1,12 @@
+{
+  "name": "Cure Wounds",
+  "level": "",
+  "school": "",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": "V, S",
+  "duration": "Instantaneous",
+  "description": "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.",
+  "at_higher_levels": "",
+  "classes": []
+}

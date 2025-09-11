@@ -1,0 +1,46 @@
+{
+  "name": "Bugbear",
+  "size": "Medium humanoid (goblinoid)",
+  "type": "chaotic evil",
+  "alignment": "",
+  "armor_class": "16 (hide armor, shield)",
+  "hit_points": "27 (5d8+5)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 15,
+    "dexterity": 14,
+    "constitution": 13,
+    "intelligence": 8,
+    "wisdom": 11,
+    "charisma": 9
+  },
+  "saving_throws": [],
+  "skills": [
+    "Stealth +6",
+    "Survival +2"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 60 ft., passive Perception 10",
+  "languages": "Common, Goblin",
+  "challenge_rating": "1",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Morningstar***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 11 (2d8+2) piercing dama",
+      "description": ""
+    },
+    {
+      "name": "Javelin***. *Melee or Ranged Weapon Attack:* +4 to hit, reach 5 ft. or range 30/120 ft., one target. *Hit:* 9 (2d6+2) piercing damage in melee or 5 (1d6+2) piercing damage at ran",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Hermit",
+  "skill_proficiencies": [
+    "Medicine",
+    "Religion"
+  ],
+  "languages": [
+    "One of your choice"
+  ],
+  "equipment": [
+    "A scroll case stuffed full of notes from your studies or prayers",
+    "a winter blanket",
+    "a set of common clothes",
+    "an herbalism kit",
+    "and 5 gp"
+  ],
+  "feature": "Discovery",
+  "suggested_characteristics": {}
+}

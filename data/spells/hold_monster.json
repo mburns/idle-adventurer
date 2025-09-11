@@ -1,0 +1,12 @@
+{
+  "name": "Hold Monster",
+  "level": "",
+  "school": "",
+  "casting_time": "1 action",
+  "range": "90 feet",
+  "components": "V, S, M (a small, straight piece of iron)",
+  "duration": "Concentration, up to 1 minute",
+  "description": "Choose a creature that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. This spell has no effect on undead. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.",
+  "at_higher_levels": "",
+  "classes": []
+}

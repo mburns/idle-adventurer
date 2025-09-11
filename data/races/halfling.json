@@ -1,0 +1,18 @@
+{
+  "name": "Halfling",
+  "ability_increases": {
+    "dexterity": 2
+  },
+  "size": "Small",
+  "speed": 25,
+  "languages": [
+    "Common",
+    "Halfling"
+  ],
+  "traits": [
+    "Lucky",
+    "Brave",
+    "Halfling Nimbleness",
+    "Naturally Stealthy"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Acolyte",
+  "size": "Medium humanoid (any race)",
+  "type": "any alignment",
+  "alignment": "",
+  "armor_class": "10",
+  "hit_points": "9 (2d8)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 10,
+    "dexterity": 10,
+    "constitution": 10,
+    "intelligence": 10,
+    "wisdom": 14,
+    "charisma": 11
+  },
+  "saving_throws": [],
+  "skills": [
+    "Medicine +4",
+    "Religion +2"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "passive Perception 12",
+  "languages": "any one language (usually Common)",
+  "challenge_rating": "1/4",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Club***. *Melee Weapon Attack:* +2 to hit, reach 5 ft., one target. *Hit:* 2 (1d4) bludgeoning dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

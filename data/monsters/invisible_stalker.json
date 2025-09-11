@@ -1,0 +1,61 @@
+{
+  "name": "Invisible Stalker",
+  "size": "Medium elemental",
+  "type": "neutral",
+  "alignment": "",
+  "armor_class": "14",
+  "hit_points": "104 (16d8+32)",
+  "speed": "50 ft., fly 50 ft. (hover)",
+  "abilities": {
+    "strength": 16,
+    "dexterity": 19,
+    "constitution": 14,
+    "intelligence": 10,
+    "wisdom": 15,
+    "charisma": 11
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +8",
+    "Stealth +10"
+  ],
+  "damage_immunities": [
+    "poison"
+  ],
+  "damage_resistances": [
+    "bludgeoning",
+    "piercing",
+    "and slashing from nonmagical attacks"
+  ],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [
+    "exhaustion",
+    "grappled",
+    "paralyzed",
+    "petrified",
+    "poisoned",
+    "prone",
+    "restrained",
+    "unconscious"
+  ],
+  "senses": "darkvision 60 ft., passive Perception 18",
+  "languages": "Auran, understands Common but doesn't speak it",
+  "challenge_rating": "6",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Multiattack***. The stalker makes two slam attac",
+      "description": ""
+    },
+    {
+      "name": "Slam***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) bludgeoning dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

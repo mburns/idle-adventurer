@@ -1,0 +1,46 @@
+{
+  "name": "Azer",
+  "size": "Medium elemental",
+  "type": "lawful neutral",
+  "alignment": "",
+  "armor_class": "17 (natural armor, shield)",
+  "hit_points": "39 (6d8+12)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 17,
+    "dexterity": 12,
+    "constitution": 15,
+    "intelligence": 12,
+    "wisdom": 13,
+    "charisma": 10
+  },
+  "saving_throws": [
+    "Con +4"
+  ],
+  "skills": [],
+  "damage_immunities": [
+    "fire",
+    "poison"
+  ],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [
+    "poisoned"
+  ],
+  "senses": "passive Perception 11",
+  "languages": "Ignan",
+  "challenge_rating": "2",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Warhammer***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8+3) bludgeoning damage, or 8 (1d10+3) bludgeoning damage if used with two hands to make a melee attack, plus 3 (1d6) fire dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

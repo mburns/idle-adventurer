@@ -1,0 +1,59 @@
+{
+  "name": "Gladiator",
+  "size": "Medium humanoid (any race)",
+  "type": "any alignment",
+  "alignment": "",
+  "armor_class": "16 (studded leather, shield)",
+  "hit_points": "112 (15d8 + 45)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 18,
+    "dexterity": 15,
+    "constitution": 16,
+    "intelligence": 10,
+    "wisdom": 12,
+    "charisma": 15
+  },
+  "saving_throws": [
+    "Str +7",
+    "Dex +5",
+    "Con +6"
+  ],
+  "skills": [
+    "Athletics +10",
+    "Intimidation +5"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "passive Perception 11",
+  "languages": "any one language (usually Common)",
+  "challenge_rating": "5",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Multiattack***. The gladiator makes three melee attacks or two ranged attac",
+      "description": ""
+    },
+    {
+      "name": "Spear***. *Melee or Ranged Weapon Attack:* +7 to hit, reach 5 ft. and range 20/60 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee atta",
+      "description": ""
+    },
+    {
+      "name": "Shield Bash***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one creature. *Hit:* 9 (2d4 + 4) bludgeoning damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Strength saving throw or be knocked pro",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [
+    {
+      "name": "Parry***. The gladiator adds 3 to its AC against one melee attack that would hit it. To do so, the gladiator must see the attacker and be wielding a melee weap",
+      "description": ""
+    }
+  ],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

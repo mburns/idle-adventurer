@@ -1,0 +1,13 @@
+{
+  "name": "Ring of Telekinesis",
+  "type": "Ring",
+  "rarity": "Very Rare",
+  "attunement": true,
+  "description": "While wearing this ring, you can cast the *telekinesis* spell at will, but you can target only objects that aren't being worn or carried.",
+  "properties": [],
+  "effects": [],
+  "requirements": "attunement",
+  "weight": "",
+  "value": "",
+  "category": "magic_item"
+}

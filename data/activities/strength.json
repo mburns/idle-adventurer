@@ -1,0 +1,66 @@
+[
+  {
+    "id": "athletics_training",
+    "name": "Athletics Training",
+    "description": "Practice climbing, jumping, and swimming",
+    "ability": "strength",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.5,
+    "rewards": {
+      "athletics_skill": 1,
+      "strength_exp": 10
+    },
+    "requirements": {
+      "strength": 10
+    }
+  },
+  {
+    "id": "physical_labor",
+    "name": "Physical Labor",
+    "description": "Construction, mining, or heavy lifting work",
+    "ability": "strength",
+    "daily_progress": 0.15,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "gold": 2,
+      "strength_exp": 15,
+      "constitution_exp": 5
+    },
+    "requirements": {
+      "strength": 12
+    }
+  },
+  {
+    "id": "combat_training",
+    "name": "Combat Training",
+    "description": "Weapon practice and sparring",
+    "ability": "strength",
+    "daily_progress": 0.08,
+    "cost_per_day": 1.0,
+    "rewards": {
+      "weapon_proficiency": 1,
+      "strength_exp": 12
+    },
+    "requirements": {
+      "strength": 13,
+      "gold": 50
+    }
+  },
+  {
+    "id": "blacksmithing",
+    "name": "Blacksmithing",
+    "description": "Craft weapons and armor",
+    "ability": "strength",
+    "daily_progress": 0.05,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "crafting_skill": 1,
+      "strength_exp": 8,
+      "gold": 5
+    },
+    "requirements": {
+      "strength": 11,
+      "tools": "smith_tools"
+    }
+  }
+]

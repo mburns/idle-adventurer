@@ -1,0 +1,7 @@
+{
+  "name": "Madness Effects",
+  "type": "madness",
+  "description": "Madness can be short-term, long-term, or indefinite. Most relatively mundane effects impose short-term madness, which lasts for just a few minutes. More horrific effects or cumulative effects can result in long-term or indefinite madness.\n\nA character afflicted with **short-term madness** is subjected to an effect from the Short-Term Madness table for 1d10 minutes.\n\nA character afflicted with **long-term madness** is subjected to an effect from the Long-Term Madness table for 1d10 × 10 hours.\n\nA character afflicted with **indefinite madness** gains a new character flaw from the Indefinite Madness table that lasts until cured.\n\n**Table- Madness Short-Term Effects**\n\n**Table- Madness Long-Term Effects**\n\n**Table- Madness Indefinite Flaws**\n\nA *calm emotions* spell can suppress the effects of madness, while a *lesser restoration* spell can rid a character of a short-term or long-term madness. Depending on the source of the madness, *remove curse* or *dispel evil* might also prove effective. A *greater restoration* spell or more powerful magic is required to rid a character of indefinite madness.",
+  "effects": [],
+  "category": "madness"
+}

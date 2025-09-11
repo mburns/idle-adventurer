@@ -1,0 +1,21 @@
+{
+  "name": "Elf",
+  "ability_increases": {
+    "dexterity": 2
+  },
+  "size": "Medium",
+  "speed": 30,
+  "languages": [
+    "Common",
+    "Elvish"
+  ],
+  "traits": [
+    "Darkvision",
+    "Keen Senses",
+    "Fey Ancestry",
+    "Trance",
+    "Elf Weapon Training",
+    "Cantrip",
+    "Extra Language"
+  ]
+}

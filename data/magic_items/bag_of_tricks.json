@@ -1,0 +1,13 @@
+{
+  "name": "Bag of Tricks",
+  "type": "Wondrous item",
+  "rarity": "Uncommon",
+  "attunement": false,
+  "description": "This ordinary bag, made from gray, rust, or tan cloth, appears empty. Reaching inside the bag, however, reveals the presence of a small, fuzzy object. The bag weighs 1/2 pound.\n\nYou can use an action to pull the fuzzy object from the bag and throw it up to 20 feet. When the object lands, it transforms into a creature you determine by rolling a d8 and consulting the table that corresponds to the bag's color.\n\nThe creature is friendly to you and your companions, and it acts on your turn. You can use a bonus action to command how the creature moves and what action it takes on its next turn, or to give it general orders, such as to attack your enemies. In the absence of such orders, the creature acts in a fashion appropriate to its nature.\n\nOnce three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn.\n\n**Table- Gray Bag of Tricks**\n\n| d8 | Creature     |\n\n|----|--------------|\n\n| 1  | Weasel       |\n\n| 2  | Giant rat    |\n\n| 3  | Badger       |\n\n| 4  | Boar         |\n\n| 5  | Panther      |\n\n| 6  | Giant badger |\n\n| 7  | Dire wolf    |\n\n| 8  | Giant elk    |\n\n|    |              |\n\n**Table- Rust Bag of Tricks**\n\n| d8 | Creature   |\n\n|----|------------|\n\n| 1  | Rat        |\n\n| 2  | Owl        |\n\n| 3  | Mastiff    |\n\n| 4  | Goat       |\n\n| 5  | Giant goat |\n\n| 6  | Giant boar |\n\n| 7  | Lion       |\n\n| 8  | Brown bear |\n\n|    |            |\n\n**Table- Tan Bag of Tricks**\n\n| d8 | Creature     |\n\n|----|--------------|\n\n| 1  | Jackal       |\n\n| 2  | Ape          |\n\n| 3  | Baboon       |\n\n| 4  | Axe beak     |\n\n| 5  | Black bear   |\n\n| 6  | Giant weasel |\n\n| 7  | Giant hyena  |\n\n| 8  | Tiger        |\n\n|    |              |",
+  "properties": [],
+  "effects": [],
+  "requirements": "",
+  "weight": "1/2 pound",
+  "value": "",
+  "category": "magic_item"
+}

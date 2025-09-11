@@ -1,32 +1,32 @@
 extends Control
 
-var character_manager: CharacterManager
-
 func _ready():
-    character_manager = CharacterManager.new()
+    # Wait a frame to ensure all autoloads are ready
+    await get_tree().process_frame
     populate_dropdowns()
     update_ability_modifiers()
 
 func populate_dropdowns():
     # Populate race dropdown
-    var races = DnDData.get_race_names()
-    for race in races:
-        %RaceOptionButton.add_item(race)
+    var races = DataLoader.get_race_names()
+    if races.size() > 0:
+        for race in races:
+            %RaceOptionButton.add_item(race)
+        %RaceOptionButton.selected = 0
 
     # Populate class dropdown
-    var classes = DnDData.get_class_names()
-    for class_type in classes:
-        %ClassOptionButton.add_item(class_type)
+    var classes = DataLoader.get_class_names()
+    if classes.size() > 0:
+        for class_type in classes:
+            %ClassOptionButton.add_item(class_type)
+        %ClassOptionButton.selected = 0
 
     # Populate background dropdown
-    var backgrounds = DnDData.get_background_names()
-    for background in backgrounds:
-        %BackgroundOptionButton.add_item(background)
-
-    # Set default selections
-    %RaceOptionButton.selected = 0
-    %ClassOptionButton.selected = 0
-    %BackgroundOptionButton.selected = 0
+    var backgrounds = DataLoader.get_background_names()
+    if backgrounds.size() > 0:
+        for background in backgrounds:
+            %BackgroundOptionButton.add_item(background)
+        %BackgroundOptionButton.selected = 0
 
 func update_ability_modifiers():
     # Update ability modifier labels
@@ -40,22 +40,22 @@ func update_ability_modifiers():
 func calculate_modifier(score: int) -> int:
     return floor((score - 10) / 2.0)
 
-func _on_strength_spin_box_value_changed(value: float):
+func _on_strength_spin_box_value_changed(_value: float):
     update_ability_modifiers()
 
-func _on_dexterity_spin_box_value_changed(value: float):
+func _on_dexterity_spin_box_value_changed(_value: float):
     update_ability_modifiers()
 
-func _on_constitution_spin_box_value_changed(value: float):
+func _on_constitution_spin_box_value_changed(_value: float):
     update_ability_modifiers()
 
-func _on_intelligence_spin_box_value_changed(value: float):
+func _on_intelligence_spin_box_value_changed(_value: float):
     update_ability_modifiers()
 
-func _on_wisdom_spin_box_value_changed(value: float):
+func _on_wisdom_spin_box_value_changed(_value: float):
     update_ability_modifiers()
 
-func _on_charisma_spin_box_value_changed(value: float):
+func _on_charisma_spin_box_value_changed(_value: float):
     update_ability_modifiers()
 
 func _on_back_button_pressed():
@@ -65,6 +65,16 @@ func _on_create_character_button_pressed():
     # Validate input
     if %CharacterNameInput.text.strip_edges() == "":
         print("Please enter a character name")
+        return
+
+    # Check if CharacterManager is available
+    if CharacterManager == null:
+        print("CharacterManager not available yet, please wait")
+        return
+
+    # Check if dropdowns have items
+    if %RaceOptionButton.get_item_count() == 0 or %ClassOptionButton.get_item_count() == 0 or %BackgroundOptionButton.get_item_count() == 0:
+        print("Dropdowns not populated yet, please wait")
         return
 
     # Get selected values
@@ -82,7 +92,7 @@ func _on_create_character_button_pressed():
     var charisma = int(%CharismaSpinBox.value)
 
     # Create character
-    var character = character_manager.create_character(character_name, race, character_class, background)
+    var character = CharacterManager.create_character(character_name, race, character_class, background)
 
     # Set ability scores
     character.strength = strength
@@ -96,7 +106,7 @@ func _on_create_character_button_pressed():
     character.update_derived_stats()
 
     # Save character
-    character_manager.save_character()
+    CharacterManager.save_character()
 
     print("Character created: %s" % character.get_summary())
 

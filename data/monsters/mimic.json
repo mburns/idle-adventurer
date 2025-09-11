@@ -1,0 +1,49 @@
+{
+  "name": "Mimic",
+  "size": "Medium monstrosity (shapechanger)",
+  "type": "neutral",
+  "alignment": "",
+  "armor_class": "12 (natural armor)",
+  "hit_points": "58 (9d8+18)",
+  "speed": "15 ft.",
+  "abilities": {
+    "strength": 17,
+    "dexterity": 12,
+    "constitution": 15,
+    "intelligence": 5,
+    "wisdom": 13,
+    "charisma": 8
+  },
+  "saving_throws": [],
+  "skills": [
+    "Stealth +5"
+  ],
+  "damage_immunities": [
+    "acid"
+  ],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [
+    "prone"
+  ],
+  "senses": "darkvision 60 ft., passive Perception 11",
+  "languages": "-",
+  "challenge_rating": "2",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Pseudopod***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8+3) bludgeoning damage. If the mimic is in object form, the target is subjected to its Adhesive tra",
+      "description": ""
+    },
+    {
+      "name": "Bite***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8+3) piercing damage plus 4 (1d8) acid dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

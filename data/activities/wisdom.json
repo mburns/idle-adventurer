@@ -1,0 +1,93 @@
+[
+  {
+    "id": "animal_handling",
+    "name": "Animal Handling",
+    "description": "Train animals and practice veterinary skills",
+    "ability": "wisdom",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.3,
+    "rewards": {
+      "animal_handling_skill": 1,
+      "wisdom_exp": 10
+    },
+    "requirements": {
+      "wisdom": 11
+    }
+  },
+  {
+    "id": "insight_practice",
+    "name": "Insight Practice",
+    "description": "People watching and psychology study",
+    "ability": "wisdom",
+    "daily_progress": 0.08,
+    "cost_per_day": 0.1,
+    "rewards": {
+      "insight_skill": 1,
+      "wisdom_exp": 8
+    },
+    "requirements": {
+      "wisdom": 10
+    }
+  },
+  {
+    "id": "medicine_practice",
+    "name": "Medicine Practice",
+    "description": "Healing practice and medical research",
+    "ability": "wisdom",
+    "daily_progress": 0.09,
+    "cost_per_day": 0.5,
+    "rewards": {
+      "medicine_skill": 1,
+      "wisdom_exp": 12
+    },
+    "requirements": {
+      "wisdom": 12
+    }
+  },
+  {
+    "id": "perception_training",
+    "name": "Perception Training",
+    "description": "Awareness exercises and sensory training",
+    "ability": "wisdom",
+    "daily_progress": 0.11,
+    "cost_per_day": 0.2,
+    "rewards": {
+      "perception_skill": 1,
+      "wisdom_exp": 10
+    },
+    "requirements": {
+      "wisdom": 10
+    }
+  },
+  {
+    "id": "survival_skills",
+    "name": "Survival Skills",
+    "description": "Foraging, tracking, and wilderness survival",
+    "ability": "wisdom",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "survival_skill": 1,
+      "wisdom_exp": 8,
+      "materials": 1
+    },
+    "requirements": {
+      "wisdom": 11
+    }
+  },
+  {
+    "id": "spiritual_practices",
+    "name": "Spiritual Practices",
+    "description": "Meditation and religious devotion",
+    "ability": "wisdom",
+    "daily_progress": 0.06,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "wisdom_exp": 6,
+      "spiritual_insight": 1
+    },
+    "requirements": {
+      "wisdom": 10
+    }
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "name": "Night Hag",
+  "size": "Medium fiend",
+  "type": "neutral evil",
+  "alignment": "",
+  "armor_class": "17 (natural armor)",
+  "hit_points": "112 (15d8+45)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 18,
+    "dexterity": 15,
+    "constitution": 16,
+    "intelligence": 16,
+    "wisdom": 14,
+    "charisma": 16
+  },
+  "saving_throws": [],
+  "skills": [
+    "Deception +7",
+    "Insight +6",
+    "Perception +6",
+    "Stealth +6"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [
+    "cold",
+    "fire; bludgeoning",
+    "piercing",
+    "and slashing from nonmagical attacks not made with silvered weapons"
+  ],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [
+    "charmed"
+  ],
+  "senses": "darkvision 120 ft., passive Perception 16",
+  "languages": "Abyssal, Common, Infernal, Primordial",
+  "challenge_rating": "5",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Claws (Hag Form Only)***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) slashing dama",
+      "description": ""
+    },
+    {
+      "name": "Change Shape***. The hag magically polymorphs into a Small or Medium female humanoid, or back into her true form. Her statistics are the same in each form. Any equipment she is wearing or carrying isn't transformed. She reverts to her true form if she di",
+      "description": ""
+    },
+    {
+      "name": "Etherealness***. The hag magically enters the Ethereal Plane from the Material Plane, or vice versa. To do so, the hag must have a *heartstone* in her possessi",
+      "description": ""
+    },
+    {
+      "name": "Nightmare Haunting (1/Day)***. While on the Ethereal Plane, the hag magically touches a sleeping humanoid on the Material Plane. A *protection from evil and good* spell cast on the target prevents this contact, as does a *magic circle*. As long as the contact persists, the target has dreadful visions. If these visions last for at least 1 hour, the target gains no benefit from its rest, and its hit point maximum is reduced by 5 (1d10). If this effect reduces the target's hit point maximum to 0, the target dies, and if the target was evil, its soul is trapped in the hag's *soul bag*. The reduction to the target's hit point maximum lasts until removed by the *greater restoration* spell or similar mag",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

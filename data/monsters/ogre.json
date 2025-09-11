@@ -1,0 +1,43 @@
+{
+  "name": "Ogre",
+  "size": "Large giant",
+  "type": "chaotic evil",
+  "alignment": "",
+  "armor_class": "11 (hide armor)",
+  "hit_points": "59 (7d10+21)",
+  "speed": "40 ft.",
+  "abilities": {
+    "strength": 19,
+    "dexterity": 8,
+    "constitution": 16,
+    "intelligence": 5,
+    "wisdom": 7,
+    "charisma": 7
+  },
+  "saving_throws": [],
+  "skills": [],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 60 ft., passive Perception 8",
+  "languages": "Common, Giant",
+  "challenge_rating": "2",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Greatclub***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) bludgeoning dama",
+      "description": ""
+    },
+    {
+      "name": "Javelin***. *Melee or Ranged Weapon Attack:* +6 to hit, reach 5 ft. or range 30/120 ft., one target. *Hit:* 11 (2d6+4) piercing dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

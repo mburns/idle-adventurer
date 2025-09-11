@@ -1,0 +1,21 @@
+{
+  "name": "Human",
+  "ability_increases": {
+    "strength": 1,
+    "dexterity": 1,
+    "constitution": 1,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 1
+  },
+  "size": "Medium",
+  "speed": 30,
+  "languages": [
+    "Common",
+    "Elvish",
+    "Dwarvish",
+    "Orc",
+    "One extra language"
+  ],
+  "traits": []
+}

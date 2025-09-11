@@ -28,15 +28,15 @@ As a ranger, you gain the following class features.
 
 You start with the following equipment, in addition to the equipment granted by your background:
 
-- (*a*) scale mail or (*b*) leather armor
-- (*a*) two shortswords or (*b*) two simple melee weapons
-- (*a*) a dungeoneer's pack or (*b*) an explorer's pack
+- (_a_) scale mail or (_b_) leather armor
+- (_a_) two shortswords or (_b_) two simple melee weapons
+- (_a_) a dungeoneer's pack or (_b_) an explorer's pack
 - A longbow and a quiver of 20 arrows
 
 **Table- The Ranger**
 
 | Level | Proficiency Bonus | Features                                          | Spells Known | 1st | 2nd | 3rd | 4th | 5th |
-|-------|-------------------|---------------------------------------------------|--------------|-----|-----|-----|-----|-----|
+| ----- | ----------------- | ------------------------------------------------- | ------------ | --- | --- | --- | --- | --- |
 | 1st   | +2                | Favored Enemy, Natural Explorer                   | -            | -   | -   | -   | -   | -   |
 | 2nd   | +2                | Fighting Style, Spellcasting                      | 2            | 2   | -   | -   | -   | -   |
 | 3rd   | +2                | Ranger Archetype, Primeval Awareness              | 3            | 3   | -   | -   | -   | -   |
@@ -57,7 +57,6 @@ You start with the following equipment, in addition to the equipment granted by 
 | 18th  | +6                | Feral Senses                                      | 10           | 4   | 3   | 3   | 3   | 1   |
 | 19th  | +6                | Ability Score Improvement                         | 11           | 4   | 3   | 3   | 3   | 2   |
 | 20th  | +6                | Foe Slayer                                        | 11           | 4   | 3   | 3   | 3   | 2   |
-|       |                   |                                                   |              |     |     |     |     |     |
 
 ### Favored Enemy
 
@@ -114,7 +113,7 @@ By the time you reach 2nd level, you have learned to use the magical essence of 
 
 The Ranger table shows how many spell slots you have to cast your ranger spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.
 
-For example, if you know the 1st-level spell *animal friendship* and have a 1st-level and a 2nd-level spell slot available, you can cast *animal friendship* using either slot.
+For example, if you know the 1st-level spell _animal friendship_ and have a 1st-level and a 2nd-level spell slot available, you can cast _animal friendship_ using either slot.
 
 #### Spells Known of 1st Level and Higher
 
@@ -152,7 +151,7 @@ Beginning at 5th level, you can attack twice, instead of once, whenever you take
 
 Starting at 8th level, moving through nonmagical difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.
 
-In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such those created by the *entangle* spell.
+In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such those created by the _entangle_ spell.
 
 ### Hide in Plain Sight
 
@@ -186,39 +185,39 @@ Emulating the Hunter archetype means accepting your place as a bulwark between c
 
 At 3rd level, you gain one of the following features of your choice.
 
-***Colossus Slayer***. Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn.
+**_Colossus Slayer_**. Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn.
 
-***Giant Killer***. When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature.
+**_Giant Killer_**. When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature.
 
-***Horde Breaker***. Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon.
+**_Horde Breaker_**. Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon.
 
 #### Defensive Tactics
 
 At 7th level, you gain one of the following features of your choice.
 
-***Escape the Horde***. Opportunity attacks against you are made with disadvantage.
+**_Escape the Horde_**. Opportunity attacks against you are made with disadvantage.
 
-***Multiattack Defense***. When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn.
+**_Multiattack Defense_**. When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn.
 
-***Steel Will***. You have advantage on saving throws against being frightened.
+**_Steel Will_**. You have advantage on saving throws against being frightened.
 
 #### Multiattack
 
 At 11th level, you gain one of the following features of your choice.
 
-***Volley***. You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon's range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target.
+**_Volley_**. You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon's range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target.
 
-***Whirlwind Attack***. You can use your action to make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.
+**_Whirlwind Attack_**. You can use your action to make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.
 
 #### Superior Hunter's Defense
 
 At 15th level, you gain one of the following features of your choice.
 
-***Evasion***. When you are subjected to an effect, such as a red dragon's fiery breath or a *lightning bolt* spell, that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.
+**_Evasion_**. When you are subjected to an effect, such as a red dragon's fiery breath or a _lightning bolt_ spell, that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.
 
-***Stand Against the Tide***. When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice.
+**_Stand Against the Tide_**. When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice.
 
-***Uncanny Dodge***. When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.
+**_Uncanny Dodge_**. When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.
 
 ## Ranger Spells
 

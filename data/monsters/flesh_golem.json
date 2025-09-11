@@ -1,0 +1,55 @@
+{
+  "name": "Flesh Golem",
+  "size": "Medium construct",
+  "type": "neutral",
+  "alignment": "",
+  "armor_class": "9",
+  "hit_points": "93 (11d8+44)",
+  "speed": "30 ft.",
+  "abilities": {
+    "strength": 19,
+    "dexterity": 9,
+    "constitution": 18,
+    "intelligence": 6,
+    "wisdom": 10,
+    "charisma": 5
+  },
+  "saving_throws": [],
+  "skills": [],
+  "damage_immunities": [
+    "lightning",
+    "poison; bludgeoning",
+    "piercing",
+    "and slashing from nonmagical attacks that aren't adamantine"
+  ],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [
+    "charmed",
+    "exhaustion",
+    "frightened",
+    "paralyzed",
+    "petrified",
+    "poisoned"
+  ],
+  "senses": "darkvision 60 ft., passive Perception 10",
+  "languages": "understands the languages of its creator but can't speak",
+  "challenge_rating": "5",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Multiattack***. The golem makes two slam attac",
+      "description": ""
+    },
+    {
+      "name": "Slam***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) bludgeoning dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Dwarf",
+  "ability_increases": {
+    "constitution": 2
+  },
+  "size": "Medium",
+  "speed": 25,
+  "languages": [
+    "Common",
+    "Dwarvish"
+  ],
+  "traits": [
+    "Darkvision",
+    "Dwarven Resilience",
+    "Dwarven Combat Training",
+    "Tool Proficiency",
+    "Stonecunning",
+    "Dwarven Toughness"
+  ]
+}

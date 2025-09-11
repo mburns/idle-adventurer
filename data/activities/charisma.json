@@ -1,0 +1,97 @@
+[
+  {
+    "id": "performance",
+    "name": "Performance",
+    "description": "Music, acting, storytelling, and entertainment",
+    "ability": "charisma",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "performance_skill": 1,
+      "charisma_exp": 12,
+      "gold": 4
+    },
+    "requirements": {
+      "charisma": 12
+    }
+  },
+  {
+    "id": "deception_practice",
+    "name": "Deception Practice",
+    "description": "Acting, disguise, and social manipulation",
+    "ability": "charisma",
+    "daily_progress": 0.08,
+    "cost_per_day": 0.2,
+    "rewards": {
+      "deception_skill": 1,
+      "charisma_exp": 10
+    },
+    "requirements": {
+      "charisma": 11
+    }
+  },
+  {
+    "id": "intimidation_training",
+    "name": "Intimidation Training",
+    "description": "Leadership and commanding presence",
+    "ability": "charisma",
+    "daily_progress": 0.09,
+    "cost_per_day": 0.3,
+    "rewards": {
+      "intimidation_skill": 1,
+      "charisma_exp": 8
+    },
+    "requirements": {
+      "charisma": 13
+    }
+  },
+  {
+    "id": "persuasion_practice",
+    "name": "Persuasion Practice",
+    "description": "Negotiation, diplomacy, and public speaking",
+    "ability": "charisma",
+    "daily_progress": 0.1,
+    "cost_per_day": 0.1,
+    "rewards": {
+      "persuasion_skill": 1,
+      "charisma_exp": 10
+    },
+    "requirements": {
+      "charisma": 11
+    }
+  },
+  {
+    "id": "social_networking",
+    "name": "Social Networking",
+    "description": "Building relationships and reputation",
+    "ability": "charisma",
+    "daily_progress": 0.07,
+    "cost_per_day": 1.0,
+    "rewards": {
+      "charisma_exp": 8,
+      "reputation": 2,
+      "connections": 1
+    },
+    "requirements": {
+      "charisma": 12,
+      "gold": 50
+    }
+  },
+  {
+    "id": "entertainment_business",
+    "name": "Entertainment Business",
+    "description": "Running taverns and organizing events",
+    "ability": "charisma",
+    "daily_progress": 0.05,
+    "cost_per_day": 0.0,
+    "rewards": {
+      "charisma_exp": 15,
+      "gold": 10,
+      "reputation": 3
+    },
+    "requirements": {
+      "charisma": 14,
+      "gold": 200
+    }
+  }
+]

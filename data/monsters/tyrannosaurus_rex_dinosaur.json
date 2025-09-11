@@ -1,0 +1,49 @@
+{
+  "name": "Tyrannosaurus Rex (Dinosaur)",
+  "size": "Huge beast",
+  "type": "unaligned",
+  "alignment": "",
+  "armor_class": "13 (natural armor)",
+  "hit_points": "136 (13d12+52)",
+  "speed": "50 ft.",
+  "abilities": {
+    "strength": 25,
+    "dexterity": 10,
+    "constitution": 19,
+    "intelligence": 2,
+    "wisdom": 12,
+    "charisma": 9
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +4"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "passive Perception 14",
+  "languages": "-",
+  "challenge_rating": "8",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Multiattack***. The tyrannosaurus makes two attacks: one with its bite and one with its tail. It can't make both attacks against the same targ",
+      "description": ""
+    },
+    {
+      "name": "Bite***. *Melee Weapon Attack:* +10 to hit, reach 10 ft., one target. *Hit:* 33 (4d12+7) piercing damage. If the target is a Medium or smaller creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the tyrannosaurus can't bite another targ",
+      "description": ""
+    },
+    {
+      "name": "Tail***. *Melee Weapon Attack:* +10 to hit, reach 10 ft., one target. *Hit:* 20 (3d8+7) bludgeoning dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}

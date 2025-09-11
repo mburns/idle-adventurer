@@ -1,0 +1,13 @@
+{
+  "name": "Helm of Comprehending Languages",
+  "type": "Wondrous item",
+  "rarity": "Uncommon",
+  "attunement": false,
+  "description": "While wearing this helm, you can use an action to cast the *comprehend languages* spell from it at will.",
+  "properties": [],
+  "effects": [],
+  "requirements": "",
+  "weight": "",
+  "value": "",
+  "category": "magic_item"
+}

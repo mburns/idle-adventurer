@@ -1,0 +1,42 @@
+{
+  "name": "Giant Owl",
+  "size": "Large beast",
+  "type": "neutral",
+  "alignment": "",
+  "armor_class": "12",
+  "hit_points": "19 (3d10+3)",
+  "speed": "5 ft., fly 60 ft.",
+  "abilities": {
+    "strength": 13,
+    "dexterity": 15,
+    "constitution": 12,
+    "intelligence": 8,
+    "wisdom": 13,
+    "charisma": 10
+  },
+  "saving_throws": [],
+  "skills": [
+    "Perception +5",
+    "Stealth +4"
+  ],
+  "damage_immunities": [],
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 120 ft., passive Perception 15",
+  "languages": "Giant Owl, understands Common, Elvish, and Sylvan but can't speak them",
+  "challenge_rating": "1/4",
+  "xp": 0,
+  "traits": [],
+  "actions": [
+    {
+      "name": "Talons***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 8 (2d6+1) slashing dama",
+      "description": ""
+    }
+  ],
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
+  "description": "",
+  "category": "monster"
+}
