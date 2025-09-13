@@ -1,0 +1,11 @@
+name: Ring of Protection
+type: Ring
+rarity: Rare
+attunement: true
+description: You gain a +1 bonus to AC and saving throws while wearing this ring.
+properties: []
+effects: []
+requirements: attunement
+weight: ""
+value: ""
+category: magic_item

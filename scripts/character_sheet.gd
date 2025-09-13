@@ -1,9 +1,6 @@
-extends Control
+extends BaseScreen
 
 # D&D Character Sheet with dice rolling functionality
-
-@onready var character: Character
-var character_manager: CharacterManager
 
 # UI References
 @onready var name_label: Label
@@ -33,16 +30,10 @@ var ability_modifiers: Dictionary = {}
 # Dice rolling system
 var dice_history: Array[Dictionary] = []
 
-func _ready():
-	# Get character manager and current character
-	character_manager = CharacterManager
-	character = character_manager.get_current_character()
-
+func on_screen_ready() -> void:
+	"""Override base screen ready for character sheet specific setup"""
 	# Setup UI references
 	setup_ui_references()
-
-	# Connect to character events
-	connect_to_character_events()
 
 	# Update display
 	update_character_sheet()
@@ -55,6 +46,14 @@ func setup_ui_references():
 	name_label = %NameLabel
 	level_class_label = %LevelClassLabel
 	race_background_label = %RaceBackgroundLabel
+
+	# Check if elements exist
+	if not name_label:
+		print("Warning: NameLabel not found in character sheet")
+	if not level_class_label:
+		print("Warning: LevelClassLabel not found in character sheet")
+	if not race_background_label:
+		print("Warning: RaceBackgroundLabel not found in character sheet")
 
 	# Get ability score UI
 	ability_containers = {
@@ -94,9 +93,10 @@ func setup_ui_references():
 	dice_input = %DiceInput
 	roll_result = %RollResult
 
-func connect_to_character_events():
-	if character_manager:
-		character_manager.character_changed.connect(_on_character_changed)
+func connect_signals() -> void:
+	"""Override base screen signals for character sheet specific connections"""
+	super.connect_signals()
+	# Additional character sheet specific signals can be added here
 
 func update_character_sheet():
 	if character == null:
@@ -118,27 +118,37 @@ func update_character_sheet():
 	update_active_buffs()
 
 func show_default_sheet():
-	name_label.text = "No Character"
-	level_class_label.text = "Create a character to begin"
-	race_background_label.text = ""
+	if name_label:
+		name_label.text = "No Character"
+	if level_class_label:
+		level_class_label.text = "Create a character to begin"
+	if race_background_label:
+		race_background_label.text = ""
 
 	# Clear all values
 	for ability in ability_values.keys():
 		ability_values[ability].text = "--"
 		ability_modifiers[ability].text = "(+0)"
 
-	hit_points_value.text = "--/--"
-	armor_class_value.text = "--"
-	initiative_value.text = "+0"
-	proficiency_value.text = "+0"
+	if hit_points_value:
+		hit_points_value.text = "--/--"
+	if armor_class_value:
+		armor_class_value.text = "--"
+	if initiative_value:
+		initiative_value.text = "+0"
+	if proficiency_value:
+		proficiency_value.text = "+0"
 
 func update_character_info():
 	if character == null:
 		return
 
-	name_label.text = character.name
-	level_class_label.text = "Level %d %s" % [character.level, character.character_class.capitalize()]
-	race_background_label.text = "%s • %s" % [character.race.capitalize(), character.background.capitalize()]
+	if name_label:
+		name_label.text = character.name
+	if level_class_label:
+		level_class_label.text = "Level %d %s" % [character.level, character.character_class.capitalize()]
+	if race_background_label:
+		race_background_label.text = "%s • %s" % [character.race.capitalize(), character.background.capitalize()]
 
 func update_ability_scores():
 	if character == null:
@@ -157,13 +167,17 @@ func update_combat_stats():
 	if character == null:
 		return
 
-	hit_points_value.text = "%d/%d" % [character.hit_points, character.max_hit_points]
-	armor_class_value.text = str(character.armor_class)
-	initiative_value.text = "%+d" % character.get_dexterity_modifier()
-	proficiency_value.text = "%+d" % character.proficiency_bonus
+	if hit_points_value:
+		hit_points_value.text = "%d/%d" % [character.hit_points, character.max_hit_points]
+	if armor_class_value:
+		armor_class_value.text = str(character.armor_class)
+	if initiative_value:
+		initiative_value.text = "%+d" % character.get_dexterity_modifier()
+	if proficiency_value:
+		proficiency_value.text = "%+d" % character.proficiency_bonus
 
-func _on_character_changed(new_character: Character):
-	character = new_character
+func on_character_updated() -> void:
+	"""Override base screen character update for character sheet specific behavior"""
 	update_character_sheet()
 
 # Dice Rolling System
@@ -194,7 +208,7 @@ func roll_dice(dice_string: String) -> Dictionary:
 
 	total += modifier
 
-	var roll_result = {
+	var dice_result = {
 		"dice_string": dice_string,
 		"rolls": rolls,
 		"modifier": modifier,
@@ -203,9 +217,9 @@ func roll_dice(dice_string: String) -> Dictionary:
 	}
 
 	# Add to history
-	dice_history.append(roll_result)
+	dice_history.append(dice_result)
 
-	return roll_result
+	return dice_result
 
 func roll_ability_check(ability: String) -> Dictionary:
 	if character == null:
@@ -334,8 +348,7 @@ func animate_roll_result():
 	tween.tween_property(roll_result, "modulate", Color.YELLOW, 0.1)
 	tween.tween_property(roll_result, "modulate", Color.WHITE, 0.1)
 
-func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+# Back button is handled by base class
 
 # Additional D&D functionality
 func get_skill_modifier(skill: String) -> int:

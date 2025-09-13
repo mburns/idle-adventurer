@@ -2,7 +2,7 @@ extends Node
 
 # Enhanced activities system with multiple activities per ability score
 # Based on D&D 5e rules and idle game mechanics
-# Activities are now loaded from JSON files in data/activities/
+# Activities are now loaded from YAML files in data/activities/
 
 class_name EnhancedActivities
 
@@ -12,15 +12,18 @@ signal activity_progress(activity: String, character: Character, progress: float
 
 var data_loader: Node
 
-# Activities are now loaded from JSON files via data_loader
+# Activities are now loaded from YAML files via data_loader
 
 
 var active_activities: Dictionary = {} # character_id -> activity_data
 
 func _init():
-    # Use the autoload DataLoader
-    data_loader = DataLoader
+    # Don't reference DataLoader directly in _init to avoid compilation issues
     setup_activity_system()
+
+func _ready():
+    # DataLoader will be set when needed
+    pass
 
 func setup_activity_system():
     """Initialize the enhanced activities system"""
@@ -32,15 +35,80 @@ func setup_activity_system():
 
 func get_activities_for_ability(ability: String) -> Dictionary:
     """Get all activities for a specific ability score"""
-    if data_loader:
-        return data_loader.get_activities_for_ability(ability)
-    return {}
+    var all_activities = get_all_activities()
+    return all_activities.get(ability.to_lower(), {})
 
 func get_all_activities() -> Dictionary:
     """Get all available activities organized by ability"""
-    if data_loader:
-        return data_loader.get_all_activities()
-    return {}
+    # Always use direct loading for now to avoid DataLoader issues
+    return _load_activities_directly()
+
+func _load_activities_directly() -> Dictionary:
+    """Fallback method to load activities directly from JSON files"""
+    var activities = {
+        "strength": {},
+        "dexterity": {},
+        "intelligence": {},
+        "wisdom": {},
+        "charisma": {},
+        "constitution": {},
+        "general": {}
+    }
+
+    # Load activities from JSON files
+    var activities_dir = "res://data/activities/"
+    var dir = DirAccess.open(activities_dir)
+    if dir == null:
+        print("Error: Could not open activities directory")
+        return activities
+
+    var files = dir.get_files()
+    for file_name in files:
+        if file_name.ends_with(".yaml"):
+            var file_path = activities_dir + file_name
+            _load_activities_from_file(file_path, activities)
+
+    print("Loaded ", _count_activities(activities), " activities directly")
+    return activities
+
+func _load_activities_from_file(file_path: String, activities: Dictionary):
+    """Load activities from a single YAML file"""
+    var file = FileAccess.open(file_path, FileAccess.READ)
+    if not file:
+        print("Error opening ", file_path)
+        return
+
+    var yaml_string = file.get_as_text()
+    file.close()
+
+    var activities_array = parse_yaml_activities(yaml_string)
+    if not activities_array is Array:
+        print("Error: ", file_path, " does not contain an array")
+        return
+
+    # Process each activity in the file
+    for activity_data in activities_array:
+        var activity_id = activity_data.get("id", "")
+        var ability = activity_data.get("ability", "general")
+
+        if activity_id == "":
+            print("Activity missing ID in ", file_path)
+            continue
+
+        # Ensure ability is valid
+        if not ability in activities:
+            print("Invalid ability '", ability, "' for activity '", activity_id, "' in ", file_path)
+            ability = "general"
+
+        # Store the activity
+        activities[ability][activity_id] = activity_data
+
+func _count_activities(activities: Dictionary) -> int:
+    """Count total activities in the dictionary"""
+    var count = 0
+    for ability in activities.keys():
+        count += activities[ability].size()
+    return count
 
 func can_start_activity(character: Character, activity_id: String, ability: String) -> bool:
     """Check if character can start a specific activity"""
@@ -224,8 +292,8 @@ func complete_activity(character: Character, activity: Dictionary):
 
 func restart_activity(character: Character, activity: Dictionary):
     """Restart an activity by resetting its progress"""
-    var activity_id = activity.get("id", "")
-    var ability = activity.get("ability", "general")
+    var _activity_id = activity.get("id", "")
+    var _ability = activity.get("ability", "general")
 
     # Reset progress to 0
     activity["progress"] = 0.0
@@ -254,3 +322,112 @@ func get_active_activities() -> Dictionary:
 func get_character_activity(character_name: String) -> Dictionary:
     """Get activity for specific character"""
     return active_activities.get(character_name, {})
+
+# YAML parsing functions
+func parse_yaml_activities(yaml_string: String) -> Array:
+    var lines = yaml_string.split("\n")
+    var activities = []
+    var current_activity = {}
+    var current_key = ""
+    var in_multiline = false
+    var indent_level = 0
+
+    for line in lines:
+        line = line.strip_edges()
+        if line.is_empty() or line.begins_with("#"):
+            continue
+
+        var line_indent = get_indent_level(line)
+
+        # Handle array items (activities)
+        if line.begins_with("- ") and line_indent == 0:
+            # Save previous activity if exists
+            if not current_activity.is_empty():
+                activities.append(current_activity)
+
+            # Start new activity
+            current_activity = {}
+            var item_line = line.substr(2).strip_edges()
+            if ":" in item_line:
+                var parts = item_line.split(":", 1)
+                current_key = parts[0].strip_edges()
+                var value = parts[1].strip_edges()
+                if value.is_empty():
+                    in_multiline = true
+                else:
+                    current_activity[current_key] = parse_value(value)
+            indent_level = 0
+        elif line.begins_with("-") and line_indent > 0:
+            # Handle nested array items
+            var item = line.substr(1).strip_edges()
+            if not current_activity.has(current_key):
+                current_activity[current_key] = []
+            current_activity[current_key].append(parse_value(item))
+        elif ":" in line and line_indent > 0:
+            # Handle key-value pairs within activity
+            if in_multiline and current_key != "":
+                current_activity[current_key] = current_activity.get(current_key, "").strip_edges()
+                in_multiline = false
+
+            var parts = line.split(":", 1)
+            current_key = parts[0].strip_edges()
+            var value = parts[1].strip_edges()
+
+            if value.is_empty():
+                in_multiline = true
+                current_activity[current_key] = ""
+            else:
+                current_activity[current_key] = parse_value(value)
+        elif in_multiline and line_indent > indent_level:
+            # Continue multiline value
+            current_activity[current_key] += "\n" + line
+        elif line_indent == 0 and not line.begins_with("-"):
+            # Handle top-level key-value pairs
+            if in_multiline and current_key != "":
+                current_activity[current_key] = current_activity.get(current_key, "").strip_edges()
+                in_multiline = false
+
+            var parts = line.split(":", 1)
+            current_key = parts[0].strip_edges()
+            var value = parts[1].strip_edges()
+
+            if value.is_empty():
+                in_multiline = true
+                current_activity[current_key] = ""
+            else:
+                current_activity[current_key] = parse_value(value)
+
+    # Save last activity
+    if not current_activity.is_empty():
+        activities.append(current_activity)
+
+    return activities
+
+func get_indent_level(line: String) -> int:
+    var indent = 0
+    for i in range(line.length()):
+        if line[i] == " ":
+            indent += 1
+        elif line[i] == "\t":
+            indent += 4
+        else:
+            break
+    return indent
+
+func parse_value(value: String) -> Variant:
+    # Try to parse as number
+    if value.is_valid_int():
+        return value.to_int()
+    elif value.is_valid_float():
+        return value.to_float()
+    # Try to parse as boolean
+    elif value == "true":
+        return true
+    elif value == "false":
+        return false
+    # Try to parse as null/empty
+    elif value == "null" or value == "~" or value == "":
+        return null
+    # Return as string
+    else:
+        return value

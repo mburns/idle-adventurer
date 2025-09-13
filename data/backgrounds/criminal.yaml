@@ -1,0 +1,12 @@
+name: Criminal
+skill_proficiencies:
+  - Deception
+  - Stealth
+languages:
+  - Thieves' Cant
+equipment:
+  - A crowbar
+  - a set of dark common clothes including a hood
+  - and a belt pouch containing 15 gp
+feature: Criminal Contact
+suggested_characteristics: {}

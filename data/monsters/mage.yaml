@@ -1,0 +1,37 @@
+name: Mage
+size: Medium humanoid (any race)
+type: any alignment
+alignment: ""
+armor_class: 12 (15 with *mage armor*)
+hit_points: 40 (9d8)
+speed: 30 ft.
+abilities:
+  strength: 9
+  dexterity: 14
+  constitution: 11
+  intelligence: 17
+  wisdom: 12
+  charisma: 11
+saving_throws:
+  - Int +6
+  - Wis +4
+skills:
+  - Arcana +6
+  - History +6
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: passive Perception 11
+languages: any four languages
+challenge_rating: "6"
+xp: 0
+traits: []
+actions:
+  - name: Dagger***. *Melee or Ranged Weapon Attack:* +5 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 4 (1d4 + 1) piercing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

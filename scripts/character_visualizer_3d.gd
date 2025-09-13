@@ -346,7 +346,13 @@ func setup_animation_system():
 	# Setup animation tree
 	animation_tree = AnimationTree.new()
 	animation_tree.name = "AnimationTree"
-	animation_tree.animation_player = animation_player
+
+	# Check if animation_player exists before setting it
+	if animation_player:
+		animation_tree.animation_player = animation_player
+	else:
+		print("Warning: AnimationPlayer is null, cannot set on AnimationTree")
+
 	add_child(animation_tree)
 
 func create_idle_animation():
@@ -548,7 +554,7 @@ func display_equipment_item(slot: String, item_name: String):
 		if material:
 			equipment_mesh.material_override = material
 
-func create_equipment_mesh(slot: String, item_name: String) -> Mesh:
+func create_equipment_mesh(slot: String, _item_name: String) -> Mesh:
 	"""Create a mesh for equipment based on slot type"""
 	match slot:
 		"head":
@@ -693,12 +699,12 @@ func get_character_bounds() -> AABB:
 	var bounds = AABB(Vector3(-0.5, 0, -0.5), Vector3(1, 2, 1))
 	return bounds
 
-func highlight_equipment(slot: String, highlight: bool = true):
+func highlight_equipment(_slot: String, _highlight: bool = true):
 	"""Highlight equipment slot (placeholder for future equipment system)"""
 	# TODO: Implement equipment highlighting in 3D
 	pass
 
-func get_equipment_at_position(pos: Vector3) -> String:
+func get_equipment_at_position(_pos: Vector3) -> String:
 	"""Get equipment at 3D position (placeholder)"""
 	# TODO: Implement 3D equipment interaction
 	return ""

@@ -1,0 +1,33 @@
+name: Draft Horse
+size: Large beast
+type: unaligned
+alignment: ""
+armor_class: "10"
+hit_points: 19 (3d10+3)
+speed: 40 ft.
+abilities:
+  strength: 18
+  dexterity: 10
+  constitution: 12
+  intelligence: 2
+  wisdom: 11
+  charisma: 7
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: passive Perception 10
+languages: '-'
+challenge_rating: 1/4
+xp: 0
+traits: []
+actions:
+  - name: Hooves***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 9 (2d4+4) bludgeoning dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

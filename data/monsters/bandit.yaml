@@ -1,0 +1,35 @@
+name: Bandit
+size: Medium humanoid (any race)
+type: any non-lawful alignment
+alignment: ""
+armor_class: 12 (leather armor)
+hit_points: 11 (2d8 + 2)
+speed: 30 ft.
+abilities:
+  strength: 11
+  dexterity: 12
+  constitution: 12
+  intelligence: 10
+  wisdom: 10
+  charisma: 10
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: passive Perception 10
+languages: any one language (usually Common)
+challenge_rating: 1/8
+xp: 0
+traits: []
+actions:
+  - name: Scimitar***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 4 (1d6 + 1) slashing dama
+    description: ""
+  - name: Light Crossbow***. *Ranged Weapon Attack:* +3 to hit, range 80/320 ft., one target. *Hit:* 5 (1d8 + 1) piercing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

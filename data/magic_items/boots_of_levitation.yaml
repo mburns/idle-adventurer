@@ -1,0 +1,11 @@
+name: Boots of Levitation
+type: Wondrous item
+rarity: Rare
+attunement: true
+description: While you wear these boots, you can use an action to cast the *levitate* spell on yourself at will.
+properties: []
+effects: []
+requirements: attunement
+weight: ""
+value: ""
+category: magic_item

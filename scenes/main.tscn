@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://e6llx5m8xkwy"]
 
-[ext_resource type="Texture2D" uid="uid://ctg5o08o7x8ii" path="res://assets/icons/warlord-helmet.svg" id="1_u0x4l"]
+[ext_resource type="Texture2D" uid="uid://kcwb7v014f6q" path="res://assets/icons/warlord-helmet.svg" id="1_u0x4l"]
 [ext_resource type="Script" path="res://main.gd" id="1_u34hy"]
-[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
-[ext_resource type="Texture2D" uid="uid://db1nl5kxnewob" path="res://assets/icons/two-coins.svg" id="3_ohurj"]
+[ext_resource type="FontFile" uid="uid://dug87e5de4v8o" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
+[ext_resource type="Texture2D" uid="uid://d33n5g1tmmmd" path="res://assets/icons/two-coins.svg" id="3_ohurj"]
 [ext_resource type="Script" path="res://scripts/dynamic_main_ui.gd" id="4_dynamic_ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_634im"]
@@ -54,9 +54,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.1, 0.2, 1)
+color = Color(0.356863, 0.356863, 0.596078, 1)
 
 [node name="PlayerInfoBox" type="Panel" parent="."]
 layout_mode = 0
@@ -237,8 +238,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
 offset_top = 250.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_right = -209.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wr2kh")

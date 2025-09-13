@@ -1,0 +1,15 @@
+name: Acolyte
+skill_proficiencies:
+  - Insight
+  - Religion
+languages:
+  - Two of your choice
+equipment:
+  - A holy symbol (a gift to you when you entered the priesthood)
+  - a prayer book or prayer wheel
+  - 5 sticks of incense
+  - vestments
+  - a set of common clothes
+  - and a pouch containing 15 gp
+feature: Shelter of the Faithful
+suggested_characteristics: {}

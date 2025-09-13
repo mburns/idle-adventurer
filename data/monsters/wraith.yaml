@@ -1,0 +1,52 @@
+name: Wraith
+size: Medium undead
+type: neutral evil
+alignment: ""
+armor_class: "13"
+hit_points: 67 (9d8+27)
+speed: 0 ft., fly 60 ft. (hover)
+abilities:
+  strength: 6
+  dexterity: 16
+  constitution: 16
+  intelligence: 12
+  wisdom: 14
+  charisma: 15
+saving_throws: []
+skills: []
+damage_immunities:
+  - necrotic
+  - poison
+damage_resistances:
+  - acid
+  - cold
+  - fire
+  - lightning
+  - thunder; bludgeoning
+  - piercing
+  - and slashing from nonmagical attacks that aren't silvered
+damage_vulnerabilities: []
+condition_immunities:
+  - charmed
+  - exhaustion
+  - grappled
+  - paralyzed
+  - petrified
+  - poisoned
+  - prone
+  - restrained
+senses: darkvision 60 ft., passive Perception 12
+languages: the languages it knew in life
+challenge_rating: "5"
+xp: 0
+traits: []
+actions:
+  - name: Life Drain***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one creature. *Hit:* 21 (4d8+3) necrotic damage. The target must succeed on a DC 14 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to
+    description: ""
+  - name: Create Specter***. The wraith targets a humanoid within 10 feet of it that has been dead for no longer than 1 minute and died violently. The target's spirit rises as a specter in the space of its corpse or in the nearest unoccupied space. The specter is under the wraith's control. The wraith can have no more than seven specters under its control at one ti
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

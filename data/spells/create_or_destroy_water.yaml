@@ -1,0 +1,10 @@
+name: Create or Destroy Water
+level: ""
+school: ""
+casting_time: 1 action
+range: 30 feet
+components: V, S, M (a drop of water if creating water or a few grains of sand if destroying it)
+duration: Instantaneous
+description: You either create or destroy water.
+at_higher_levels: ""
+classes: []

@@ -11,6 +11,10 @@ func _ready():
 
     # Initialize faction system
     faction_system = FactionSystem.new()
+    if not faction_system:
+        print("Warning: Failed to create FactionSystem")
+        return
+
     current_character = CharacterManager.current_character
 
     # Connect signals
@@ -22,7 +26,14 @@ func _ready():
 
 func update_faction_display():
     """Update the faction display with current data"""
+    if not faction_system:
+        print("Warning: FactionSystem is null")
+        return
+
     var faction_tabs = %FactionTabs
+    if not faction_tabs:
+        print("Warning: FactionTabs not found")
+        return
 
     # Get faction names
     var faction_names = faction_system.factions.keys()
@@ -123,11 +134,11 @@ func complete_quest(faction_name: String, quest_name: String):
 
 func show_notification(message: String):
     """Show a notification popup"""
-    var notification = UIComponents.create_notification_popup(message)
-    add_child(notification)
+    var notification_popup = UIComponents.create_notification_popup(message)
+    add_child(notification_popup)
 
     # Center the notification
-    notification.position = (get_viewport().size - notification.size) / 2
+    notification_popup.position = (get_viewport().size - notification_popup.size) / 2
 
 func _on_reputation_changed(faction: String, new_reputation: int):
     """Handle reputation change"""

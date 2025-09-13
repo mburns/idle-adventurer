@@ -1,0 +1,36 @@
+name: Goblin
+size: Small humanoid (goblinoid)
+type: neutral evil
+alignment: ""
+armor_class: 15 (leather armor, shield)
+hit_points: 7 (2d6)
+speed: 30 ft.
+abilities:
+  strength: 8
+  dexterity: 14
+  constitution: 10
+  intelligence: 10
+  wisdom: 8
+  charisma: 8
+saving_throws: []
+skills:
+  - Stealth +6
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: darkvision 60 ft., passive Perception 9
+languages: Common, Goblin
+challenge_rating: 1/4
+xp: 0
+traits: []
+actions:
+  - name: Scimitar***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) slashing dama
+    description: ""
+  - name: Shortbow***. *Ranged Weapon Attack:* +4 to hit, range 80/320 ft., one target. *Hit:* 5 (1d6+2) piercing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

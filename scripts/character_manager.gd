@@ -52,7 +52,7 @@ func create_default_character() -> Character:
 # Create a random character with random stats
 func create_random_character() -> Character:
 	# Generate random name
-	var names_data = DataLoader.load_json_data("names")
+	var names_data = DataLoader.load_yaml_data("names")
 	var character_name = "Adventurer"
 	if names_data and names_data.has("first_names") and names_data.has("last_names"):
 		var first_names = names_data["first_names"]

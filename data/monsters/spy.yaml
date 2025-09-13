@@ -1,0 +1,44 @@
+name: Spy
+size: Medium humanoid (any race)
+type: any alignment
+alignment: ""
+armor_class: "12"
+hit_points: 27 (6d8)
+speed: 30 ft.
+abilities:
+  strength: 10
+  dexterity: 15
+  constitution: 10
+  intelligence: 12
+  wisdom: 14
+  charisma: 16
+saving_throws: []
+skills:
+  - Deception +5
+  - Insight +4
+  - Investigation +5
+  - Perception +6
+  - Persuasion +5
+  - Sleight of Hand +4
+  - Stealth +4
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: passive Perception 16
+languages: any two languages
+challenge_rating: "1"
+xp: 0
+traits: []
+actions:
+  - name: Multiattack***. The spy makes two melee attac
+    description: ""
+  - name: Shortsword***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) piercing dama
+    description: ""
+  - name: Hand Crossbow***. *Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6 + 2) piercing dama
+    description: Rulers, nobles, merchants, guildmasters, and other wealthy individuals use **spies** to gain the upper hand in a world of cutthroat politics. A spy is trained to secretly gather information. Loyal spies would rather die than divulge information that could compromise them or their employers.
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

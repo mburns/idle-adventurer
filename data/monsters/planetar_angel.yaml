@@ -1,0 +1,47 @@
+name: Planetar (Angel)
+size: Large celestial
+type: lawful good
+alignment: ""
+armor_class: 19 (natural armor)
+hit_points: 200 (16d10+112)
+speed: 40 ft., fly 120 ft.
+abilities:
+  strength: 24
+  dexterity: 20
+  constitution: 24
+  intelligence: 19
+  wisdom: 22
+  charisma: 25
+saving_throws:
+  - Con +12
+  - Wis +11
+  - Cha +12
+skills:
+  - Perception +11
+damage_immunities: []
+damage_resistances:
+  - radiant; bludgeoning
+  - piercing
+  - and slashing from nonmagical attacks
+damage_vulnerabilities: []
+condition_immunities:
+  - charmed
+  - exhaustion
+  - frightened
+senses: truesight 120 ft., passive Perception 21
+languages: all, telepathy 120 ft.
+challenge_rating: "16"
+xp: 0
+traits: []
+actions:
+  - name: Multiattack***. The planetar makes two melee attac
+    description: ""
+  - name: Greatsword***. *Melee Weapon Attack:* +12 to hit, reach 5 ft., one target. *Hit:* 21 (4d6+7) slashing damage plus 22 (5d8) radiant dama
+    description: ""
+  - name: Healing Touch (4/Day)***. The planetar touches another creature. The target magically regains 30 (6d8+3) hit points and is freed from any curse, disease, poison, blindness, or deafne
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

@@ -1,0 +1,44 @@
+name: Stone Giant
+size: Huge giant
+type: neutral
+alignment: ""
+armor_class: 17 (natural armor)
+hit_points: 126 (11d12+55)
+speed: 40 ft.
+abilities:
+  strength: 23
+  dexterity: 15
+  constitution: 20
+  intelligence: 10
+  wisdom: 12
+  charisma: 9
+saving_throws:
+  - Dex +5
+  - Con +8
+  - Wis +4
+skills:
+  - Athletics +12
+  - Perception +4
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: darkvision 60 ft., passive Perception 14
+languages: Giant
+challenge_rating: "7"
+xp: 0
+traits: []
+actions:
+  - name: Multiattack***. The giant makes two greatclub attac
+    description: ""
+  - name: Greatclub***. *Melee Weapon Attack:* +9 to hit, reach 15 ft., one target. *Hit:* 19 (3d8+6) bludgeoning dama
+    description: ""
+  - name: Rock***. *Ranged Weapon Attack:* +9 to hit, range 60/240 ft., one target. *Hit:* 28 (4d10+6) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked pro
+    description: ""
+legendary_actions: []
+reactions:
+  - name: Rock Catching***. If a rock or similar object is hurled at the giant, the giant can, with a successful DC 10 Dexterity saving throw, catch the missile and take no bludgeoning damage from
+    description: ""
+spellcasting: {}
+description: ""
+category: monster

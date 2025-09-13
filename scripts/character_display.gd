@@ -1,14 +1,10 @@
-extends Control
+extends BaseScreen
 
 # Character display screen that shows a visual representation of the character
 
 @onready var character_visualizer: CharacterVisualizer3D
 @onready var character_info_panel: VBoxContainer
 @onready var equipment_panel: VBoxContainer
-
-# Character reference
-var character: Character
-var character_manager: CharacterManager
 
 # UI elements
 @onready var name_label: Label
@@ -27,19 +23,13 @@ var character_manager: CharacterManager
 # Equipment display
 var equipment_labels: Dictionary = {}
 
-func _ready():
-    # Get character manager
-    character_manager = CharacterManager
-    character = character_manager.get_current_character()
-
+func on_screen_ready() -> void:
+    """Override base screen ready for character display specific setup"""
     # Get UI references
     setup_ui_references()
 
     # Setup character visualizer
     setup_character_visualizer()
-
-    # Connect to character events
-    connect_to_character_events()
 
     # Update display
     update_character_display()
@@ -78,10 +68,10 @@ func setup_character_visualizer():
         character_visualizer = CharacterVisualizer3D.new()
         %SubViewport.add_child(character_visualizer)
 
-func connect_to_character_events():
-    # Connect to character manager events
-    if character_manager:
-        character_manager.character_changed.connect(_on_character_changed)
+func connect_signals() -> void:
+    """Override base screen signals for character display specific connections"""
+    super.connect_signals()
+    # Additional character display specific signals can be added here
 
 func update_character_display():
     if character == null:
@@ -103,9 +93,12 @@ func update_character_display():
 
 func show_default_character():
     # Show default character when none is loaded
-    name_label.text = "No Character"
-    level_class_label.text = "Create a character to begin"
-    race_label.text = ""
+    if name_label:
+        name_label.text = "No Character"
+    if level_class_label:
+        level_class_label.text = "Create a character to begin"
+    if race_label:
+        race_label.text = ""
 
     # Clear all stats
     clear_stats_display()
@@ -115,9 +108,12 @@ func update_character_info():
     if character == null:
         return
 
-    name_label.text = character.name
-    level_class_label.text = "Level %d %s" % [character.level, character.character_class.capitalize()]
-    race_label.text = character.race.capitalize()
+    if name_label:
+        name_label.text = character.name
+    if level_class_label:
+        level_class_label.text = "Level %d %s" % [character.level, character.character_class.capitalize()]
+    if race_label:
+        race_label.text = character.race.capitalize()
 
     # Update physical characteristics
     update_physical_characteristics()
@@ -128,8 +124,9 @@ func update_physical_characteristics():
         return
 
     # Convert height from inches to feet and inches
-    var feet = character.height / 12
-    var inches = character.height % 12
+    var height_inches = int(character.height)
+    var feet = height_inches / 12.0
+    var inches = height_inches % 12
     var height_text = "Height: %d'%d\"" % [feet, inches]
 
     # Update height label
@@ -147,17 +144,26 @@ func update_stats_display():
         return
 
     # Update ability scores
-    strength_label.text = "STR: %d (%+d)" % [character.strength, character.get_strength_modifier()]
-    dexterity_label.text = "DEX: %d (%+d)" % [character.dexterity, character.get_dexterity_modifier()]
-    constitution_label.text = "CON: %d (%+d)" % [character.constitution, character.get_constitution_modifier()]
-    intelligence_label.text = "INT: %d (%+d)" % [character.intelligence, character.get_intelligence_modifier()]
-    wisdom_label.text = "WIS: %d (%+d)" % [character.wisdom, character.get_wisdom_modifier()]
-    charisma_label.text = "CHA: %d (%+d)" % [character.charisma, character.get_charisma_modifier()]
+    if strength_label:
+        strength_label.text = "STR: %d (%+d)" % [character.strength, character.get_strength_modifier()]
+    if dexterity_label:
+        dexterity_label.text = "DEX: %d (%+d)" % [character.dexterity, character.get_dexterity_modifier()]
+    if constitution_label:
+        constitution_label.text = "CON: %d (%+d)" % [character.constitution, character.get_constitution_modifier()]
+    if intelligence_label:
+        intelligence_label.text = "INT: %d (%+d)" % [character.intelligence, character.get_intelligence_modifier()]
+    if wisdom_label:
+        wisdom_label.text = "WIS: %d (%+d)" % [character.wisdom, character.get_wisdom_modifier()]
+    if charisma_label:
+        charisma_label.text = "CHA: %d (%+d)" % [character.charisma, character.get_charisma_modifier()]
 
     # Update combat stats
-    hit_points_label.text = "HP: %d/%d" % [character.hit_points, character.max_hit_points]
-    armor_class_label.text = "AC: %d" % character.armor_class
-    proficiency_label.text = "Proficiency: %+d" % character.proficiency_bonus
+    if hit_points_label:
+        hit_points_label.text = "HP: %d/%d" % [character.hit_points, character.max_hit_points]
+    if armor_class_label:
+        armor_class_label.text = "AC: %d" % character.armor_class
+    if proficiency_label:
+        proficiency_label.text = "Proficiency: %+d" % character.proficiency_bonus
 
 func update_equipment_display():
     if character == null or character.equipment.is_empty():
@@ -170,27 +176,32 @@ func update_equipment_display():
         equipment_labels[slot].text = item_name
 
 func clear_stats_display():
-    strength_label.text = "STR: --"
-    dexterity_label.text = "DEX: --"
-    constitution_label.text = "CON: --"
-    intelligence_label.text = "INT: --"
-    wisdom_label.text = "WIS: --"
-    charisma_label.text = "CHA: --"
-    hit_points_label.text = "HP: --/--"
-    armor_class_label.text = "AC: --"
-    proficiency_label.text = "Proficiency: --"
+    if strength_label:
+        strength_label.text = "STR: --"
+    if dexterity_label:
+        dexterity_label.text = "DEX: --"
+    if constitution_label:
+        constitution_label.text = "CON: --"
+    if intelligence_label:
+        intelligence_label.text = "INT: --"
+    if wisdom_label:
+        wisdom_label.text = "WIS: --"
+    if charisma_label:
+        charisma_label.text = "CHA: --"
+    if hit_points_label:
+        hit_points_label.text = "HP: --/--"
+    if armor_class_label:
+        armor_class_label.text = "AC: --"
+    if proficiency_label:
+        proficiency_label.text = "Proficiency: --"
 
 func clear_equipment_display():
     for label in equipment_labels.values():
         label.text = "None"
 
-func _on_character_changed(new_character: Character):
-    character = new_character
+func on_character_updated() -> void:
+    """Override base screen character update for character display specific behavior"""
     update_character_display()
-
-func _on_back_button_pressed():
-    # Return to main screen
-    get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 # Animation and visual effects
 func animate_character_level_up():

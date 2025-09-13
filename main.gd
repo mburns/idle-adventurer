@@ -9,7 +9,7 @@ extends Control
 
 var character: Character
 var active_button: Button = null
-var button_progress_bars: Dictionary = {} # activity_name -> progress_bar
+var activity_buttons: Dictionary = {} # activity_name -> button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,86 +35,26 @@ func _ready():
 	# setup_dynamic_button_connections()  # Disabled - dynamic UI handles button connections
 	update_ui()
 
-func setup_button_progress_bars():
-	"""Setup progress bars dynamically from JSON data - no more hardcoded mappings!"""
-	# Clear existing progress bars
-	button_progress_bars.clear()
 
-	# Get all activities from the enhanced activities system
-	var enhanced_activities = EnhancedActivities.new()
-	var all_activities = enhanced_activities.get_all_activities()
+func register_activity_button(activity_name: String, button: Button):
+	"""Register an activity button for progress tracking"""
+	print("Registering activity button for: ", activity_name)
+	activity_buttons[activity_name] = button
+	# Set initial button styling
+	button.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+	button.add_theme_color_override("font_hover_color", Color(1, 1, 1, 1))
+	button.add_theme_color_override("font_pressed_color", Color(1, 1, 1, 1))
+	button.add_theme_color_override("font_disabled_color", Color(1, 1, 1, 1))
 
-	# Find progress bars dynamically by searching for nodes with "ProgressBar" in their name
-	_find_progress_bars_recursively(self, all_activities)
+	# Set button background colors
+	button.add_theme_color_override("bg_color", Color(0.2, 0.2, 0.2, 1.0))
+	button.add_theme_color_override("bg_color_hover", Color(0.3, 0.3, 0.3, 1.0))
+	button.add_theme_color_override("bg_color_pressed", Color(0.4, 0.4, 0.4, 1.0))
+	button.add_theme_color_override("bg_color_disabled", Color(0.1, 0.1, 0.1, 1.0))
 
-	# Style all found progress bars
-	print("Found ", button_progress_bars.size(), " progress bars")
-	for activity_name in button_progress_bars.keys():
-		var progress_bar = button_progress_bars[activity_name]
-		if progress_bar and is_instance_valid(progress_bar):
-			print("Setting up progress bar for: ", activity_name)
-			# Style the progress bar to be more visible
-			progress_bar.add_theme_color_override("background_color", Color(0.2, 0.2, 0.2, 1.0))
-			progress_bar.add_theme_color_override("fill_color", Color(0.0, 0.8, 0.0, 1.0))
-			# Make sure the progress bar is visible
-			progress_bar.visible = true
-			progress_bar.modulate = Color(1.0, 1.0, 1.0, 1.0) # Fully opaque
-			# Start with empty progress bar
-			progress_bar.value = 0.0
+	print("Activity button registered. Total buttons: ", activity_buttons.size())
+	print("Available buttons: ", activity_buttons.keys())
 
-func _find_progress_bars_recursively(node: Node, all_activities: Dictionary):
-	"""Recursively find progress bar nodes and match them to activities"""
-	if node is ProgressBar:
-		print("Found ProgressBar: ", node.name)
-		# Try to match this progress bar to an activity
-		var activity_name = _match_progress_bar_to_activity(node, all_activities)
-		if activity_name != "":
-			print("Matched progress bar to activity: ", activity_name)
-			button_progress_bars[activity_name] = node
-		else:
-			print("Could not match progress bar: ", node.name)
-
-	# Recursively search children
-	for child in node.get_children():
-		_find_progress_bars_recursively(child, all_activities)
-
-func register_progress_bar(activity_name: String, progress_bar: ProgressBar):
-	"""Register a progress bar created by the dynamic UI"""
-	print("Registering progress bar for activity: ", activity_name)
-	button_progress_bars[activity_name] = progress_bar
-	# Style the progress bar
-	progress_bar.add_theme_color_override("background_color", Color(0.2, 0.2, 0.2, 1.0))
-	progress_bar.add_theme_color_override("fill_color", Color(0.0, 0.8, 0.0, 1.0))
-	progress_bar.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	progress_bar.visible = true
-	progress_bar.value = 0.0
-	print("Progress bar registered. Total progress bars: ", button_progress_bars.size())
-
-func _match_progress_bar_to_activity(progress_bar: ProgressBar, all_activities: Dictionary) -> String:
-	"""Try to match a progress bar node to an activity name"""
-	var node_name = progress_bar.name
-
-	# Remove "ProgressBar" suffix if present
-	var activity_name = node_name.replace("ProgressBar", "")
-
-	# Check if this matches any activity name in our data
-	for ability in all_activities.keys():
-		for activity_id in all_activities[ability].keys():
-			var activity_data = all_activities[ability][activity_id]
-			var activity_name_from_data = activity_data.get("name", "")
-
-			# Try exact match first
-			if activity_name == activity_name_from_data:
-				return activity_name_from_data
-
-			# Try partial match (remove spaces, special chars)
-			var clean_activity_name = activity_name.replace(" ", "").replace("_", "").to_lower()
-			var clean_data_name = activity_name_from_data.replace(" ", "").replace("_", "").to_lower()
-
-			if clean_activity_name == clean_data_name:
-				return activity_name_from_data
-
-	return ""
 
 func setup_dynamic_button_connections():
 	"""Automatically connect activity buttons to the dynamic handler"""
@@ -145,14 +85,17 @@ func _process(_delta):
 	if character != null:
 		# Check if current activity is complete
 		if character.is_activity_complete():
+			# Store the activity name before completing it
+			var activity_name = character.current_activity
 			var rewards = IdleMechanics.complete_activity(character)
 			if rewards.xp > 0 or rewards.gold > 0:
 				print("Activity completed! Gained %d XP and %d gold" % [rewards.xp, rewards.gold])
 
 			# Restart the same activity automatically
-			if character.current_activity != "":
-				var activity_name = character.current_activity
-				clear_all_button_progress()
+			if activity_name != "":
+				# Clear the progress bar for the completed activity
+				clear_activity_progress(activity_name)
+				# Restart the activity
 				IdleMechanics.start_activity(activity_name, character)
 
 			update_ui()
@@ -196,15 +139,37 @@ func update_activity_progress():
 	var total_duration = character.activity_duration
 	var progress = 1.0 - (time_remaining / total_duration)
 
-	# Update the button progress bar for the current activity
-	if character.current_activity in button_progress_bars:
-		var progress_bar = button_progress_bars[character.current_activity]
-		if progress_bar:
-			progress_bar.value = progress
-			print("Updated progress bar for ", character.current_activity, " to ", progress)
+	# Update the button background for the current activity
+	if character.current_activity in activity_buttons:
+		var button = activity_buttons[character.current_activity]
+		if button:
+			# Create a progress bar overlay
+			var progress_bar = button.get_node_or_null("ProgressOverlay")
+			if not progress_bar:
+				# Create progress bar overlay
+				progress_bar = ColorRect.new()
+				progress_bar.name = "ProgressOverlay"
+				progress_bar.color = Color(0.0, 1.0, 0.0, 0.6)  # Green with transparency
+				button.add_child(progress_bar)
+
+				# Position it to cover the button
+				progress_bar.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+				progress_bar.offset_left = 2
+				progress_bar.offset_top = 2
+				progress_bar.offset_right = -2
+				progress_bar.offset_bottom = -2
+
+			# Update progress bar width
+			var button_width = button.size.x
+			progress_bar.size.x = button_width * progress
+			progress_bar.position.x = 0
+
+			# Debug output every 10% progress
+			# if int(progress * 10) % 1 == 0:
+			# 	print("Updated button progress for ", character.current_activity, " to ", progress)
 	else:
-		print("No progress bar found for activity: ", character.current_activity)
-		print("Available progress bars: ", button_progress_bars.keys())
+		print("No button found for activity: ", character.current_activity)
+		print("Available buttons: ", activity_buttons.keys())
 
 	# Update the main progress bar to show level progress
 	update_level_progress()
@@ -240,11 +205,29 @@ func start_activity(activity_name: String):
 			update_ui()
 
 func clear_all_button_progress():
-	"""Clear progress from all button progress bars"""
-	for activity_name in button_progress_bars.keys():
-		var progress_bar = button_progress_bars[activity_name]
-		if progress_bar:
-			progress_bar.value = 0.0
+	"""Clear progress from all activity buttons"""
+	for activity_name in activity_buttons.keys():
+		var button = activity_buttons[activity_name]
+		if button:
+			# Remove progress overlay
+			var progress_bar = button.get_node_or_null("ProgressOverlay")
+			if progress_bar:
+				progress_bar.queue_free()
+			# Reset button to normal appearance
+			button.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+func clear_activity_progress(activity_name: String):
+	"""Clear progress from a specific activity's button"""
+	if activity_name in activity_buttons:
+		var button = activity_buttons[activity_name]
+		if button:
+			# Remove progress overlay
+			var progress_bar = button.get_node_or_null("ProgressOverlay")
+			if progress_bar:
+				progress_bar.queue_free()
+			# Reset button to normal appearance
+			button.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			print("Cleared button progress for: ", activity_name)
 
 # Get character for other scripts
 func get_character() -> Character:
@@ -261,7 +244,8 @@ func _on_journal_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/journal_screen.tscn")
 
 func _on_activities_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/activities_screen.tscn")
+	# Activities are now integrated into main screen - no separate navigation needed
+	print("Activities are now integrated into the main screen")
 
 func _on_general_store_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/general_store_screen.tscn")

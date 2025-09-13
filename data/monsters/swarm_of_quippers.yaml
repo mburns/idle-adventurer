@@ -1,0 +1,44 @@
+name: Swarm of Quippers
+size: Medium swarm of Tiny beasts
+type: unaligned
+alignment: ""
+armor_class: "13"
+hit_points: 28 (8d8-8)
+speed: 0 ft., swim 40 ft.
+abilities:
+  strength: 13
+  dexterity: 16
+  constitution: 9
+  intelligence: 1
+  wisdom: 7
+  charisma: 2
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances:
+  - bludgeoning
+  - piercing
+  - slashing
+damage_vulnerabilities: []
+condition_immunities:
+  - charmed
+  - frightened
+  - grappled
+  - paralyzed
+  - petrified
+  - prone
+  - restrained
+  - stunned
+senses: darkvision 60 ft., passive Perception 8
+languages: '-'
+challenge_rating: "1"
+xp: 0
+traits: []
+actions:
+  - name: Bites***. *Melee Weapon Attack:* +5 to hit, reach 0 ft., one creature in the swarm's space. *Hit:* 14 (4d6) piercing damage, or 7 (2d6) piercing damage if the swarm has half of its hit points or few
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

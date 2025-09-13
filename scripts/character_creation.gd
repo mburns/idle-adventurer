@@ -39,7 +39,7 @@ func populate_dropdowns():
 func generate_random_character():
 	"""Generate random character stats and appearance"""
 	# Generate random name
-	var names_data = DataLoader.load_json_data("names")
+	var names_data = DataLoader.load_yaml_data("names")
 	if names_data and names_data.has("first_names") and names_data.has("last_names"):
 		var first_names = names_data["first_names"]
 		var last_names = names_data["last_names"]

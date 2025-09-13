@@ -1,0 +1,11 @@
+name: Weapon, +1, +2, or +3
+type: Weapon
+rarity: Uncommon
+attunement: false
+description: You have a bonus to attack and damage rolls made with this magic weapon. The bonus is determined by the weapon's rarity.
+properties: []
+effects: []
+requirements: ""
+weight: ""
+value: ""
+category: magic_item

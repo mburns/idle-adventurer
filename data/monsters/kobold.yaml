@@ -1,0 +1,35 @@
+name: Kobold
+size: Small humanoid (kobold)
+type: lawful evil
+alignment: ""
+armor_class: "12"
+hit_points: 5 (2d6-2)
+speed: 30 ft.
+abilities:
+  strength: 7
+  dexterity: 15
+  constitution: 9
+  intelligence: 8
+  wisdom: 7
+  charisma: 8
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: darkvision 60 ft., passive Perception 8
+languages: Common, Draconic
+challenge_rating: 1/8
+xp: 0
+traits: []
+actions:
+  - name: Dagger***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) piercing dama
+    description: ""
+  - name: Sling***. *Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 4 (1d4+2) bludgeoning dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

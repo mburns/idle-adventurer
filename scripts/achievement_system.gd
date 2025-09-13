@@ -1,12 +1,34 @@
 extends Node
+class_name AchievementSystem
 
 # Achievement system for tracking milestones and rewards
 
-class_name AchievementSystem
+# Achievement data structure
+class Achievement extends RefCounted:
+    var id: String
+    var name: String
+    var description: String
+    var category: AchievementCategory
+    var rarity: AchievementRarity
+    var requirements: Dictionary
+    var rewards: Dictionary
+    var unlocked: bool = false
+    var progress: float = 0.0
+    var unlocked_at: int = 0
 
-signal achievement_unlocked(achievement: Achievement)
-signal achievement_progress(achievement: Achievement, progress: float)
-signal reward_granted(character: Character, reward: Dictionary)
+    func _init(achievement_id: String, achievement_name: String, achievement_description: String,
+               achievement_category: AchievementCategory, achievement_rarity: AchievementRarity,
+               achievement_requirements: Dictionary, achievement_rewards: Dictionary):
+        id = achievement_id
+        name = achievement_name
+        description = achievement_description
+        category = achievement_category
+        rarity = achievement_rarity
+        requirements = achievement_requirements
+        rewards = achievement_rewards
+        unlocked = false
+        progress = 0.0
+        unlocked_at = 0
 
 # Achievement categories
 enum AchievementCategory {
@@ -31,29 +53,10 @@ enum AchievementRarity {
     LEGENDARY
 }
 
-# Achievement data structure
-class Achievement:
-    var id: String
-    var name: String
-    var description: String
-    var category: AchievementCategory
-    var rarity: AchievementRarity
-    var requirements: Dictionary
-    var rewards: Dictionary
-    var unlocked: bool = false
-    var progress: float = 0.0
-    var unlocked_at: int = 0
+signal achievement_unlocked(achievement: Achievement)
+signal achievement_progress(achievement: Achievement, progress: float)
+signal reward_granted(character: Character, reward: Dictionary)
 
-    func _init(achievement_id: String, achievement_name: String, achievement_description: String,
-               achievement_category: AchievementCategory, achievement_rarity: AchievementRarity,
-               achievement_requirements: Dictionary, achievement_rewards: Dictionary):
-        id = achievement_id
-        name = achievement_name
-        description = achievement_description
-        category = achievement_category
-        rarity = achievement_rarity
-        requirements = achievement_requirements
-        rewards = achievement_rewards
 
 var achievements: Dictionary = {}
 var character_achievements: Dictionary = {} # character_name -> achievement_data

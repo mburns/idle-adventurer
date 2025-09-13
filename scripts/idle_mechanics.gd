@@ -37,6 +37,33 @@ static func load_activities_from_json():
 					"requirements": activity_data.get("requirements", {})
 				}
 
+	# Add rest activities manually
+	activities["Short Rest"] = {
+		"ability": "general",
+		"skill": "Short Rest",
+		"base_duration": 5.0,  # 5 seconds for short rest
+		"base_xp": 5,
+		"base_gold": 0,
+		"description": "Take a short rest to recover",
+		"daily_progress": 0.1,
+		"cost_per_day": 0.0,
+		"rewards": {"xp": 5},
+		"requirements": {}
+	}
+
+	activities["Long Rest"] = {
+		"ability": "general",
+		"skill": "Long Rest",
+		"base_duration": 10.0,  # 10 seconds for long rest
+		"base_xp": 10,
+		"base_gold": 0,
+		"description": "Take a long rest to fully recover",
+		"daily_progress": 0.1,
+		"cost_per_day": 0.0,
+		"rewards": {"xp": 10},
+		"requirements": {}
+	}
+
 	print("Loaded ", activities.size(), " activities from JSON data")
 
 static func _calculate_base_xp(activity_data: Dictionary) -> int:
