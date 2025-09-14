@@ -55,14 +55,23 @@ for file in "${required_files[@]}"; do
     fi
 done
 
-# Validate YAML files
-echo "🔍 Validating YAML files..."
-yaml_count=$(find data/ -name "*.yaml" | wc -l)
-echo "Found $yaml_count YAML files"
+# Validate YAML files with yamllint
+echo "🔍 Validating YAML files with yamllint..."
+if command -v yamllint >/dev/null 2>&1; then
+    if yamllint -c .yamllint data/; then
+        echo "✅ All YAML files validated with yamllint"
+    else
+        echo "❌ YAML validation failed"
+        exit 1
+    fi
+else
+    echo "⚠️  yamllint not found, falling back to basic validation"
+    yaml_count=$(find data/ -name "*.yaml" | wc -l)
+    echo "Found $yaml_count YAML files"
 
-failed_files=0
-for file in $(find data/ -name "*.yaml"); do
-    if python3 -c "
+    failed_files=0
+    for file in $(find data/ -name "*.yaml"); do
+        if python3 -c "
 import yaml
 try:
     with open('$file', 'r') as f:
@@ -72,18 +81,19 @@ except Exception as e:
     print('✗ $file: $e')
     exit(1)
 " 2>/dev/null; then
-        echo "✅ $file"
-    else
-        echo "❌ $file"
-        failed_files=$((failed_files + 1))
-    fi
-done
+            echo "✅ $file"
+        else
+            echo "❌ $file"
+            failed_files=$((failed_files + 1))
+        fi
+    done
 
-if [ $failed_files -gt 0 ]; then
-    echo "❌ $failed_files YAML files failed validation"
-    exit 1
-else
-    echo "✅ All YAML files validated"
+    if [ $failed_files -gt 0 ]; then
+        echo "❌ $failed_files YAML files failed validation"
+        exit 1
+    else
+        echo "✅ All YAML files validated"
+    fi
 fi
 
 # Check scripts directory

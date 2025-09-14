@@ -105,6 +105,12 @@ make check-env
 # Run all tests
 make test
 
+# Run YAML linting
+make yaml-lint
+
+# Run code linting
+make lint
+
 # Run specific test categories
 make test-unit
 make test-integration
@@ -130,14 +136,14 @@ make build-macos
 ### Code Quality
 
 ```bash
-# Format code
-make format
-
-# Lint code
+# Lint GDScript code
 make lint
 
+# Lint YAML files
+make yaml-lint
+
 # Run all quality checks
-make check
+make ci-test
 ```
 
 ### Contributing

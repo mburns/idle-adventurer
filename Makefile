@@ -5,7 +5,7 @@
 # Default to 'godot' for CI environments, override locally if needed
 GODOT_BIN ?= godot
 
-.PHONY: help test lint clean build package install-deps check-env
+.PHONY: help test lint clean build package install-deps check-env yaml-lint
 
 # Default target
 help:
@@ -16,6 +16,7 @@ help:
 	@echo "  check-env     - Check development environment"
 	@echo "  test          - Run all tests"
 	@echo "  lint          - Run code linting"
+	@echo "  yaml-lint     - Run YAML linting"
 	@echo "  clean         - Clean build artifacts"
 	@echo "  install-deps  - Install development dependencies"
 	@echo ""
@@ -63,6 +64,11 @@ lint:
 	@echo "Note: Scripts with ✗ may have autoload dependencies that cause issues in headless mode."
 	@echo "This is normal and doesn't indicate syntax errors in the actual code."
 
+yaml-lint:
+	@echo "Running YAML linting..."
+	@python3 -m yamllint -c .yamllint data/ || echo "⚠️  YAML linting found warnings (non-fatal)"
+	@echo "✓ YAML linting completed"
+
 clean:
 	@echo "Cleaning build artifacts..."
 	rm -rf builds/
@@ -108,7 +114,7 @@ release: clean test lint build package
 	@echo "✓ Full release process completed"
 
 # CI/CD tasks
-ci-test: test lint
+ci-test: test lint yaml-lint
 	@echo "✓ CI tests completed"
 
 ci-build: build

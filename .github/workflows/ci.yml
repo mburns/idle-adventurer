@@ -32,51 +32,14 @@ jobs:
           sudo apt-get install -y python3 python3-pip
           pip3 install -r requirements.txt
 
-      - name: Validate YAML files
-        run: |
-          echo "Validating YAML files..."
-
-          # Check if data directory exists
-          if [ ! -d "data" ]; then
-            echo "❌ data directory not found"
-            exit 1
-          fi
-
-          # Count YAML files
-          yaml_count=$(find data/ -name "*.yaml" | wc -l)
-          echo "Found $yaml_count YAML files to validate"
-
-          # Validate each YAML file
-          failed_files=0
-          for file in $(find data/ -name "*.yaml"); do
-            echo "Validating $file"
-            if python3 -c "
-import yaml
-import sys
-try:
-    with open('$file', 'r') as f:
-        yaml.safe_load(f)
-    print('✓ $file is valid')
-except yaml.YAMLError as e:
-    print('✗ $file has YAML syntax error: $e')
-    sys.exit(1)
-except Exception as e:
-    print('✗ $file has error: $e')
-    sys.exit(1)
-"; then
-              echo "✓ $file validated successfully"
-            else
-              echo "✗ $file validation failed"
-              failed_files=$((failed_files + 1))
-            fi
-          done
-
-          if [ $failed_files -gt 0 ]; then
-            echo "❌ $failed_files YAML files failed validation"
-            exit 1
-          else
-            echo "✅ All YAML files validated successfully"
-          fi
+      - name: Validate YAML files with yamllint
+        uses: karancode/yamllint-github-action@v2.1.1
+        with:
+          yamllint_file_or_dir: 'data/'
+          yamllint_strict: false
+          yamllint_config_filepath: '.yamllint'
+          yamllint_format: 'parsable'
+          yamllint_comment: false
 
       - name: Validate data structure consistency
         run: |
