@@ -69,24 +69,18 @@ else
 	yaml_count=$(find data/ -name "*.yaml" | wc -l)
 	echo "Found $yaml_count YAML files"
 
-	failed_files=0
-	for file in $(find data/ -name "*.yaml"); do
-		if python3 -c "
-import yaml
-try:
-	with open('$file', 'r') as f:
-		yaml.safe_load(f)
-	print('✓ $file')
-except Exception as e:
-	print('✗ $file: $e')
-	exit(1)
-" 2>/dev/null; then
-			echo "✅ $file"
-		else
-			echo "❌ $file"
-			failed_files=$((failed_files + 1))
-		fi
-	done
+	# Collect all YAML files
+	yaml_files=()
+	while IFS= read -r -d '' file; do
+		yaml_files+=("$file")
+	done < <(find data/ -name "*.yaml" -print0)
+
+	# Validate all files at once
+	if ! python3 tools/validate_yaml.py "${yaml_files[@]}"; then
+		failed_files=1
+	else
+		failed_files=0
+	fi
 
 	if [ $failed_files -gt 0 ]; then
 		echo "❌ $failed_files YAML files failed validation"
