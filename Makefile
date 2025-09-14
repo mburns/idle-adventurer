@@ -2,7 +2,8 @@
 # Provides build automation and development tasks
 
 # Godot binary path - can be overridden with GODOT_BIN environment variable
-GODOT_BIN ?= /Applications/Godot.app/Contents/MacOS/Godot
+# Try to find Godot in common locations, fall back to 'godot' for CI environments
+GODOT_BIN ?= $(shell which godot 2>/dev/null || which /Applications/Godot.app/Contents/MacOS/Godot 2>/dev/null || echo "godot")
 
 .PHONY: help test lint clean build package install-deps
 
