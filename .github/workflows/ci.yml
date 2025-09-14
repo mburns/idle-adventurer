@@ -2,11 +2,21 @@ name: CI/CD Pipeline
 
 on:
   pull_request:
-    branches: [main, develop, idlerpg]
+    branches: [main]
   release:
     types: [published]
 
 jobs:
+  godot-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: MikeSchulze/gdunit4-action@v1
+        with:
+          godot-version: "4.4.1"
+          paths: "res://tests"
+          timeout: 10 # Optional: Test timeout in minutes
+          version: "latest" # Optional: GdUnit4 version
   test:
     name: Test Suite
     runs-on: ubuntu-latest
@@ -14,17 +24,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup Godot
-        uses: abarichello/godot-ci@4.4.1-stable
-        with:
-          godot-version: "4.2.1"
-
-      - name: Verify Godot installation
-        run: |
-          which godot || (echo "Godot not found in PATH" && exit 1)
-          godot --version || (echo "Godot version check failed" && exit 1)
-          echo "✓ Godot installation verified"
 
       - name: Setup Python for YAML validation
         run: |
@@ -41,179 +40,14 @@ jobs:
           yamllint_format: "parsable"
           yamllint_comment: false
 
-      - name: Validate data structure consistency
-        run: |
-          echo "Validating data structure consistency..."
+  lint:
+    name: Lint Suite
+    runs-on: ubuntu-latest
 
-          # Check that required directories exist
-          required_dirs=("data/classes" "data/races" "data/backgrounds" "data/spells" "data/items" "data/activities")
-          missing_dirs=()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-          for dir in "${required_dirs[@]}"; do
-            if [ ! -d "$dir" ]; then
-              echo "❌ Missing directory: $dir"
-              missing_dirs+=("$dir")
-            else
-              echo "✓ Found directory: $dir"
-            fi
-          done
-
-          if [ ${#missing_dirs[@]} -gt 0 ]; then
-            echo "❌ Missing required directories: ${missing_dirs[*]}"
-            exit 1
-          fi
-
-          # Check that key files exist
-          required_files=("data/currency.yaml" "data/languages.yaml" "data/level_requirements.yaml")
-          missing_files=()
-
-          for file in "${required_files[@]}"; do
-            if [ ! -f "$file" ]; then
-              echo "❌ Missing file: $file"
-              missing_files+=("$file")
-            else
-              echo "✓ Found file: $file"
-            fi
-          done
-
-          if [ ${#missing_files[@]} -gt 0 ]; then
-            echo "❌ Missing required files: ${missing_files[*]}"
-            exit 1
-          fi
-
-          # Validate that classes have required fields
-          echo "Validating class files..."
-          class_files=($(find data/classes -name "*.yaml" 2>/dev/null || true))
-
-          if [ ${#class_files[@]} -eq 0 ]; then
-            echo "⚠️  No class files found in data/classes/"
-          else
-            echo "Found ${#class_files[@]} class files to validate"
-            failed_classes=0
-
-            for class_file in "${class_files[@]}"; do
-              echo "Validating class file: $class_file"
-              if python3 -c "
-            import yaml
-            import sys
-            try:
-                with open('$class_file', 'r') as f:
-                    data = yaml.safe_load(f)
-                    required_fields = ['name', 'hit_die', 'primary_ability', 'saving_throw_proficiencies']
-                    missing_fields = []
-                    for field in required_fields:
-                        if field not in data:
-                            missing_fields.append(field)
-                    if missing_fields:
-                        print(f'✗ Missing required fields: {missing_fields}')
-                        sys.exit(1)
-                    else:
-                        print(f'✓ All required fields present')
-            except Exception as e:
-                print(f'✗ Error validating $class_file: $e')
-                sys.exit(1)
-            "; then
-                echo "✓ $class_file validated successfully"
-              else
-                echo "✗ $class_file validation failed"
-                failed_classes=$((failed_classes + 1))
-              fi
-            done
-
-            if [ $failed_classes -gt 0 ]; then
-              echo "❌ $failed_classes class files failed validation"
-              exit 1
-            else
-              echo "✅ All class files validated successfully"
-            fi
-          fi
-
-          echo "✅ Data structure validation passed!"
-
-      - name: Validate script imports
-        run: |
-          echo "Validating script imports..."
-
-          # Check if scripts directory exists
-          if [ ! -d "scripts" ]; then
-            echo "⚠️  scripts directory not found"
-          else
-            echo "✓ Found scripts directory"
-
-            # Check for old import paths that may need updating
-            old_imports=$(grep -r "res://scripts/[^/]*\.gd" scripts/ --include="*.gd" 2>/dev/null || true)
-            if [ -n "$old_imports" ]; then
-              echo "⚠️  Found old import paths that may need updating:"
-              echo "$old_imports"
-            else
-              echo "✓ No old import paths found"
-            fi
-
-            # Check for missing class_name declarations in key files
-            echo "Checking for class_name declarations..."
-            missing_class_names=0
-            for file in scripts/core/*.gd scripts/systems/*.gd scripts/ui/*.gd 2>/dev/null; do
-              if [ -f "$file" ]; then
-                if ! grep -q "class_name" "$file"; then
-                  echo "⚠️  $file may be missing class_name declaration"
-                  missing_class_names=$((missing_class_names + 1))
-                else
-                  echo "✓ $file has class_name declaration"
-                fi
-              fi
-            done
-
-            if [ $missing_class_names -gt 0 ]; then
-              echo "⚠️  $missing_class_names files may be missing class_name declarations"
-            else
-              echo "✓ All checked files have class_name declarations"
-            fi
-          fi
-
-          echo "✅ Import validation completed"
-
-      - name: Run unit tests
-        run: |
-          echo "Running unit tests..."
-          if [ -f "tests/unit/simple_test_runner.gd" ]; then
-            godot --headless --script tests/unit/simple_test_runner.gd --quit
-            echo "✅ Unit tests completed"
-          else
-            echo "⚠️  Unit test runner not found: tests/unit/simple_test_runner.gd"
-          fi
-
-      - name: Run comprehensive tests
-        run: |
-          echo "Running comprehensive tests..."
-          if [ -f "tests/unit/test_runner_comprehensive.gd" ]; then
-            godot --headless --script tests/unit/test_runner_comprehensive.gd --quit
-            echo "✅ Comprehensive tests completed"
-          else
-            echo "⚠️  Comprehensive test runner not found: tests/unit/test_runner_comprehensive.gd"
-          fi
-
-      - name: Run performance tests
-        run: |
-          echo "Running performance tests..."
-          if [ -f "tests/test_performance.gd" ]; then
-            godot --headless --script tests/test_performance.gd --quit
-            echo "✅ Performance tests completed"
-          else
-            echo "⚠️  Performance test runner not found: tests/test_performance.gd"
-          fi
-
-      - name: Check for TODO/FIXME comments
-        run: |
-          echo "Checking for TODO/FIXME comments..."
-          if [ -d "scripts" ]; then
-            todo_comments=$(grep -r "TODO\|FIXME\|HACK\|XXX" scripts/ --include="*.gd" 2>/dev/null || true)
-            if [ -n "$todo_comments" ]; then
-              echo "⚠️  Found TODO/FIXME/HACK comments - please review before merging:"
-              echo "$todo_comments"
-              echo "Consider creating issues for these items"
-            else
-              echo "✅ No TODO/FIXME/HACK comments found"
-            fi
-          else
-            echo "⚠️  scripts directory not found"
-          fi
+      - uses: tcort/github-action-markdown-link-check@v1
+        # with:
+        #     check-modified-files-only: true

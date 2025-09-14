@@ -35,6 +35,9 @@ func _init():
     test_town_system_comprehensive()
     test_npc_system_comprehensive()
 
+    # Run tooling tests
+    test_development_tools()
+
     # Print results
     print_test_summary()
     quit()
@@ -463,6 +466,63 @@ func test_npc_system_comprehensive():
     assert_true(npc.npc_id == "test_npc_001", "NPC ID should be correct")
 
     print("✅ NPCSystem Comprehensive tests passed")
+
+func test_development_tools():
+    print("Testing Development Tools...")
+
+    # Test that required files exist
+    var required_files = [
+        "requirements.txt",
+        ".yamllint",
+        "setup-dev.sh",
+        "test-ci.sh",
+        ".vscode/extensions.json"
+    ]
+
+    for file_path in required_files:
+        var file = FileAccess.open(file_path, FileAccess.READ)
+        if file:
+            file.close()
+            print("  ✓ " + file_path + " exists")
+        else:
+            print("  ✗ " + file_path + " missing")
+            return false
+
+    # Test that Makefile has new targets
+    var makefile = FileAccess.open("Makefile", FileAccess.READ)
+    if makefile:
+        var content = makefile.get_as_text()
+        makefile.close()
+
+        var required_targets = ["yaml-lint", "check-env", "ci-test"]
+        for target in required_targets:
+            if content.find(target) != -1:
+                print("  ✓ Makefile contains " + target + " target")
+            else:
+                print("  ✗ Makefile missing " + target + " target")
+                return false
+    else:
+        print("  ✗ Makefile not found")
+        return false
+
+    # Test that CI workflow has yamllint
+    var ci_workflow = FileAccess.open(".github/workflows/ci.yml", FileAccess.READ)
+    if ci_workflow:
+        var content = ci_workflow.get_as_text()
+        ci_workflow.close()
+
+        if content.find("yamllint-github-action") != -1:
+            print("  ✓ CI workflow includes yamllint action")
+        else:
+            print("  ✗ CI workflow missing yamllint action")
+            return false
+    else:
+        print("  ✗ CI workflow not found")
+        return false
+
+    print("✅ Development tools tests passed")
+    print()
+    return true
 
 func print_test_summary():
     print("Test Summary")

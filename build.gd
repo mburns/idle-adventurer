@@ -4,23 +4,11 @@
 extends Node
 
 var build_configs = {
-    "linux": {
-        "platform": "Linux/X11",
-        "output": "builds/linux/idle-adventurer.x86_64",
+    "web": {
+        "platform": "Web",
+        "output": "builds/web/idle-adventurer.zip",
         "preset": 0,
-        "debug_output": "builds/linux-debug/idle-adventurer.x86_64"
-    },
-    "windows": {
-        "platform": "Windows Desktop",
-        "output": "builds/windows/idle-adventurer.exe",
-        "preset": 1,
-        "debug_output": "builds/windows-debug/idle-adventurer.exe"
-    },
-    "macos": {
-        "platform": "macOS",
-        "output": "builds/macos/idle-adventurer.app",
-        "preset": 2,
-        "debug_output": "builds/macos-debug/idle-adventurer.app"
+        "debug_output": "builds/web-debug/idle-adventurer.zip"
     }
 }
 
@@ -155,3 +143,4 @@ func print_help():
     print("  godot --script build.gd build windows debug")
     print("  godot --script build.gd test")
     print("  godot --script build.gd package")
+,
