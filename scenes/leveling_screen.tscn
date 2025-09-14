@@ -1,0 +1,178 @@
+[gd_scene load_steps=3 format=3 uid="uid://leveling_screen"]
+
+[ext_resource type="Script" path="res://scripts/leveling_screen.gd" id="1_leveling_screen"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="LevelingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_leveling_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="MainContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -400.0
+offset_right = 600.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Title" type="Label" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "Character Leveling"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterInfo" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="MainContainer/VBoxContainer/CharacterInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Character Name"
+
+[node name="CharacterLevel" type="Label" parent="MainContainer/VBoxContainer/CharacterInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Level 1"
+
+[node name="CharacterClass" type="Label" parent="MainContainer/VBoxContainer/CharacterInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Fighter"
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelingContent" type="ScrollContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelingContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/LevelingContent"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExperienceSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExperienceTitle" type="Label" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ExperienceSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Experience Points"
+
+[node name="ExperienceBar" type="ProgressBar" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ExperienceSection"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="ExperienceText" type="Label" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ExperienceSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 1000 XP"
+
+[node name="LevelUpButton" type="Button" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ExperienceSection"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Level Up!"
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer"]
+layout_mode = 2
+
+[node name="ClassFeaturesSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClassFeaturesTitle" type="Label" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ClassFeaturesSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Class Features"
+
+[node name="ClassFeaturesList" type="VBoxContainer" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ClassFeaturesSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator4" type="HSeparator" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer"]
+layout_mode = 2
+
+[node name="SpellSlotsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpellSlotsTitle" type="Label" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/SpellSlotsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Spell Slots"
+
+[node name="SpellSlotsList" type="HBoxContainer" parent="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/SpellSlotsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator5" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Back to Main"
+
+[connection signal="pressed" from="MainContainer/VBoxContainer/LevelingContent/LevelingContainer/ExperienceSection/LevelUpButton" to="." method="_on_level_up_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

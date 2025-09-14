@@ -1,0 +1,217 @@
+# Random events system configuration for the idle adventurer game
+# Defines event types, outcomes, and rarity levels
+
+# Event types
+event_types:
+  - id: SOCIAL
+    name: Social Encounter
+    description: Social encounters and interactions with NPCs
+    category: interaction
+    priority: 1
+    color: "#FF69B4"  # Hot Pink
+    icon: "social"
+
+  - id: ECONOMIC
+    name: Economic Event
+    description: Economic opportunities and challenges
+    category: economy
+    priority: 2
+    color: "#FFD700"  # Gold
+    icon: "economy"
+
+  - id: MYSTICAL
+    name: Mystical Event
+    description: Magical or supernatural events
+    category: magic
+    priority: 3
+    color: "#9370DB"  # Medium Purple
+    icon: "magic"
+
+  - id: CRIMINAL
+    name: Criminal Event
+    description: Crime-related events and encounters
+    category: danger
+    priority: 4
+    color: "#8B0000"  # Dark Red
+    icon: "crime"
+
+  - id: POLITICAL
+    name: Political Event
+    description: Political events and intrigue
+    category: politics
+    priority: 5
+    color: "#4169E1"  # Royal Blue
+    icon: "politics"
+
+  - id: NATURAL
+    name: Natural Event
+    description: Weather and natural events
+    category: nature
+    priority: 6
+    color: "#32CD32"  # Lime Green
+    icon: "nature"
+
+  - id: PROFESSIONAL
+    name: Professional Event
+    description: Work-related events and opportunities
+    category: work
+    priority: 7
+    color: "#FF8C00"  # Dark Orange
+    icon: "work"
+
+  - id: PERSONAL
+    name: Personal Event
+    description: Personal character development events
+    category: personal
+    priority: 8
+    color: "#FF1493"  # Deep Pink
+    icon: "personal"
+
+  - id: COMMUNITY
+    name: Community Event
+    description: Town and community events
+    category: community
+    priority: 9
+    color: "#20B2AA"  # Light Sea Green
+    icon: "community"
+
+  - id: ADVENTURE_HOOK
+    name: Adventure Hook
+    description: Hooks for future adventures and quests
+    category: adventure
+    priority: 10
+    color: "#DC143C"  # Crimson
+    icon: "adventure"
+
+# Event outcomes
+event_outcomes:
+  - id: SUCCESS
+    name: Success
+    description: Positive outcome with beneficial results
+    category: positive
+    color: "#00FF00"  # Green
+    modifier: 1.0
+
+  - id: FAILURE
+    name: Failure
+    description: Negative outcome with detrimental results
+    category: negative
+    color: "#FF0000"  # Red
+    modifier: -1.0
+
+  - id: NEUTRAL
+    name: Neutral
+    description: No significant change or mixed results
+    category: neutral
+    color: "#808080"  # Gray
+    modifier: 0.0
+
+  - id: MIXED
+    name: Mixed Results
+    description: Both positive and negative results
+    category: mixed
+    color: "#FFA500"  # Orange
+    modifier: 0.5
+
+  - id: CRITICAL_SUCCESS
+    name: Critical Success
+    description: Exceptional positive outcome
+    category: positive
+    color: "#00FFFF"  # Cyan
+    modifier: 2.0
+
+  - id: CRITICAL_FAILURE
+    name: Critical Failure
+    description: Exceptional negative outcome
+    category: negative
+    color: "#8B0000"  # Dark Red
+    modifier: -2.0
+
+# Event rarity levels
+event_rarities:
+  - id: COMMON
+    name: Common
+    description: Happens frequently
+    category: frequent
+    weight: 50
+    color: "#FFFFFF"  # White
+
+  - id: UNCOMMON
+    name: Uncommon
+    description: Occasional events
+    category: occasional
+    weight: 25
+    color: "#C0C0C0"  # Silver
+
+  - id: RARE
+    name: Rare
+    description: Infrequent events
+    category: infrequent
+    weight: 15
+    color: "#FFD700"  # Gold
+
+  - id: EPIC
+    name: Epic
+    description: Very rare events
+    category: very_rare
+    weight: 8
+    color: "#9370DB"  # Medium Purple
+
+  - id: LEGENDARY
+    name: Legendary
+    description: Extremely rare events
+    category: extremely_rare
+    weight: 2
+    color: "#FF1493"  # Deep Pink
+
+# Event categories for organization
+event_categories:
+  interaction:
+    name: Social Interaction
+    description: Events involving social encounters and relationships
+    priority: 1
+
+  economy:
+    name: Economic Events
+    description: Events related to trade, commerce, and wealth
+    priority: 2
+
+  magic:
+    name: Mystical Events
+    description: Events involving magic and the supernatural
+    priority: 3
+
+  danger:
+    name: Dangerous Events
+    description: Events involving risk, crime, and conflict
+    priority: 4
+
+  politics:
+    name: Political Events
+    description: Events involving politics and intrigue
+    priority: 5
+
+  nature:
+    name: Natural Events
+    description: Events involving weather and natural phenomena
+    priority: 6
+
+  work:
+    name: Professional Events
+    description: Events related to work and profession
+    priority: 7
+
+  personal:
+    name: Personal Events
+    description: Events involving personal character development
+    priority: 8
+
+  community:
+    name: Community Events
+    description: Events involving the town and community
+    priority: 9
+
+  adventure:
+    name: Adventure Events
+    description: Events that lead to adventures and quests
+    priority: 10

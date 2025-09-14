@@ -1,0 +1,147 @@
+# Equipment Sets Configuration
+# Defines equipment sets and their bonuses
+
+equipment_sets:
+  - id: "leather_armor_set"
+    name: "Leather Armor Set"
+    description: "Light armor set for stealthy characters"
+    pieces:
+      - "Leather Armor"
+      - "Leather Boots"
+      - "Leather Gloves"
+    bonuses:
+      stealth: 2
+      movement_speed: 5
+    rarity: "common"
+
+  - id: "chain_mail_set"
+    name: "Chain Mail Set"
+    description: "Medium armor set for balanced protection"
+    pieces:
+      - "Chain Mail"
+      - "Chain Boots"
+      - "Chain Gauntlets"
+    bonuses:
+      armor_class: 1
+      damage_resistance: "slashing"
+    rarity: "uncommon"
+
+  - id: "plate_armor_set"
+    name: "Plate Armor Set"
+    description: "Heavy armor set for maximum protection"
+    pieces:
+      - "Plate Armor"
+      - "Plate Boots"
+      - "Plate Gauntlets"
+      - "Plate Helmet"
+    bonuses:
+      armor_class: 2
+      damage_resistance: "piercing"
+    rarity: "rare"
+
+  - id: "wizards_set"
+    name: "Wizard's Set"
+    description: "Magical equipment set for spellcasters"
+    pieces:
+      - "Wizard's Robe"
+      - "Wizard's Hat"
+      - "Wizard's Staff"
+    bonuses:
+      spell_save_dc: 1
+      spell_attack_bonus: 1
+    rarity: "uncommon"
+
+  - id: "rogues_set"
+    name: "Rogue's Set"
+    description: "Stealth equipment set for rogues"
+    pieces:
+      - "Leather Armor"
+      - "Thieves' Tools"
+      - "Shortsword"
+    bonuses:
+      stealth: 3
+      lockpicking: 2
+    rarity: "common"
+
+  - id: "clerics_set"
+    name: "Cleric's Set"
+    description: "Religious equipment set for clerics"
+    pieces:
+      - "Scale Mail"
+      - "Shield"
+      - "Mace"
+      - "Holy Symbol"
+    bonuses:
+      healing_power: 1
+      divine_spell_bonus: 1
+    rarity: "common"
+
+# Equipment piece definitions
+equipment_pieces:
+  # Armor pieces
+  - id: "leather_armor"
+    name: "Leather Armor"
+    type: "armor"
+    armor_class: 11
+    weight: 10.0
+    value: 10.0
+    rarity: "common"
+
+  - id: "chain_mail"
+    name: "Chain Mail"
+    type: "armor"
+    armor_class: 16
+    weight: 55.0
+    value: 75.0
+    rarity: "common"
+
+  - id: "plate_armor"
+    name: "Plate Armor"
+    type: "armor"
+    armor_class: 18
+    weight: 65.0
+    value: 1500.0
+    rarity: "rare"
+
+  # Weapon pieces
+  - id: "shortsword"
+    name: "Shortsword"
+    type: "weapon"
+    damage: "1d6 piercing"
+    weight: 2.0
+    value: 10.0
+    rarity: "common"
+
+  - id: "mace"
+    name: "Mace"
+    type: "weapon"
+    damage: "1d6 bludgeoning"
+    weight: 4.0
+    value: 5.0
+    rarity: "common"
+
+  - id: "wizards_staff"
+    name: "Wizard's Staff"
+    type: "weapon"
+    damage: "1d6 bludgeoning"
+    weight: 4.0
+    value: 5.0
+    rarity: "common"
+    spell_focus: true
+
+  # Tool pieces
+  - id: "thieves_tools"
+    name: "Thieves' Tools"
+    type: "tool"
+    weight: 1.0
+    value: 25.0
+    rarity: "common"
+    lockpicking_bonus: 2
+
+  - id: "holy_symbol"
+    name: "Holy Symbol"
+    type: "tool"
+    weight: 1.0
+    value: 5.0
+    rarity: "common"
+    divine_focus: true

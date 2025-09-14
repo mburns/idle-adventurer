@@ -1,0 +1,13 @@
+name: Noble
+skill_proficiencies:
+  - History
+  - Persuasion
+languages:
+  - One of your choice
+equipment:
+  - A signet ring
+  - a scroll of pedigree
+  - a set of fine clothes
+  - and a purse containing 25 gp
+feature: Position of Privilege
+suggested_characteristics: {}

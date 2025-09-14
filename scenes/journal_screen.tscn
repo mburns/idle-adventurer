@@ -1,0 +1,166 @@
+[gd_scene load_steps=3 format=3 uid="uid://journal_screen"]
+
+[ext_resource type="Script" path="res://scripts/journal_screen.gd" id="1_journal_screen"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="JournalScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_journal_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="MainContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Title" type="Label" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "Character Journal"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="Control" parent="MainContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_tab_name = "Background"
+
+[node name="BackgroundText" type="TextEdit" parent="MainContainer/VBoxContainer/TabContainer/Background"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Write your character's background story, personality traits, ideals, bonds, and flaws here..."
+
+[node name="Campaign Notes" type="Control" parent="MainContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_tab_name = "Campaign Notes"
+
+[node name="VBox" type="VBoxContainer" parent="MainContainer/VBoxContainer/TabContainer/Campaign Notes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AddEntryContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer/TabContainer/Campaign Notes/VBox"]
+layout_mode = 2
+
+[node name="AddEntryButton" type="Button" parent="MainContainer/VBoxContainer/TabContainer/Campaign Notes/VBox/AddEntryContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Campaign Entry"
+
+[node name="CampaignList" type="ScrollContainer" parent="MainContainer/VBoxContainer/TabContainer/Campaign Notes/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CampaignContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/TabContainer/Campaign Notes/VBox/CampaignList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Timeline" type="Control" parent="MainContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_tab_name = "Timeline"
+
+[node name="VBox" type="VBoxContainer" parent="MainContainer/VBoxContainer/TabContainer/Timeline"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AddEventContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer/TabContainer/Timeline/VBox"]
+layout_mode = 2
+
+[node name="AddEventButton" type="Button" parent="MainContainer/VBoxContainer/TabContainer/Timeline/VBox/AddEventContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Timeline Event"
+
+[node name="TimelineList" type="ScrollContainer" parent="MainContainer/VBoxContainer/TabContainer/Timeline/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TimelineContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/TabContainer/Timeline/VBox/TimelineList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Save Journal"
+
+[node name="BackButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Back to Main"
+
+[connection signal="pressed" from="MainContainer/VBoxContainer/TabContainer/Campaign Notes/VBox/AddEntryContainer/AddEntryButton" to="." method="_on_add_campaign_entry_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/TabContainer/Timeline/VBox/AddEventContainer/AddEventButton" to="." method="_on_add_timeline_event_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

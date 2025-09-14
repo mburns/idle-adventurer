@@ -1,0 +1,114 @@
+category: Armor
+items:
+  - name: Padded
+    cost: 5 gp
+    armor_class: 11 + Dex modifier
+    strength: '-'
+    stealth: Disadvantage
+    weight: 8 lb.
+    category: Light Armor
+    type: armor
+  - name: Leather
+    cost: 10 gp
+    armor_class: 11 + Dex modifier
+    strength: '-'
+    stealth: '-'
+    weight: 10 lb.
+    category: Light Armor
+    type: armor
+  - name: Studded leather
+    cost: 45 gp
+    armor_class: 12 + Dex modifier
+    strength: '-'
+    stealth: '-'
+    weight: 13 lb.
+    category: Light Armor
+    type: armor
+  - name: Hide
+    cost: 10 gp
+    armor_class: 12 + Dex modifier (max 2)
+    strength: '-'
+    stealth: '-'
+    weight: 12 lb.
+    category: Medium Armor
+    type: armor
+  - name: Chain shirt
+    cost: 50 gp
+    armor_class: 13 + Dex modifier (max 2)
+    strength: '-'
+    stealth: '-'
+    weight: 20 lb.
+    category: Medium Armor
+    type: armor
+  - name: Scale mail
+    cost: 50 gp
+    armor_class: 14 + Dex modifier (max 2)
+    strength: '-'
+    stealth: Disadvantage
+    weight: 45 lb.
+    category: Medium Armor
+    type: armor
+  - name: Breastplate
+    cost: 400 gp
+    armor_class: 14 + Dex modifier (max 2)
+    strength: '-'
+    stealth: '-'
+    weight: 20 lb.
+    category: Medium Armor
+    type: armor
+  - name: Half plate
+    cost: 750 gp
+    armor_class: 15 + Dex modifier (max 2)
+    strength: '-'
+    stealth: Disadvantage
+    weight: 40 lb.
+    category: Medium Armor
+    type: armor
+  - name: Ring mail
+    cost: 30 gp
+    armor_class: "14"
+    strength: '-'
+    stealth: Disadvantage
+    weight: 40 lb.
+    category: Heavy Armor
+    type: armor
+  - name: Chain mail
+    cost: 75 gp
+    armor_class: "16"
+    strength: Str 13
+    stealth: Disadvantage
+    weight: 55 lb.
+    category: Heavy Armor
+    type: armor
+  - name: Splint
+    cost: 200 gp
+    armor_class: "17"
+    strength: Str 15
+    stealth: Disadvantage
+    weight: 60 lb.
+    category: Heavy Armor
+    type: armor
+  - name: Plate
+    cost: 1,500 gp
+    armor_class: "18"
+    strength: Str 15
+    stealth: Disadvantage
+    weight: 65 lb.
+    category: Heavy Armor
+    type: armor
+  - name: Shield
+    cost: ""
+    armor_class: ""
+    strength: ""
+    stealth: ""
+    weight: ""
+    category: Heavy Armor
+    type: armor
+  - name: Shield
+    cost: 10 gp
+    armor_class: "+2"
+    strength: '-'
+    stealth: '-'
+    weight: 6 lb.
+    category: Heavy Armor
+    type: armor

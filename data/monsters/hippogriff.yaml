@@ -1,0 +1,38 @@
+name: Hippogriff
+size: Large monstrosity
+type: unaligned
+alignment: ""
+armor_class: "11"
+hit_points: 19 (3d10+3)
+speed: 40 ft., fly 60 ft.
+abilities:
+  strength: 17
+  dexterity: 13
+  constitution: 13
+  intelligence: 2
+  wisdom: 12
+  charisma: 8
+saving_throws: []
+skills:
+  - Perception +5
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: passive Perception 15
+languages: '-'
+challenge_rating: "1"
+xp: 0
+traits: []
+actions:
+  - name: 'Multiattack***. The hippogriff makes two attacks: one with its beak and one with its cla'
+    description: ""
+  - name: Beak***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 8 (1d10+3) piercing dama
+    description: ""
+  - name: Claws.*** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) slashing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

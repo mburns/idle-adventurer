@@ -1,0 +1,45 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: detect-private-key
+
+  - repo: local
+    hooks:
+      - id: gdscript-format
+        name: GDScript Format
+        entry: find . -name "*.gd" -exec sed -i '' 's/\t/    /g' {} \; && find . -name "*.gd" -exec sed -i '' 's/[[:space:]]*$//' {} \;
+        language: system
+        files: \.(gd)$
+        pass_filenames: false
+
+      - id: godot-lint
+        name: Godot Lint
+        entry: godot --headless --script scripts/lint.gd --quit
+        language: system
+        files: \.(gd)$
+        pass_filenames: false
+
+      - id: godot-tests
+        name: Godot Tests
+        entry: godot --headless --script run_tests.gd --quit
+        language: system
+        files: \.(gd)$
+        pass_filenames: false
+
+      - id: check-todos
+        name: Check TODOs
+        entry: python scripts/check_todos.py
+        language: system
+        files: \.(gd|md)$

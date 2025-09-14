@@ -1,0 +1,342 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8fnnxg04bphy"]
+
+[ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_char_creation"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="CharacterCreation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_char_creation")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "Character Creation"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterNameSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterNameLabel" type="Label" parent="ScrollContainer/VBoxContainer/CharacterNameSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Character Name"
+
+[node name="CharacterNameInput" type="LineEdit" parent="ScrollContainer/VBoxContainer/CharacterNameSection"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Enter character name"
+
+[node name="RaceSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RaceLabel" type="Label" parent="ScrollContainer/VBoxContainer/RaceSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Race"
+
+[node name="RaceOptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/RaceSection"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+
+[node name="ClassSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClassLabel" type="Label" parent="ScrollContainer/VBoxContainer/ClassSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Class"
+
+[node name="ClassOptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/ClassSection"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+
+[node name="BackgroundSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackgroundLabel" type="Label" parent="ScrollContainer/VBoxContainer/BackgroundSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Background"
+
+[node name="BackgroundOptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/BackgroundSection"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+
+[node name="DescriptionSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="ScrollContainer/VBoxContainer/DescriptionSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Description"
+
+[node name="DescriptionTextArea" type="TextEdit" parent="ScrollContainer/VBoxContainer/DescriptionSection"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+readonly = true
+placeholder_text = "Select a race, class, or background to see its description"
+
+[node name="AbilityScoresSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AbilityScoresLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Ability Scores (Standard Array: 15, 14, 13, 12, 10, 8)"
+
+[node name="AbilityScoresGrid" type="GridContainer" parent="ScrollContainer/VBoxContainer/AbilityScoresSection"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="StrengthLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Strength:"
+
+[node name="StrengthSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 8.0
+max_value = 20.0
+value = 15.0
+
+[node name="StrengthModifierLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "(+2)"
+
+[node name="DexterityLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Dexterity:"
+
+[node name="DexteritySpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 8.0
+max_value = 20.0
+value = 14.0
+
+[node name="DexterityModifierLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "(+2)"
+
+[node name="ConstitutionLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Constitution:"
+
+[node name="ConstitutionSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 8.0
+max_value = 20.0
+value = 13.0
+
+[node name="ConstitutionModifierLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "(+1)"
+
+[node name="IntelligenceLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Intelligence:"
+
+[node name="IntelligenceSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 8.0
+max_value = 20.0
+value = 12.0
+
+[node name="IntelligenceModifierLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "(+1)"
+
+[node name="WisdomLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Wisdom:"
+
+[node name="WisdomSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 8.0
+max_value = 20.0
+value = 10.0
+
+[node name="WisdomModifierLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "(+0)"
+
+[node name="CharismaLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Charisma:"
+
+[node name="CharismaSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 8.0
+max_value = 20.0
+value = 8.0
+
+[node name="CharismaModifierLabel" type="Label" parent="ScrollContainer/VBoxContainer/AbilityScoresSection/AbilityScoresGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "(-1)"
+
+[node name="PhysicalCharacteristicsSection" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PhysicalCharacteristicsLabel" type="Label" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Physical Characteristics"
+
+[node name="PhysicalCharacteristicsGrid" type="GridContainer" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="HeightLabel" type="Label" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Height (inches):"
+
+[node name="HeightSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 30.0
+max_value = 100.0
+value = 60.0
+
+[node name="HeightSpacer" type="Control" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+
+[node name="WeightLabel" type="Label" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Weight (pounds):"
+
+[node name="WeightSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 30.0
+max_value = 500.0
+value = 150.0
+
+[node name="WeightSpacer" type="Control" parent="ScrollContainer/VBoxContainer/PhysicalCharacteristicsSection/PhysicalCharacteristicsGrid"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RandomizeButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Randomize"
+
+[node name="BackButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Back"
+
+[node name="CreateCharacterButton" type="Button" parent="ScrollContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Create Character"
+
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/RaceSection/RaceOptionButton" to="." method="_on_race_option_button_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/ClassSection/ClassOptionButton" to="." method="_on_class_option_button_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/BackgroundSection/BackgroundOptionButton" to="." method="_on_background_option_button_item_selected"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonContainer/RandomizeButton" to="." method="_on_randomize_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonContainer/CreateCharacterButton" to="." method="_on_create_character_button_pressed"]

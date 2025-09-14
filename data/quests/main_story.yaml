@@ -1,0 +1,80 @@
+# Main story quests for the idle adventurer game
+
+quests:
+  - id: first_steps
+    title: First Steps
+    description: "Begin your journey as an adventurer. Learn the basics of survival and make your first connections in town."
+    quest_type: MAIN_STORY
+    status: AVAILABLE
+    giver: "Town Elder"
+    location: "Town Square"
+    time_limit: 0
+    requirements:
+      character_level: 1
+      faction_reputation: {}
+    objectives:
+      - id: explore_town
+        description: "Explore the town and meet its inhabitants"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 3
+        requirements:
+          activity: "exploration"
+      - id: learn_basics
+        description: "Learn basic survival skills"
+        objective_type: LEARN_SKILL
+        target_value: 1
+        requirements:
+          skill_type: "survival"
+      - id: make_friends
+        description: "Make your first social connections"
+        objective_type: MAKE_CONNECTIONS
+        target_value: 2
+        requirements:
+          connection_type: "friendly"
+    rewards:
+      experience: 100
+      gold: 50
+      reputation:
+        Town: 10
+      items:
+        - id: "basic_supplies"
+          quantity: 1
+    prerequisites: []
+    unlocks: ["town_guard_quest"]
+
+  - id: town_guard_quest
+    title: "The Guard's Request"
+    description: "The town guard needs help with a minor disturbance. This could be your chance to prove yourself."
+    quest_type: MAIN_STORY
+    status: LOCKED
+    giver: "Town Guard Captain"
+    location: "Guard Barracks"
+    time_limit: 7
+    requirements:
+      character_level: 2
+      faction_reputation:
+        Town: 5
+    objectives:
+      - id: investigate_disturbance
+        description: "Investigate the disturbance reported by townsfolk"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 1
+        requirements:
+          activity: "investigation"
+      - id: resolve_conflict
+        description: "Resolve the conflict peacefully"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 1
+        requirements:
+          activity: "diplomacy"
+    rewards:
+      experience: 200
+      gold: 100
+      reputation:
+        Town: 20
+        Guard: 15
+      items:
+        - id: "guard_badge"
+          quantity: 1
+    prerequisites: ["first_steps"]
+    unlocks: ["faction_introduction"]

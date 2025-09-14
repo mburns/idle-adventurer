@@ -1,0 +1,432 @@
+[gd_scene load_steps=3 format=3 uid="uid://faction_screen"]
+
+[ext_resource type="Script" path="res://scripts/faction_screen.gd" id="1_faction_screen"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="FactionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_faction_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="MainContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Title" type="Label" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "Factions & Reputation"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FactionTabs" type="TabContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+
+[node name="Harpers" type="ScrollContainer" parent="MainContainer/VBoxContainer/FactionTabs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Harpers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FactionInfo" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer"]
+layout_mode = 2
+
+[node name="FactionName" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Harpers"
+horizontal_alignment = 1
+
+[node name="ReputationBar" type="ProgressBar" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/FactionInfo"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="ReputationLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Reputation: 0 (Neutral)"
+horizontal_alignment = 1
+
+[node name="FactionDescription" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "A secret organization dedicated to preserving knowledge and fighting evil"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Benefits"
+
+[node name="BenefitsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/QuestsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Quests"
+
+[node name="QuestsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Harpers/VBoxContainer/QuestsSection"]
+layout_mode = 2
+
+[node name="Zhentarim" type="ScrollContainer" parent="MainContainer/VBoxContainer/FactionTabs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FactionInfo" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer"]
+layout_mode = 2
+
+[node name="FactionName" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Zhentarim"
+horizontal_alignment = 1
+
+[node name="ReputationBar" type="ProgressBar" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/FactionInfo"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="ReputationLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Reputation: 0 (Neutral)"
+horizontal_alignment = 1
+
+[node name="FactionDescription" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "A mercenary organization focused on profit and power"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Benefits"
+
+[node name="BenefitsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/QuestsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Quests"
+
+[node name="QuestsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Zhentarim/VBoxContainer/QuestsSection"]
+layout_mode = 2
+
+[node name="Emerald Enclave" type="ScrollContainer" parent="MainContainer/VBoxContainer/FactionTabs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FactionInfo" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer"]
+layout_mode = 2
+
+[node name="FactionName" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Emerald Enclave"
+horizontal_alignment = 1
+
+[node name="ReputationBar" type="ProgressBar" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/FactionInfo"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="ReputationLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Reputation: 0 (Neutral)"
+horizontal_alignment = 1
+
+[node name="FactionDescription" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Druids and rangers protecting nature"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Benefits"
+
+[node name="BenefitsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/QuestsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Quests"
+
+[node name="QuestsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Emerald Enclave/VBoxContainer/QuestsSection"]
+layout_mode = 2
+
+[node name="Lord's Alliance" type="ScrollContainer" parent="MainContainer/VBoxContainer/FactionTabs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FactionInfo" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer"]
+layout_mode = 2
+
+[node name="FactionName" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Lord's Alliance"
+horizontal_alignment = 1
+
+[node name="ReputationBar" type="ProgressBar" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/FactionInfo"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="ReputationLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Reputation: 0 (Neutral)"
+horizontal_alignment = 1
+
+[node name="FactionDescription" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Nobles and rulers maintaining order"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Benefits"
+
+[node name="BenefitsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/QuestsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Quests"
+
+[node name="QuestsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Lord's Alliance/VBoxContainer/QuestsSection"]
+layout_mode = 2
+
+[node name="Order of the Gauntlet" type="ScrollContainer" parent="MainContainer/VBoxContainer/FactionTabs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FactionInfo" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer"]
+layout_mode = 2
+
+[node name="FactionName" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Order of the Gauntlet"
+horizontal_alignment = 1
+
+[node name="ReputationBar" type="ProgressBar" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/FactionInfo"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="ReputationLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Reputation: 0 (Neutral)"
+horizontal_alignment = 1
+
+[node name="FactionDescription" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/FactionInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Paladins and clerics fighting evil"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer"]
+layout_mode = 2
+
+[node name="BenefitsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Benefits"
+
+[node name="BenefitsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/BenefitsSection"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsSection" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestsLabel" type="Label" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/QuestsSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Available Quests"
+
+[node name="QuestsList" type="VBoxContainer" parent="MainContainer/VBoxContainer/FactionTabs/Order of the Gauntlet/VBoxContainer/QuestsSection"]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Back"
+
+[node name="TestQuestButton" type="Button" parent="MainContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Test Quest"
+
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainContainer/VBoxContainer/ButtonContainer/TestQuestButton" to="." method="_on_test_quest_button_pressed"]

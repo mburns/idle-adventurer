@@ -1,0 +1,33 @@
+name: Giant Boar
+size: Large beast
+type: unaligned
+alignment: ""
+armor_class: 12 (natural armor)
+hit_points: 42 (5d10+15)
+speed: 40 ft.
+abilities:
+  strength: 17
+  dexterity: 10
+  constitution: 16
+  intelligence: 2
+  wisdom: 7
+  charisma: 5
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: passive Perception 8
+languages: '-'
+challenge_rating: "2"
+xp: 0
+traits: []
+actions:
+  - name: Tusk***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) slashing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

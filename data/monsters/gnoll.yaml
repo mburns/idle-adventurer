@@ -1,0 +1,37 @@
+name: Gnoll
+size: Medium humanoid (gnoll)
+type: chaotic evil
+alignment: ""
+armor_class: 15 (hide armor, shield)
+hit_points: 22 (5d8)
+speed: 30 ft.
+abilities:
+  strength: 14
+  dexterity: 12
+  constitution: 11
+  intelligence: 6
+  wisdom: 10
+  charisma: 7
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: darkvision 60 ft., passive Perception 10
+languages: Gnoll
+challenge_rating: 1/2
+xp: 0
+traits: []
+actions:
+  - name: Bite***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one creature. *Hit:* 4 (1d4+2) piercing dama
+    description: ""
+  - name: Spear***. *Melee or Ranged Weapon Attack:* +4 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee atta
+    description: ""
+  - name: Longbow***. *Ranged Weapon Attack:* +3 to hit, range 150/600 ft., one target. *Hit:* 5 (1d8+1) piercing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

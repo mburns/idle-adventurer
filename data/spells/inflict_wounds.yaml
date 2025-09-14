@@ -1,0 +1,10 @@
+name: Inflict Wounds
+level: ""
+school: ""
+casting_time: 1 action
+range: Touch
+components: V, S
+duration: Instantaneous
+description: Make a melee spell attack against a creature you can reach. On a hit, the target takes 3d10 necrotic damage.
+at_higher_levels: ""
+classes: []

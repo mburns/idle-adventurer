@@ -11,12 +11,23 @@ config_version=5
 [application]
 
 config/name="Idle Adventurer"
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AutoloadManager="*res://scripts/core/autoload_manager.gd"
+CharacterManager="*res://scripts/core/character_manager.gd"
+DataLoader="*res://scripts/data/data_loader.gd"
+GameEvents="*res://scripts/events/game_events.gd"
+AnimationManager="*res://scripts/visual/animation_manager.gd"
+ThemeManager="*res://scripts/visual/theme_manager.gd"
+
 [display]
 
+window/size/viewport_width=1200
+window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

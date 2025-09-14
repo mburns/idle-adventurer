@@ -1,0 +1,220 @@
+[gd_scene load_steps=3 format=3 uid="uid://e8fnnxg04bphy"]
+
+[ext_resource type="Script" path="res://scripts/equipment_screen.gd" id="1_equipment_screen"]
+[ext_resource type="FontFile" uid="uid://750fxna65tfh" path="res://assets/Grundschrift-Normal.otf" id="2_font"]
+
+[node name="EquipmentScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_equipment_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="HBoxContainer" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/LeftPanel/Header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 36
+text = "Equipment"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="HBoxContainer/LeftPanel/Header"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="EquipmentSlots" type="VBoxContainer" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="EquipmentSlotsTitle" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 24
+text = "Equipped Items"
+horizontal_alignment = 1
+
+[node name="HeadSlot" type="HBoxContainer" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+
+[node name="HeadLabel" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/HeadSlot"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Head:"
+
+[node name="HeadItem" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/HeadSlot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "None"
+
+[node name="ChestSlot" type="HBoxContainer" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+
+[node name="ChestLabel" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/ChestSlot"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Chest:"
+
+[node name="ChestItem" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/ChestSlot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "None"
+
+[node name="HandsSlot" type="HBoxContainer" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+
+[node name="HandsLabel" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/HandsSlot"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Hands:"
+
+[node name="HandsItem" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/HandsSlot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "None"
+
+[node name="FeetSlot" type="HBoxContainer" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+
+[node name="FeetLabel" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/FeetSlot"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Feet:"
+
+[node name="FeetItem" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/FeetSlot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "None"
+
+[node name="MainHandSlot" type="HBoxContainer" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+
+[node name="MainHandLabel" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/MainHandSlot"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Main Hand:"
+
+[node name="MainHandItem" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/MainHandSlot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "None"
+
+[node name="OffHandSlot" type="HBoxContainer" parent="HBoxContainer/LeftPanel/EquipmentSlots"]
+layout_mode = 2
+
+[node name="OffHandLabel" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/OffHandSlot"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "Off Hand:"
+
+[node name="OffHandItem" type="Label" parent="HBoxContainer/LeftPanel/EquipmentSlots/OffHandSlot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 18
+text = "None"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="RightPanel" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventoryTitle" type="Label" parent="HBoxContainer/RightPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 24
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="InventoryList" type="ItemList" parent="HBoxContainer/RightPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemDetails" type="VBoxContainer" parent="HBoxContainer/RightPanel"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="HBoxContainer/RightPanel/ItemDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 20
+text = "Select an item"
+
+[node name="ItemDescription" type="RichTextLabel" parent="HBoxContainer/RightPanel/ItemDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+bbcode_enabled = true
+text = "No item selected"
+
+[node name="ItemActions" type="HBoxContainer" parent="HBoxContainer/RightPanel/ItemDetails"]
+layout_mode = 2
+
+[node name="EquipButton" type="Button" parent="HBoxContainer/RightPanel/ItemDetails/ItemActions"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 16
+text = "Equip"
+disabled = true
+
+[node name="UnequipButton" type="Button" parent="HBoxContainer/RightPanel/ItemDetails/ItemActions"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font_size = 16
+text = "Unequip"
+disabled = true
+
+[connection signal="pressed" from="HBoxContainer/LeftPanel/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="HBoxContainer/RightPanel/InventoryList" to="." method="_on_inventory_item_selected"]
+[connection signal="pressed" from="HBoxContainer/RightPanel/ItemDetails/ItemActions/EquipButton" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/RightPanel/ItemDetails/ItemActions/UnequipButton" to="." method="_on_unequip_button_pressed"]

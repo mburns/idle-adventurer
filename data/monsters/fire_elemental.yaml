@@ -1,0 +1,48 @@
+name: Fire Elemental
+size: Large elemental
+type: neutral
+alignment: ""
+armor_class: "13"
+hit_points: 102 (12d10+36)
+speed: 50 ft.
+abilities:
+  strength: 10
+  dexterity: 17
+  constitution: 16
+  intelligence: 6
+  wisdom: 10
+  charisma: 7
+saving_throws: []
+skills: []
+damage_immunities:
+  - fire
+  - poison
+damage_resistances:
+  - bludgeoning
+  - piercing
+  - and slashing from nonmagical attacks
+damage_vulnerabilities: []
+condition_immunities:
+  - exhaustion
+  - grappled
+  - paralyzed
+  - petrified
+  - poisoned
+  - prone
+  - restrained
+  - unconscious
+senses: darkvision 60 ft., passive Perception 10
+languages: Ignan
+challenge_rating: "5"
+xp: 0
+traits: []
+actions:
+  - name: Multiattack***. The elemental makes two touch attac
+    description: ""
+  - name: Touch***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) fire damage. If the target is a creature or a flammable object, it ignites. Until a creature takes an action to douse the fire, the target takes 5 (1d10) fire damage at the start of each of its tur
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

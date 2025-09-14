@@ -1,0 +1,431 @@
+[gd_scene load_steps=10 format=3 uid="uid://e6llx5m8xkwy"]
+
+[ext_resource type="Texture2D" uid="uid://kcwb7v014f6q" path="res://assets/icons/warlord-helmet.svg" id="1_u0x4l"]
+[ext_resource type="Script" path="res://main.gd" id="1_u34hy"]
+[ext_resource type="FontFile" uid="uid://dug87e5de4v8o" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
+[ext_resource type="Texture2D" uid="uid://d33n5g1tmmmd" path="res://assets/icons/two-coins.svg" id="3_ohurj"]
+[ext_resource type="Script" path="res://scripts/ui/dynamic_main_ui.gd" id="4_dynamic_ui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_634im"]
+bg_color = Color(0.960784, 0.317647, 0.654902, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5i0o"]
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6m7h"]
+bg_color = Color(0.827451, 0.521569, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 13
+
+[sub_resource type="Theme" id="Theme_wr2kh"]
+default_font = ExtResource("2_cxec1")
+default_font_size = 18
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u34hy")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.356863, 0.356863, 0.596078, 1)
+
+[node name="PlayerInfoBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 604.0
+offset_bottom = 226.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_634im")
+
+[node name="AvatarFrame" type="Panel" parent="PlayerInfoBox"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -196.0
+offset_right = 193.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5i0o")
+
+[node name="Avatar" type="TextureRect" parent="PlayerInfoBox/AvatarFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u0x4l")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="CharacterNameLabel" type="Label" parent="PlayerInfoBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.340753
+anchor_top = 0.0728155
+anchor_right = 0.955479
+anchor_bottom = 0.359223
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 48
+text = "Bob"
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterLevelLabel" type="Label" parent="PlayerInfoBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.340753
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 24
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterClassLabel" type="Label" parent="PlayerInfoBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.4
+anchor_right = 0.955479
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 24
+text = "Human Barbarian"
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentActivityLabel" type="Label" parent="PlayerInfoBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.340753
+anchor_top = 0.5
+anchor_right = 0.955479
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Idle"
+metadata/_edit_use_anchors_ = true
+
+[node name="ActivityProgressBar" type="ProgressBar" parent="PlayerInfoBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 199.0
+offset_top = -74.0
+offset_right = -10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CoinBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 20.0
+offset_right = -19.0
+offset_bottom = 234.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x6m7h")
+
+[node name="Coin" type="TextureRect" parent="CoinBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -102.5
+offset_right = 53.5
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ohurj")
+expand_mode = 1
+
+[node name="CoinsValueText" type="Label" parent="CoinBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.714286
+anchor_top = 0.0540541
+anchor_right = 0.966777
+anchor_bottom = 0.31982
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 48
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="GrantCoinsButton" type="Button" parent="CoinBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 52.5
+offset_top = 27.0
+offset_right = 144.5
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 24
+text = "Test"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 250.0
+offset_right = -209.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wr2kh")
+theme_override_constants/icon_separation = 5
+theme_override_constants/icon_max_width = 64
+
+[node name="Rest" type="GridContainer" parent="TabContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="ShortRest" type="Button" parent="TabContainer/Rest"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Short rest (15 minutes)"
+
+[node name="LongRest" type="Button" parent="TabContainer/Rest"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Long rest (8 hours)"
+
+[node name="DynamicUIGenerator" type="Node" parent="."]
+script = ExtResource("4_dynamic_ui")
+
+[node name="NavigationButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 250.0
+offset_right = -20.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="CharacterProfileButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Character Profile"
+
+[node name="EquipmentButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Equipment"
+
+[node name="JournalButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Journal"
+
+[node name="SettingsButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Settings"
+
+[node name="CharacterDisplayButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Character Display"
+
+[node name="CharacterSheetButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "D&D Character Sheet"
+
+[node name="ActivitiesButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Activities"
+
+[node name="GeneralStoreButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "General Store"
+
+[node name="InventoryButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Inventory"
+
+[node name="MonsterGlossaryButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Monster Glossary"
+
+[node name="LevelingButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Leveling"
+
+[node name="FactionButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Faction"
+
+[node name="AchievementsButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Achievements"
+
+[node name="SpellbookButton" type="Button" parent="NavigationButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxec1")
+theme_override_font_sizes/font_size = 18
+text = "Spellbook"
+
+[connection signal="pressed" from="CoinBox/GrantCoinsButton" to="." method="_on_grant_coins_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/CharacterProfileButton" to="." method="_on_character_profile_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/EquipmentButton" to="." method="_on_equipment_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/JournalButton" to="." method="_on_journal_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/CharacterDisplayButton" to="." method="_on_character_display_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/CharacterSheetButton" to="." method="_on_character_sheet_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/ActivitiesButton" to="." method="_on_activities_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/GeneralStoreButton" to="." method="_on_general_store_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/MonsterGlossaryButton" to="." method="_on_monster_glossary_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/LevelingButton" to="." method="_on_leveling_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/FactionButton" to="." method="_on_faction_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/AchievementsButton" to="." method="_on_achievements_button_pressed"]
+[connection signal="pressed" from="NavigationButtons/SpellbookButton" to="." method="_on_spellbook_button_pressed"]

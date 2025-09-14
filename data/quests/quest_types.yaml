@@ -1,0 +1,160 @@
+# Quest system configuration for the idle adventurer game
+# Defines quest types, statuses, and objective types
+
+# Quest types
+quest_types:
+  - id: MAIN_STORY
+    name: Main Story
+    description: Main campaign storyline quests
+    category: story
+    priority: 1
+    color: "#FFD700"  # Gold
+
+  - id: FACTION
+    name: Faction Quest
+    description: Faction-specific quests and missions
+    category: faction
+    priority: 2
+    color: "#8B4513"  # Brown
+
+  - id: PROFESSION
+    name: Professional Work
+    description: Work-related quests and contracts
+    category: work
+    priority: 3
+    color: "#4169E1"  # Royal Blue
+
+  - id: SOCIAL
+    name: Social Interaction
+    description: Social interaction and relationship quests
+    category: social
+    priority: 4
+    color: "#FF69B4"  # Hot Pink
+
+  - id: PERSONAL
+    name: Personal Development
+    description: Character development and self-improvement quests
+    category: personal
+    priority: 5
+    color: "#32CD32"  # Lime Green
+
+  - id: COMMUNITY
+    name: Community Service
+    description: Town and community service quests
+    category: community
+    priority: 6
+    color: "#FF8C00"  # Dark Orange
+
+# Quest statuses
+quest_statuses:
+  - id: AVAILABLE
+    name: Available
+    description: Quest can be started
+    category: pending
+    color: "#00FF00"  # Green
+
+  - id: ACTIVE
+    name: Active
+    description: Quest is currently in progress
+    category: active
+    color: "#FFA500"  # Orange
+
+  - id: COMPLETED
+    name: Completed
+    description: Quest finished successfully
+    category: finished
+    color: "#0080FF"  # Blue
+
+  - id: FAILED
+    name: Failed
+    description: Quest failed or abandoned
+    category: finished
+    color: "#FF0000"  # Red
+
+  - id: LOCKED
+    name: Locked
+    description: Requirements not met
+    category: pending
+    color: "#808080"  # Gray
+
+# Objective types
+objective_types:
+  - id: COLLECT_ITEMS
+    name: Collect Items
+    description: Gather specific items or resources
+    category: collection
+    icon: "item"
+
+  - id: PERFORM_ACTIVITY
+    name: Perform Activity
+    description: Complete certain activities or tasks
+    category: activity
+    icon: "activity"
+
+  - id: SPEND_TIME
+    name: Spend Time
+    description: Spend time on specific tasks
+    category: time
+    icon: "clock"
+
+  - id: REACH_LEVEL
+    name: Reach Level
+    description: Achieve character level
+    category: progression
+    icon: "level"
+
+  - id: GAIN_REPUTATION
+    name: Gain Reputation
+    description: Build faction reputation
+    category: reputation
+    icon: "reputation"
+
+  - id: SPEND_GOLD
+    name: Spend Gold
+    description: Spend money on specific things
+    category: economy
+    icon: "gold"
+
+  - id: LEARN_SKILL
+    name: Learn Skill
+    description: Learn new skills or languages
+    category: learning
+    icon: "skill"
+
+  - id: MAKE_CONNECTIONS
+    name: Make Connections
+    description: Build social connections
+    category: social
+    icon: "connection"
+
+# Quest categories for organization
+quest_categories:
+  story:
+    name: Story Quests
+    description: Main storyline and narrative quests
+    priority: 1
+
+  faction:
+    name: Faction Quests
+    description: Faction-specific missions and tasks
+    priority: 2
+
+  work:
+    name: Professional Work
+    description: Work-related quests and contracts
+    priority: 3
+
+  social:
+    name: Social Quests
+    description: Social interaction and relationship quests
+    priority: 4
+
+  personal:
+    name: Personal Development
+    description: Character development quests
+    priority: 5
+
+  community:
+    name: Community Service
+    description: Town and community service quests
+    priority: 6

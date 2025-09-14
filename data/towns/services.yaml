@@ -1,0 +1,528 @@
+# Town services configuration
+services:
+  general_shopping:
+    id: "general_shopping"
+    name: "General Shopping"
+    service_type: "SHOPPING"
+    description: "Buy and sell general goods"
+    location: "market_square"
+    cost: 0
+    requirements: {}
+    benefits:
+      inventory_access: true
+      trade_opportunities: 1
+    duration_hours: 1
+
+  luxury_goods:
+    id: "luxury_goods"
+    name: "Luxury Goods"
+    service_type: "SHOPPING"
+    description: "Purchase high-quality luxury items"
+    location: "noble_manor"
+    cost: 100
+    requirements:
+      noble_reputation: 30
+    benefits:
+      luxury_items: true
+      noble_connections: 1
+    duration_hours: 1
+
+  accommodation:
+    id: "accommodation"
+    name: "Accommodation"
+    service_type: "ACCOMMODATION"
+    description: "Stay at a local inn or tavern"
+    location: "golden_harp"
+    cost: 2
+    requirements: {}
+    benefits:
+      rest: true
+      safety: true
+      social_opportunities: 1
+    duration_hours: 8
+
+  combat_training:
+    id: "combat_training"
+    name: "Combat Training"
+    service_type: "TRAINING"
+    description: "Learn combat techniques from experienced guards"
+    location: "guard_barracks"
+    cost: 30
+    requirements: {}
+    benefits:
+      combat_skill: 5
+      guard_reputation: 2
+    duration_hours: 4
+
+  metalwork_training:
+    id: "metalwork_training"
+    name: "Metalwork Training"
+    service_type: "TRAINING"
+    description: "Learn metalworking from the master smith"
+    location: "smithy"
+    cost: 20
+    requirements: {}
+    benefits:
+      crafting_skill: 5
+      smith_reputation: 2
+    duration_hours: 6
+
+  healing:
+    id: "healing"
+    name: "Healing Services"
+    service_type: "HEALING"
+    description: "Receive magical or medical healing"
+    location: "temple"
+    cost: 10
+    requirements: {}
+    benefits:
+      hit_points: 10
+      disease_cure: true
+    duration_hours: 1
+
+  information_broker:
+    id: "information_broker"
+    name: "Information Broker"
+    service_type: "INFORMATION"
+    description: "Purchase valuable information"
+    location: "market_square"
+    cost: 10
+    requirements: {}
+    benefits:
+      gossip_knowledge: 1
+      quest_hints: 1
+    duration_hours: 1
+
+  entertainment:
+    id: "entertainment"
+    name: "Entertainment"
+    service_type: "ENTERTAINMENT"
+    description: "Enjoy music, stories, and socializing"
+    location: "golden_harp"
+    cost: 3
+    requirements: {}
+    benefits:
+      social_connections: 2
+      charisma_exp: 5
+    duration_hours: 2
+
+  legal_advice:
+    id: "legal_advice"
+    name: "Legal Advice"
+    service_type: "ADMINISTRATION"
+    description: "Get legal counsel from town officials"
+    location: "town_hall"
+    cost: 20
+    requirements: {}
+    benefits:
+      legal_knowledge: 1
+      official_connections: 1
+    duration_hours: 1
+
+  # Additional services from locations
+  food_vendor:
+    id: "food_vendor"
+    name: "Food Vendor"
+    service_type: "SHOPPING"
+    description: "Purchase food and provisions"
+    location: "market_square"
+    cost: 5
+    requirements: {}
+    benefits:
+      food_supplies: 1
+    duration_hours: 1
+
+  custom_crafting:
+    id: "custom_crafting"
+    name: "Custom Crafting"
+    service_type: "TRAINING"
+    description: "Commission custom crafted items"
+    location: "artisan_quarter"
+    cost: 50
+    requirements: {}
+    benefits:
+      custom_items: true
+      artisan_reputation: 1
+    duration_hours: 8
+
+  artisan_goods:
+    id: "artisan_goods"
+    name: "Artisan Goods"
+    service_type: "SHOPPING"
+    description: "Purchase high-quality artisan items"
+    location: "artisan_quarter"
+    cost: 25
+    requirements: {}
+    benefits:
+      artisan_items: true
+    duration_hours: 1
+
+  repair_services:
+    id: "repair_services"
+    name: "Repair Services"
+    service_type: "TRAINING"
+    description: "Repair damaged equipment"
+    location: "artisan_quarter"
+    cost: 15
+    requirements: {}
+    benefits:
+      equipment_repair: true
+    duration_hours: 2
+
+  meals:
+    id: "meals"
+    name: "Meals"
+    service_type: "ACCOMMODATION"
+    description: "Purchase meals and drinks"
+    location: "golden_harp"
+    cost: 1
+    requirements: {}
+    benefits:
+      nourishment: true
+      social_opportunities: 1
+    duration_hours: 1
+
+  social_gathering:
+    id: "social_gathering"
+    name: "Social Gathering"
+    service_type: "ENTERTAINMENT"
+    description: "Participate in social activities"
+    location: "golden_harp"
+    cost: 0
+    requirements: {}
+    benefits:
+      social_connections: 1
+      charisma_exp: 2
+    duration_hours: 2
+
+  stable_service:
+    id: "stable_service"
+    name: "Stable Service"
+    service_type: "TRANSPORTATION"
+    description: "Care for your mount"
+    location: "travelers_rest"
+    cost: 1
+    requirements: {}
+    benefits:
+      mount_care: true
+    duration_hours: 1
+
+  guild_membership:
+    id: "guild_membership"
+    name: "Guild Membership"
+    service_type: "ADMINISTRATION"
+    description: "Join the craftsman guild"
+    location: "craftsman_guild"
+    cost: 100
+    requirements: {}
+    benefits:
+      guild_access: true
+      guild_reputation: 10
+    duration_hours: 1
+
+  training:
+    id: "training"
+    name: "Training"
+    service_type: "TRAINING"
+    description: "General skill training"
+    location: "craftsman_guild"
+    cost: 25
+    requirements: {}
+    benefits:
+      skill_exp: 5
+      guild_reputation: 1
+    duration_hours: 4
+
+  trade_opportunities:
+    id: "trade_opportunities"
+    name: "Trade Opportunities"
+    service_type: "INFORMATION"
+    description: "Learn about trade opportunities"
+    location: "craftsman_guild"
+    cost: 0
+    requirements: {}
+    benefits:
+      trade_hints: 1
+    duration_hours: 1
+
+  spiritual_guidance:
+    id: "spiritual_guidance"
+    name: "Spiritual Guidance"
+    service_type: "HEALING"
+    description: "Receive spiritual counseling"
+    location: "temple"
+    cost: 0
+    requirements: {}
+    benefits:
+      spiritual_peace: true
+      wisdom_exp: 3
+    duration_hours: 1
+
+  religious_services:
+    id: "religious_services"
+    name: "Religious Services"
+    service_type: "ENTERTAINMENT"
+    description: "Attend religious ceremonies"
+    location: "temple"
+    cost: 0
+    requirements: {}
+    benefits:
+      religious_knowledge: 1
+      community_connections: 1
+    duration_hours: 1
+
+  donations:
+    id: "donations"
+    name: "Donations"
+    service_type: "ADMINISTRATION"
+    description: "Make charitable donations"
+    location: "temple"
+    cost: 0
+    requirements: {}
+    benefits:
+      temple_reputation: 1
+      karma: 1
+    duration_hours: 1
+
+  research:
+    id: "research"
+    name: "Research"
+    service_type: "INFORMATION"
+    description: "Conduct research in the library"
+    location: "library"
+    cost: 5
+    requirements: {}
+    benefits:
+      knowledge_gain: 1
+      intelligence_exp: 3
+    duration_hours: 2
+
+  book_access:
+    id: "book_access"
+    name: "Book Access"
+    service_type: "INFORMATION"
+    description: "Access library books and scrolls"
+    location: "library"
+    cost: 2
+    requirements: {}
+    benefits:
+      book_knowledge: 1
+    duration_hours: 1
+
+  language_learning:
+    id: "language_learning"
+    name: "Language Learning"
+    service_type: "TRAINING"
+    description: "Learn new languages"
+    location: "library"
+    cost: 15
+    requirements: {}
+    benefits:
+      language_skill: 1
+      intelligence_exp: 5
+    duration_hours: 4
+
+  quiet_study:
+    id: "quiet_study"
+    name: "Quiet Study"
+    service_type: "TRAINING"
+    description: "Study in a quiet environment"
+    location: "library"
+    cost: 0
+    requirements: {}
+    benefits:
+      study_focus: true
+      intelligence_exp: 2
+    duration_hours: 2
+
+  weapon_crafting:
+    id: "weapon_crafting"
+    name: "Weapon Crafting"
+    service_type: "TRAINING"
+    description: "Craft weapons and tools"
+    location: "smithy"
+    cost: 75
+    requirements: {}
+    benefits:
+      crafted_weapons: true
+      smith_reputation: 3
+    duration_hours: 8
+
+  armor_repair:
+    id: "armor_repair"
+    name: "Armor Repair"
+    service_type: "TRAINING"
+    description: "Repair damaged armor"
+    location: "smithy"
+    cost: 25
+    requirements: {}
+    benefits:
+      armor_repair: true
+    duration_hours: 3
+
+  tool_making:
+    id: "tool_making"
+    name: "Tool Making"
+    service_type: "TRAINING"
+    description: "Create tools and equipment"
+    location: "smithy"
+    cost: 30
+    requirements: {}
+    benefits:
+      crafted_tools: true
+      smith_reputation: 2
+    duration_hours: 4
+
+  permits:
+    id: "permits"
+    name: "Permits"
+    service_type: "ADMINISTRATION"
+    description: "Obtain official permits"
+    location: "town_hall"
+    cost: 10
+    requirements: {}
+    benefits:
+      official_permit: true
+      town_reputation: 1
+    duration_hours: 1
+
+  official_documents:
+    id: "official_documents"
+    name: "Official Documents"
+    service_type: "ADMINISTRATION"
+    description: "Obtain official documents"
+    location: "town_hall"
+    cost: 5
+    requirements: {}
+    benefits:
+      official_document: true
+    duration_hours: 1
+
+  town_meetings:
+    id: "town_meetings"
+    name: "Town Meetings"
+    service_type: "ADMINISTRATION"
+    description: "Attend town meetings"
+    location: "town_hall"
+    cost: 0
+    requirements: {}
+    benefits:
+      political_knowledge: 1
+      town_connections: 1
+    duration_hours: 2
+
+  security_advice:
+    id: "security_advice"
+    name: "Security Advice"
+    service_type: "INFORMATION"
+    description: "Get security advice from guards"
+    location: "guard_barracks"
+    cost: 15
+    requirements: {}
+    benefits:
+      security_knowledge: 1
+      guard_reputation: 1
+    duration_hours: 1
+
+  patrol_duty:
+    id: "patrol_duty"
+    name: "Patrol Duty"
+    service_type: "TRAINING"
+    description: "Join guard patrols"
+    location: "guard_barracks"
+    cost: 0
+    requirements: {}
+    benefits:
+      combat_exp: 5
+      guard_reputation: 2
+    duration_hours: 4
+
+  guard_recruitment:
+    id: "guard_recruitment"
+    name: "Guard Recruitment"
+    service_type: "ADMINISTRATION"
+    description: "Learn about joining the guard"
+    location: "guard_barracks"
+    cost: 0
+    requirements: {}
+    benefits:
+      guard_info: true
+    duration_hours: 1
+
+  noble_audience:
+    id: "noble_audience"
+    name: "Noble Audience"
+    service_type: "ADMINISTRATION"
+    description: "Meet with local nobility"
+    location: "noble_manor"
+    cost: 50
+    requirements: {}
+    benefits:
+      noble_connections: 2
+      political_advice: 1
+    duration_hours: 1
+
+  political_advice:
+    id: "political_advice"
+    name: "Political Advice"
+    service_type: "INFORMATION"
+    description: "Get political counsel"
+    location: "noble_manor"
+    cost: 75
+    requirements: {}
+    benefits:
+      political_knowledge: 1
+      noble_reputation: 2
+    duration_hours: 1
+
+  social_events:
+    id: "social_events"
+    name: "Social Events"
+    service_type: "ENTERTAINMENT"
+    description: "Attend noble social events"
+    location: "noble_manor"
+    cost: 25
+    requirements: {}
+    benefits:
+      noble_connections: 3
+      social_reputation: 2
+    duration_hours: 3
+
+  housing:
+    id: "housing"
+    name: "Housing"
+    service_type: "ACCOMMODATION"
+    description: "Rent housing in the residential district"
+    location: "residential_district"
+    cost: 5
+    requirements: {}
+    benefits:
+      permanent_housing: true
+      community_connections: 1
+    duration_hours: 24
+
+  neighborhood_watch:
+    id: "neighborhood_watch"
+    name: "Neighborhood Watch"
+    service_type: "TRAINING"
+    description: "Participate in neighborhood security"
+    location: "residential_district"
+    cost: 0
+    requirements: {}
+    benefits:
+      community_reputation: 1
+      security_knowledge: 1
+    duration_hours: 2
+
+  community_events:
+    id: "community_events"
+    name: "Community Events"
+    service_type: "ENTERTAINMENT"
+    description: "Participate in community activities"
+    location: "residential_district"
+    cost: 0
+    requirements: {}
+    benefits:
+      community_connections: 2
+      social_reputation: 1
+    duration_hours: 2

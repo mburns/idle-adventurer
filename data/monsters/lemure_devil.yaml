@@ -1,0 +1,39 @@
+name: Lemure (Devil)
+size: Medium fiend (devil)
+type: lawful evil
+alignment: ""
+armor_class: "7"
+hit_points: 13 (3d8)
+speed: 15 ft.
+abilities:
+  strength: 10
+  dexterity: 5
+  constitution: 11
+  intelligence: 1
+  wisdom: 11
+  charisma: 3
+saving_throws: []
+skills: []
+damage_immunities:
+  - fire
+  - poison
+damage_resistances:
+  - cold
+damage_vulnerabilities: []
+condition_immunities:
+  - charmed
+  - frightened
+  - poisoned
+senses: darkvision 120 ft., passive Perception 10
+languages: understands Infernal but can't speak
+challenge_rating: "0"
+xp: 0
+traits: []
+actions:
+  - name: Fist***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 2 (1d4) bludgeoning dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster

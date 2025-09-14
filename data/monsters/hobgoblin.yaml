@@ -1,0 +1,35 @@
+name: Hobgoblin
+size: Medium humanoid (goblinoid)
+type: lawful evil
+alignment: ""
+armor_class: 18 (chain mail, shield)
+hit_points: 11 (2d8+2)
+speed: 30 ft.
+abilities:
+  strength: 13
+  dexterity: 12
+  constitution: 12
+  intelligence: 10
+  wisdom: 10
+  charisma: 9
+saving_throws: []
+skills: []
+damage_immunities: []
+damage_resistances: []
+damage_vulnerabilities: []
+condition_immunities: []
+senses: darkvision 60 ft., passive Perception 10
+languages: Common, Goblin
+challenge_rating: 1/2
+xp: 0
+traits: []
+actions:
+  - name: Longsword***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 5 (1d8+1) slashing damage, or 6 (1d10+1) slashing damage if used with two han
+    description: ""
+  - name: Longbow***. *Ranged Weapon Attack:* +3 to hit, range 150/600 ft., one target. *Hit:* 5 (1d8+1) piercing dama
+    description: ""
+legendary_actions: []
+reactions: []
+spellcasting: {}
+description: ""
+category: monster
