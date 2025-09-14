@@ -31,13 +31,12 @@ window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[import]
+
+#Optimizeassetimportingfilesystem/import/blender/enabled=false
+filesystem/import/fbx/enabled=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-
-[import]
-
-# Optimize asset importing
-filesystem/import/blender/enabled=false
-filesystem/import/fbx/enabled=false
