@@ -4,10 +4,9 @@ Cleanup script for the scripts/ directory
 Identifies and removes redundant files and updates references
 """
 
-import os
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple, Any
+from typing import Dict, List, Any
 
 def analyze_script_usage() -> Dict[str, Dict[str, Any]]:
     """Analyze which scripts are actually being used"""

@@ -8,17 +8,17 @@ echo ""
 
 # Check if Godot is installed
 if ! command -v godot &> /dev/null; then
-    echo "❌ Godot not found. Please install Godot 4.2+ from https://godotengine.org/"
-    echo "   After installation, make sure 'godot' is in your PATH"
-    exit 1
+	echo "❌ Godot not found. Please install Godot 4.2+ from https://godotengine.org/"
+	echo "   After installation, make sure 'godot' is in your PATH"
+	exit 1
 fi
 
 echo "✅ Godot found: $(godot --version)"
 
 # Check if Python is installed
 if ! command -v python3 &> /dev/null; then
-    echo "❌ Python 3 not found. Please install Python 3.7+"
-    exit 1
+	echo "❌ Python 3 not found. Please install Python 3.7+"
+	exit 1
 fi
 
 echo "✅ Python found: $(python3 --version)"
@@ -30,8 +30,8 @@ echo "✅ Python dependencies installed"
 
 # Check if we're in the right directory
 if [ ! -f "project.godot" ]; then
-    echo "❌ project.godot not found. Please run this script from the project root."
-    exit 1
+	echo "❌ project.godot not found. Please run this script from the project root."
+	exit 1
 fi
 
 echo "✅ Project structure verified"
