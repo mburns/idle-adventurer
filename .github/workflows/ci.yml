@@ -38,6 +38,9 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # https://github.com/super-linter/super-linter?tab=readme-ov-file#configure-super-linter
+          VALIDATE_GIT_COMMITLINT: false
+
   test:
     runs-on: ubuntu-latest
     needs: lint
