@@ -41,6 +41,12 @@ jobs:
           # https://github.com/super-linter/super-linter?tab=readme-ov-file#configure-super-linter
           VALIDATE_GIT_COMMITLINT: false
           FILTER_REGEX_EXCLUDE: "(^.obsidian/|^assets/)"
+          FIX_PYTHON_RUFF: true
+          FIX_JSON: true
+          FIX_MARKDOWN_PRETTIER: true
+          FIX_NATURAL_LANGUAGE: true
+          FIX_SHELL_SHFMT: true
+          IGNORE_GENERATED_FILES: true
 
   test:
     runs-on: ubuntu-latest
