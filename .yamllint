@@ -5,9 +5,11 @@ extends: default
 
 rules:
   # Allow longer lines for readability (game data often has long descriptions)
-  line-length:
-    max: 200
-    level: warning
+  line-length: disable
+    # max: 200
+    # level: warning
+    # allow-non-breakable-words: true
+    # allow-non-breakable-inline-mappings: false
 
   # Allow comments at end of lines
   comments:
