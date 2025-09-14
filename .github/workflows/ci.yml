@@ -15,42 +15,30 @@ permissions:
   pull-requests: write
 
 jobs:
-  lint-yaml:
-    name: Test Suite
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      statuses: write # To report GitHub Actions status checks
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Python for YAML validation
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3 python3-pip
-          pip3 install -r requirements.txt
-
-      - name: Validate YAML files with yamllint
-        uses: karancode/yamllint-github-action@v2.1.1
+        uses: actions/checkout@v5
         with:
-          yamllint_file_or_dir: "data/"
-          yamllint_strict: false
-          yamllint_config_filepath: ".yamllint"
-          yamllint_format: "parsable"
-          yamllint_comment: false
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+          persist-credentials: false
 
-  lint-markdown:
-    name: Lint Suite
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - uses: tcort/github-action-markdown-link-check@v1
-        with:
-          check-modified-files-only: true
-
-  godot-tests:
+      - name: Super-linter
+        uses: super-linter/super-linter@v8.1.0 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
