@@ -3,7 +3,7 @@ extends Resource
 
 # D&D Class as a Godot Resource for better editor integration
 
-@export var class_name: String = ""
+@export var name: String = ""
 @export var hit_die: int = 8
 @export var primary_ability: String = "strength"
 @export var saving_throws: Array[String] = []
@@ -22,7 +22,7 @@ extends Resource
 
 func get_hit_points_at_level(level: int, constitution_modifier: int) -> int:
     var base_hp = hit_die + constitution_modifier
-    var additional_hp = (level - 1) * (hit_die / 2 + 1 + constitution_modifier)
+    var additional_hp = (level - 1) * (hit_die / 2.0 + 1 + constitution_modifier)
     return base_hp + additional_hp
 
 func get_proficiency_bonus_at_level(level: int) -> int:
@@ -31,7 +31,7 @@ func get_proficiency_bonus_at_level(level: int) -> int:
 func get_spell_slots_at_level(level: int) -> Array[int]:
     if level > spell_slots_per_level.size():
         return []
-    return spell_slots_per_level[level - 1]
+    return [spell_slots_per_level[level - 1]]
 
 func get_features_at_level(level: int) -> Array[String]:
     var features_at_level = []

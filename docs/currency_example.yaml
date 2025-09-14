@@ -1,0 +1,112 @@
+# Example: Non-precious metal currency system
+# This shows how you could completely ditch precious metals and use any currency system
+
+# Example 1: Digital/Electronic Currency System
+coins:
+  - id: cred
+    name: Credit
+    plural: Credits
+    abbreviation: cred
+    weight: 0.0  # Digital currency has no weight
+    value_base: 1
+    description: "Digital currency units used for electronic transactions"
+    rarity: common
+    material: digital
+
+  - id: token
+    name: Token
+    plural: Tokens
+    abbreviation: tok
+    weight: 0.01
+    value_base: 10
+    description: "Physical tokens representing stored value"
+    rarity: common
+    material: plastic
+
+  - id: chip
+    name: Chip
+    plural: Chips
+    abbreviation: chip
+    weight: 0.005
+    value_base: 100
+    description: "High-value chips used for major transactions"
+    rarity: uncommon
+    material: ceramic
+
+# Example 2: Barter/Resource-Based Currency
+# coins:
+#   - id: food
+#     name: Food Unit
+#     plural: Food Units
+#     abbreviation: food
+#     weight: 0.1
+#     value_base: 1
+#     description: "Basic food rations used as currency"
+#     rarity: common
+#     material: organic
+#
+#   - id: water
+#     name: Water Unit
+#     plural: Water Units
+#     abbreviation: water
+#     weight: 0.2
+#     value_base: 5
+#     description: "Clean water units for trading"
+#     rarity: common
+#     material: liquid
+#
+#   - id: energy
+#     name: Energy Cell
+#     plural: Energy Cells
+#     abbreviation: energy
+#     weight: 0.05
+#     value_base: 50
+#     description: "Portable energy cells for powering devices"
+#     rarity: uncommon
+#     material: energy
+
+# Example 3: Fantasy Crystal Currency
+# coins:
+#   - id: shard
+#     name: Crystal Shard
+#     plural: Crystal Shards
+#     abbreviation: shard
+#     weight: 0.01
+#     value_base: 1
+#     description: "Small crystal fragments with magical properties"
+#     rarity: common
+#     material: crystal
+#
+#   - id: core
+#     name: Crystal Core
+#     plural: Crystal Cores
+#     abbreviation: core
+#     weight: 0.02
+#     value_base: 100
+#     description: "Pure crystal cores containing concentrated magic"
+#     rarity: rare
+#     material: crystal
+#
+#   - id: prism
+#     name: Prism
+#     plural: Prisms
+#     abbreviation: prism
+#     weight: 0.03
+#     value_base: 1000
+#     description: "Perfect crystal prisms that refract light into rainbow patterns"
+#     rarity: legendary
+#     material: crystal
+
+# Exchange rates for digital currency example
+exchange_rates:
+  cred:
+    token: 0.1    # 10 cred = 1 token
+    chip: 0.01    # 100 cred = 1 chip
+
+  token:
+    cred: 10      # 1 token = 10 cred
+    chip: 0.1     # 10 token = 1 chip
+
+  chip:
+    cred: 100     # 1 chip = 100 cred
+    token: 10     # 1 chip = 10 token

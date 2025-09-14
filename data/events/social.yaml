@@ -1,0 +1,167 @@
+# Social events for the idle adventurer game
+
+events:
+  - id: mysterious_stranger
+    name: "Mysterious Stranger"
+    description: "A hooded figure approaches you in the tavern, speaking in hushed tones about a matter of great importance."
+    event_type: SOCIAL
+    rarity: UNCOMMON
+    duration_hours: 2
+    cooldown_days: 7
+    requirements:
+      character_level: 3
+      location: "tavern"
+      time_of_day: "evening"
+    choices:
+      - id: listen_carefully
+        description: "Listen carefully to what they have to say"
+        requirements:
+          wisdom: 12
+        consequences:
+          SUCCESS:
+            experience: 50
+            reputation:
+              Mysterious_Order: 10
+            information: "secret_plot"
+          FAILURE:
+            reputation:
+              Mysterious_Order: -5
+            status_effect: "suspicious"
+        skill_check:
+          skill: "insight"
+          difficulty: 15
+      - id: dismiss_stranger
+        description: "Politely dismiss the stranger and continue your evening"
+        requirements: {}
+        consequences:
+          NEUTRAL:
+            reputation:
+              Town: 5
+      - id: report_to_authorities
+        description: "Report the suspicious behavior to the town guard"
+        requirements:
+          faction_reputation:
+            Guard: 10
+        consequences:
+          SUCCESS:
+            reputation:
+              Guard: 15
+              Town: 10
+            gold: 25
+          FAILURE:
+            reputation:
+              Mysterious_Order: -20
+            status_effect: "marked"
+
+  - id: noble_encounter
+    name: "Noble Encounter"
+    description: "You encounter a member of the local nobility who seems interested in your recent activities."
+    event_type: SOCIAL
+    rarity: RARE
+    duration_hours: 3
+    cooldown_days: 14
+    requirements:
+      character_level: 5
+      faction_reputation:
+        Nobles: 5
+      location: "town_square"
+    choices:
+      - id: engage_politely
+        description: "Engage in polite conversation about your adventures"
+        requirements:
+          charisma: 14
+        consequences:
+          SUCCESS:
+            reputation:
+              Nobles: 20
+            gold: 100
+            social_connection: "noble_patron"
+          FAILURE:
+            reputation:
+              Nobles: -10
+            status_effect: "social_faux_pas"
+        skill_check:
+          skill: "persuasion"
+          difficulty: 12
+      - id: be_humble
+        description: "Be humble and modest about your achievements"
+        requirements: {}
+        consequences:
+          NEUTRAL:
+            reputation:
+              Nobles: 5
+              Town: 5
+      - id: boast_achievements
+        description: "Boast about your recent achievements and skills"
+        requirements:
+          charisma: 16
+        consequences:
+          SUCCESS:
+            reputation:
+              Nobles: 15
+            gold: 75
+            quest_opportunity: "noble_mission"
+          FAILURE:
+            reputation:
+              Nobles: -15
+            status_effect: "arrogant"
+        skill_check:
+          skill: "intimidation"
+          difficulty: 14
+
+  - id: tavern_brawl
+    name: "Tavern Brawl"
+    description: "A fight breaks out in the tavern between two groups of adventurers. The innkeeper looks to you for help."
+    event_type: SOCIAL
+    rarity: COMMON
+    duration_hours: 1
+    cooldown_days: 3
+    requirements:
+      character_level: 2
+      location: "tavern"
+      time_of_day: "evening"
+    choices:
+      - id: break_up_fight
+        description: "Try to break up the fight peacefully"
+        requirements:
+          strength: 13
+          charisma: 12
+        consequences:
+          SUCCESS:
+            reputation:
+              Town: 15
+              Tavern: 20
+            gold: 25
+            experience: 30
+          FAILURE:
+            health_damage: 10
+            reputation:
+              Town: -5
+        skill_check:
+          skill: "athletics"
+          difficulty: 13
+      - id: join_fight
+        description: "Join the fight on the side of justice"
+        requirements:
+          strength: 15
+        consequences:
+          SUCCESS:
+            reputation:
+              Town: 10
+            gold: 15
+            experience: 40
+          FAILURE:
+            health_damage: 20
+            reputation:
+              Town: -10
+              Tavern: -15
+        skill_check:
+          skill: "athletics"
+          difficulty: 15
+      - id: stay_out_of_it
+        description: "Stay out of the fight and let it resolve itself"
+        requirements: {}
+        consequences:
+          NEUTRAL:
+            reputation:
+              Tavern: -5

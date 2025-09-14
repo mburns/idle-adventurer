@@ -1,0 +1,212 @@
+# Town locations configuration
+locations:
+  market_square:
+    id: "market_square"
+    name: "Market Square"
+    location_type: "MARKET"
+    description: "The bustling heart of the town's commerce"
+    services: ["general_shopping", "food_vendor", "information_broker"]
+    npcs: ["general_store", "spy"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      general_shopping: 0
+      food_vendor: 5
+      information_broker: 10
+    reputation_required: 0
+
+  artisan_quarter:
+    id: "artisan_quarter"
+    name: "Artisan Quarter"
+    location_type: "MARKET"
+    description: "Where skilled craftsmen ply their trade"
+    services: ["custom_crafting", "artisan_goods", "repair_services"]
+    npcs: ["jeweler"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      custom_crafting: 50
+      artisan_goods: 25
+      repair_services: 15
+    reputation_required: 0
+
+  golden_harp:
+    id: "golden_harp"
+    name: "The Golden Harp Tavern"
+    location_type: "TAVERN"
+    description: "A warm and welcoming tavern known for its music"
+    services: ["accommodation", "meals", "entertainment", "social_gathering"]
+    npcs: ["bard", "ranger"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "open"
+    costs:
+      accommodation: 2
+      meals: 1
+      entertainment: 3
+      social_gathering: 0
+    reputation_required: 0
+
+  travelers_rest:
+    id: "travelers_rest"
+    name: "Traveler's Rest Inn"
+    location_type: "TAVERN"
+    description: "A simple but clean inn for travelers"
+    services: ["accommodation", "meals", "stable_service"]
+    npcs: []
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "open"
+    costs:
+      accommodation: 1
+      meals: 0.5
+      stable_service: 1
+    reputation_required: 0
+
+  craftsman_guild:
+    id: "craftsman_guild"
+    name: "Craftsman Guild Hall"
+    location_type: "GUILD_HALL"
+    description: "The headquarters of the local craftsman guild"
+    services: ["guild_membership", "training", "trade_opportunities"]
+    npcs: ["blacksmith"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      guild_membership: 100
+      training: 25
+      trade_opportunities: 0
+    reputation_required: 20
+
+  temple:
+    id: "temple"
+    name: "Temple of the Light"
+    location_type: "TEMPLE"
+    description: "A beautiful temple dedicated to the gods of light and healing"
+    services: ["healing", "spiritual_guidance", "religious_services", "donations"]
+    npcs: ["priest"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "open"
+    costs:
+      healing: 10
+      spiritual_guidance: 0
+      religious_services: 0
+      donations: 0
+    reputation_required: 0
+
+  library:
+    id: "library"
+    name: "Town Library"
+    location_type: "LIBRARY"
+    description: "A repository of knowledge and learning"
+    services: ["research", "book_access", "language_learning", "quiet_study"]
+    npcs: ["librarian"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      research: 5
+      book_access: 2
+      language_learning: 15
+      quiet_study: 0
+    reputation_required: 0
+
+  smithy:
+    id: "smithy"
+    name: "Ironforge Smithy"
+    location_type: "SMITHY"
+    description: "A well-equipped forge for metalworking"
+    services: ["weapon_crafting", "armor_repair", "tool_making", "metalwork_training"]
+    npcs: ["blacksmith"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      weapon_crafting: 75
+      armor_repair: 25
+      tool_making: 30
+      metalwork_training: 20
+    reputation_required: 0
+
+  town_hall:
+    id: "town_hall"
+    name: "Town Hall"
+    location_type: "TOWN_HALL"
+    description: "The center of local government and administration"
+    services: ["legal_advice", "permits", "official_documents", "town_meetings"]
+    npcs: ["mayor"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      legal_advice: 20
+      permits: 10
+      official_documents: 5
+      town_meetings: 0
+    reputation_required: 10
+
+  guard_barracks:
+    id: "guard_barracks"
+    name: "Guard Barracks"
+    location_type: "GUARD_BARRACKS"
+    description: "The headquarters of the town guard"
+    services: ["combat_training", "security_advice", "patrol_duty", "guard_recruitment"]
+    npcs: ["guard_captain"]
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "closed"
+    costs:
+      combat_training: 30
+      security_advice: 15
+      patrol_duty: 0
+      guard_recruitment: 0
+    reputation_required: 15
+
+  noble_manor:
+    id: "noble_manor"
+    name: "Noble Manor"
+    location_type: "NOBLE_DISTRICT"
+    description: "The residence of the local nobility"
+    services: ["noble_audience", "luxury_goods", "political_advice", "social_events"]
+    npcs: ["luxury_merchant"]
+    hours:
+      morning: "closed"
+      afternoon: "open"
+      evening: "open"
+    costs:
+      noble_audience: 50
+      luxury_goods: 100
+      political_advice: 75
+      social_events: 25
+    reputation_required: 50
+
+  residential_district:
+    id: "residential_district"
+    name: "Residential District"
+    location_type: "RESIDENTIAL"
+    description: "The quiet residential area of the town"
+    services: ["housing", "neighborhood_watch", "community_events"]
+    npcs: []
+    hours:
+      morning: "open"
+      afternoon: "open"
+      evening: "open"
+    costs:
+      housing: 5
+      neighborhood_watch: 0
+      community_events: 0
+    reputation_required: 0

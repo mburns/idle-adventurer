@@ -6,6 +6,149 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- **Script Directory Restructuring**: Organized scripts into logical subdirectories for better maintainability
+
+  - Created `scripts/core/` for core character and management systems
+  - Created `scripts/systems/` for game mechanics (inventory, leveling, currency, etc.)
+  - Created `scripts/npc/` for NPC-related systems
+  - Created `scripts/quest/` for quest systems
+  - Created `scripts/town/` for town and location systems
+  - Created `scripts/activities/` for activity and event systems
+  - Created `scripts/ui/` for user interface components
+  - Created `scripts/visual/` for visual and animation systems
+  - Created `scripts/data/` for data management and parsing
+  - Created `scripts/faction/` for faction systems
+  - Created `scripts/events/` for event management
+  - Created `scripts/tools/` for development tools
+
+- **GitHub CI/CD Pipeline**: Automated build and release system
+  - **Publish Workflow**: Automatically builds and releases the game on push to main branch
+    - Builds for Linux, Windows, and macOS platforms
+    - Creates GitHub releases with downloadable artifacts
+    - Runs comprehensive test suite before publishing
+  - **Test Workflow**: Runs tests on pull requests and pushes
+    - Validates project structure and dependencies
+    - Ensures code quality and formatting
+  - **Quality Workflow**: Code quality checks and validation
+    - Linting and syntax validation
+    - YAML file validation
+    - Import path verification
+
+### Changed
+
+- **Resource System Implementation**: Type-safe Resource classes for improved data management and type safety
+
+  - **ActivityResource**: Type-safe activity definitions with XP/gold calculations and requirement checking
+
+    - Created `resources/activity_resource.gd` with comprehensive activity management
+    - Implemented XP and gold scaling based on character level
+    - Added requirement checking for character stats and resources
+    - Integrated with `idle_mechanics.gd` for type-safe activity processing
+    - Added comprehensive test coverage in `test_activity_resource.gd`
+
+  - **NPCResource**: Type-safe NPC definitions with dialogue, services, and relationship management
+
+    - Created `resources/npc_resource.gd` with comprehensive NPC management
+    - Implemented dialogue system with relationship-based responses
+    - Added service availability and requirement checking
+    - Integrated with `npc_data_manager.gd` and `npc_interactions.gd`
+    - Added comprehensive test coverage in `test_npc_resource.gd`
+
+  - **QuestResource & QuestObjectiveResource**: Type-safe quest definitions with objectives and progress tracking
+
+    - Created `resources/quest_resource.gd` with comprehensive quest management
+    - Created `resources/quest_objective_resource.gd` with objective progress tracking
+    - Implemented quest status management (available, active, completed, failed)
+    - Added progress tracking and completion logic
+    - Updated `quest_system.gd` to use Resource-based approach
+
+  - **Comprehensive Testing**: Full test coverage for all Resource classes
+
+    - Created comprehensive test suites for all Resource classes
+    - Added tests for ActivityResource, NPCResource, EquipmentResource, FactionSystem, QuestSystem, TownSystem, NPCSystem
+    - Updated test runners to include Resource system tests
+    - Achieved 87.5% test pass rate with Resource system integration
+
+  - **Type Safety Improvements**: Eliminated type conversion errors through Resource-based approach
+    - Fixed "Invalid call. Nonexistent function 'keys' in base 'String'" errors
+    - Fixed "Invalid call. Nonexistent function 'get' in base 'String'" errors
+    - Added defensive type checking throughout codebase
+    - Improved error handling and validation
+
+- **Complete YAML Migration**: Comprehensive migration from JSON/hardcoded systems to dynamic YAML-based data loading
+
+  - **Achievement System YAML**: Dynamic achievement definitions with categories, rarity, and rewards
+
+    - Created `data/achievements.yaml` with comprehensive achievement definitions
+    - Implemented dynamic loading in `achievement_system.gd`
+    - Removed hardcoded achievement creation functions
+    - Added support for dynamic achievement categories and rarity levels
+
+  - **Currency System YAML**: Dynamic currency definitions with exchange rates and weights
+
+    - Created `data/currency.yaml` with D&D coinage and exchange rates
+    - Created `data/currency_example.yaml` with examples for non-precious metal currencies
+    - Implemented dynamic loading in `currency_system.gd`
+    - Added support for custom currency types and exchange rates
+    - Enhanced Character class with dynamic currency dictionary
+
+  - **Language System YAML**: Dynamic language definitions with learning requirements
+
+    - Created `data/languages.yaml` with all D&D languages and their properties
+    - Implemented dynamic loading in `language_system.gd`
+    - Removed hardcoded language definitions
+    - Added support for custom language types and learning requirements
+
+  - **Class Features YAML**: Dynamic class feature definitions for leveling progression
+
+    - Added `level_features` sections to all class YAML files (fighter, wizard, rogue, cleric, ranger)
+    - Implemented dynamic loading in `leveling_system.gd`
+    - Removed hardcoded class feature definitions
+    - Added support for custom class features and progression paths
+
+  - **Level Requirements YAML**: Dynamic leveling progression configurations
+
+    - Created `data/level_requirements.yaml` with standard and alternative progression curves
+    - Implemented dynamic loading in `leveling_system.gd`
+    - Removed hardcoded XP requirements
+    - Added support for multiple progression configurations (standard, fast, slow, epic)
+
+  - **Lifestyle System YAML**: Dynamic lifestyle definitions with benefits and penalties
+
+    - Enhanced `data/lifestyles.yaml` with comprehensive lifestyle definitions
+    - Added top-level `benefits` and `penalties` sections with detailed metadata
+    - Implemented dynamic loading in `lifestyle_system.gd`
+    - Removed all hardcoded lifestyle creation functions and enums
+    - Added support for dynamic lifestyle benefits and penalties
+
+  - **Quest System YAML**: Dynamic quest definitions with types, objectives, and rewards
+
+    - Created `data/quests/` directory structure for quest data organization
+    - Added `data/quests/quest_types.yaml` with quest types, statuses, objective types, and categories
+    - Added example quest files: `main_story.yaml`, `profession.yaml`, `social.yaml`
+    - Implemented dynamic loading in `quest_system.gd`
+    - Removed all hardcoded quest template creation functions and enums
+    - Added support for dynamic quest prerequisites and unlocks
+
+  - **Random Events System YAML**: Dynamic event definitions with types, outcomes, and rarity
+    - Created `data/events/` directory structure for event data organization
+    - Added `data/events/event_types.yaml` with event types, outcomes, rarity levels, and categories
+    - Added example event files: `social.yaml`, `economic.yaml`, `mystical.yaml`
+    - Implemented dynamic loading in `random_events_system.gd`
+    - Removed all hardcoded event creation functions and enums
+    - Added support for dynamic event requirements, choices, and consequences
+
+- **Town System YAML Refactoring**: Complete refactoring of town system to use YAML data files
+
+  - Created `data/towns/` directory structure for town data organization
+  - Added `data/towns/locations.yaml` with 12 town locations (market square, taverns, guild halls, temple, library, smithy, town hall, guard barracks, noble district, residential)
+  - Added `data/towns/services.yaml` with 50+ services across all location types
+  - Added `data/towns/events.yaml` with 15+ town events (market days, festivals, emergencies, visitors, trade deals)
+  - Implemented dynamic YAML loading system in TownSystem
+  - Added YAML parser for basic YAML structures with proper type conversion
+  - Added enum conversion functions for location types, service types, and event types
+  - Enhanced maintainability by separating data from code logic
+
 - **Bug Fix Test Suite**: Comprehensive test coverage for all bug fixes
 
   - Tests for lambda capture fixes
@@ -67,12 +210,96 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **Complete System Architecture**: Refactored all major systems from hardcoded functions to dynamic YAML loading
+
+  - **Achievement System**: Replaced hardcoded achievement creation with dynamic YAML loading
+
+    - Removed `create_achievements()` function
+    - Updated `Achievement` class to use dynamic data initialization
+    - Changed from enum-based categories to dynamic string IDs
+
+  - **Currency System**: Replaced hardcoded currency definitions with dynamic YAML loading
+
+    - Removed hardcoded coin definitions and exchange rates
+    - Updated `CurrencySystem` to load from YAML files
+    - Enhanced Character class with dynamic currency dictionary
+
+  - **Language System**: Replaced hardcoded language definitions with dynamic YAML loading
+
+    - Removed hardcoded language lists and properties
+    - Updated `LanguageSystem` to load from YAML files
+    - Added support for custom language types
+
+  - **Leveling System**: Replaced hardcoded class features and XP requirements with dynamic YAML loading
+
+    - Removed hardcoded class feature definitions
+    - Removed hardcoded XP requirement tables
+    - Updated `LevelingSystem` to load from YAML files
+    - Added support for multiple progression configurations
+
+  - **Lifestyle System**: Replaced hardcoded lifestyle definitions with dynamic YAML loading
+
+    - Removed all hardcoded lifestyle creation functions
+    - Removed `LifestyleLevel`, `LifestyleBenefit`, `LifestylePenalty` enums
+    - Updated `Lifestyle` class to use dynamic data initialization
+    - Changed from enum-based system to dynamic string IDs
+
+  - **Quest System**: Replaced hardcoded quest templates with dynamic YAML loading
+
+    - Removed all hardcoded quest template creation functions
+    - Removed `QuestType`, `QuestStatus`, `ObjectiveType` enums
+    - Updated `Quest` and `QuestObjective` classes to use dynamic data initialization
+    - Changed from enum-based system to dynamic string IDs
+
+  - **Random Events System**: Replaced hardcoded event creation with dynamic YAML loading
+
+    - Removed all hardcoded event creation functions
+    - Removed `EventType`, `EventOutcome`, `EventRarity` enums
+    - Updated `RandomEvent` and `EventChoice` classes to use dynamic data initialization
+    - Changed from enum-based system to dynamic string IDs
+
+  - **Town System Architecture**: Refactored from hardcoded functions to dynamic YAML loading
+    - Replaced `setup_town_locations()`, `setup_town_services()`, `setup_town_events()` with `load_town_data()`
+    - Removed all hardcoded `create_*_locations()` functions (10 functions removed)
+    - Removed all hardcoded `create_*_services()` functions (7 functions removed)
+    - Removed all hardcoded `create_*_events()` functions (5 functions removed)
+    - Updated TownSystem initialization to use `load_town_data()` instead of hardcoded setup
+    - Enhanced code maintainability by separating data from implementation
+
 - **Data Loading System**: Migrated from legacy WikiDataLoader and DnDData to unified DataLoader
   - Updated all test files to use DataLoader instead of deprecated classes
   - Updated UI screens to use DataLoader for consistent data access
   - Removed references to non-existent classes in documentation
 
 ### Removed
+
+- **Complete Hardcoded Function Removal**: Removed all hardcoded data creation functions across all systems
+
+  - **Achievement System**: Removed `create_achievements()` function
+  - **Currency System**: Removed hardcoded coin definitions and exchange rate calculations
+  - **Language System**: Removed hardcoded language lists and properties
+  - **Leveling System**: Removed hardcoded class feature definitions and XP requirement tables
+  - **Lifestyle System**: Removed all hardcoded lifestyle creation functions
+    - Removed `create_lifestyles()` function
+    - Removed `LifestyleLevel`, `LifestyleBenefit`, `LifestylePenalty` enums
+  - **Quest System**: Removed all hardcoded quest template creation functions
+    - Removed `create_faction_quest_templates()`, `create_profession_quest_templates()`, `create_social_quest_templates()`
+    - Removed `create_personal_quest_templates()`, `create_community_quest_templates()`
+    - Removed `QuestType`, `QuestStatus`, `ObjectiveType` enums
+  - **Random Events System**: Removed all hardcoded event creation functions
+    - Removed `create_social_events()`, `create_economic_events()`, `create_mystical_events()`
+    - Removed `create_criminal_events()`, `create_political_events()`, `create_natural_events()`
+    - Removed `create_professional_events()`, `create_personal_events()`, `create_community_events()`
+    - Removed `create_adventure_hook_events()`
+    - Removed `EventType`, `EventOutcome`, `EventRarity` enums
+  - **Town System**: Removed all hardcoded town setup functions
+    - Removed `create_market_locations()`, `create_tavern_locations()`, `create_guild_locations()`
+    - Removed `create_temple_locations()`, `create_library_locations()`, `create_smithy_locations()`
+    - Removed `create_government_locations()`, `create_military_locations()`, `create_noble_locations()`, `create_residential_locations()`
+    - Removed `create_shopping_services()`, `create_accommodation_services()`, `create_training_services()`
+    - Removed `create_healing_services()`, `create_information_services()`, `create_entertainment_services()`, `create_administration_services()`
+    - Removed `create_market_events()`, `create_festival_events()`, `create_emergency_events()`, `create_visitor_events()`, `create_trade_events()`
+  - **Total**: 50+ hardcoded functions removed across all systems, replaced with dynamic YAML loading
 
 - **Dead Code Cleanup**: Removed obsolete files and references
   - Deleted test files for non-existent WikiDataLoader and DnDData classes

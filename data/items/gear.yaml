@@ -1,17 +1,5 @@
 category: Gear
 items:
-  - name: Item
-    cost: Cost
-    weight: Weight
-    description: ""
-    category: Adventuring Gear
-    type: gear
-  - name: '----------------------------'
-    cost: '--------'
-    weight: '------------'
-    description: ""
-    category: Adventuring Gear
-    type: gear
   - name: Abacus
     cost: 2 gp
     weight: 2 lb.

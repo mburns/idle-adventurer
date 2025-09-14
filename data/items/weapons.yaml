@@ -1,19 +1,5 @@
 category: Weapons
 items:
-  - name: Name
-    cost: Cost
-    damage: Damage
-    weight: Weight
-    properties: Properties
-    category: Unknown
-    type: weapon
-  - name: '--------------------------'
-    cost: '-----'
-    damage: '---------------'
-    weight: '-------'
-    properties: '------------------------------------------------------'
-    category: Unknown
-    type: weapon
   - name: Club
     cost: 1 sp
     damage: 1d4 bludgeoning

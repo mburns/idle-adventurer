@@ -20,11 +20,49 @@ proficiencies:
     - Intimidation
     - Perception
     - Survival
-equipment:
-  - (*a*) chain mail or (*b*) leather armor, longbow, and 20 arrows
-  - (*a*) a martial weapon and a shield or (*b*) two martial weapons
-  - (*a*) a light crossbow and 20 bolts or (*b*) two handaxes
-  - (*a*) a dungeoneer's pack or (*b*) an explorer's pack
+starting_equipment:
+  armor:
+    - name: "Chain Mail"
+      type: "armor"
+      armor_class: 16
+      weight: 55.0
+      value: 75.0
+    - name: "Leather Armor"
+      type: "armor"
+      armor_class: 11
+      weight: 10.0
+      value: 10.0
+  weapons:
+    - name: "Longsword"
+      type: "weapon"
+      damage: "1d8 slashing"
+      weight: 3.0
+      value: 15.0
+    - name: "Handaxe"
+      type: "weapon"
+      damage: "1d6 slashing"
+      weight: 2.0
+      value: 5.0
+    - name: "Shield"
+      type: "armor"
+      armor_class: 2
+      weight: 6.0
+      value: 10.0
+  packs:
+    - name: "Dungeoneer's Pack"
+      type: "pack"
+      weight: 61.5
+      value: 12.0
+      contents:
+        - "Backpack"
+        - "Crowbar"
+        - "Hammer"
+        - "10 pitons"
+        - "10 torches"
+        - "Tinderbox"
+        - "10 days of rations"
+        - "Waterskin"
+        - "50 feet of hempen rope"
 features:
   Fighting Style: You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.
   Archery: You gain a +2 bonus to attack rolls you make with ranged weapons.
@@ -61,6 +99,51 @@ features:
   Additional Fighting Style: At 10th level, you can choose a second option from the Fighting Style class feature.
   Superior Critical: Starting at 15th level, your weapon attacks score a critical hit on a roll of 18-20.
   Survivor: At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don't gain this benefit if you have 0 hit points.
+# Class features by level
+level_features:
+  1:
+    - Fighting Style
+    - Second Wind
+  2:
+    - Action Surge
+  3:
+    - Martial Archetype
+  4:
+    - Ability Score Improvement
+  5:
+    - Extra Attack
+  6:
+    - Ability Score Improvement
+  7:
+    - Martial Archetype Feature
+  8:
+    - Ability Score Improvement
+  9:
+    - Indomitable
+  10:
+    - Martial Archetype Feature
+  11:
+    - Extra Attack (2)
+  12:
+    - Ability Score Improvement
+  13:
+    - Indomitable (2 uses)
+  14:
+    - Ability Score Improvement
+  15:
+    - Martial Archetype Feature
+  16:
+    - Ability Score Improvement
+  17:
+    - Action Surge (2 uses)
+    - Indomitable (3 uses)
+  18:
+    - Martial Archetype Feature
+  19:
+    - Ability Score Improvement
+  20:
+    - Extra Attack (3)
+
 spellcasting:
   ability: ""
   spell_save_dc: ""

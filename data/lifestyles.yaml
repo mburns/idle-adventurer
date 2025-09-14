@@ -1,0 +1,206 @@
+# Lifestyle definitions for the idle adventurer game
+# Each lifestyle has: id, name, daily_cost, description, benefits, profession_modifiers
+
+# Lifestyle benefit definitions
+benefits:
+  - id: SAFETY
+    name: Safety
+    description: Protection from crime and violence
+    category: protection
+
+  - id: SOCIAL_CONNECTIONS
+    name: Social Connections
+    description: Access to important people and networks
+    category: social
+
+  - id: INFORMATION
+    name: Information
+    description: Access to gossip, news, and intelligence
+    category: knowledge
+
+  - id: RESPECT
+    name: Respect
+    description: Social standing and recognition
+    category: social
+
+  - id: COMFORT
+    name: Comfort
+    description: Physical comfort and luxury
+    category: quality_of_life
+
+  - id: OPPORTUNITIES
+    name: Opportunities
+    description: Business and social opportunities
+    category: advancement
+
+  - id: HEALTH
+    name: Health
+    description: Better health and healing access
+    category: wellness
+
+  - id: EDUCATION
+    name: Education
+    description: Access to learning and knowledge
+    category: knowledge
+
+  - id: ENTERTAINMENT
+    name: Entertainment
+    description: Recreation and fun activities
+    category: quality_of_life
+
+  - id: STATUS
+    name: Status
+    description: Social status and recognition
+    category: social
+
+# Lifestyle penalty definitions
+penalties:
+  - id: CRIME_RISK
+    name: Crime Risk
+    description: Increased chance of theft and violence
+    category: danger
+
+  - id: SOCIAL_ISOLATION
+    name: Social Isolation
+    description: Difficulty making connections
+    category: social
+
+  - id: HEALTH_RISK
+    name: Health Risk
+    description: Disease and poor health conditions
+    category: wellness
+
+  - id: RESPECT_LOSS
+    name: Respect Loss
+    description: Social stigma and negative reputation
+    category: social
+
+  - id: OPPORTUNITY_LOSS
+    name: Opportunity Loss
+    description: Missed business and social opportunities
+    category: advancement
+
+  - id: COMFORT_LOSS
+    name: Comfort Loss
+    description: Physical discomfort and poor conditions
+    category: quality_of_life
+
+  - id: INFORMATION_LOSS
+    name: Information Loss
+    description: Lack of news, gossip, and intelligence
+    category: knowledge
+
+  - id: STATUS_LOSS
+    name: Status Loss
+    description: Decline in social standing
+    category: social
+
+  - id: EDUCATION_LOSS
+    name: Education Loss
+    description: Limited learning opportunities
+    category: knowledge
+
+  - id: ENTERTAINMENT_LOSS
+    name: Entertainment Loss
+    description: Lack of recreation and fun
+    category: quality_of_life
+
+# Lifestyle definitions
+
+- id: WRETCHED
+  name: Wretched
+  daily_cost: 0.0
+  description: Living in squalor with no expenses
+  benefits:
+    - No daily costs
+    - Survival focus
+  profession_modifiers:
+    performance: 0.5
+    temple_work: 0.5
+    guild_work: 0.5
+    general_labor: 0.5
+
+- id: SQUAID
+  name: Squalid
+  daily_cost: 0.1
+  description: Living in poor conditions, barely scraping by
+  benefits:
+    - Minimal daily costs
+    - Basic survival needs met
+  profession_modifiers:
+    performance: 0.7
+    temple_work: 0.7
+    guild_work: 0.7
+    general_labor: 0.8
+
+- id: POOR
+  name: Poor
+  daily_cost: 0.2
+  description: Living in poverty but with basic necessities
+  benefits:
+    - Low daily costs
+    - Basic shelter and food
+  profession_modifiers:
+    performance: 0.8
+    temple_work: 0.8
+    guild_work: 0.8
+    general_labor: 0.9
+
+- id: MODEST
+  name: Modest
+  daily_cost: 1.0
+  description: Living comfortably with modest means
+  benefits:
+    - Reasonable daily costs
+    - Comfortable living conditions
+    - Access to basic services
+  profession_modifiers:
+    performance: 1.0
+    temple_work: 1.0
+    guild_work: 1.0
+    general_labor: 1.0
+
+- id: COMFORTABLE
+  name: Comfortable
+  daily_cost: 2.0
+  description: Living well with good resources
+  benefits:
+    - Good living conditions
+    - Access to quality services
+    - Social connections
+  profession_modifiers:
+    performance: 1.2
+    temple_work: 1.1
+    guild_work: 1.1
+    general_labor: 1.0
+
+- id: WEALTHY
+  name: Wealthy
+  daily_cost: 4.0
+  description: Living in luxury with significant resources
+  benefits:
+    - Excellent living conditions
+    - Access to premium services
+    - Strong social connections
+    - Business opportunities
+  profession_modifiers:
+    performance: 1.5
+    temple_work: 1.2
+    guild_work: 1.3
+    general_labor: 1.1
+
+- id: ARISTOCRATIC
+  name: Aristocratic
+  daily_cost: 10.0
+  description: Living in the highest luxury with vast resources
+  benefits:
+    - Luxurious living conditions
+    - Access to exclusive services
+    - Elite social connections
+    - Major business opportunities
+    - Political influence
+  profession_modifiers:
+    performance: 2.0
+    temple_work: 1.5
+    guild_work: 1.5
+    general_labor: 1.2

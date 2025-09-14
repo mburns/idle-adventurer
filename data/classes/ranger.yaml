@@ -126,6 +126,56 @@ features:
     **_Stand Against the Tide_**. When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice.
 
     **_Uncanny Dodge_**. When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.
+
+# Class features by level
+level_features:
+  1:
+    - Favored Enemy
+    - Natural Explorer
+  2:
+    - Fighting Style
+    - Spellcasting
+  3:
+    - Ranger Archetype
+    - Primeval Awareness
+  4:
+    - Ability Score Improvement
+  5:
+    - Extra Attack
+  6:
+    - Favored Enemy and Natural Explorer improvements
+  7:
+    - Ranger Archetype Feature
+  8:
+    - Ability Score Improvement
+    - Land's Stride
+  9:
+    - Ranger Archetype Feature
+  10:
+    - Natural Explorer improvement
+    - Hide in Plain Sight
+  11:
+    - Ranger Archetype Feature
+  12:
+    - Ability Score Improvement
+  13:
+    - Favored Enemy improvement
+  14:
+    - Favored Enemy improvement
+    - Vanish
+  15:
+    - Ranger Archetype Feature
+  16:
+    - Ability Score Improvement
+  17:
+    - Ranger Archetype Feature
+  18:
+    - Feral Senses
+  19:
+    - Ability Score Improvement
+  20:
+    - Foe Slayer
+
 spellcasting:
   ability: ""
   spell_save_dc: ""

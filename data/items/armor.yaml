@@ -1,21 +1,5 @@
 category: Armor
 items:
-  - name: Armor
-    cost: Cost
-    armor_class: Armor Class (AC)
-    strength: Strength
-    stealth: Stealth
-    weight: Weight
-    category: Unknown
-    type: armor
-  - name: '----------------'
-    cost: '--------'
-    armor_class: '-------------------------'
-    strength: '--------'
-    stealth: '------------'
-    weight: '------'
-    category: Unknown
-    type: armor
   - name: Padded
     cost: 5 gp
     armor_class: 11 + Dex modifier

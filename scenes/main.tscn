@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_u34hy"]
 [ext_resource type="FontFile" uid="uid://dug87e5de4v8o" path="res://assets/Grundschrift-Normal.otf" id="2_cxec1"]
 [ext_resource type="Texture2D" uid="uid://d33n5g1tmmmd" path="res://assets/icons/two-coins.svg" id="3_ohurj"]
-[ext_resource type="Script" path="res://scripts/dynamic_main_ui.gd" id="4_dynamic_ui"]
+[ext_resource type="Script" path="res://scripts/ui/dynamic_main_ui.gd" id="4_dynamic_ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_634im"]
 bg_color = Color(0.960784, 0.317647, 0.654902, 1)

@@ -7,7 +7,7 @@ extends Resource
 @export var level: int = 0
 @export var school: String = "evocation"
 @export var casting_time: String = "1 action"
-@export var range: String = "60 feet"
+@export var spell_range: String = "60 feet"
 @export var components: String = "V, S"
 @export var duration: String = "instantaneous"
 @export var description: String = ""
@@ -33,8 +33,8 @@ func get_damage_at_level(caster_level: int) -> String:
         return damage_dice
 
     var dice_count = 1
-    for level in scaling_levels:
-        if caster_level >= level:
+    for scaling_level in scaling_levels:
+        if caster_level >= scaling_level:
             dice_count += 1
 
     return "%dd%s" % [dice_count, scaling_dice.substr(1)]
@@ -42,7 +42,7 @@ func get_damage_at_level(caster_level: int) -> String:
 func get_range_in_feet() -> int:
     var regex = RegEx.new()
     regex.compile("(\\d+)")
-    var result = regex.search(range)
+    var result = regex.search(spell_range)
     if result:
         return int(result.get_string(1))
     return 60

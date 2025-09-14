@@ -126,7 +126,7 @@ func get_damage_roll() -> String:
         return "1d4"
     return damage_dice
 
-func get_property_list() -> Array[String]:
+func get_equipment_properties() -> Array[String]:
     return properties
 
 func has_property(property: String) -> bool:

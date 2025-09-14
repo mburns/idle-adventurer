@@ -1,0 +1,130 @@
+# Social interaction quests for the idle adventurer game
+
+quests:
+  - id: noble_party
+    title: "Noble's Grand Party"
+    description: "Help organize a grand party for the local nobility. This is your chance to make important social connections."
+    quest_type: SOCIAL
+    status: AVAILABLE
+    giver: "Lady Elara Brightwater"
+    location: "Brightwater Manor"
+    time_limit: 14
+    requirements:
+      character_level: 3
+      charisma: 14
+      faction_reputation:
+        Nobles: 5
+    objectives:
+      - id: socialize_with_guests
+        description: "Socialize with party guests and make connections"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 5
+        requirements:
+          activity: "socializing"
+          location: "Brightwater Manor"
+      - id: contribute_to_party
+        description: "Contribute gold to party expenses"
+        objective_type: SPEND_GOLD
+        target_value: 100
+        requirements:
+          purpose: "party_expenses"
+      - id: impress_nobles
+        description: "Impress the noble guests with your wit and charm"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 3
+        requirements:
+          activity: "diplomacy"
+          target_audience: "nobles"
+    rewards:
+      experience: 150
+      gold: 200
+      reputation:
+        Nobles: 25
+        Town: 10
+      items:
+        - id: "noble_invitation"
+          quantity: 1
+      social_connections:
+        - "Lady Elara Brightwater"
+        - "Lord Marcus Goldleaf"
+    prerequisites: []
+    unlocks: ["noble_favor"]
+
+  - id: noble_favor
+    title: "A Noble Favor"
+    description: "A noble you impressed at the party needs a favor. This could lead to greater opportunities."
+    quest_type: SOCIAL
+    status: LOCKED
+    giver: "Lord Marcus Goldleaf"
+    location: "Goldleaf Estate"
+    time_limit: 21
+    requirements:
+      character_level: 4
+      faction_reputation:
+        Nobles: 20
+    objectives:
+      - id: investigate_noble_matter
+        description: "Investigate a delicate matter for the noble"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 3
+        requirements:
+          activity: "investigation"
+          discretion: "high"
+      - id: maintain_secrecy
+        description: "Keep the matter confidential"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 1
+        requirements:
+          activity: "diplomacy"
+          secrecy: "absolute"
+    rewards:
+      experience: 200
+      gold: 300
+      reputation:
+        Nobles: 35
+        Goldleaf_Family: 50
+      items:
+        - id: "noble_seal"
+          quantity: 1
+      social_connections:
+        - "Lord Marcus Goldleaf"
+        - "Lady Isabella Goldleaf"
+    prerequisites: ["noble_party"]
+    unlocks: ["noble_alliance"]
+
+  - id: tavern_tales
+    title: "Tavern Tales and Tall Stories"
+    description: "Spend time in the local tavern, listening to stories and sharing your own adventures."
+    quest_type: SOCIAL
+    status: AVAILABLE
+    giver: "Tavern Keeper"
+    location: "The Prancing Pony Tavern"
+    time_limit: 0
+    requirements:
+      character_level: 1
+    objectives:
+      - id: listen_to_stories
+        description: "Listen to tavern tales and local gossip"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 5
+        requirements:
+          activity: "listening"
+          location: "tavern"
+      - id: share_adventures
+        description: "Share your own adventure stories"
+        objective_type: PERFORM_ACTIVITY
+        target_value: 3
+        requirements:
+          activity: "storytelling"
+          audience: "tavern_patrons"
+    rewards:
+      experience: 75
+      gold: 25
+      reputation:
+        Town: 5
+      information:
+        - "local_gossip"
+        - "rumors"
+        - "potential_jobs"
+    prerequisites: []
+    unlocks: ["tavern_regular"]

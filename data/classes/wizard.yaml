@@ -20,11 +20,58 @@ proficiencies:
     - Medicine
     - Religion
     - Arcana
-equipment:
-  - (*a*) a quarterstaff or (*b*) a dagger
-  - (*a*) a component pouch or (*b*) an arcane focus
-  - (*a*) a scholar's pack or (*b*) an explorer's pack
-  - A spellbook
+starting_equipment:
+  weapons:
+    - name: "Quarterstaff"
+      type: "weapon"
+      damage: "1d6 bludgeoning"
+      weight: 4.0
+      value: 2.0
+    - name: "Dagger"
+      type: "weapon"
+      damage: "1d4 piercing"
+      weight: 1.0
+      value: 2.0
+  focus:
+    - name: "Component Pouch"
+      type: "focus"
+      weight: 2.0
+      value: 25.0
+    - name: "Arcane Focus"
+      type: "focus"
+      weight: 1.0
+      value: 10.0
+  packs:
+    - name: "Scholar's Pack"
+      type: "pack"
+      weight: 0.0
+      value: 40.0
+      contents:
+        - "Backpack"
+        - "Book of lore"
+        - "Ink (1 ounce bottle)"
+        - "Ink pen"
+        - "10 sheets of parchment"
+        - "Little bag of sand"
+        - "Small knife"
+    - name: "Explorer's Pack"
+      type: "pack"
+      weight: 59.0
+      value: 10.0
+      contents:
+        - "Backpack"
+        - "Bedroll"
+        - "Mess kit"
+        - "Tinderbox"
+        - "10 torches"
+        - "10 days of rations"
+        - "Waterskin"
+        - "50 feet of hempen rope"
+  other:
+    - name: "Spellbook"
+      type: "book"
+      weight: 3.0
+      value: 50.0
 features:
   Cantrips: At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Wizard table.
   Spellbook: At 1st level, you have a spellbook containing six 1st- level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind.
@@ -93,6 +140,51 @@ features:
     >*If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place.
     >
     >***The Book's Appearance***. Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library, or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap.
+
+# Class features by level
+level_features:
+  1:
+    - Spellcasting
+    - Arcane Recovery
+  2:
+    - Arcane Tradition
+  3:
+    - Ritual Casting
+  4:
+    - Ability Score Improvement
+  5:
+    - Arcane Tradition Feature
+  6:
+    - Ability Score Improvement
+  7:
+    - Arcane Tradition Feature
+  8:
+    - Ability Score Improvement
+  9:
+    - Arcane Tradition Feature
+  10:
+    - Arcane Tradition Feature
+  11:
+    - Arcane Tradition Feature
+  12:
+    - Ability Score Improvement
+  13:
+    - Arcane Tradition Feature
+  14:
+    - Arcane Tradition Feature
+  15:
+    - Arcane Tradition Feature
+  16:
+    - Ability Score Improvement
+  17:
+    - Arcane Tradition Feature
+  18:
+    - Spell Mastery
+  19:
+    - Ability Score Improvement
+  20:
+    - Signature Spells
+
 spellcasting:
   ability: ""
   spell_save_dc: ""

@@ -27,11 +27,90 @@ proficiencies:
     - Persuasion
     - Sleight of Hand
     - Stealth
-equipment:
-  - (*a*) a rapier or (*b*) a shortsword
-  - (*a*) a shortbow and quiver of 20 arrows or (*b*) a shortsword
-  - (*a*) a burglar's pack, (*b*) a dungeoneer's pack, or (*c*) an explorer's pack
-  - Leather armor, two daggers, and thieves' tools
+starting_equipment:
+  weapons:
+    - name: "Rapier"
+      type: "weapon"
+      damage: "1d8 piercing"
+      weight: 2.0
+      value: 25.0
+    - name: "Shortsword"
+      type: "weapon"
+      damage: "1d6 piercing"
+      weight: 2.0
+      value: 10.0
+    - name: "Shortbow"
+      type: "weapon"
+      damage: "1d6 piercing"
+      weight: 2.0
+      value: 25.0
+    - name: "Dagger"
+      type: "weapon"
+      damage: "1d4 piercing"
+      weight: 1.0
+      value: 2.0
+  armor:
+    - name: "Leather Armor"
+      type: "armor"
+      armor_class: 11
+      weight: 10.0
+      value: 10.0
+  packs:
+    - name: "Burglar's Pack"
+      type: "pack"
+      weight: 46.5
+      value: 16.0
+      contents:
+        - "Backpack"
+        - "1000 ball bearings"
+        - "10 feet of string"
+        - "Bell"
+        - "5 candles"
+        - "Crowbar"
+        - "Hammer"
+        - "10 pitons"
+        - "Hooded lantern"
+        - "2 flasks of oil"
+        - "5 days of rations"
+        - "Tinderbox"
+        - "Waterskin"
+        - "50 feet of hempen rope"
+    - name: "Dungeoneer's Pack"
+      type: "pack"
+      weight: 61.5
+      value: 12.0
+      contents:
+        - "Backpack"
+        - "Crowbar"
+        - "Hammer"
+        - "10 pitons"
+        - "10 torches"
+        - "Tinderbox"
+        - "10 days of rations"
+        - "Waterskin"
+        - "50 feet of hempen rope"
+    - name: "Explorer's Pack"
+      type: "pack"
+      weight: 59.0
+      value: 10.0
+      contents:
+        - "Backpack"
+        - "Bedroll"
+        - "Mess kit"
+        - "Tinderbox"
+        - "10 torches"
+        - "10 days of rations"
+        - "Waterskin"
+        - "50 feet of hempen rope"
+  other:
+    - name: "Quiver of 20 Arrows"
+      type: "ammunition"
+      weight: 1.0
+      value: 1.0
+    - name: "Thieves' Tools"
+      type: "tool"
+      weight: 1.0
+      value: 25.0
 features:
   Expertise: |-
     At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
@@ -73,6 +152,53 @@ features:
   Supreme Sneak: Starting at 9th level, you have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn.
   Use Magic Device: By 13th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items.
   Thief's Reflexes: When you reach 17th level, you have become adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal initiative and your second turn at your initiative minus 10. You can't use this feature when you are surprised.
+
+# Class features by level
+level_features:
+  1:
+    - Expertise
+    - Sneak Attack
+    - Thieves' Cant
+  2:
+    - Cunning Action
+  3:
+    - Roguish Archetype
+  4:
+    - Ability Score Improvement
+  5:
+    - Uncanny Dodge
+  6:
+    - Expertise
+    - Roguish Archetype Feature
+  7:
+    - Evasion
+  8:
+    - Ability Score Improvement
+  9:
+    - Roguish Archetype Feature
+  10:
+    - Ability Score Improvement
+  11:
+    - Reliable Talent
+  12:
+    - Ability Score Improvement
+  13:
+    - Roguish Archetype Feature
+  14:
+    - Blindsense
+  15:
+    - Slippery Mind
+  16:
+    - Ability Score Improvement
+  17:
+    - Roguish Archetype Feature
+  18:
+    - Elusive
+  19:
+    - Ability Score Improvement
+  20:
+    - Stroke of Luck
+
 spellcasting:
   ability: ""
   spell_save_dc: ""
