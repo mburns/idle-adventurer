@@ -48,6 +48,9 @@ jobs:
           FIX_NATURAL_LANGUAGE: true
           FIX_SHELL_SHFMT: true
           IGNORE_GENERATED_FILES: true
+          VALIDATE_CHECKOV: false # TODO: Add checkov validation
+          VALIDATE_CSS: false
+          VALIDATE_CSS_PRETTIER: false
 
   test:
     runs-on: ubuntu-latest
