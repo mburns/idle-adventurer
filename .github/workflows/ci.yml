@@ -35,10 +35,10 @@ jobs:
       - name: Validate YAML files with yamllint
         uses: karancode/yamllint-github-action@v2.1.1
         with:
-          yamllint_file_or_dir: 'data/'
+          yamllint_file_or_dir: "data/"
           yamllint_strict: false
-          yamllint_config_filepath: '.yamllint'
-          yamllint_format: 'parsable'
+          yamllint_config_filepath: ".yamllint"
+          yamllint_format: "parsable"
           yamllint_comment: false
 
       - name: Validate data structure consistency
@@ -94,25 +94,25 @@ jobs:
             for class_file in "${class_files[@]}"; do
               echo "Validating class file: $class_file"
               if python3 -c "
-import yaml
-import sys
-try:
-    with open('$class_file', 'r') as f:
-        data = yaml.safe_load(f)
-        required_fields = ['name', 'hit_die', 'primary_ability', 'saving_throw_proficiencies']
-        missing_fields = []
-        for field in required_fields:
-            if field not in data:
-                missing_fields.append(field)
-        if missing_fields:
-            print(f'✗ Missing required fields: {missing_fields}')
-            sys.exit(1)
-        else:
-            print(f'✓ All required fields present')
-except Exception as e:
-    print(f'✗ Error validating $class_file: $e')
-    sys.exit(1)
-"; then
+            import yaml
+            import sys
+            try:
+                with open('$class_file', 'r') as f:
+                    data = yaml.safe_load(f)
+                    required_fields = ['name', 'hit_die', 'primary_ability', 'saving_throw_proficiencies']
+                    missing_fields = []
+                    for field in required_fields:
+                        if field not in data:
+                            missing_fields.append(field)
+                    if missing_fields:
+                        print(f'✗ Missing required fields: {missing_fields}')
+                        sys.exit(1)
+                    else:
+                        print(f'✓ All required fields present')
+            except Exception as e:
+                print(f'✗ Error validating $class_file: $e')
+                sys.exit(1)
+            "; then
                 echo "✓ $class_file validated successfully"
               else
                 echo "✗ $class_file validation failed"
@@ -217,135 +217,3 @@ except Exception as e:
           else
             echo "⚠️  scripts directory not found"
           fi
-
-  build:
-    name: Build Game
-    runs-on: ${{ matrix.os }}
-    needs: test
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Godot
-        uses: abarichello/godot-ci@4.4.1-stable
-
-      - name: Create builds directory
-        run: |
-          mkdir -p builds/linux builds/windows builds/macos
-
-      - name: Export project (Linux)
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          godot --headless --export-debug "Linux/X11" builds/linux/idle-adventurer.x86_64
-          chmod +x builds/linux/idle-adventurer.x86_64
-
-      - name: Export project (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          godot --headless --export-debug "Windows Desktop" builds/windows/idle-adventurer.exe
-
-      - name: Export project (macOS)
-        if: matrix.os == 'macos-latest'
-        run: |
-          godot --headless --export-debug "macOS" builds/macos/idle-adventurer.app
-
-      - name: Verify build artifacts
-        run: |
-          echo "Verifying build artifacts..."
-          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
-            test -f builds/linux/idle-adventurer.x86_64 || (echo "Linux build failed" && exit 1)
-            echo "✓ Linux build successful"
-          elif [ "${{ matrix.os }}" = "windows-latest" ]; then
-            test -f builds/windows/idle-adventurer.exe || (echo "Windows build failed" && exit 1)
-            echo "✓ Windows build successful"
-          elif [ "${{ matrix.os }}" = "macos-latest" ]; then
-            test -d builds/macos/idle-adventurer.app || (echo "macOS build failed" && exit 1)
-            echo "✓ macOS build successful"
-          fi
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: idle-adventurer-${{ matrix.os }}
-          path: builds/
-          retention-days: 30
-  release:
-    name: Create Release
-    runs-on: ubuntu-latest
-    needs: [test, build]
-    if: github.event_name == 'release'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-
-      - name: Create release archive
-        run: |
-          echo "Creating release archive..."
-          mkdir -p release
-
-          # Copy platform-specific builds
-          if [ -d "idle-adventurer-ubuntu-latest" ]; then
-            cp -r idle-adventurer-ubuntu-latest/* release/
-            echo "✓ Added Linux build"
-          fi
-
-          if [ -d "idle-adventurer-windows-latest" ]; then
-            cp -r idle-adventurer-windows-latest/* release/
-            echo "✓ Added Windows build"
-          fi
-
-          if [ -d "idle-adventurer-macos-latest" ]; then
-            cp -r idle-adventurer-macos-latest/* release/
-            echo "✓ Added macOS build"
-          fi
-
-          # Add documentation
-          cp README.md release/ 2>/dev/null || echo "README.md not found"
-          cp LICENSE release/ 2>/dev/null || echo "LICENSE not found"
-          cp CHANGELOG.md release/ 2>/dev/null || echo "CHANGELOG.md not found"
-
-          # Create zip archive
-          cd release
-          zip -r ../idle-adventurer-${{ github.event.release.tag_name }}.zip .
-          cd ..
-
-          echo "✓ Release archive created: idle-adventurer-${{ github.event.release.tag_name }}.zip"
-
-      - name: Generate release notes
-        run: |
-          echo "Generating release notes..."
-
-          # Get commit messages since last release
-          if [ -n "${{ github.event.release.previous_tag }}" ]; then
-            echo "## Changes since ${{ github.event.release.previous_tag }}" > release_notes.md
-            git log --pretty=format:"- %s" ${{ github.event.release.previous_tag }}..HEAD >> release_notes.md
-          else
-            echo "## Initial Release" > release_notes.md
-            echo "First release of Idle Adventurer!" >> release_notes.md
-          fi
-
-          echo "" >> release_notes.md
-          echo "## Installation" >> release_notes.md
-          echo "1. Download the appropriate file for your platform" >> release_notes.md
-          echo "2. Extract/run the executable" >> release_notes.md
-          echo "3. Enjoy your D&D idle adventure!" >> release_notes.md
-
-          cat release_notes.md
-
-      - name: Upload release assets
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.upload_url }}
-          asset_path: ./idle-adventurer-${{ github.event.release.tag_name }}.zip
-          asset_name: idle-adventurer-${{ github.event.release.tag_name }}.zip
-          asset_content_type: application/zip
