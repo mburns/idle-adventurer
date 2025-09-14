@@ -35,3 +35,9 @@ window/stretch/aspect="expand"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[import]
+
+# Optimize asset importing
+filesystem/import/blender/enabled=false
+filesystem/import/fbx/enabled=false
