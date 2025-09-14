@@ -5,7 +5,7 @@
 # Default to 'godot' for CI environments, override locally if needed
 GODOT_BIN ?= godot
 
-.PHONY: help test lint clean build package install-deps
+.PHONY: help test lint clean build package install-deps check-env
 
 # Default target
 help:
@@ -13,6 +13,7 @@ help:
 	@echo "===================================="
 	@echo ""
 	@echo "Development:"
+	@echo "  check-env     - Check development environment"
 	@echo "  test          - Run all tests"
 	@echo "  lint          - Run code linting"
 	@echo "  clean         - Clean build artifacts"
@@ -30,8 +31,20 @@ help:
 	@echo ""
 
 # Development tasks
+check-env:
+	@echo "Checking development environment..."
+	@echo "Godot binary: $(GODOT_BIN)"
+	@which $(GODOT_BIN) && echo "✓ Godot found" || echo "✗ Godot not found"
+	@$(GODOT_BIN) --version 2>/dev/null && echo "✓ Godot version check passed" || echo "✗ Godot version check failed"
+	@echo "Python version:"
+	@python3 --version 2>/dev/null && echo "✓ Python found" || echo "✗ Python not found"
+	@echo "Environment check complete"
+
 test:
 	@echo "Running tests..."
+	@echo "Using Godot binary: $(GODOT_BIN)"
+	@which $(GODOT_BIN) || (echo "Error: Godot not found. Please install Godot or set GODOT_BIN environment variable." && exit 1)
+	$(GODOT_BIN) --version
 	$(GODOT_BIN) --headless --script tests/unit/simple_test_runner.gd --quit
 	$(GODOT_BIN) --headless --script tests/unit/test_runner_comprehensive.gd --quit
 
@@ -58,6 +71,9 @@ clean:
 
 install-deps:
 	@echo "Installing development dependencies..."
+	@echo "Installing Python dependencies..."
+	@python3 -m pip install -r requirements.txt
+	@echo "✓ Python dependencies installed"
 	@echo "Dependencies are managed through Godot's built-in systems"
 
 # Build tasks

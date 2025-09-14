@@ -17,12 +17,19 @@ jobs:
 
       - name: Setup Godot
         uses: abarichello/godot-ci@4.4.1-stable
+        with:
+          godot-version: "4.2.1"
+
+      - name: Verify Godot installation
+        run: |
+          which godot
+          godot --version
 
       - name: Setup Python for YAML validation
         run: |
           sudo apt-get update
           sudo apt-get install -y python3 python3-pip
-          pip3 install pyyaml
+          pip3 install -r requirements.txt
 
       - name: Validate YAML files
         run: |
