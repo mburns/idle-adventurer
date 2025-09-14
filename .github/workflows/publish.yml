@@ -26,12 +26,15 @@ jobs:
 
       - name: Verify Godot installation
         run: |
-          which godot
-          godot --version
+          which godot || (echo "Godot not found in PATH" && exit 1)
+          godot --version || (echo "Godot version check failed" && exit 1)
+          echo "✓ Godot installation verified"
 
       - name: Run tests
         run: |
+          echo "Running tests..."
           make test
+          echo "✅ Tests completed successfully"
 
       - name: Build for Web
         run: |

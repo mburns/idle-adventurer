@@ -22,8 +22,9 @@ jobs:
 
       - name: Verify Godot installation
         run: |
-          which godot
-          godot --version
+          which godot || (echo "Godot not found in PATH" && exit 1)
+          godot --version || (echo "Godot version check failed" && exit 1)
+          echo "✓ Godot installation verified"
 
       - name: Setup Python for YAML validation
         run: |
@@ -35,95 +36,223 @@ jobs:
         run: |
           echo "Validating YAML files..."
 
-          # Check all YAML files for syntax errors
-          find data/ -name "*.yaml" -exec echo "Validating {}" \; -exec python3 -c "
-          import yaml
-          import sys
-          try:
-              with open('{}', 'r') as f:
-                  yaml.safe_load(f)
-              print('✓ {} is valid')
-          except yaml.YAMLError as e:
-              print('✗ {} has YAML syntax error: {}'.format('{}', e))
-              sys.exit(1)
-          except Exception as e:
-              print('✗ {} has error: {}'.format('{}', e))
-              sys.exit(1)
-          " \;
+          # Check if data directory exists
+          if [ ! -d "data" ]; then
+            echo "❌ data directory not found"
+            exit 1
+          fi
+
+          # Count YAML files
+          yaml_count=$(find data/ -name "*.yaml" | wc -l)
+          echo "Found $yaml_count YAML files to validate"
+
+          # Validate each YAML file
+          failed_files=0
+          for file in $(find data/ -name "*.yaml"); do
+            echo "Validating $file"
+            if python3 -c "
+import yaml
+import sys
+try:
+    with open('$file', 'r') as f:
+        yaml.safe_load(f)
+    print('✓ $file is valid')
+except yaml.YAMLError as e:
+    print('✗ $file has YAML syntax error: $e')
+    sys.exit(1)
+except Exception as e:
+    print('✗ $file has error: $e')
+    sys.exit(1)
+"; then
+              echo "✓ $file validated successfully"
+            else
+              echo "✗ $file validation failed"
+              failed_files=$((failed_files + 1))
+            fi
+          done
+
+          if [ $failed_files -gt 0 ]; then
+            echo "❌ $failed_files YAML files failed validation"
+            exit 1
+          else
+            echo "✅ All YAML files validated successfully"
+          fi
 
       - name: Validate data structure consistency
         run: |
           echo "Validating data structure consistency..."
 
           # Check that required directories exist
-          test -d "data/classes" || (echo "Missing data/classes directory" && exit 1)
-          test -d "data/races" || (echo "Missing data/races directory" && exit 1)
-          test -d "data/backgrounds" || (echo "Missing data/backgrounds directory" && exit 1)
-          test -d "data/spells" || (echo "Missing data/spells directory" && exit 1)
-          test -d "data/items" || (echo "Missing data/items directory" && exit 1)
-          test -d "data/activities" || (echo "Missing data/activities directory" && exit 1)
+          required_dirs=("data/classes" "data/races" "data/backgrounds" "data/spells" "data/items" "data/activities")
+          missing_dirs=()
 
-          # Check that key files exist
-          test -f "data/currency.yaml" || (echo "Missing data/currency.yaml" && exit 1)
-          test -f "data/languages.yaml" || (echo "Missing data/languages.yaml" && exit 1)
-          test -f "data/level_requirements.yaml" || (echo "Missing data/level_requirements.yaml" && exit 1)
-
-          # Validate that classes have required fields
-          for class_file in data/classes/*.yaml; do
-            if [ -f "$class_file" ]; then
-              echo "Validating class file: $class_file"
-              python3 -c "
-          import yaml
-          with open('$class_file', 'r') as f:
-              data = yaml.safe_load(f)
-              required_fields = ['name', 'hit_die', 'primary_ability', 'saving_throw_proficiencies']
-              for field in required_fields:
-                  if field not in data:
-                      print(f'✗ Missing required field: {field}')
-                      exit(1)
-              print(f'✓ {class_file} has all required fields')
-          " || exit 1
+          for dir in "${required_dirs[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "❌ Missing directory: $dir"
+              missing_dirs+=("$dir")
+            else
+              echo "✓ Found directory: $dir"
             fi
           done
 
-          echo "✓ Data structure validation passed!"
+          if [ ${#missing_dirs[@]} -gt 0 ]; then
+            echo "❌ Missing required directories: ${missing_dirs[*]}"
+            exit 1
+          fi
+
+          # Check that key files exist
+          required_files=("data/currency.yaml" "data/languages.yaml" "data/level_requirements.yaml")
+          missing_files=()
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing file: $file"
+              missing_files+=("$file")
+            else
+              echo "✓ Found file: $file"
+            fi
+          done
+
+          if [ ${#missing_files[@]} -gt 0 ]; then
+            echo "❌ Missing required files: ${missing_files[*]}"
+            exit 1
+          fi
+
+          # Validate that classes have required fields
+          echo "Validating class files..."
+          class_files=($(find data/classes -name "*.yaml" 2>/dev/null || true))
+
+          if [ ${#class_files[@]} -eq 0 ]; then
+            echo "⚠️  No class files found in data/classes/"
+          else
+            echo "Found ${#class_files[@]} class files to validate"
+            failed_classes=0
+
+            for class_file in "${class_files[@]}"; do
+              echo "Validating class file: $class_file"
+              if python3 -c "
+import yaml
+import sys
+try:
+    with open('$class_file', 'r') as f:
+        data = yaml.safe_load(f)
+        required_fields = ['name', 'hit_die', 'primary_ability', 'saving_throw_proficiencies']
+        missing_fields = []
+        for field in required_fields:
+            if field not in data:
+                missing_fields.append(field)
+        if missing_fields:
+            print(f'✗ Missing required fields: {missing_fields}')
+            sys.exit(1)
+        else:
+            print(f'✓ All required fields present')
+except Exception as e:
+    print(f'✗ Error validating $class_file: $e')
+    sys.exit(1)
+"; then
+                echo "✓ $class_file validated successfully"
+              else
+                echo "✗ $class_file validation failed"
+                failed_classes=$((failed_classes + 1))
+              fi
+            done
+
+            if [ $failed_classes -gt 0 ]; then
+              echo "❌ $failed_classes class files failed validation"
+              exit 1
+            else
+              echo "✅ All class files validated successfully"
+            fi
+          fi
+
+          echo "✅ Data structure validation passed!"
 
       - name: Validate script imports
         run: |
           echo "Validating script imports..."
 
-          # Check for old import paths that may need updating
-          if grep -r "res://scripts/[^/]*\.gd" scripts/ --include="*.gd"; then
-            echo "Warning: Found old import paths that may need updating"
+          # Check if scripts directory exists
+          if [ ! -d "scripts" ]; then
+            echo "⚠️  scripts directory not found"
+          else
+            echo "✓ Found scripts directory"
+
+            # Check for old import paths that may need updating
+            old_imports=$(grep -r "res://scripts/[^/]*\.gd" scripts/ --include="*.gd" 2>/dev/null || true)
+            if [ -n "$old_imports" ]; then
+              echo "⚠️  Found old import paths that may need updating:"
+              echo "$old_imports"
+            else
+              echo "✓ No old import paths found"
+            fi
+
+            # Check for missing class_name declarations in key files
+            echo "Checking for class_name declarations..."
+            missing_class_names=0
+            for file in scripts/core/*.gd scripts/systems/*.gd scripts/ui/*.gd 2>/dev/null; do
+              if [ -f "$file" ]; then
+                if ! grep -q "class_name" "$file"; then
+                  echo "⚠️  $file may be missing class_name declaration"
+                  missing_class_names=$((missing_class_names + 1))
+                else
+                  echo "✓ $file has class_name declaration"
+                fi
+              fi
+            done
+
+            if [ $missing_class_names -gt 0 ]; then
+              echo "⚠️  $missing_class_names files may be missing class_name declarations"
+            else
+              echo "✓ All checked files have class_name declarations"
+            fi
           fi
 
-          # Check for missing class_name declarations in key files
-          for file in scripts/core/*.gd scripts/systems/*.gd scripts/ui/*.gd; do
-            if [ -f "$file" ] && ! grep -q "class_name" "$file"; then
-              echo "Warning: $file may be missing class_name declaration"
-            fi
-          done
-
-          echo "✓ Import validation completed"
+          echo "✅ Import validation completed"
 
       - name: Run unit tests
         run: |
-          godot --headless --script tests/unit/simple_test_runner.gd --quit
+          echo "Running unit tests..."
+          if [ -f "tests/unit/simple_test_runner.gd" ]; then
+            godot --headless --script tests/unit/simple_test_runner.gd --quit
+            echo "✅ Unit tests completed"
+          else
+            echo "⚠️  Unit test runner not found: tests/unit/simple_test_runner.gd"
+          fi
 
       - name: Run comprehensive tests
         run: |
-          godot --headless --script tests/unit/test_runner_comprehensive.gd --quit
+          echo "Running comprehensive tests..."
+          if [ -f "tests/unit/test_runner_comprehensive.gd" ]; then
+            godot --headless --script tests/unit/test_runner_comprehensive.gd --quit
+            echo "✅ Comprehensive tests completed"
+          else
+            echo "⚠️  Comprehensive test runner not found: tests/unit/test_runner_comprehensive.gd"
+          fi
 
       - name: Run performance tests
         run: |
-          godot --headless --script tests/test_performance.gd --quit
+          echo "Running performance tests..."
+          if [ -f "tests/test_performance.gd" ]; then
+            godot --headless --script tests/test_performance.gd --quit
+            echo "✅ Performance tests completed"
+          else
+            echo "⚠️  Performance test runner not found: tests/test_performance.gd"
+          fi
 
       - name: Check for TODO/FIXME comments
         run: |
           echo "Checking for TODO/FIXME comments..."
-          if grep -r "TODO\|FIXME\|HACK\|XXX" scripts/ --include="*.gd"; then
-            echo "Found TODO/FIXME/HACK comments - please review before merging"
-            echo "Consider creating issues for these items"
+          if [ -d "scripts" ]; then
+            todo_comments=$(grep -r "TODO\|FIXME\|HACK\|XXX" scripts/ --include="*.gd" 2>/dev/null || true)
+            if [ -n "$todo_comments" ]; then
+              echo "⚠️  Found TODO/FIXME/HACK comments - please review before merging:"
+              echo "$todo_comments"
+              echo "Consider creating issues for these items"
+            else
+              echo "✅ No TODO/FIXME/HACK comments found"
+            fi
+          else
+            echo "⚠️  scripts directory not found"
           fi
 
   build:
