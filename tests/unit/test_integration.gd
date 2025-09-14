@@ -1,4 +1,4 @@
-extends TestBase
+extends GutTest
 
 # Integration tests that test the full system working together
 

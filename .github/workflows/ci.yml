@@ -7,17 +7,7 @@ on:
     types: [published]
 
 jobs:
-  godot-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: MikeSchulze/gdunit4-action@v1
-        with:
-          godot-version: "4.4.1"
-          paths: "res://tests"
-          timeout: 10 # Optional: Test timeout in minutes
-          version: "latest" # Optional: GdUnit4 version
-  test:
+  lint-yaml:
     name: Test Suite
     runs-on: ubuntu-latest
 
@@ -40,7 +30,7 @@ jobs:
           yamllint_format: "parsable"
           yamllint_comment: false
 
-  lint:
+  lint-markdown:
     name: Lint Suite
     runs-on: ubuntu-latest
 
@@ -51,3 +41,14 @@ jobs:
       - uses: tcort/github-action-markdown-link-check@v1
         # with:
         #     check-modified-files-only: true
+
+  godot-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: MikeSchulze/gdunit4-action@v1
+        with:
+          godot-version: "4.4.1"
+          paths: "res://tests"
+          timeout: 10 # Optional: Test timeout in minutes
+          version: "latest" # Optional: GdUnit4 version

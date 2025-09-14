@@ -3,7 +3,7 @@ extends Node
 # Manages all animations in the game using Godot's AnimationTree system
 
 # Preload required classes
-const Character = preload("res://scripts/core/character.gd")
+const CharacterClass = preload("res://scripts/core/character.gd")
 
 @onready var animation_tree: AnimationTree
 @onready var animation_player: AnimationPlayer
@@ -40,7 +40,7 @@ func _ready():
 	GameEvents.character_leveled_up.connect(_on_character_leveled_up)
 	GameEvents.achievement_unlocked.connect(_on_achievement_unlocked)
 
-func _process(delta):
+func _process(_delta):
 	process_animation_queue()
 
 func play_animation(animation_name: String, custom_speed: float = 1.0) -> void:
@@ -165,16 +165,16 @@ func play_sound_effect(effect_name: String) -> void:
 	GameEvents.debug_message.emit("Playing sound effect: " + effect_name, "info")
 
 # Event handlers
-func _on_activity_started(character: Character, activity: String) -> void:
+func _on_activity_started(_character: Character, _activity: String) -> void:
 	queue_animation(AnimationState.WORKING)
 
-func _on_activity_completed(character: Character, activity: String, rewards: Dictionary) -> void:
+func _on_activity_completed(_character: Character, _activity: String, _rewards: Dictionary) -> void:
 	queue_animation(AnimationState.SUCCESS)
 
-func _on_character_leveled_up(character: Character, new_level: int) -> void:
+func _on_character_leveled_up(_character: Character, _new_level: int) -> void:
 	queue_animation(AnimationState.LEVEL_UP)
 
-func _on_achievement_unlocked(achievement: String) -> void:
+func _on_achievement_unlocked(_achievement: String) -> void:
 	queue_animation(AnimationState.ACHIEVEMENT)
 
 # Animation presets for common UI elements

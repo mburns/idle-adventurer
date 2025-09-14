@@ -1,4 +1,4 @@
-extends TestBase
+extends GutTest
 
 # Test suite for D&D Character Sheet functionality
 

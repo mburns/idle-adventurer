@@ -4,13 +4,13 @@ extends "res://tests/unit/gut_test_base.gd"
 
 func test_lambda_capture_fixes():
 	"""Test that lambda capture issues are resolved"""
-	var start_screen = preload("res://scripts/start_screen.gd").new()
-	var skill_buttons = preload("res://scripts/skill_buttons.gd").new()
-	var animation_manager = preload("res://scripts/animation_manager.gd").new()
+	var start_screen = preload("res://scripts/ui/start_screen.gd").new()
+	# var skill_buttons = preload("res://scripts/skill_buttons.gd").new() # Script does not exist
+	var animation_manager = preload("res://scripts/visual/animation_manager.gd").new()
 
 	# These should not cause lambda capture errors
 	assert_not_null(start_screen, "Start screen should be created")
-	assert_not_null(skill_buttons, "Skill buttons should be created")
+	# assert_not_null(skill_buttons, "Skill buttons should be created") # Script does not exist
 	assert_not_null(animation_manager, "Animation manager should be created")
 
 func test_theme_manager_functions():
@@ -41,7 +41,7 @@ func test_data_loader_functions():
 
 func test_character_creation_node_references():
 	"""Test that character creation uses correct node references"""
-	var _character_creation = preload("res://scripts/character_creation.gd").new()
+	var _character_creation = preload("res://scripts/core/character_creation.gd").new()
 
 	# Test that the script compiles without node reference errors
 	assert_not_null(_character_creation, "Character creation script should load")
@@ -70,7 +70,7 @@ func test_character_manager_property_access():
 
 func test_division_by_zero_prevention():
 	"""Test that division by zero is prevented"""
-	var leveling_screen = preload("res://scripts/leveling_screen.gd").new()
+	var leveling_screen = preload("res://scripts/ui/leveling_screen.gd").new()
 
 	# Test with zero XP needed (should not crash)
 	var character = Character.new()
@@ -83,7 +83,7 @@ func test_division_by_zero_prevention():
 
 func test_null_checks_in_character_sheet():
 	"""Test that character sheet handles null values properly"""
-	var _character_sheet = preload("res://scripts/character_sheet.gd").new()
+	var _character_sheet = preload("res://scripts/ui/character_sheet.gd").new()
 	var character = Character.new()
 
 	# Test spell slots access (should not use has_method("get"))
@@ -112,7 +112,7 @@ func test_file_operation_error_handling():
 
 func test_array_bounds_safety():
 	"""Test that array access is bounds-safe"""
-	var _character_creation = preload("res://scripts/character_creation.gd").new()
+	var _character_creation = preload("res://scripts/core/character_creation.gd").new()
 
 	# Test random selection with empty arrays (should not crash)
 	var empty_array = []
@@ -128,7 +128,7 @@ func test_array_bounds_safety():
 
 func test_signal_connection_safety():
 	"""Test that signal connections are safe"""
-	var _character_sheet = preload("res://scripts/character_sheet.gd").new()
+	var _character_sheet = preload("res://scripts/ui/character_sheet.gd").new()
 
 	# Test that signal connections don't cause errors
 	var character_manager = CharacterManager

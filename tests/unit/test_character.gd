@@ -1,4 +1,4 @@
-extends TestBase
+extends GutTest
 
 var character: Character
 

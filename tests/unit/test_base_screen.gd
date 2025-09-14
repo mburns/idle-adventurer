@@ -2,9 +2,9 @@ extends GutTest
 
 ## Test suite for BaseScreen class
 
-const BaseScreenClass = preload("res://scripts/base_screen.gd")
-const CharacterClass = preload("res://scripts/character.gd")
-const CharacterManagerClass = preload("res://scripts/character_manager.gd")
+const BaseScreenClass = preload("res://scripts/ui/base_screen.gd")
+const CharacterClass = preload("res://scripts/core/character.gd")
+const CharacterManagerClass = preload("res://scripts/core/character_manager.gd")
 
 var base_screen: BaseScreenClass
 var mock_character: CharacterClass

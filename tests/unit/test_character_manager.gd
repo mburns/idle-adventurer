@@ -1,4 +1,4 @@
-extends TestBase
+extends GutTest
 
 var character_manager: CharacterManager
 var test_save_path = "user://test_character_save.dat"
@@ -84,7 +84,7 @@ func test_save_file_detection():
     assert_false(character_manager.has_save_file(), "Should not have save file initially")
 
     # Create and save a character
-    var character = character_manager.create_character("Test", "Human", "Barbarian", "Folk Hero")
+    var _character = character_manager.create_character("Test", "Human", "Barbarian", "Folk Hero")
     character_manager.save_character()
 
     assert_true(character_manager.has_save_file(), "Should have save file after saving")

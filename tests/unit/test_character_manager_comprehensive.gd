@@ -1,4 +1,4 @@
-extends TestBase
+extends GutTest
 
 # Comprehensive tests for CharacterManager
 # Tests all major functionality including character creation, saving/loading, and equipment
