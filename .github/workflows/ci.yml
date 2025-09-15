@@ -58,8 +58,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
-      - uses: MikeSchulze/gdunit4-action@v1
+      - uses: MikeSchulze/gdunit4-action@a5b68eab7dd87974a2b44dc047685ff86fabfabb # v1.1.6
         with:
           godot-version: "4.4.1"
           paths: "res://tests"

@@ -5,12 +5,10 @@ on:
     branches: [main]
   workflow_dispatch: # Allow manual triggering
 
-# NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
-
 env:
   GODOT_VERSION: 4.4.1
   EXPORT_NAME: idle-adventurer
-  PROJECT_PATH: "."
+  PROJECT_PATH: "." # path to `project.godot`
 
 jobs:
   export-web:
@@ -22,16 +20,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          lfs: true
+          persist-credentials: false
+
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          mv "/root/.local/share/godot/export_templates/${GODOT_VERSION}.stable" \
+            "~/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
       - name: Web Build
         run: |
           mkdir -v -p build/web
           EXPORT_DIR="$(readlink -f build)"
-          cd $PROJECT_PATH
+          cd "$PROJECT_PATH"
           godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -42,7 +42,7 @@ jobs:
         run: |
           apt-get update && apt-get install -y rsync
       - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+        uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
         with:
-          branch: main # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
+          branch: "main" # The branch the action should deploy to.
+          folder: "build/web" # The folder the action should deploy.
