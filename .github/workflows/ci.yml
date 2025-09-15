@@ -40,7 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # https://github.com/super-linter/super-linter?tab=readme-ov-file#configure-super-linter
           VALIDATE_GIT_COMMITLINT: false
-          FILTER_REGEX_EXCLUDE: '^(\.obsidian/|assets/)'
+          FILTER_REGEX_EXCLUDE: "^(.obsidian/|assets/)"
           FIX_GITHUB_ACTIONS_ZIZMOR: true
           FIX_PYTHON_RUFF: true
           FIX_JSON: true
