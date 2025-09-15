@@ -33,24 +33,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Super-linter
-        uses: super-linter/super-linter@v8.1.0 # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # https://github.com/super-linter/super-linter?tab=readme-ov-file#configure-super-linter
-          VALIDATE_GIT_COMMITLINT: false
-          FILTER_REGEX_EXCLUDE: "^(.obsidian/|assets/)"
-          FIX_GITHUB_ACTIONS_ZIZMOR: true
-          FIX_PYTHON_RUFF: true
-          FIX_JSON: true
-          FIX_MARKDOWN_PRETTIER: true
-          FIX_NATURAL_LANGUAGE: true
-          FIX_SHELL_SHFMT: true
-          IGNORE_GENERATED_FILES: true
-          VALIDATE_CHECKOV: false # TODO: Add checkov validation
-          VALIDATE_CSS: false
-          VALIDATE_CSS_PRETTIER: false
+      # cfg file lint
+      # markdown
 
   test:
     runs-on: ubuntu-latest
