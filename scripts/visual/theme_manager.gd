@@ -34,13 +34,13 @@ func create_default_theme() -> Theme:
 
     # Colors
     var primary_color = Color(0.2, 0.4, 0.8) # Deep blue
-    var secondary_color = Color(0.8, 0.6, 0.2) # Gold
-    var accent_color = Color(0.9, 0.9, 0.9) # Light gray
+    var _secondary_color = Color(0.8, 0.6, 0.2) # Gold
+    var _accent_color = Color(0.9, 0.9, 0.9) # Light gray
     var background_color = Color(0.95, 0.95, 0.95) # Very light gray
     var text_color = Color(0.1, 0.1, 0.1) # Dark gray
-    var button_color = Color(0.7, 0.7, 0.7) # Medium gray
-    var button_hover_color = Color(0.8, 0.8, 0.8) # Light gray
-    var button_pressed_color = Color(0.6, 0.6, 0.6) # Dark gray
+    var _button_color = Color(0.7, 0.7, 0.7) # Medium gray
+    var _button_hover_color = Color(0.8, 0.8, 0.8) # Light gray
+    var _button_pressed_color = Color(0.6, 0.6, 0.6) # Dark gray
 
     # Font
     var font = load("res://assets/Grundschrift-Normal.otf")
@@ -98,7 +98,7 @@ func create_dark_theme() -> Theme:
     var theme = create_default_theme()
 
     # Dark theme colors
-    var dark_bg = Color(0.1, 0.1, 0.1)
+    var _dark_bg = Color(0.1, 0.1, 0.1)
     var dark_panel = Color(0.15, 0.15, 0.15)
     var light_text = Color(0.9, 0.9, 0.9)
     var accent = Color(0.3, 0.6, 1.0)
@@ -124,8 +124,8 @@ func create_dnd_classic_theme() -> Theme:
     var parchment = Color(0.98, 0.95, 0.85)
     var ink = Color(0.1, 0.1, 0.1)
     var gold = Color(0.8, 0.6, 0.2)
-    var red = Color(0.6, 0.1, 0.1)
-    var blue = Color(0.1, 0.3, 0.6)
+    var _red = Color(0.6, 0.1, 0.1)
+    var _blue = Color(0.1, 0.3, 0.6)
 
     # Update colors
     theme.set_color("panel", "Panel", parchment)
@@ -146,7 +146,7 @@ func create_medieval_theme() -> Theme:
 
     # Medieval colors
     var stone = Color(0.6, 0.6, 0.5)
-    var wood = Color(0.4, 0.3, 0.2)
+    var _wood = Color(0.4, 0.3, 0.2)
     var metal = Color(0.7, 0.7, 0.8)
     var text = Color(0.9, 0.9, 0.8)
 

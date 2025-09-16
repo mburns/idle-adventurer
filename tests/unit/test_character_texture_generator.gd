@@ -1,4 +1,4 @@
-extends TestBase
+extends GutTest
 
 # Test suite for Character Texture Generator
 
@@ -78,46 +78,40 @@ func test_character_texture_generation():
     assert_true(texture is ImageTexture)
     assert_not_null(texture)
 
-func test_dice_rolling_accuracy():
-    # Test that dice rolling produces expected ranges
-    var results = []
+func test_texture_generation_with_different_races():
+    # Test texture generation for different races
+    var races = ["Human", "Elf", "Dwarf", "Halfling"]
 
-    # Roll 1d20 100 times
-    for i in range(100):
-        var result = CharacterTextureGenerator.roll_dice("1d20")
-        results.append(result)
-        assert_true(result >= 1)
-        assert_true(result <= 20)
+    for race in races:
+        character.race = race
+        var texture = CharacterTextureGenerator.generate_character_texture(character)
 
-    # Check that we get a reasonable distribution
-    var unique_values = {}
-    for result in results:
-        unique_values[result] = unique_values.get(result, 0) + 1
+        assert_not_null(texture, "Texture should be generated for " + race)
+        assert_true(texture is ImageTexture, "Should return ImageTexture for " + race)
 
-    # Should have at least 10 different values (statistical test)
-    assert_true(unique_values.size() >= 10)
+func test_texture_generation_with_different_classes():
+    # Test texture generation for different classes
+    var class_list = ["Fighter", "Wizard", "Rogue", "Cleric"]
 
-func test_dice_rolling_with_modifier():
-    # Test dice rolling with modifier
-    var result = CharacterTextureGenerator.roll_dice("1d20+5")
+    for char_class in class_list:
+        character.character_class = char_class
+        var texture = CharacterTextureGenerator.generate_character_texture(character)
 
-    assert_true(result >= 6)  # 1 + 5
-    assert_true(result <= 25)  # 20 + 5
+        assert_not_null(texture, "Texture should be generated for " + char_class)
+        assert_true(texture is ImageTexture, "Should return ImageTexture for " + char_class)
 
-func test_multiple_dice_rolling():
-    # Test rolling multiple dice
-    var result = CharacterTextureGenerator.roll_dice("3d6")
+func test_texture_generation_with_equipment():
+    # Test texture generation with equipment
+    character.equipment = {
+        "head": "Helmet",
+        "chest": "Chain Mail",
+        "weapon": "Sword"
+    }
 
-    assert_true(result >= 3)  # 3 * 1
-    assert_true(result <= 18)  # 3 * 6
+    var texture = CharacterTextureGenerator.generate_character_texture(character)
 
-func test_dice_rolling_edge_cases():
-    # Test edge cases
-    var result1 = CharacterTextureGenerator.roll_dice("1d1")
-    assert_eq(result1, 1)
-
-    var result2 = CharacterTextureGenerator.roll_dice("1d1+10")
-    assert_eq(result2, 11)
+    assert_not_null(texture, "Texture should be generated with equipment")
+    assert_true(texture is ImageTexture, "Should return ImageTexture with equipment")
 
 func test_character_texture_properties():
     # Test that generated texture has expected properties

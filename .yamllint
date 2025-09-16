@@ -1,0 +1,55 @@
+# yamllint configuration for Idle Adventurer
+# See https://yamllint.readthedocs.io/en/stable/configuration.html
+
+extends: default
+
+rules:
+  # Allow longer lines for readability (game data often has long descriptions)
+  line-length: disable
+    # max: 200
+    # level: warning
+    # allow-non-breakable-words: true
+    # allow-non-breakable-inline-mappings: false
+
+  # Allow comments at end of lines
+  comments:
+    min-spaces-from-content: 1
+
+  # Allow document start
+  document-start:
+    present: false
+
+  # Allow trailing spaces in some contexts
+  trailing-spaces:
+    level: warning
+
+  # Allow multiple documents in one file
+  document-end:
+    present: false
+
+  # Allow flow style for short lists/maps
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+    min-spaces-inside-empty: -1
+    max-spaces-inside-empty: -1
+
+  # Allow different indentation for different contexts
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
+
+  # Allow different truthy values
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no', 'on', 'off']
+
+  # Allow different key ordering
+  key-ordering: disable
+
+  # Allow different key duplicates
+  key-duplicates: enable

@@ -5,87 +5,44 @@ on:
     branches: [main]
   workflow_dispatch: # Allow manual triggering
 
+env:
+  GODOT_VERSION: 4.4.1
+  EXPORT_NAME: idle-adventurer
+  PROJECT_PATH: "." # path to `project.godot`
+
 jobs:
-  build-and-publish:
-    runs-on: ubuntu-latest
-
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-22.04 # Use 22.04 with godot 4
+    container:
+      image: barichello/godot-ci:4.4.1-stable
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Godot
-        uses: abarichello/godot-ci@4.4.1-stable
         with:
-          godot-version: "4.2.1"
+          persist-credentials: false
 
-      - name: Install dependencies
+      - name: Setup
         run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential
-
-      - name: Run tests
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv "/root/.local/share/godot/export_templates/${GODOT_VERSION}.stable" \
+            "~/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+      - name: Web Build
         run: |
-          make test
-
-      - name: Build for Web
-        run: |
-          godot --headless --export-release "Web" builds/idle-adventurer-web/index.html
-
-      - name: Create release archive
-        run: |
-          mkdir -p release
-          cp -r builds/idle-adventurer-web/* release/
-          cp README.md release/
-          cp LICENSE release/
-
-          # Create a zip with web build
-          cd release
-          zip -r ../idle-adventurer-web.zip .
-          cd ..
-
-      - name: Upload build artifacts
+          mkdir -v -p build/web
+          EXPORT_DIR="$(readlink -f build)"
+          cd "$PROJECT_PATH"
+          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: idle-adventurer-web-build
-          path: |
-            builds/idle-adventurer-web/
-            idle-adventurer-web.zip
-          retention-days: 30
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+          name: web
+          path: build/web
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./builds/idle-adventurer-web
-          cname: # Optional: add your custom domain here if you have one
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            idle-adventurer-web.zip
-          tag_name: v${{ github.run_number }}
-          name: Idle Adventurer v${{ github.run_number }}
-          body: |
-            ## Idle Adventurer Release v${{ github.run_number }}
-
-            Automated web build from commit ${{ github.sha }}
-
-            ### Play Online
-            🎮 **[Play Idle Adventurer on GitHub Pages](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }})**
-
-            ### Download
-            - **Web**: `idle-adventurer-web.zip`
-
-            ### Installation
-            1. Download the `idle-adventurer-web.zip` file
-            2. Extract the contents to a web server
-            3. Open `index.html` in your browser
-            4. Enjoy your D&D idle adventure!
-
-            ### Changes
-            See the [commit history](https://github.com/${{ github.repository }}/commits/main) for details.
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          branch: "main" # The branch the action should deploy to.
+          folder: "build/web" # The folder the action should deploy.

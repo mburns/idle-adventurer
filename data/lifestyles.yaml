@@ -106,101 +106,101 @@ penalties:
     category: quality_of_life
 
 # Lifestyle definitions
+lifestyles:
+  - id: WRETCHED
+    name: Wretched
+    daily_cost: 0.0
+    description: Living in squalor with no expenses
+    benefits:
+      - No daily costs
+      - Survival focus
+    profession_modifiers:
+      performance: 0.5
+      temple_work: 0.5
+      guild_work: 0.5
+      general_labor: 0.5
 
-- id: WRETCHED
-  name: Wretched
-  daily_cost: 0.0
-  description: Living in squalor with no expenses
-  benefits:
-    - No daily costs
-    - Survival focus
-  profession_modifiers:
-    performance: 0.5
-    temple_work: 0.5
-    guild_work: 0.5
-    general_labor: 0.5
+  - id: SQUAID
+    name: Squalid
+    daily_cost: 0.1
+    description: Living in poor conditions, barely scraping by
+    benefits:
+      - Minimal daily costs
+      - Basic survival needs met
+    profession_modifiers:
+      performance: 0.7
+      temple_work: 0.7
+      guild_work: 0.7
+      general_labor: 0.8
 
-- id: SQUAID
-  name: Squalid
-  daily_cost: 0.1
-  description: Living in poor conditions, barely scraping by
-  benefits:
-    - Minimal daily costs
-    - Basic survival needs met
-  profession_modifiers:
-    performance: 0.7
-    temple_work: 0.7
-    guild_work: 0.7
-    general_labor: 0.8
+  - id: POOR
+    name: Poor
+    daily_cost: 0.2
+    description: Living in poverty but with basic necessities
+    benefits:
+      - Low daily costs
+      - Basic shelter and food
+    profession_modifiers:
+      performance: 0.8
+      temple_work: 0.8
+      guild_work: 0.8
+      general_labor: 0.9
 
-- id: POOR
-  name: Poor
-  daily_cost: 0.2
-  description: Living in poverty but with basic necessities
-  benefits:
-    - Low daily costs
-    - Basic shelter and food
-  profession_modifiers:
-    performance: 0.8
-    temple_work: 0.8
-    guild_work: 0.8
-    general_labor: 0.9
+  - id: MODEST
+    name: Modest
+    daily_cost: 1.0
+    description: Living comfortably with modest means
+    benefits:
+      - Reasonable daily costs
+      - Comfortable living conditions
+      - Access to basic services
+    profession_modifiers:
+      performance: 1.0
+      temple_work: 1.0
+      guild_work: 1.0
+      general_labor: 1.0
 
-- id: MODEST
-  name: Modest
-  daily_cost: 1.0
-  description: Living comfortably with modest means
-  benefits:
-    - Reasonable daily costs
-    - Comfortable living conditions
-    - Access to basic services
-  profession_modifiers:
-    performance: 1.0
-    temple_work: 1.0
-    guild_work: 1.0
-    general_labor: 1.0
+  - id: COMFORTABLE
+    name: Comfortable
+    daily_cost: 2.0
+    description: Living well with good resources
+    benefits:
+      - Good living conditions
+      - Access to quality services
+      - Social connections
+    profession_modifiers:
+      performance: 1.2
+      temple_work: 1.1
+      guild_work: 1.1
+      general_labor: 1.0
 
-- id: COMFORTABLE
-  name: Comfortable
-  daily_cost: 2.0
-  description: Living well with good resources
-  benefits:
-    - Good living conditions
-    - Access to quality services
-    - Social connections
-  profession_modifiers:
-    performance: 1.2
-    temple_work: 1.1
-    guild_work: 1.1
-    general_labor: 1.0
+  - id: WEALTHY
+    name: Wealthy
+    daily_cost: 4.0
+    description: Living in luxury with significant resources
+    benefits:
+      - Excellent living conditions
+      - Access to premium services
+      - Strong social connections
+      - Business opportunities
+    profession_modifiers:
+      performance: 1.5
+      temple_work: 1.2
+      guild_work: 1.3
+      general_labor: 1.1
 
-- id: WEALTHY
-  name: Wealthy
-  daily_cost: 4.0
-  description: Living in luxury with significant resources
-  benefits:
-    - Excellent living conditions
-    - Access to premium services
-    - Strong social connections
-    - Business opportunities
-  profession_modifiers:
-    performance: 1.5
-    temple_work: 1.2
-    guild_work: 1.3
-    general_labor: 1.1
-
-- id: ARISTOCRATIC
-  name: Aristocratic
-  daily_cost: 10.0
-  description: Living in the highest luxury with vast resources
-  benefits:
-    - Luxurious living conditions
-    - Access to exclusive services
-    - Elite social connections
-    - Major business opportunities
-    - Political influence
-  profession_modifiers:
-    performance: 2.0
-    temple_work: 1.5
-    guild_work: 1.5
-    general_labor: 1.2
+  - id: ARISTOCRATIC
+    name: Aristocratic
+    daily_cost: 10.0
+    description: Living in the highest luxury with vast resources
+    benefits:
+      - Luxurious living conditions
+      - Access to exclusive services
+      - Elite social connections
+      - Major business opportunities
+      - Political influence
+    profession_modifiers:
+      performance: 2.0
+      temple_work: 1.5
+      guild_work: 1.5
+      general_labor: 1.2

@@ -45,7 +45,7 @@ func check_performance_issues():
 
     # High memory warning
     if current_memory > high_memory_threshold:
-        print("WARNING: High memory usage: " + str(current_memory / 1024 / 1024) + " MB")
+        print("WARNING: High memory usage: " + str(current_memory / 1024.0 / 1024.0) + " MB")
         optimize_memory_usage()
 
 func get_average_frame_time() -> float:
@@ -62,7 +62,7 @@ func get_average_fps() -> float:
     var avg_frame_time = get_average_frame_time()
     if avg_frame_time == 0.0:
         return 0.0
-    return 1.0 / avg_frame_time()
+    return 1.0 / avg_frame_time
 
 func get_memory_usage() -> int:
     return OS.get_static_memory_usage()
@@ -81,20 +81,24 @@ func optimize_for_performance():
 
 func optimize_rendering():
     # Reduce shadow quality
-    RenderingServer.directional_shadow_atlas_set_size(1024)
+    RenderingServer.directional_shadow_atlas_set_size(1024, 1024)
 
-    # Reduce texture quality
-    RenderingServer.texture_2d_set_force_redraw_if_visible(false)
+    # Reduce texture quality - use correct API
+    # RenderingServer.texture_2d_set_force_redraw_if_visible(false) # Not available in current Godot version
 
-    # Disable unnecessary effects
-    RenderingServer.camera_set_use_environment(false)
+    # Disable unnecessary effects - use correct API
+    # RenderingServer.camera_set_use_environment(false) # Not available in current Godot version
 
 func optimize_physics():
-    # Reduce physics iterations
-    PhysicsServer2D.set_iterations(4)
+    # Reduce physics iterations - use correct API
+    # PhysicsServer2D.set_iterations(4) # Not available in current Godot version
+    # Use Engine.physics_ticks_per_second instead
+    Engine.physics_ticks_per_second = 30  # Reduce from default 60
 
-    # Optimize collision detection
-    PhysicsServer2D.set_collision_iterations(4)
+    # Optimize collision detection - use correct API
+    # PhysicsServer2D.set_collision_iterations(4) # Not available in current Godot version
+    # Use Engine.max_physics_steps_per_frame instead
+    Engine.max_physics_steps_per_frame = 2  # Reduce from default 8
 
 func optimize_ui():
     # Disable unnecessary UI updates
@@ -144,13 +148,13 @@ func return_pooled_object(object: Node, object_type: String):
     object.queue_free()
     object_pools[object_type].append(object)
 
-func create_new_object(object_type: String) -> Node:
+func create_new_object(_object_type: String) -> Node:
     # This would create new objects based on type
     # Implementation depends on what objects need pooling
     return Node.new()
 
 # Texture atlasing for character sprites
-func create_texture_atlas(textures: Array[Texture2D]) -> AtlasTexture:
+func create_texture_atlas(_textures: Array[Texture2D]) -> AtlasTexture:
     var atlas = AtlasTexture.new()
     # This would combine multiple textures into a single atlas
     # Implementation would depend on specific texture requirements

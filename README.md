@@ -48,6 +48,13 @@ An idle D&D 5e RPG where characters progress between adventures through activiti
 git clone https://github.com/mburns/idle-adventurer.git
 cd idle-adventurer
 
+# Set up development environment (recommended)
+./setup-dev.sh
+
+# Or manually:
+# Install Python dependencies
+pip3 install -r requirements.txt
+
 # Open in Godot
 # File -> Open Project -> Select project.godot
 ```
@@ -92,8 +99,17 @@ idle-adventurer/
 The project includes a comprehensive test suite with 100% pass rate:
 
 ```bash
+# Check development environment
+make check-env
+
 # Run all tests
 make test
+
+# Run YAML linting
+make yaml-lint
+
+# Run code linting
+make lint
 
 # Run specific test categories
 make test-unit
@@ -120,14 +136,14 @@ make build-macos
 ### Code Quality
 
 ```bash
-# Format code
-make format
-
-# Lint code
+# Lint GDScript code
 make lint
 
+# Lint YAML files
+make yaml-lint
+
 # Run all quality checks
-make check
+make ci-test
 ```
 
 ### Contributing
