@@ -7,14 +7,16 @@ script = ExtResource("1_jhe64")
 name = "Fighter"
 hit_die = "10"
 primary_ability = "strength"
-saving_throws = "Array[String](["saving_throws"])"
+saving_throws = Array[String](["saving_throws"])
 skill_choices = 2
-skill_options = "Array[String]([""])"
-armor_proficiencies = "Array[String]([""])"
-weapon_proficiencies = "Array[String]([""])"
-tool_proficiencies = "Array[String]([""])"
-starting_equipment = {}
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
+starting_equipment = {
+"equipment": ["(*a*) chain mail or (*b*) leather armor", "(*a*) two martial weapons", "(*a*) a light crossbow and 20 bolts or (*b*) two handaxes", "(*a*) a dungeoneer's pack or (*b*) an explorer's pack"]
+}
 features = Array[String](["Fighting Style", "Archery", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Two-Weapon Fighting", "Second Wind", "Action Surge", "Martial Archetype", "Ability Score Improvement", "Extra Attack", "Indomitable", "Champion", "Improved Critical", "Remarkable Athlete", "Additional Fighting Style", "Superior Critical", "Survivor"])
 spellcasting_ability = ""
-spell_slots_per_level = "Array[int]([])"
-level_features = "Array[Dictionary]([])"
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

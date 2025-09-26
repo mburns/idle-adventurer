@@ -71,35 +71,30 @@ func setup_achievement_system() -> void:
     load_character_achievements()
 
 func load_achievement_templates() -> void:
-    """Load achievement templates from YAML file"""
-    var file_path = "res://data/achievements.yaml"
-    var file = FileAccess.open(file_path, FileAccess.READ)
-    if file == null:
-        print("Error: Could not open achievements file: " + file_path)
+    """Load achievement templates using the resource manager"""
+    var achievement_manager = AutoloadManager.get_achievement_resource_manager()
+    if achievement_manager == null:
+        print("Error: Achievement manager not available")
         return
 
-    var yaml_string = file.get_as_text()
-    file.close()
+    # Copy achievements from resource manager to local storage
+    var all_achievements = achievement_manager.get_all_achievements()
+    for achievement_id in all_achievements:
+        var achievement_resource = all_achievements[achievement_id]
 
-    var achievements_data = parse_yaml_achievements(yaml_string)
-    if achievements_data == null:
-        print("Error parsing achievements YAML")
-        return
+        # Convert resource to legacy Achievement class
+        var category = string_to_achievement_category(achievement_resource.category)
+        var rarity = string_to_achievement_rarity(achievement_resource.rarity)
 
-    for achievement_data in achievements_data:
-        var id = achievement_data.get("id", "")
-        var name = achievement_data.get("name", "")
-        var description = achievement_data.get("description", "")
-        var category_str = achievement_data.get("category", "")
-        var rarity_str = achievement_data.get("rarity", "")
-        var requirements = achievement_data.get("requirements", {})
-        var rewards = achievement_data.get("rewards", {})
-
-        # Convert string enums to actual enum values
-        var category = string_to_achievement_category(category_str)
-        var rarity = string_to_achievement_rarity(rarity_str)
-
-        create_achievement_template(id, name, description, category, rarity, requirements, rewards)
+        create_achievement_template(
+            achievement_resource.id,
+            achievement_resource.name,
+            achievement_resource.description,
+            category,
+            rarity,
+            achievement_resource.requirements,
+            achievement_resource.rewards
+        )
 
     print("Loaded " + str(achievement_templates.size()) + " achievement templates")
 
@@ -328,116 +323,7 @@ func get_achievement_statistics(character: Character) -> Dictionary:
     }
 
 # YAML parsing functions for achievements
-func parse_yaml_achievements(yaml_string: String) -> Array:
-    """Parse YAML achievements array format"""
-    var lines = yaml_string.split("\n")
-    var achievements = []
-    var current_achievement = {}
-    var current_key = ""
-    var in_multiline = false
-    var indent_level = 0
-
-    for line in lines:
-        line = line.strip_edges()
-        if line.is_empty() or line.begins_with("#"):
-            continue
-
-        var line_indent = get_indent_level(line)
-
-        # Handle array items (achievements)
-        if line.begins_with("- ") and line_indent == 0:
-            # Save previous achievement if exists
-            if not current_achievement.is_empty():
-                achievements.append(current_achievement)
-
-            # Start new achievement
-            current_achievement = {}
-            var item_line = line.substr(2).strip_edges()
-            if ":" in item_line:
-                var parts = item_line.split(":", 1)
-                current_key = parts[0].strip_edges()
-                var value = parts[1].strip_edges()
-                if value.is_empty():
-                    in_multiline = true
-                else:
-                    current_achievement[current_key] = parse_value(value)
-            indent_level = 0
-        elif line.begins_with("-") and line_indent > 0:
-            # Handle nested array items
-            var item = line.substr(1).strip_edges()
-            if not current_achievement.has(current_key):
-                current_achievement[current_key] = []
-            current_achievement[current_key].append(parse_value(item))
-        elif ":" in line and line_indent > 0:
-            # Handle key-value pairs within achievement
-            if in_multiline and current_key != "":
-                current_achievement[current_key] = current_achievement.get(current_key, "").strip_edges()
-                in_multiline = false
-
-            var parts = line.split(":", 1)
-            current_key = parts[0].strip_edges()
-            var value = parts[1].strip_edges()
-
-            if value.is_empty():
-                in_multiline = true
-                current_achievement[current_key] = ""
-            else:
-                current_achievement[current_key] = parse_value(value)
-        elif in_multiline and line_indent > indent_level:
-            # Continue multiline value
-            current_achievement[current_key] += "\n" + line
-        elif line_indent == 0 and not line.begins_with("-"):
-            # Handle top-level key-value pairs
-            if in_multiline and current_key != "":
-                current_achievement[current_key] = current_achievement.get(current_key, "").strip_edges()
-                in_multiline = false
-
-            var parts = line.split(":", 1)
-            current_key = parts[0].strip_edges()
-            var value = parts[1].strip_edges()
-
-            if value.is_empty():
-                in_multiline = true
-                current_achievement[current_key] = ""
-            else:
-                current_achievement[current_key] = parse_value(value)
-
-    # Save last achievement
-    if not current_achievement.is_empty():
-        achievements.append(current_achievement)
-
-    return achievements
-
-func get_indent_level(line: String) -> int:
-    """Get the indentation level of a line"""
-    var indent = 0
-    for i in range(line.length()):
-        if line[i] == " ":
-            indent += 1
-        elif line[i] == "\t":
-            indent += 4
-        else:
-            break
-    return indent
-
-func parse_value(value: String) -> Variant:
-    """Parse a YAML value string into appropriate type"""
-    # Try to parse as number
-    if value.is_valid_int():
-        return value.to_int()
-    elif value.is_valid_float():
-        return value.to_float()
-    # Try to parse as boolean
-    elif value == "true":
-        return true
-    elif value == "false":
-        return false
-    # Try to parse as null/empty
-    elif value == "null" or value == "~" or value == "":
-        return null
-    # Return as string
-    else:
-        return value
+# Custom YAML parsing functions removed - now using unified YAMLParser via resource manager
 
 # Enum conversion functions
 func string_to_achievement_category(category_str: String) -> AchievementCategory:

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_ao5j7"]
 
 [resource]
-script = ExtResource("1_ao5j7)
+script = ExtResource("1_ao5j7")
 name = "Gorgon"
 size = "Large monstrosity"
 type = "unaligned"
-alignment = ""
+alignment = "neutral"
 armor_class = "19"
 hit_points = "114121048"
 speed = "40 ft."
@@ -19,19 +19,19 @@ abilities = {
 "strength": 20,
 "wisdom": 12
 }
-saving_throws = "Array[String]([""])"
-skills = "Array[String](["skills"])"
-damage_immunities = "Array[String]([""])"
-damage_resistances = "Array[String]([""])"
-damage_vulnerabilities = "Array[String]([""])"
-condition_immunities = "Array[String](["condition_immunities"])"
+saving_throws = Array[String]([])
+skills = Array[String](["skills"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["condition_immunities"])
 senses = "darkvision 60 ft.", passive Perception 14"
-languages = "Array[String]([""])"
+languages = Array[String]([])
 challenge_rating = "5"
 xp = 0
-traits = "Array[Dictionary]([])"
-actions = "Array[Dictionary]([])"
-reactions = "Array[Dictionary]([])"
-legendary_actions = "Array[Dictionary]([])"
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1
 passive_perception = "11"

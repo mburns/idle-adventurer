@@ -1,11 +1,11 @@
-[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class=Resource" load_steps=2 format=3]
 
-[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
-script = ExtResource("1)
+script = ExtResource("1")
 metadata/yaml_data = {
-  "name": Young Bronze Dragon (Metallic),
+  "name": "Young Bronze Dragon (Metallic)",
   "size": Large dragon,
   "type": lawful good,
   "alignment": ,
@@ -13,56 +13,56 @@ metadata/yaml_data = {
   "hit_points": 142 (15d10+60),
   "speed": 40 ft., fly 80 ft., swim 40 ft.,
   "abilities": {
-    strength": 21,"
+    "strength": 21,
     "dexterity": 10,
-    constitution": 19,"
+    "constitution": 19,
     "intelligence": 14,
     "wisdom": 13,
     "charisma": 17
   },
-  saving_throws": ["
-    "Dex +3,"
+  "saving_throws": ["
+    "Dex +3,
     Con +7",
-    "Wis +4,"
+    "Wis +4,
     Cha +6"
   ],
-  "skills: ["
+  "skills": [
     Insight +4",
-    "Perception +7,"
+    "Perception +7,
     Stealth +3"
   ],
   "damage_immunities: ["
     lightning"
   ],
-  "damage_resistances: [],"
-  damage_vulnerabilities": [],"
-  "condition_immunities: [],"
-  senses": "blindsight 30 ft., darkvision 120 ft., passive Perception 17,
-  languages": "Common, Draconic,
-  challenge_rating": "8,
-  xp": 0,"
-  "traits: [],"
-  actions": ["
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "blindsight 30 ft., darkvision 120 ft., passive Perception 17,
+  "languages": "Common, Draconic,
+  "challenge_rating": 8,
+  "xp": 0,
+  "traits": [],
+  "actions": ["
     {
       "name: Multiattack***. The dragon makes three attacks: one with its bite and two with its cla",
-      "description: "
+      "description: ""
     },
     {
       "name: Bite***. *Melee Weapon Attack:* +8 to hit, reach 10 ft., one target. *Hit:* 16 (2d10+5) piercing dama",
-      "description: "
+      "description: ""
     },
     {
       "name: Claw***. *Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 12 (2d6+5) slashing dama",
-      "description: "
+      "description: ""
     },
     {
       "name: Breath Weapons (Recharge 5-6)***. The dragon uses one of the following breath weapo",
-      "description: "
+      "description: ""
     }
   ],
-  "legendary_actions: [],"
-  reactions": [],"
-  "spellcasting: {},"
-  description": ",
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting: {},
+  "description": ",
   category: "monster"
 }

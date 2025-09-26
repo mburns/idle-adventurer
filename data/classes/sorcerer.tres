@@ -7,16 +7,16 @@ script = ExtResource("1_hak63")
 name = "Sorcerer"
 hit_die = 6
 primary_ability = "strength"
-saving_throws = "Array[String](["saving_throws"])"
+saving_throws = Array[String](["saving_throws"])
 skill_choices = 2
-skill_options = "Array[String]([""])"
-armor_proficiencies = "Array[String]([""])"
-weapon_proficiencies = "Array[String]([""])"
-tool_proficiencies = "Array[String]([""])"
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
 starting_equipment = {
 "equipment": ["(*a*) a light crossbow and 20 bolts or (*b*) any simple weapon", "(*a*) a component pouch or (*b*) an arcane focus", "(*a*) a dungeoneer's pack or (*b*) an explorer's pack", "Two daggers"]
 }
 features = Array[String](["Cantrips", "Spell Slots", "Spells Known of 1st Level and Higher", "Spellcasting Ability", "Spellcasting Focus", "Sorcerous Origin", "Choose a sorcerous origin, which describes the source of your innate magical power", "Font of Magic", "Sorcery Points", "Flexible Casting", "Metamagic", "Careful Spell", "Distant Spell", "Empowered Spell", "Extended Spell", "Heightened Spell", "Quickened Spell", "Subtle Spell", "Twinned Spell", "Ability Score Improvement", "Sorcerous Restoration", "Different sorcerers claim different origins for their innate magic. Although many variations exist, most of these origins fall into two categories", "Draconic Bloodline", "Dragon Ancestor", "Draconic Resilience", "Elemental Affinity", "Dragon Wings", "Draconic Presence"])
 spellcasting_ability = ""
-spell_slots_per_level = "Array[int]([])"
-level_features = "Array[Dictionary]([])"
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

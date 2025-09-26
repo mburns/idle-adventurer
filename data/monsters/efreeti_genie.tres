@@ -1,11 +1,11 @@
-[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class=Resource" load_steps=2 format=3]
 
-[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
-script = ExtResource("1)
+script = ExtResource("1")
 metadata/yaml_data = {
-  "name": Efreeti (Genie),
+  "name": "Efreeti (Genie)",
   "size": Large elemental,
   "type": lawful evil,
   "alignment": ,
@@ -13,47 +13,47 @@ metadata/yaml_data = {
   "hit_points": 200 (16d10+112),
   "speed": 40 ft., fly 60 ft.,
   "abilities": {
-    strength": 22,"
+    "strength": 22,
     "dexterity": 12,
-    constitution": 24,"
+    "constitution": 24,
     "intelligence": 16,
     "wisdom": 15,
     "charisma": 16
   },
-  saving_throws": ["
-    "Int +7,"
+  "saving_throws": ["
+    "Int +7,
     Wis +6",
     "Cha +7"
   ],
-  skills": [],"
+  "skills": [],
   "damage_immunities: ["
     fire"
   ],
-  "damage_resistances: [],"
-  damage_vulnerabilities": [],"
-  "condition_immunities: [],"
-  senses": "darkvision 120 ft., passive Perception 12,
-  languages": "Ignan,
-  challenge_rating": "11,
-  xp": 0,"
-  "traits: [],"
-  actions": ["
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": "darkvision 120 ft., passive Perception 12,
+  "languages": "Ignan,
+  "challenge_rating": "11,
+  "xp": 0,
+  "traits": [],
+  "actions": ["
     {
       "name: Multiattack***. The efreeti makes two scimitar attacks or uses its Hurl Flame twi",
-      "description: "
+      "description: ""
     },
     {
       "name: Scimitar***. *Melee Weapon Attack:* +10 to hit, reach 5 ft., one target. *Hit:* 13 (2d6+6) slashing damage plus 7 (2d6) fire dama",
-      "description: "
+      "description: ""
     },
     {
       "name: Hurl Flame***. *Ranged Spell Attack:* +7 to hit, range 120 ft., one target. *Hit:* 17 (5d6) fire dama",
-      "description: "
+      "description: ""
     }
   ],
-  "legendary_actions: [],"
-  reactions": [],"
-  "spellcasting: {},"
-  description": ",
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting: {},
+  "description": ",
   category: "monster"
 }

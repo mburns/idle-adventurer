@@ -9,11 +9,9 @@ level = 1
 school = "evocation"
 casting_time = "1 action"
 spell_range = "Self"
-components = "V, S, M (holy water or powdered silver and iron)"
+datacomponents = "V, S, M (holy water or powdered silver and iron)"
 duration = "Concentration, up to 1 minute"
-description = "Shimmering energy surrounds and protects you from fey, undead, and creatures originating from beyond the Material Plane. For the duration, celestials, elementals, fey, fiends, and undead have disadvantage on attack rolls against you.
-
-You can end the spell early by using either of the following special functions."
+description = "Shimmering energy surrounds and protects you from fey, undead, and creatures originating from beyond the Material Plane. For the duration, celestials, elementals, fey, fiends, and undead have disadvantage on attack rolls against you.\n\nYou can end the spell early by using either of the following special functions."
 higher_levels = ""
 ritual = "false"
 concentration = "false"

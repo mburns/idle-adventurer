@@ -1,4 +1,4 @@
 [gd_resource type="Resource" format=3]
 
 [resource]
-metadata/yaml_data = {"name": "Lawful evil", "abbreviation": "LE", "description": "creatures methodically take what they want, within the limits of a code of tradition, loyalty, or order", "morality": "Evil", "attitude": "Lawful"}
+metadata/yaml_data = {"name": "Lawful evil", "abbreviation": "LE", "description": ""creatures methodically take what they want", within the limits of a code of tradition, loyalty, or order", "morality": "Evil", "attitude": "Lawful"}

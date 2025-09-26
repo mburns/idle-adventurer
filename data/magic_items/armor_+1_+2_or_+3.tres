@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1")
 metadata/yaml_data = {
-  "name": "Armor, +1, +2, or +3",
+  "name": "Armor", +1, +2, or +3",
   "type": "Armor (light)",
   "rarity": "Rare",
-  "attunement": false,
+  "attunement": "false",
   "description": "You have a bonus to AC while wearing this armor. The bonus is determined by its rarity.",
   "properties": [],
   "effects": [],

@@ -19,19 +19,19 @@ abilities = {
 "strength": 5,
 "wisdom": 10
 }
-saving_throws = "Array[String]([""])"
-skills = "Array[String](["skills"])"
-damage_immunities = "Array[String](["damage_immunities"])"
-damage_resistances = "Array[String](["damage_resistances"])"
-damage_vulnerabilities = "Array[String]([""])"
-condition_immunities = "Array[String](["condition_immunities"])"
+saving_throws = Array[String]([])
+skills = Array[String](["skills"])
+damage_immunities = Array[String](["damage_immunities"])
+damage_resistances = Array[String](["damage_resistances"])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["condition_immunities"])
 senses = "darkvision 120 ft., passive Perception 10"
-languages = "Array[String](["Abyssal", "Common"])"
+languages = Array[String](["Abyssal", "Common"])
 challenge_rating = "1"
 xp = 0
-traits = "Array[Dictionary]([])"
-actions = "Array[Dictionary]([])"
-reactions = "Array[Dictionary]([])"
-legendary_actions = "Array[Dictionary]([])"
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1
 passive_perception = "10"

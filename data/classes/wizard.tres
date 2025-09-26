@@ -7,14 +7,16 @@ script = ExtResource("1_wa5y0")
 name = "Wizard"
 hit_die = 6
 primary_ability = "strength"
-saving_throws = "Array[String](["saving_throws"])"
+saving_throws = Array[String](["saving_throws"])
 skill_choices = 2
-skill_options = "Array[String]([""])"
-armor_proficiencies = "Array[String]([""])"
-weapon_proficiencies = "Array[String]([""])"
-tool_proficiencies = "Array[String]([""])"
-starting_equipment = {}
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
+starting_equipment = {
+"equipment": ["(*a*) a quarterstaff or (*b*) a dagger", "(*a*) a component pouch or (*b*) an arcane focus", "(*a*) a scholar's pack or (*b*) an explorer's pack", "A spellbook"]
+}
 features = Array[String](["Cantrips", "Spellbook", "Preparing and Casting Spells", "You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell", "Spellcasting Ability", "Ritual Casting", "Spellcasting Focus", "Learning Spells of 1st Level and Higher", "Arcane Recovery", "Arcane Tradition", "When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of eight schools", "Ability Score Improvement", "Spell Mastery", "Signature Spells", "School of Evocation", "Evocation Savant", "Sculpt Spells", "Potent Cantrip", "Empowered Evocation", "Overchannel"])
 spellcasting_ability = ""
-spell_slots_per_level = "Array[int]([])"
-level_features = "Array[Dictionary]([])"
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

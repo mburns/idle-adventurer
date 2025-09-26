@@ -7,16 +7,16 @@ script = ExtResource("1_ve50v")
 name = "Barbarian"
 hit_die = "12"
 primary_ability = "strength"
-saving_throws = "Array[String](["saving_throws"])"
+saving_throws = Array[String](["saving_throws"])
 skill_choices = 2
-skill_options = "Array[String]([""])"
-armor_proficiencies = "Array[String]([""])"
-weapon_proficiencies = "Array[String]([""])"
-tool_proficiencies = "Array[String]([""])"
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
 starting_equipment = {
 "equipment": ["(*a*) a greataxe or (*b*) any martial melee weapon", "(*a*) two handaxes or (*b*) any simple weapon", "An explorer's pack and four javelins"]
 }
 features = Array[String](["Rage", "While raging, you gain the following benefits if you aren't wearing heavy armor", "features", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Ability Score Improvement", "Extra Attack", "Fast Movement", "Feral Instinct", "Brutal Critical", "Relentless Rage", "Persistent Rage", "Indomitable Might", "Primal Champion"])
 spellcasting_ability = ""
-spell_slots_per_level = "Array[int]([])"
-level_features = "Array[Dictionary]([])"
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

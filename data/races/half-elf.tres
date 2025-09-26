@@ -3,22 +3,22 @@
 [ext_resource type="Script" path="res://resources/race_resource.gd" id="1_r57st"]
 
 [resource]
-script = ExtResource("1_r57st)
+script = ExtResource("1_r57st")
 name = "Half-Elf"
 ability_increases = {
-"charisma": 2
+"charisma": "2",
 }
 size = "Medium"
 speed = "30"
 height_range = {}
 weight_range = {}
-languages = "Array[String](["languages"])"
+languages = Array[String](["languages"])
 racial_traits = Array[Dictionary]([{
-"description": "['Darkvision', 'Fey Ancestry', 'Skill Versatility']",
+"description": "[Darkvision, Fey Ancestry, Skill Versatility]",
 "name": "traits"
 }])
 darkvision = 0
-resistances = "Array[String]([""])"
-immunities = "Array[String]([""])"
-vulnerabilities = "Array[String]([""])"
-subraces = "Array[Dictionary]([])"
+resistances = Array[String]([])
+immunities = Array[String]([])
+vulnerabilities = Array[String]([])
+subraces = Array[Dictionary]([])

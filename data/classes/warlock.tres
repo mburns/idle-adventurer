@@ -7,16 +7,16 @@ script = ExtResource("1_qtnt5")
 name = "Warlock"
 hit_die = 8
 primary_ability = "strength"
-saving_throws = "Array[String](["saving_throws"])"
+saving_throws = Array[String](["saving_throws"])
 skill_choices = 2
-skill_options = "Array[String]([""])"
-armor_proficiencies = "Array[String]([""])"
-weapon_proficiencies = "Array[String]([""])"
-tool_proficiencies = "Array[String]([""])"
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
 starting_equipment = {
 "equipment": ["(*a*) a light crossbow and 20 bolts or (*b*) any simple weapon", "(*a*) a component pouch or (*b*) an arcane focus", "(*a*) a scholar's pack or (*b*) a dungeoneer's pack", "Leather armor, any simple weapon, and two daggers"]
 }
 features = Array[String](["Otherworldly Patron", "Pact Magic", "Cantrips", "Spell Slots", "Spells Known of 1st Level and Higher", "Spellcasting Ability", "Spellcasting Focus", "Eldritch Invocations", "Pact Boon", "Pact of the Chain", "When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms", "Pact of the Blade", "Pact of the Tome", "Ability Score Improvement", "Mystic Arcanum", "At higher levels, you gain more warlock spells of your choice that can be cast in this way", "Eldritch Master", "Agonizing Blast", "*Prerequisite", "Armor of Shadows", "Ascendant Step", "Beast Speech", "Beguiling Influence", "Bewitching Whispers", "Book of Ancient Secrets", "Chains of Carceri", "Devil's Sight", "Dreadful Word", "Eldritch Sight", "Eldritch Spear", "Eyes of the Rune Keeper", "Fiendish Vigor", "Gaze of Two Minds", "Lifedrinker", "Mask of Many Faces", "Master of Myriad Forms", "Minions of Chaos", "Mire the Mind", "Misty Visions", "One with Shadows", "Otherworldly Leap", "Repelling Blast", "Sculptor of Flesh", "Sign of Ill Omen", "Thief of Five Fates", "Thirsting Blade", "Visions of Distant Realms", "Voice of the Chain Master", "Whispers of the Grave", "Witch Sight", "The Fiend", "Expanded Spell List", "Dark One's Blessing", "Dark One's Own Luck", "Fiendish Resilience", "Hurl Through Hell"])
 spellcasting_ability = ""
-spell_slots_per_level = "Array[int]([])"
-level_features = "Array[Dictionary]([])"
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

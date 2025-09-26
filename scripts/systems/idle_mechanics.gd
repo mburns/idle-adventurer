@@ -2,69 +2,217 @@ class_name IdleMechanics
 extends Node
 
 # Dynamic idle progression system for D&D activities
-# Now uses JSON data instead of hardcoded activities!
+# Now uses .tres Resource files instead of hardcoded activities!
 
-# Activity definitions - loaded dynamically from JSON as Resources
+# Activity definitions - loaded dynamically from .tres Resources
 static var activities: Dictionary = {}  # activity_name -> ActivityResource
+static var activity_manager: ActivityResourceManager
 
-# Initialize activities from JSON data
+# Initialize activities from .tres Resources
 static func _static_init():
-	load_activities_from_json()
+	load_activities_from_resources()
 
-static func load_activities_from_json():
-	"""Load activities from JSON files as ActivityResource instances"""
-	var enhanced_activities = EnhancedActivities.new()
-	var all_activities = enhanced_activities.get_all_activities()
+static func load_activities_from_resources():
+	"""Load activities from .tres files as ActivityResource instances"""
+	activity_manager = ActivityResourceManager.new()
 
-	# Convert JSON activity format to ActivityResource instances
-	if all_activities is Dictionary:
-		for ability in all_activities.keys():
-			if all_activities[ability] is Dictionary:
-				for activity_id in all_activities[ability].keys():
-					var activity_data = all_activities[ability][activity_id]
-					var activity_name = activity_data.get("name", "")
+	# Activities are now loaded automatically by ActivityResourceManager
+	# Convert to static dictionary for backward compatibility
+	# Load abilities from resource configuration
+	var all_abilities = load_abilities_from_resources()
 
-					if activity_name != "":
-						# Create ActivityResource instance
-						var activity_resource = ActivityResource.new()
-						activity_resource.activity_name = activity_name
-						activity_resource.ability = activity_data.get("ability", "general")
-						activity_resource.skill = activity_data.get("name", "")
-						activity_resource.description = activity_data.get("description", "")
-						activity_resource.base_duration = 10.0  # Default duration
-						activity_resource.base_xp = _calculate_base_xp(activity_data)
-						activity_resource.base_gold = _calculate_base_gold(activity_data)
-						activity_resource.daily_progress = activity_data.get("daily_progress", 0.1)
-						activity_resource.cost_per_day = activity_data.get("cost_per_day", 0.0)
+	for ability in all_abilities:
+		var ability_activities = activity_manager.get_activities_by_ability(ability)
+		for activity_resource in ability_activities:
+			var activity_name = activity_resource.activity_name
+			if activity_name != "":
+				activities[activity_name] = activity_resource
 
-						# Set requirements and rewards with type safety
-						var requirements = activity_data.get("requirements", {})
-						var rewards = activity_data.get("rewards", {})
+	print("Loaded ", activities.size(), " activities from .tres data using Resources")
 
-						if requirements is Dictionary:
-							activity_resource.requirements = requirements
-						else:
-							print("Warning: requirements is not a Dictionary for activity ", activity_name)
-							activity_resource.requirements = {}
+static func load_abilities_from_resources() -> Array[String]:
+	"""Load ability types from resource configuration"""
+	# Try to load from resource file first
+	var resource_path = "res://data/types/abilities.tres"
+	var resource = load(resource_path)
 
-						if rewards is Dictionary:
-							activity_resource.rewards = rewards
-						else:
-							print("Warning: rewards is not a Dictionary for activity ", activity_name)
-							activity_resource.rewards = {}
+	if resource and resource.has_method("get"):
+		var resource_data = resource.get("metadata/yaml_data")
+		if resource_data != null:
+			var abilities_data = resource_data.get("abilities", [])
+			if not abilities_data.is_empty():
+				var abilities: Array[String] = []
+				for ability in abilities_data:
+					abilities.append(str(ability))
+				return abilities
 
-						# Set activity type and category
-						activity_resource.activity_type = activity_data.get("activity_type", "training")
-						activity_resource.category = activity_data.get("category", "general")
+	# Fallback to hardcoded abilities
+	print("Warning: Could not load abilities from resources, using fallback")
+	return ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "general"]
 
-						# Store the resource
-						activities[activity_name] = activity_resource
+static func load_rest_activities() -> void:
+	"""Load rest activities from resource file"""
+	var resource_path = "res://data/activities/rest.tres"
+	var resource = load(resource_path)
+
+	if resource and resource.has_method("get") and resource.get("metadata/yaml_data"):
+		var rest_data = resource.get("metadata/yaml_data")
+		if rest_data and rest_data.has("activities"):
+			var rest_activities = rest_data["activities"]
+			if rest_activities.size() > 0:
+				for activity_data in rest_activities:
+					var activity_resource = create_activity_resource_from_data(activity_data)
+					if activity_resource:
+						activities[activity_resource.activity_name] = activity_resource
+				print("Loaded ", rest_activities.size(), " rest activities from .tres")
+			else:
+				print("No rest activities found in .tres, using defaults")
+				load_default_rest_activities()
+		else:
+			print("No rest activities found in .tres, using defaults")
+			load_default_rest_activities()
 	else:
-		print("Warning: all_activities is not a Dictionary, got: ", typeof(all_activities))
+		print("Warning: Could not load rest activities from .tres, using defaults")
+		load_default_rest_activities()
 
-	# TODO rest activities should be dynamically loaded
+static func parse_rest_yaml(yaml_content: String) -> Array:
+	"""Parse YAML content to extract rest activities"""
+	var activity_list = []
+	var lines = yaml_content.split("\n")
+	var current_activity = {}
+	var in_activity = false
+	var current_dict_key = ""
+	var current_dict = {}
+	var in_dict = false
 
-	# Add rest activities manually as ActivityResource instances
+	for i in range(lines.size()):
+		var line = lines[i]
+		var original_line = line
+		line = line.strip_edges()
+
+		# Skip empty lines and comments
+		if line.is_empty() or line.begins_with("#"):
+			continue
+
+		# Check if we're starting a new activity
+		if line.begins_with("- id:"):
+			# Save previous activity if exists
+			if in_activity and current_activity.size() > 0:
+				activity_list.append(current_activity)
+
+			# Start new activity
+			current_activity = {}
+			in_activity = true
+			in_dict = false
+			current_activity["id"] = line.substr(5).strip_edges()
+			continue
+
+		# Parse key-value pairs within activities
+		if in_activity and ":" in line:
+			var parts = line.split(":", 1)
+			var key = parts[0].strip_edges()
+			var value = parts[1].strip_edges()
+
+			# Check if this is a dictionary key (no value, or empty value)
+			if value.is_empty() or value == "":
+				current_dict_key = key
+				current_dict = {}
+				in_dict = true
+				continue
+
+			# If we're in a dictionary, add to current dict
+			if in_dict and original_line.begins_with("  "):
+				# This is a nested key-value pair
+				var dict_value = value
+				if dict_value.is_valid_int():
+					current_dict[key] = dict_value.to_int()
+				elif dict_value.is_valid_float():
+					current_dict[key] = dict_value.to_float()
+				elif dict_value == "true":
+					current_dict[key] = true
+				elif dict_value == "false":
+					current_dict[key] = false
+				else:
+					current_dict[key] = dict_value
+				continue
+
+			# Regular key-value pair
+			if value.is_valid_int():
+				current_activity[key] = value.to_int()
+			elif value.is_valid_float():
+				current_activity[key] = value.to_float()
+			elif value == "true":
+				current_activity[key] = true
+			elif value == "false":
+				current_activity[key] = false
+			elif value == "{}":
+				current_activity[key] = {}
+			elif value.begins_with("{") and value.ends_with("}"):
+				current_activity[key] = parse_simple_dict(value)
+			else:
+				current_activity[key] = value
+
+		# Check if we're exiting a dictionary (next line is not indented)
+		if in_dict and not original_line.begins_with("  ") and not line.is_empty():
+			current_activity[current_dict_key] = current_dict
+			in_dict = false
+			current_dict = {}
+
+	# Save any remaining dictionary
+	if in_dict:
+		current_activity[current_dict_key] = current_dict
+
+	# Add the last activity
+	if in_activity and current_activity.size() > 0:
+		activity_list.append(current_activity)
+
+	return activity_list
+
+static func parse_simple_dict(dict_string: String) -> Dictionary:
+	"""Parse simple dictionary strings like {key: value}"""
+	var result = {}
+	var content = dict_string.substr(1, dict_string.length() - 2)  # Remove {}
+	var pairs = content.split(",")
+
+	for pair in pairs:
+		pair = pair.strip_edges()
+		if ":" in pair:
+			var key_value = pair.split(":", 1)
+			var key = key_value[0].strip_edges()
+			var value = key_value[1].strip_edges()
+
+			# Parse value
+			if value.is_valid_int():
+				result[key] = value.to_int()
+			elif value.is_valid_float():
+				result[key] = value.to_float()
+			else:
+				result[key] = value
+
+	return result
+
+static func create_activity_resource_from_data(activity_data: Dictionary) -> ActivityResource:
+	"""Create ActivityResource from parsed data"""
+	var activity_resource = ActivityResource.new()
+
+	activity_resource.activity_name = activity_data.get("name", "")
+	activity_resource.ability = activity_data.get("ability", "general")
+	activity_resource.skill = activity_data.get("skill", "")
+	activity_resource.base_duration = activity_data.get("base_duration", 30.0)
+	activity_resource.base_xp = activity_data.get("base_xp", 5)
+	activity_resource.base_gold = activity_data.get("base_gold", 0)
+	activity_resource.description = activity_data.get("description", "")
+	activity_resource.daily_progress = activity_data.get("daily_progress", 0.1)
+	activity_resource.cost_per_day = activity_data.get("cost_per_day", 0.0)
+	activity_resource.rewards = activity_data.get("rewards", {})
+	activity_resource.requirements = activity_data.get("requirements", {})
+	activity_resource.activity_type = activity_data.get("activity_type", "rest")
+	activity_resource.category = activity_data.get("category", "general")
+
+	return activity_resource
+
+static func load_default_rest_activities() -> void:
+	"""Load default rest activities if YAML loading fails"""
 	var short_rest = ActivityResource.new()
 	short_rest.activity_name = "Short Rest"
 	short_rest.ability = "general"
@@ -184,7 +332,7 @@ static func complete_activity(character: Character) -> Dictionary:
 	return rewards
 
 static func get_activity_data(activity_name: String) -> ActivityResource:
-	"""Get activity data by name"""
+	"""Get activity resource by name"""
 	return activities.get(activity_name, null)
 
 static func get_all_activities() -> Dictionary:

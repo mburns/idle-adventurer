@@ -1,11 +1,11 @@
-[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class=Resource" load_steps=2 format=3]
 
-[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
-script = ExtResource("1)
+script = ExtResource("1")
 metadata/yaml_data = {
-  "name": Lemure (Devil),
+  "name": "Lemure (Devil)",
   "size": Medium fiend (devil),
   "type": lawful evil,
   "alignment": ,
@@ -13,42 +13,42 @@ metadata/yaml_data = {
   "hit_points": 13 (3d8),
   "speed": 15 ft.,
   "abilities": {
-    strength": 10,"
+    "strength": 10,
     "dexterity": 5,
-    constitution": 11,"
+    "constitution": 11,
     "intelligence": 1,
     "wisdom": 11,
     "charisma": 3
   },
-  saving_throws": [],"
-  "skills: [],"
-  damage_immunities": ["
-    "fire,"
+  "saving_throws": [],
+  "skills": [],
+  "damage_immunities": [
+    "fire,
     poison"
   ],
   "damage_resistances: ["
     cold"
   ],
-  "damage_vulnerabilities: [],"
-  condition_immunities": ["
-    "charmed,"
+  "damage_vulnerabilities": [],
+  "condition_immunities": ["
+    "charmed,
     frightened",
     "poisoned"
   ],
-  senses": "darkvision 120 ft., passive Perception 10,
-  languages": "understands Infernal but can't speak,
-  challenge_rating": "0,
-  xp": 0,"
-  "traits: [],"
-  actions": ["
+  "senses": "darkvision 120 ft., passive Perception 10,
+  "languages": "understands Infernal but can't speak,
+  "challenge_rating": 0,
+  "xp": 0,
+  "traits": [],
+  "actions": ["
     {
       "name: Fist***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 2 (1d4) bludgeoning dama",
-      "description: "
+      "description: ""
     }
   ],
-  "legendary_actions: [],"
-  reactions": [],"
-  "spellcasting: {},"
-  description": ",
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting: {},
+  "description": ",
   category: "monster"
 }

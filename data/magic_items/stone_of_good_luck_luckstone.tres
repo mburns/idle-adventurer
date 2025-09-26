@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1")
 metadata/yaml_data = {
-  "name": "Stone of Good Luck (Luckstone)",
+  "name": "Stone of Good Luck (Luckstone)"",
   "type": "Wondrous item",
   "rarity": "Uncommon",
-  "attunement": true,
+  "attunement": "true",
   "description": "While this polished agate is on your person, you gain a +1 bonus to ability checks and saving throws.",
   "properties": [],
   "effects": [],

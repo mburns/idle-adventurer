@@ -1,145 +1,174 @@
 extends Node
 
-# General Store and Bank system for item management and wealth storage
+# General Store and Bank system for item management and wealth storage using Resource system
 
 class_name GeneralStore
 
-signal item_purchased(character: Character, item: Dictionary, cost: float)
-signal item_sold(character: Character, item: Dictionary, value: float)
-signal bank_deposit(character: Character, amount: float)
-signal bank_withdrawal(character: Character, amount: float)
+signal item_purchased(character, item: EquipmentResource, cost: float)
+signal item_sold(character, item: EquipmentResource, value: float)
+signal bank_deposit(character, amount: float)
+signal bank_withdrawal(character, amount: float)
 
-# TODO these should be dynamically pulled from Items.yaml?
+# Store inventory using Resource system
+var equipment_manager: EquipmentResourceManager
+var store_inventory: Dictionary = {} # item_name -> EquipmentResource
 
-# Store inventory with basic items
-var store_inventory = {
-    "healing_potion": {
-        "name": "Healing Potion",
-        "type": "consumable",
-        "cost": 50, # 50 gp
-        "description": "Restores 2d4+2 hit points",
-        "rarity": "common"
-    },
-    "antitoxin": {
-        "name": "Antitoxin",
-        "type": "consumable",
-        "cost": 50,
-        "description": "Grants advantage on saving throws against poison for 1 hour",
-        "rarity": "common"
-    },
-    "potion_of_healing_greater": {
-        "name": "Potion of Healing (Greater)",
-        "type": "consumable",
-        "cost": 150,
-        "description": "Restores 4d4+4 hit points",
-        "rarity": "uncommon"
-    },
-    "potion_of_healing_superior": {
-        "name": "Potion of Healing (Superior)",
-        "type": "consumable",
-        "cost": 450,
-        "description": "Restores 8d4+8 hit points",
-        "rarity": "rare"
-    },
-    "potion_of_healing_supreme": {
-        "name": "Potion of Healing (Supreme)",
-        "type": "consumable",
-        "cost": 1350,
-        "description": "Restores 10d4+20 hit points",
-        "rarity": "very_rare"
-    },
-    "rope_hempen": {
-        "name": "Rope, hempen (50 feet)",
-        "type": "adventuring_gear",
-        "cost": 2,
-        "description": "50 feet of strong rope",
-        "rarity": "common"
-    },
-    "rope_silk": {
-        "name": "Rope, silk (50 feet)",
-        "type": "adventuring_gear",
-        "cost": 10,
-        "description": "50 feet of silk rope",
-        "rarity": "common"
-    },
-    "lantern_bullseye": {
-        "name": "Lantern, bullseye",
-        "type": "adventuring_gear",
-        "cost": 10,
-        "description": "Casts bright light in a 60-foot cone and dim light for an additional 60 feet",
-        "rarity": "common"
-    },
-    "lantern_hooded": {
-        "name": "Lantern, hooded",
-        "type": "adventuring_gear",
-        "cost": 5,
-        "description": "Casts bright light in a 30-foot radius and dim light for an additional 30 feet",
-        "rarity": "common"
-    },
-    "lock_picks": {
-        "name": "Thieves' Tools",
-        "type": "tool",
-        "cost": 25,
-        "description": "A set of tools for picking locks and disarming traps",
-        "rarity": "common"
-    },
-    "disguise_kit": {
-        "name": "Disguise Kit",
-        "type": "tool",
-        "cost": 25,
-        "description": "A kit for creating disguises",
-        "rarity": "common"
-    },
-    "healers_kit": {
-        "name": "Healer's Kit",
-        "type": "tool",
-        "cost": 5,
-        "description": "A kit for stabilizing dying creatures",
-        "rarity": "common"
-    },
-    "spellbook": {
-        "name": "Spellbook",
-        "type": "tool",
-        "cost": 50,
-        "description": "A book for recording spells",
-        "rarity": "common"
-    },
-    "component_pouch": {
-        "name": "Component Pouch",
-        "type": "tool",
-        "cost": 25,
-        "description": "A pouch for spell components",
-        "rarity": "common"
-    },
-    "backpack": {
-        "name": "Backpack",
-        "type": "adventuring_gear",
-        "cost": 2,
-        "description": "A backpack for carrying equipment",
-        "rarity": "common"
-    },
-    "bedroll": {
-        "name": "Bedroll",
-        "type": "adventuring_gear",
-        "cost": 1,
-        "description": "A bedroll for sleeping",
-        "rarity": "common"
-    },
-    "rations": {
-        "name": "Rations (1 day)",
-        "type": "consumable",
-        "cost": 0.5,
-        "description": "One day's worth of food",
-        "rarity": "common"
-    },
-    "waterskin": {
-        "name": "Waterskin",
-        "type": "adventuring_gear",
-        "cost": 2,
-        "description": "A container for water",
-        "rarity": "common"
-    }
-}
+func _ready():
+	# Initialize equipment manager
+	equipment_manager = EquipmentResourceManager.new()
+	add_child(equipment_manager)
+
+	load_store_inventory()
+
+func load_store_inventory() -> void:
+	"""Load store inventory using Resource manager"""
+	store_inventory.clear()
+
+	# Equipment is already loaded by EquipmentResourceManager
+	store_inventory = equipment_manager.equipment.duplicate()
+
+	# Add some consumables that might not be in the main item files
+	add_consumable_items()
+
+	print("Loaded ", store_inventory.size(), " items for general store using Resource system")
+
+func load_items_from_file(file_path: String) -> void:
+	"""Load items from a specific .tres file"""
+	var resource = load(file_path)
+	if resource == null:
+		print("Warning: Could not load items from ", file_path)
+		return
+
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	var items = resource_data.get("items", [])
+
+	for item in items:
+		var item_id = generate_item_id(item["name"])
+		store_inventory[item_id] = item
+
+	print("Loaded ", items.size(), " items from ", file_path)
+
+func parse_items_yaml(yaml_content: String) -> Array:
+	"""Parse YAML content to extract items"""
+	var items = []
+	var lines = yaml_content.split("\n")
+	var current_item = {}
+	var in_item = false
+	var in_items_section = false
+
+	for line in lines:
+		line = line.strip_edges()
+
+		# Skip empty lines and comments
+		if line.is_empty() or line.begins_with("#"):
+			continue
+
+		# Check if we're in the items section
+		if line == "items:":
+			in_items_section = true
+			continue
+
+		# Check if we're starting a new item
+		if in_items_section and line.begins_with("- name:"):
+			# Save previous item if exists
+			if in_item and current_item.size() > 0:
+				items.append(current_item)
+
+			# Start new item
+			current_item = {}
+			in_item = true
+			current_item["name"] = line.substr(7).strip_edges()
+			continue
+
+		# Parse key-value pairs within items
+		if in_item and ":" in line:
+			var parts = line.split(":", 1)
+			var key = parts[0].strip_edges()
+			var value = parts[1].strip_edges()
+
+			# Skip empty values
+			if value.is_empty():
+				continue
+
+			# Parse value based on type
+			if value.is_valid_int():
+				current_item[key] = value.to_int()
+			elif value.is_valid_float():
+				current_item[key] = value.to_float()
+			elif value == "true":
+				current_item[key] = true
+			elif value == "false":
+				current_item[key] = false
+			else:
+				current_item[key] = value
+
+	# Add the last item
+	if in_item and current_item.size() > 0:
+		items.append(current_item)
+
+	return items
+
+func generate_item_id(item_name: String) -> String:
+	"""Generate a unique ID for an item"""
+	return item_name.to_lower().replace(" ", "_").replace("(", "").replace(")", "").replace(",", "").replace(".", "")
+
+func add_consumable_items() -> void:
+	"""Add consumable items that might not be in the main item files"""
+	# TODO items should be from data/items, add them if they are missing
+	var consumables = [
+		{
+			"name": "Healing Potion",
+			"type": "consumable",
+			"cost": 50,
+			"description": "Restores 2d4+2 hit points",
+			"rarity": "common",
+			"weight": 0.5
+		},
+		{
+			"name": "Antitoxin",
+			"type": "consumable",
+			"cost": 50,
+			"description": "Grants advantage on saving throws against poison for 1 hour",
+			"rarity": "common",
+			"weight": 0.1
+		},
+		{
+			"name": "Potion of Healing (Greater)",
+			"type": "consumable",
+			"cost": 150,
+			"description": "Restores 4d4+4 hit points",
+			"rarity": "uncommon",
+			"weight": 0.5
+		},
+		{
+			"name": "Potion of Healing (Superior)",
+			"type": "consumable",
+			"cost": 450,
+			"description": "Restores 8d4+8 hit points",
+			"rarity": "rare",
+			"weight": 0.5
+		},
+		{
+			"name": "Potion of Healing (Supreme)",
+			"type": "consumable",
+			"cost": 1350,
+			"description": "Restores 10d4+20 hit points",
+			"rarity": "very_rare",
+			"weight": 0.5
+		}
+	]
+
+	for consumable_data in consumables:
+		var consumable_resource = EquipmentResource.new()
+		consumable_resource.item_name = consumable_data.get("name", "")
+		consumable_resource.item_type = consumable_data.get("type", "")
+		consumable_resource.cost = consumable_data.get("cost", 0)
+		consumable_resource.description = consumable_data.get("description", "")
+		consumable_resource.rarity = consumable_data.get("rarity", "")
+		consumable_resource.weight = consumable_data.get("weight", 0.0)
+		store_inventory[consumable_resource.item_name] = consumable_resource
 
 # Bank accounts for characters
 var bank_accounts: Dictionary = {} # character_name -> balance

@@ -142,6 +142,92 @@ func level_up() -> void:
     # TODO: Add class-specific level up features
     print("Level up! Now level ", level)
 
+func apply_class_level_up_features() -> void:
+    """Apply class-specific features when leveling up"""
+    var class_features = load_class_features_for_level(character_class, level)
+    if class_features.size() > 0:
+        for feature in class_features:
+            apply_class_feature(feature)
+    else:
+        print("No features found for ", character_class, " at level ", level)
+
+func load_class_features_for_level(character_class_name: String, target_level: int) -> Array:
+    """Load class features for a specific level from resource data"""
+    # Use the class manager to get class data
+    var class_manager = AutoloadManager.get_class_manager()
+    if class_manager == null:
+        print("Warning: Class manager not available")
+        return []
+
+    var class_data = class_manager.get_class_by_name(character_class_name)
+    if class_data.is_empty():
+        print("Warning: Could not find class data for: ", character_class_name)
+        return []
+
+    var level_features = class_data.get("level_features", {}).get(str(target_level), [])
+    return level_features
+
+func parse_class_yaml_for_level_features(yaml_content: String, target_level: int) -> Array:
+    # This function is deprecated - now using resource manager
+    print("Warning: parse_class_yaml_for_level_features is deprecated")
+    return []
+
+func apply_class_feature(feature_name: String) -> void:
+    """Apply a specific class feature"""
+    print(name, " gains ", feature_name, "!")
+
+    # Apply any special effects based on feature name
+    match feature_name.to_upper():
+        "ABILITY SCORE IMPROVEMENT":
+            # In a full implementation, this would open a UI for ability score selection
+            print("Ability Score Improvement available - choose which ability to increase")
+        "EXTRA ATTACK":
+            print("You can now make an additional attack when taking the Attack action")
+        "ACTION SURGE":
+            print("You can take an additional action on your turn")
+        "SPELL SLOTS":
+            # Update spell slots based on class and level
+            update_spell_slots_for_level()
+        _:
+            # Generic feature application
+            print("Applied feature: ", feature_name)
+
+func update_spell_slots_for_level() -> void:
+    """Update spell slots based on class and level"""
+    # This would be expanded to handle different spellcasting classes
+    match character_class.to_upper():
+        "WIZARD", "SORCERER", "WARLOCK":
+            # Full casters get spell slots every level
+            var new_slots = calculate_spell_slots_for_level(level)
+            spell_slots = new_slots
+        "CLERIC", "DRUID", "RANGER", "PALADIN":
+            # Half casters get spell slots at certain levels
+            if level >= 2:
+                var new_slots = calculate_spell_slots_for_level(level)
+                spell_slots = new_slots
+        "BARD":
+            # Bards are full casters
+            var new_slots = calculate_spell_slots_for_level(level)
+            spell_slots = new_slots
+
+func calculate_spell_slots_for_level(target_level: int) -> Array:
+    """Calculate spell slots for a given level"""
+    # Simplified spell slot calculation
+    # In a full implementation, this would use the official D&D spell slot table
+    var slots = []
+
+    if target_level >= 1:
+        slots.append(2)  # 1st level slots
+    if target_level >= 3:
+        slots.append(2)  # 2nd level slots
+    if target_level >= 5:
+        slots.append(2)  # 3rd level slots
+    if target_level >= 7:
+        slots.append(1)  # 4th level slots
+    if target_level >= 9:
+        slots.append(1)  # 5th level slots
+
+    return slots
 # Spells API
 func learn_spell(spell_name: String, spell_data: Dictionary = {}) -> void:
     if not (spell_name in known_spells):

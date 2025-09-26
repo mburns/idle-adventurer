@@ -94,16 +94,16 @@ func setup_harper_faction():
 		return
 
 	harpers.alignment = "chaotic_good"
-	harpers.primary_goals = ["Preserve knowledge", "Fight tyranny", "Protect the innocent"]
+	harpers.primary_goals = ["Preserve knowledge", "Fight tyranny", "Protect the innocent"] as Array[String]
 	harpers.headquarters = "Twilight Hall, Berdusk"
 	harpers.leader = "Remallia Haventree"
-	harpers.membership_requirements = ["Good alignment", "Dedication to justice"]
+	harpers.membership_requirements = ["Good alignment", "Dedication to justice"] as Array[String]
 	harpers.benefits = {
 		"friendly": ["Access to safe houses", "Information network"],
 		"honored": ["Magical assistance", "Training opportunities"],
 		"exalted": ["Leadership position", "Special missions"]
 	}
-	harpers.quests = ["Investigate corruption", "Protect scholars", "Gather intelligence"]
+	harpers.quests = ["Investigate corruption", "Protect scholars", "Gather intelligence"] as Array[String]
 
 func setup_zhentarim_faction():
 	"""Setup Zhentarim faction details"""
@@ -113,16 +113,16 @@ func setup_zhentarim_faction():
 		return
 
 	zhentarim.alignment = "lawful_evil"
-	zhentarim.primary_goals = ["Accumulate power", "Control trade routes", "Eliminate rivals"]
+	zhentarim.primary_goals = ["Accumulate power", "Control trade routes", "Eliminate rivals"] as Array[String]
 	zhentarim.headquarters = "Darkhold"
 	zhentarim.leader = "Manshoon"
-	zhentarim.membership_requirements = ["Proven loyalty", "Useful skills"]
+	zhentarim.membership_requirements = ["Proven loyalty", "Useful skills"] as Array[String]
 	zhentarim.benefits = {
 		"friendly": ["Mercenary contracts", "Black market access"],
 		"honored": ["Weapon training", "Assassination contracts"],
 		"exalted": ["Territory control", "High-value missions"]
 	}
-	zhentarim.quests = ["Eliminate rivals", "Secure trade routes", "Gather blackmail"]
+	zhentarim.quests = ["Eliminate rivals", "Secure trade routes", "Gather blackmail"] as Array[String]
 
 func setup_emerald_enclave_faction():
 	"""Setup Emerald Enclave faction details"""
@@ -132,16 +132,16 @@ func setup_emerald_enclave_faction():
 		return
 
 	enclave.alignment = "neutral_good"
-	enclave.primary_goals = ["Protect nature", "Balance civilization and wilderness", "Fight unnatural threats"]
+	enclave.primary_goals = ["Protect nature", "Balance civilization and wilderness", "Fight unnatural threats"] as Array[String]
 	enclave.headquarters = "Goldenfields"
 	enclave.leader = "Omin Dran"
-	enclave.membership_requirements = ["Nature affinity", "Wilderness survival skills"]
+	enclave.membership_requirements = ["Nature affinity", "Wilderness survival skills"] as Array[String]
 	enclave.benefits = {
 		"friendly": ["Nature magic training", "Wilderness supplies"],
 		"honored": ["Druid spells", "Animal companions"],
 		"exalted": ["Sacred grove access", "Elemental allies"]
 	}
-	enclave.quests = ["Protect sacred sites", "Fight unnatural creatures", "Restore balance"]
+	enclave.quests = ["Protect sacred sites", "Fight unnatural creatures", "Restore balance"] as Array[String]
 
 func setup_lords_alliance_faction():
 	"""Setup Lord's Alliance faction details"""
@@ -151,16 +151,16 @@ func setup_lords_alliance_faction():
 		return
 
 	alliance.alignment = "lawful_good"
-	alliance.primary_goals = ["Maintain order", "Protect civilization", "Foster trade"]
+	alliance.primary_goals = ["Maintain order", "Protect civilization", "Foster trade"] as Array[String]
 	alliance.headquarters = "Waterdeep"
 	alliance.leader = "Dagult Neverember"
-	alliance.membership_requirements = ["Noble birth or proven service", "Lawful alignment"]
+	alliance.membership_requirements = ["Noble birth or proven service", "Lawful alignment"] as Array[String]
 	alliance.benefits = {
 		"friendly": ["Legal protection", "Trade privileges"],
 		"honored": ["Noble titles", "Land grants"],
 		"exalted": ["Council position", "Royal audience"]
 	}
-	alliance.quests = ["Enforce laws", "Protect trade routes", "Diplomatic missions"]
+	alliance.quests = ["Enforce laws", "Protect trade routes", "Diplomatic missions"] as Array[String]
 
 func setup_order_gauntlet_faction():
 	"""Setup Order of the Gauntlet faction details"""
@@ -170,16 +170,16 @@ func setup_order_gauntlet_faction():
 		return
 
 	order.alignment = "lawful_good"
-	order.primary_goals = ["Fight evil", "Protect the innocent", "Uphold justice"]
+	order.primary_goals = ["Fight evil", "Protect the innocent", "Uphold justice"] as Array[String]
 	order.headquarters = "Summit Hall"
 	order.leader = "Ontharr Frume"
-	order.membership_requirements = ["Good alignment", "Combat training", "Divine connection"]
+	order.membership_requirements = ["Good alignment", "Combat training", "Divine connection"] as Array[String]
 	order.benefits = {
 		"friendly": ["Divine blessings", "Combat training"],
 		"honored": ["Sacred weapons", "Divine spells"],
 		"exalted": ["Paladin training", "Divine intervention"]
 	}
-	order.quests = ["Smite evil", "Protect temples", "Investigate corruption"]
+	order.quests = ["Smite evil", "Protect temples", "Investigate corruption"] as Array[String]
 
 func setup_faction_relationships():
 	"""Setup relationships between factions"""

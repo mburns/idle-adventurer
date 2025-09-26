@@ -1,7 +1,8 @@
-class_name SpellResource
 extends Resource
 
 # D&D Spell as a Godot Resource for better editor integration
+
+class_name SpellResource
 
 @export var spell_name: String = ""
 @export var level: int = 0

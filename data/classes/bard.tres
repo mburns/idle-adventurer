@@ -7,16 +7,16 @@ script = ExtResource("1_24i0k")
 name = "Bard"
 hit_die = 8
 primary_ability = "strength"
-saving_throws = "Array[String](["saving_throws"])"
+saving_throws = Array[String](["saving_throws"])
 skill_choices = 2
-skill_options = "Array[String]([""])"
-armor_proficiencies = "Array[String]([""])"
-weapon_proficiencies = "Array[String]([""])"
-tool_proficiencies = "Array[String]([""])"
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
 starting_equipment = {
-"equipment": ["(*a*) a rapier, (*b*) a longsword, or (*c*) any simple weapon", "(*a*) a diplomat's pack or (*b*) an entertainer's pack", "(*a*) a lute or (*b*) any other musical instrument", "Leather armor and a dagger"]
+"equipment": ["(*a*) a rapier", "(*b*) a longsword, or (*c*) any simple weapon", "(*a*) a diplomat's pack or (*b*) an entertainer's pack", "(*a*) a lute or (*b*) any other musical instrument", "Leather armor and a dagger"]
 }
 features = Array[String](["Cantrips", "Spell Slots", "Spells Known of 1st Level and Higher", "Spellcasting Ability", "Ritual Casting", "Spellcasting Focus", "Bardic Inspiration", "Jack of All Trades", "Song of Rest", "The extra hit points increase when you reach certain levels in this class", "Bard College", "Expertise", "Ability Score Improvement", "Font of Inspiration", "Countercharm", "Magical Secrets", "Superior Inspiration", "College of Lore", "Bonus Proficiencies", "Cutting Words", "Additional Magical Secrets", "Peerless Skill"])
 spellcasting_ability = ""
-spell_slots_per_level = "Array[int]([])"
-level_features = "Array[Dictionary]([])"
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

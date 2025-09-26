@@ -302,12 +302,23 @@ func load_lifestyle_data() -> void:
     var yaml_string = file.get_as_text()
     file.close()
 
-    var lifestyles_data = parse_yaml_lifestyles(yaml_string)
-    if lifestyles_data == null:
-        print("Error parsing lifestyles YAML")
+    # Use the resource manager instead of custom parsing
+    var lifestyle_manager = AutoloadManager.get_lifestyle_manager()
+    if lifestyle_manager == null:
+        print("Error: Lifestyle manager not available")
         return
 
-    for lifestyle_info in lifestyles_data:
+    var all_lifestyles = lifestyle_manager.get_all_lifestyles()
+    for lifestyle_id in all_lifestyles:
+        var lifestyle_resource = all_lifestyles[lifestyle_id]
+
+        # Convert resource to legacy format
+        var lifestyle_info = {
+            "id": lifestyle_resource.id,
+            "name": lifestyle_resource.name,
+            "daily_cost": lifestyle_resource.daily_cost,
+            "description": lifestyle_resource.description
+        }
         var id = lifestyle_info.get("id", "")
         var name = lifestyle_info.get("name", "")
         var daily_cost = lifestyle_info.get("daily_cost", 0.0)
@@ -330,7 +341,9 @@ func load_lifestyle_data() -> void:
 
     print("Loaded " + str(lifestyle_data.size()) + " lifestyle definitions")
 
-func parse_yaml_lifestyles(yaml_string: String) -> Array:
+# Custom YAML parsing function removed - now using unified YAMLParser via resource manager
+
+func parse_yaml_lifestyles_removed(yaml_string: String) -> Array:
     """Parse YAML lifestyles array format"""
     var lines = yaml_string.split("\n")
     var lifestyles = []

@@ -1,11 +1,11 @@
-[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class=Resource" load_steps=2 format=3]
 
-[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
-script = ExtResource("1)
+script = ExtResource("1")
 metadata/yaml_data = {
-  "name": Dretch (Demon),
+  "name": "Dretch (Demon)",
   "size": Small fiend (demon),
   "type": chaotic evil,
   "alignment": ,
@@ -13,24 +13,24 @@ metadata/yaml_data = {
   "hit_points": 18 (4d6+4),
   "speed": 20 ft.,
   "abilities": {
-    strength": 11,"
+    "strength": 11,
     "dexterity": 11,
-    constitution": 12,"
+    "constitution": 12,
     "intelligence": 5,
     "wisdom": 8,
     "charisma": 3
   },
-  saving_throws": [],"
-  "skills: [],"
-  damage_immunities": ["
+  "saving_throws": [],
+  "skills": [],
+  "damage_immunities": [
     "poison"
   ],
-  damage_resistances": ["
-    "cold,"
+  "damage_resistances": ["
+    "cold,
     fire",
     "lightning"
   ],
-  damage_vulnerabilities": [],"
+  "damage_vulnerabilities": [],
   "condition_immunities: ["
     poisoned"
   ],
@@ -38,23 +38,23 @@ metadata/yaml_data = {
   "languages: Abyssal, telepathy 60 ft. (works only with creatures that understand Abyssal)",
   "challenge_rating": 1/4",
   "xp": 0,
-  traits": [],"
+  "traits": [],
   "actions: ["
     {
-      name": "Multiattack***. The dretch makes two attacks: one with its bite and one with its cla,
-      description": "
+      "name": "Multiattack***. The dretch makes two attacks: one with its bite and one with its cla,
+      "description": ""
     },
     {
       name: "Bite***. *Melee Weapon Attack:* +2 to hit, reach 5 ft., one target. *Hit:* 3 (1d6) piercing dama",
-      description: "
+      description: ""
     },
     {
-      name": Claws.*** *Melee Weapon Attack:* +2 to hit, reach 5 ft., one target. *Hit:* 5 (2d4) slashing dama",
-      description":"
+      "name": Claws.*** *Melee Weapon Attack:* +2 to hit, reach 5 ft., one target. *Hit:* 5 (2d4) slashing dama",
+      "description":"
     },
     {
-      name": "Fetid Cloud (1/Day)***. A 10-foot radius of disgusting green gas extends out from the dretch. The gas spreads around corners, and its area is lightly obscured. It lasts for 1 minute or until a strong wind disperses it. Any creature that starts its turn in that area must succeed on a DC 11 Constitution saving throw or be poisoned until the start of its next turn. While poisoned in this way, the target can take either an action or a bonus action on its turn, not both, and can't take reactio,
-      description": "
+      "name": "Fetid Cloud (1/Day)***. A 10-foot radius of disgusting green gas extends out from the dretch. The gas spreads around corners, and its area is lightly obscured. It lasts for 1 minute or until a strong wind disperses it. Any creature that starts its turn in that area must succeed on a DC 11 Constitution saving throw or be poisoned until the start of its next turn. While poisoned in this way, the target can take either an action or a bonus action on its turn, not both, and can't take reactio,
+      "description": ""
     }
   ],
   legendary_actions: [],

@@ -9,7 +9,7 @@ level = 1
 school = "evocation"
 casting_time = "1 action"
 spell_range = "30 feet"
-components = "V, S, M (a bit of bat fur)"
+datacomponents = "V, S, M (a bit of bat fur)"
 duration = "Concentration, up to 1 hour"
 description = "You create an invisible, magical eye within range that hovers in the air for the duration.
 

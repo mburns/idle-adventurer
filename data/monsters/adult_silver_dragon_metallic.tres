@@ -1,11 +1,11 @@
-[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class=Resource" load_steps=2 format=3]
 
-[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
-script = ExtResource("1)
+script = ExtResource("1")
 metadata/yaml_data = {
-  "name": Adult Silver Dragon (Metallic),
+  "name": "Adult Silver Dragon (Metallic)",
   "size": Huge dragon,
   "type": lawful good,
   "alignment": ,
@@ -13,69 +13,69 @@ metadata/yaml_data = {
   "hit_points": 243 (18d12+126),
   "speed": 40 ft., fly 80 ft.,
   "abilities": {
-    strength": 27,"
+    "strength": 27,
     "dexterity": 10,
-    constitution": 25,"
+    "constitution": 25,
     "intelligence": 16,
     "wisdom": 13,
     "charisma": 21
   },
-  saving_throws": ["
-    "Dex +5,"
+  "saving_throws": ["
+    "Dex +5,
     Con +12",
-    "Wis +6,"
+    "Wis +6,
     Cha +10"
   ],
-  "skills: ["
+  "skills": [
     Arcana +8",
-    "History +8,"
+    "History +8,
     Perception +11",
     "Stealth +5"
   ],
-  damage_immunities": ["
+  "damage_immunities": [
     "cold"
   ],
-  damage_resistances": [],"
-  "damage_vulnerabilities: [],"
-  condition_immunities": [],"
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
   "senses: blindsight 60 ft., darkvision 120 ft., passive Perception 21",
   "languages: Common, Draconic",
   "challenge_rating": 16",
   "xp": 0,
-  traits": [],"
+  "traits": [],
   "actions: ["
     {
-      name": "Multiattack***. The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its cla,
-      description": "
+      "name": "Multiattack***. The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its cla,
+      "description": ""
     },
     {
       name: "Bite***. *Melee Weapon Attack:* +13 to hit, reach 10 ft., one target. *Hit:* 19 (2d10+8) piercing dama",
-      description: "
+      description: ""
     },
     {
-      name": Claw***. *Melee Weapon Attack:* +13 to hit, reach 5 ft., one target. *Hit:* 15 (2d6+8) slashing dama",
-      description":"
+      "name": Claw***. *Melee Weapon Attack:* +13 to hit, reach 5 ft., one target. *Hit:* 15 (2d6+8) slashing dama",
+      "description":"
     },
     {
-      name": "Tail***. *Melee Weapon Attack:* +13 to hit, reach 15 ft., one target. *Hit:* 17 (2d8+8) bludgeoning dama,
-      description": "
+      "name": "Tail***. *Melee Weapon Attack:* +13 to hit, reach 15 ft., one target. *Hit:* 17 (2d8+8) bludgeoning dama,
+      "description": ""
     },
     {
       name: "Frightful Presence***. Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 18 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hou",
-      description: "
+      description: ""
     },
     {
-      name": Breath Weapons (Recharge 5-6)***. The dragon uses one of the following breath weapo",
-      description":"
+      "name": Breath Weapons (Recharge 5-6)***. The dragon uses one of the following breath weapo",
+      "description":"
     },
     {
-      name": "Change Shape***. The dragon magically polymorphs into a humanoid or beast that has a challenge rating no higher than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the dragon's choic,
-      description": "In a new form, the dragon retains its alignment, hit points, Hit Dice, ability to speak, proficiencies, Legendary Resistance, lair actions, and Intelligence, Wisdom, and Charisma scores, as well as this action. Its statistics and capabilities are otherwise replaced by those of the new form, except any class features or legendary actions of that form.
+      "name": "Change Shape***. The dragon magically polymorphs into a humanoid or beast that has a challenge rating no higher than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the dragon's choic,
+      "description": "In a new form, the dragon retains its alignment, hit points, Hit Dice, ability to speak, proficiencies, Legendary Resistance, lair actions, and Intelligence, Wisdom, and Charisma scores, as well as this action. Its statistics and capabilities are otherwise replaced by those of the new form, except any class features or legendary actions of that form.
     }
   ],
-  legendary_actions": [],"
-  "reactions: [],"
-  spellcasting": {},"
+  "legendary_actions": [],
+  "reactions": [],
+  "spellcasting": {},
   "description: ",
   "category: monster"
 }

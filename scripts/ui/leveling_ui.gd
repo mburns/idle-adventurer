@@ -2,6 +2,8 @@ extends Control
 
 # Leveling UI for character progression with class feature choices
 
+class_name LevelingUI
+
 signal level_up_completed(character: Character, new_level: int)
 signal feature_selected(character: Character, feature: Dictionary)
 
@@ -112,11 +114,11 @@ func get_class_features(character: Character, new_level: int) -> Array:
     var class_type = character.character_class
     var features = []
 
-    # Get features from wiki data
+    # Get features using Resource manager
+    var class_resource = AutoloadManager.get_class_manager().get_class_resource(class_type)
     var class_data = {}
-    if Engine.has_singleton("DataLoader"):
-        var data_loader = Engine.get_singleton("DataLoader")
-        class_data = data_loader.get_class_data(class_type)
+    if class_resource:
+        class_data = {"features": class_resource.features}
 
     var class_features = class_data.get("features", {})
 

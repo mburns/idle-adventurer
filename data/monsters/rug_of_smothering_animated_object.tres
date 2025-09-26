@@ -1,11 +1,11 @@
-[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class=Resource" load_steps=2 format=3]
 
-[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
-script = ExtResource("1)
+script = ExtResource("1")
 metadata/yaml_data = {
-  "name": Rug of Smothering (Animated Object),
+  "name": "Rug of Smothering (Animated Object)",
   "size": Large construct,
   "type": unaligned,
   "alignment": ,
@@ -13,39 +13,39 @@ metadata/yaml_data = {
   "hit_points": 33 (6d10),
   "speed": 10 ft.,
   "abilities": {
-    strength": 17,"
+    "strength": 17,
     "dexterity": 14,
-    constitution": 10,"
+    "constitution": 10,
     "intelligence": 1,
     "wisdom": 3,
     "charisma": 1
   },
-  saving_throws": [],"
-  "skills: [],"
-  damage_immunities": ["
-    "poison,"
+  "saving_throws": [],
+  "skills": [],
+  "damage_immunities": [
+    "poison,
     psychic"
   ],
-  "damage_resistances: [],"
-  damage_vulnerabilities": [],"
+  "damage_resistances": [],
+  "damage_vulnerabilities": [],
   "condition_immunities: ["
     blinded",
-    "charmed,"
+    "charmed,
     deafened",
-    "frightened,"
+    "frightened,
     paralyzed",
-    "petrified,"
+    "petrified,
     poisoned"
   ],
   "senses: blindsight 60 ft. (blind beyond this radius), passive Perception 6",
   "languages: -",
-  "challenge_rating": 2",
+  "challenge_rating": 2,
   "xp": 0,
-  traits": [],"
+  "traits": [],
   "actions: ["
     {
-      name": "Smother***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one Medium or smaller creature. *Hit:* The creature is grappled (escape DC 13). Until this grapple ends, the target is restrained, blinded, and at risk of suffocating, and the rug can't smother another target. In addition, at the start of each of the target's turns, the target takes 10 (2d6+3) bludgeoning dama,
-      description": "
+      "name": "Smother***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one Medium or smaller creature. *Hit:* The creature is grappled (escape DC 13). Until this grapple ends, the target is restrained, blinded, and at risk of suffocating, and the rug can't smother another target. In addition, at the start of each of the target's turns, the target takes 10 (2d6+3) bludgeoning dama,
+      "description": ""
     }
   ],
   legendary_actions: [],

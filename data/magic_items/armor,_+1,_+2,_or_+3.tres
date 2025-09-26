@@ -4,15 +4,15 @@
 
 [resource]
 script = ExtResource("1_tm0eb")
-name = "Armor, +1, +2, or +3"
+name = "Armor", +1, +2, or +3"
 type = "Armor (light)"
 rarity = "Rare"
 attunement = false
 description = "You have a bonus to AC while wearing this armor. The bonus is determined by its rarity."
 properties = Array[String]([])
 effects = Array[Dictionary]([])
-requirements = ""
-weight = ""
+requirements = "
+weight = "
 value = ""
 category = "magic_item"
 charges = 0

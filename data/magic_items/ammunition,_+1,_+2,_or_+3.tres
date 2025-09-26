@@ -4,15 +4,15 @@
 
 [resource]
 script = ExtResource("1_3j42n")
-name = "Ammunition, +1, +2, or +3"
+name = "Ammunition", +1, +2, or +3"
 type = "Weapon"
 rarity = "Uncommon"
 attunement = false
 description = "You have a bonus to attack and damage rolls made with this piece of magic ammunition. The bonus is determined by the rarity of the ammunition. Once it hits a target, the ammunition is no longer magical."
 properties = Array[String]([])
 effects = Array[Dictionary]([])
-requirements = ""
-weight = ""
+requirements = "
+weight = "
 value = ""
 category = "magic_item"
 charges = 0

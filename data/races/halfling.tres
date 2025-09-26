@@ -3,28 +3,28 @@
 [ext_resource type="Script" path="res://resources/race_resource.gd" id="1_obvfd"]
 
 [resource]
-script = ExtResource("1_obvfd)
+script = ExtResource("1_obvfd")
 name = "Halfling"
 ability_increases = {
-"dexterity": 2
+"dexterity": "2",
 }
 size = "Small"
 speed = "25"
 height_range = {
-"max": 42,
-"min": 30
+"max": "42",
+"min": "30"
 }
 weight_range = {
-"max": 60,
-"min": 30
+"max": "60",
+"min": "30"
 }
-languages = "Array[String](["languages"])"
+languages = Array[String](["languages"])
 racial_traits = Array[Dictionary]([{
 "description": "['Lucky', 'Brave', 'Halfling Nimbleness', 'Naturally Stealthy']",
 "name": "traits"
 }])
 darkvision = 0
-resistances = "Array[String]([""])"
-immunities = "Array[String]([""])"
-vulnerabilities = "Array[String]([""])"
-subraces = "Array[Dictionary]([])"
+resistances = Array[String]([])
+immunities = Array[String]([])
+vulnerabilities = Array[String]([])
+subraces = Array[Dictionary]([])

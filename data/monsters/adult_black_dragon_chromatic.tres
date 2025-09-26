@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id=1]
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
@@ -44,19 +44,19 @@ metadata/yaml_data = {
   "actions": [
     {
       "name": "Multiattack",
-      "description": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its cla"
+      "description": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws."
     },
     {
       "name": "Bite",
-      "description": "*Melee Weapon Attack:* +11 to hit, reach 10 ft., one target. *Hit:* 17 (2d10+6) piercing damage plus 4 (1d8) acid dama",
+      "description": "*Melee Weapon Attack:* +11 to hit, reach 10 ft., one target. *Hit:* 17 (2d10+6) piercing damage plus 4 (1d8) acid damage."
     },
     {
       "name": "Claw",
-      "description": "***. *Melee Weapon Attack:* +11 to hit, reach 5 ft., one target. *Hit:* 13 (2d6+6) slashing dama"
+      "description": "*Melee Weapon Attack:* +11 to hit, reach 5 ft., one target. *Hit:* 13 (2d6+6) slashing damage."
     },
     {
-      "name": "Tail"
-      "description": "*Melee Weapon Attack:* +11 to hit, reach 15 ft., one target. *Hit:* 15 (2d8+6) bludgeoning dama"
+      "name": "Tail",
+      "description": "*Melee Weapon Attack:* +11 to hit, reach 15 ft., one target. *Hit:* 15 (2d8+6) bludgeoning damage."
     },
     {
       "name": "Frightful Presence",
@@ -64,12 +64,12 @@ metadata/yaml_data = {
     },
     {
       "name": "Acid Breath (Recharge 5-6)",
-      "description": "The dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 (12d8) acid damage on a failed save, or half as much damage on a successful o"
+      "description": "The dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 (12d8) acid damage on a failed save, or half as much damage on a successful one."
     }
   ],
   "legendary_actions": [],
   "reactions": [],
   "spellcasting": {},
-  "description": ",
+  "description": "A massive black dragon with acid breath and fearsome presence.",
   "category": "monster"
 }

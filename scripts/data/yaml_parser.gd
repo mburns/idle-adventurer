@@ -7,6 +7,7 @@ class_name YAMLParser
 
 signal parse_error(file_path: String, error_message: String)
 
+
 # Parse a simple YAML file into a Dictionary
 func parse_yaml_file(file_path: String) -> Dictionary:
 	"""Parse a YAML file and return a Dictionary"""
@@ -31,48 +32,62 @@ func parse_yaml_file(file_path: String) -> Dictionary:
 
 # Parse YAML string into Dictionary
 func parse_yaml_string(yaml_string: String) -> Dictionary:
-	"""Parse YAML string into Dictionary"""
+	"""Parse YAML string into Dictionary with proper nested structure support"""
 	var lines = yaml_string.split("\n")
 	var result = {}
-	var current_key = ""
-	var current_value = ""
-	var in_multiline = false
-	var indent_level = 0
+	var stack = []  # Stack to track nested structures
 
 	for line in lines:
+		var original_line = line
 		line = line.strip_edges()
 		if line.is_empty() or line.begins_with("#"):
 			continue
 
-		var line_indent = get_indent_level(line)
+		var line_indent = get_indent_level(original_line)
+
+		# Adjust stack based on indentation
+		while stack.size() > 0 and stack[-1].indent >= line_indent:
+			stack.pop_back()
 
 		# Handle key-value pairs
 		if ":" in line and not line.begins_with("-"):
-			if in_multiline and current_key != "":
-				result[current_key] = current_value.strip_edges()
-				in_multiline = false
-
 			var parts = line.split(":", 1)
-			current_key = parts[0].strip_edges()
-			current_value = parts[1].strip_edges()
+			var key = parts[0].strip_edges()
+			var value = parts[1].strip_edges()
 
-			if current_value.is_empty():
-				in_multiline = true
-				current_value = ""
+			# Determine where to store this key-value pair
+			var target_dict = result
+			if stack.size() > 0:
+				target_dict = stack[-1].dict
+
+			# If value is empty, this starts a nested structure
+			if value.is_empty():
+				var new_dict = {}
+				target_dict[key] = new_dict
+				stack.append({"dict": new_dict, "key": key, "indent": line_indent})
 			else:
-				result[current_key] = parse_value(current_value)
-		elif in_multiline and line_indent > indent_level:
-			current_value += "\n" + line
-		elif line.begins_with("-"):
-			# Handle array items - for now, treat as simple values
-			var item = line.substr(1).strip_edges()
-			if not result.has("items"):
-				result["items"] = []
-			result["items"].append(parse_value(item))
+				target_dict[key] = parse_value(value)
 
-	# Handle last key-value pair
-	if in_multiline and current_key != "":
-		result[current_key] = current_value.strip_edges()
+		# Handle array items
+		elif line.begins_with("-"):
+			var item = line.substr(1).strip_edges()
+
+			# Find the parent key for this array
+			var parent_key = ""
+			if stack.size() > 0:
+				parent_key = stack[-1].key
+
+			# Determine where to store this array item
+			var target_dict = result
+			if stack.size() > 0:
+				target_dict = stack[-1].dict
+
+			# Create array if it doesn't exist
+			if not target_dict.has(parent_key):
+				target_dict[parent_key] = []
+
+			# Add item to array
+			target_dict[parent_key].append(parse_value(item))
 
 	return result
 
@@ -84,24 +99,28 @@ func parse_yaml_activities(yaml_string: String) -> Array:
 	var current_activity = {}
 	var current_key = ""
 	var in_multiline = false
+	var in_dict = false
+	var current_dict = {}
+	var dict_key = ""
 	var indent_level = 0
 
 	for line in lines:
+		var original_line = line
 		line = line.strip_edges()
 		if line.is_empty() or line.begins_with("#"):
 			continue
 
-		var line_indent = get_indent_level(line)
+		var line_indent = get_indent_level(original_line)
 
 		# Handle array items (activities)
-		if line.begins_with("- ") and line_indent == 0:
+		if line.begins_with("-") and line_indent == 0:
 			# Save previous activity if exists
 			if not current_activity.is_empty():
 				activities.append(current_activity)
 
 			# Start new activity
 			current_activity = {}
-			var item_line = line.substr(2).strip_edges()
+			var item_line = line.substr(1).strip_edges()  # Remove the "-" character
 			if ":" in item_line:
 				var parts = item_line.split(":", 1)
 				current_key = parts[0].strip_edges()
@@ -111,11 +130,16 @@ func parse_yaml_activities(yaml_string: String) -> Array:
 				else:
 					current_activity[current_key] = parse_value(value)
 			indent_level = 0
+			in_dict = false
 		elif line.begins_with("-") and line_indent > 0:
 			# Handle nested array items
 			var item = line.substr(1).strip_edges()
 			if not current_activity.has(current_key):
 				current_activity[current_key] = []
+			elif not current_activity[current_key] is Array:
+				# Don't overwrite existing non-array values - this is likely a parsing error
+				print("Warning: Attempting to append to non-array value for key '", current_key, "'")
+				continue
 			current_activity[current_key].append(parse_value(item))
 		elif ":" in line and line_indent > 0:
 			# Handle key-value pairs within activity
@@ -124,14 +148,30 @@ func parse_yaml_activities(yaml_string: String) -> Array:
 				in_multiline = false
 
 			var parts = line.split(":", 1)
-			current_key = parts[0].strip_edges()
+			var key = parts[0].strip_edges()
 			var value = parts[1].strip_edges()
 
-			if value.is_empty():
-				in_multiline = true
-				current_activity[current_key] = ""
-			else:
-				current_activity[current_key] = parse_value(value)
+			# Check if this is a dictionary key (no value, or empty value)
+			if value.is_empty() or value == "":
+				# If we were in a dict, save it
+				if in_dict and dict_key != "":
+					current_activity[dict_key] = current_dict
+
+				# Start new dictionary
+				dict_key = key
+				current_dict = {}
+				in_dict = true
+				continue
+
+			# If we're in a dictionary, add to current dict
+			if in_dict and original_line.begins_with("  "):
+				# This is a nested key-value pair
+				var dict_value = parse_value(value)
+				current_dict[key] = dict_value
+				continue
+
+			# Regular key-value pair
+			current_activity[key] = parse_value(value)
 		elif in_multiline and line_indent > indent_level:
 			# Continue multiline value
 			current_activity[current_key] += "\n" + line
@@ -150,6 +190,10 @@ func parse_yaml_activities(yaml_string: String) -> Array:
 				current_activity[current_key] = ""
 			else:
 				current_activity[current_key] = parse_value(value)
+
+	# Save any remaining dictionary
+	if in_dict and dict_key != "":
+		current_activity[dict_key] = current_dict
 
 	# Save last activity
 	if not current_activity.is_empty():
@@ -260,6 +304,9 @@ func parse_value(value: String) -> Variant:
 	# Try to parse as null/empty
 	elif value == "null" or value == "~" or value == "":
 		return null
+	# Try to parse as empty array - return as Array[String] for consistency
+	elif value == "[]":
+		return [] as Array[String]
 	# Return as string
 	else:
 		return value

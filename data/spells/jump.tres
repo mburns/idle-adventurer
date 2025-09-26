@@ -9,11 +9,9 @@ level = 1
 school = "transmutation"
 casting_time = "1 action"
 spell_range = "Touch"
-components = "V, S, M (a grasshopper's hind leg)"
+datacomponents = "V, S, M (a grasshopper's hind leg)"
 duration = "1 minute"
-description = "You touch a creature. The creature's jump distance is tripled until the spell ends.
-
-Spells (K)"
+description = "You touch a creature. The creature's jump distance is tripled until the spell ends.\n\nSpells (K)"
 higher_levels = ""
 ritual = "false"
 concentration = "false"

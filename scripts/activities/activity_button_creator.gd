@@ -16,38 +16,38 @@ var ability_icons: Dictionary = {
 	"general": "🌍"
 }
 
-# Create an activity button
-func create_activity_button(_parent: GridContainer, ability: String, activity_id: String, activity: Dictionary) -> Button:
+# Create an activity button using ActivityResource
+func create_activity_button(_parent: GridContainer, ability: String, activity_id: String, activity_resource: ActivityResource) -> Button:
 	var button = Button.new()
 	button.custom_minimum_size = Vector2(200, 120)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 
 	# Create button content
-	var content = create_button_content(activity)
+	var content = create_button_content_from_resource(activity_resource)
 	button.add_child(content)
 
 	# Style the button
-	style_activity_button(button, activity)
+	style_activity_button_from_resource(button, activity_resource)
 
 	# Connect button press
 	button.pressed.connect(_on_activity_button_pressed.bind(activity_id, ability))
 
 	# Add tooltip
-	var tooltip = create_detailed_tooltip(activity)
+	var tooltip = create_detailed_tooltip_from_resource(activity_resource)
 	button.tooltip_text = tooltip
 
 	return button
 
-# Create button content (title, emoji, metadata)
-func create_button_content(activity: Dictionary) -> VBoxContainer:
+# Create button content from ActivityResource
+func create_button_content_from_resource(activity_resource: ActivityResource) -> VBoxContainer:
 	var vbox = VBoxContainer.new()
 	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	vbox.add_theme_constant_override("separation", 4)
 
 	# Activity name
 	var name_label = Label.new()
-	name_label.text = activity.get("name", "Unknown Activity")
+	name_label.text = activity_resource.activity_name
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.add_theme_font_size_override("font_size", 12)
 	name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -55,18 +55,52 @@ func create_button_content(activity: Dictionary) -> VBoxContainer:
 
 	# Activity emoji
 	var emoji_label = Label.new()
-	emoji_label.text = get_activity_emoji(activity)
+	emoji_label.text = get_activity_emoji_from_resource(activity_resource)
 	emoji_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	emoji_label.add_theme_font_size_override("font_size", 24)
 	vbox.add_child(emoji_label)
 
 	# Activity metadata (duration, requirements, etc.)
-	var metadata = create_activity_metadata(activity)
+	var metadata = create_activity_metadata_from_resource(activity_resource)
 	vbox.add_child(metadata)
 
 	return vbox
 
-# Create activity metadata display
+# Create activity metadata display from ActivityResource
+func create_activity_metadata_from_resource(activity_resource: ActivityResource) -> VBoxContainer:
+	var metadata_vbox = VBoxContainer.new()
+	metadata_vbox.add_theme_constant_override("separation", 2)
+
+	# Duration
+	var duration = activity_resource.base_duration
+	if duration > 0:
+		var duration_label = Label.new()
+		duration_label.text = "⏱️ " + format_duration(duration)
+		duration_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		duration_label.add_theme_font_size_override("font_size", 10)
+		metadata_vbox.add_child(duration_label)
+
+	# Requirements indicator
+	if not activity_resource.requirements.is_empty():
+		var req_label = Label.new()
+		req_label.text = "📋 Requirements"
+		req_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		req_label.add_theme_font_size_override("font_size", 9)
+		req_label.modulate = Color(0.8, 0.8, 0.8)
+		metadata_vbox.add_child(req_label)
+
+	# Rewards indicator
+	if not activity_resource.rewards.is_empty():
+		var reward_label = Label.new()
+		reward_label.text = "🎁 Rewards"
+		reward_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		reward_label.add_theme_font_size_override("font_size", 9)
+		reward_label.modulate = Color(0.8, 1.0, 0.8)
+		metadata_vbox.add_child(reward_label)
+
+	return metadata_vbox
+
+# Create activity metadata display (legacy)
 func create_activity_metadata(activity: Dictionary) -> VBoxContainer:
 	var metadata_vbox = VBoxContainer.new()
 	metadata_vbox.add_theme_constant_override("separation", 2)
@@ -102,7 +136,22 @@ func create_activity_metadata(activity: Dictionary) -> VBoxContainer:
 
 	return metadata_vbox
 
-# Style activity button based on activity properties
+# Style activity button based on ActivityResource properties
+func style_activity_button_from_resource(button: Button, activity_resource: ActivityResource) -> void:
+	# Base styling
+	button.add_theme_color_override("font_color", Color.WHITE)
+	button.add_theme_color_override("font_hover_color", Color.WHITE)
+	button.add_theme_color_override("font_pressed_color", Color.WHITE)
+
+	# Color based on risk level
+	button.modulate = activity_resource.get_risk_color()
+
+	# Add border for special activities
+	if activity_resource.activity_type == "special":
+		button.add_theme_constant_override("border_width", 2)
+		button.add_theme_color_override("border_color", Color.GOLD)
+
+# Style activity button based on activity properties (legacy)
 func style_activity_button(button: Button, activity: Dictionary) -> void:
 	# Base styling
 	button.add_theme_color_override("font_color", Color.WHITE)
@@ -130,7 +179,35 @@ func style_activity_button(button: Button, activity: Dictionary) -> void:
 		button.add_theme_constant_override("border_width", 2)
 		button.add_theme_color_override("border_color", Color.GOLD)
 
-# Get activity emoji based on activity data
+# Get activity emoji based on ActivityResource
+func get_activity_emoji_from_resource(activity_resource: ActivityResource) -> String:
+	# Check for activity type
+    # TODO define in yaml
+	match activity_resource.activity_type:
+		"combat":
+			return "⚔️"
+		"exploration":
+			return "🗺️"
+		"social":
+			return "💬"
+		"crafting":
+			return "🔨"
+		"magic":
+			return "✨"
+		"rest":
+			return "😴"
+		"training":
+			return "💪"
+		"research":
+			return "📚"
+		"trade":
+			return "💰"
+		"adventure":
+			return "🗡️"
+		_:
+			return "⭐"
+
+# Get activity emoji based on activity data (legacy)
 func get_activity_emoji(activity: Dictionary) -> String:
 	# Check for explicit emoji
 	var emoji = activity.get("emoji", "")
@@ -139,6 +216,7 @@ func get_activity_emoji(activity: Dictionary) -> String:
 
 	# Check for activity type
 	var activity_type = activity.get("type", "")
+    # TODO define in yaml
 	match activity_type:
 		"combat":
 			return "⚔️"
@@ -163,7 +241,38 @@ func get_activity_emoji(activity: Dictionary) -> String:
 		_:
 			return "⭐"
 
-# Create detailed tooltip for activity
+# Create detailed tooltip for ActivityResource
+func create_detailed_tooltip_from_resource(activity_resource: ActivityResource) -> String:
+	var tooltip = ""
+
+	# Activity name
+	tooltip += activity_resource.activity_name + "\n\n"
+
+	# Description
+	if activity_resource.description != "":
+		tooltip += activity_resource.description + "\n\n"
+
+	# Duration
+	if activity_resource.base_duration > 0:
+		tooltip += "Duration: " + format_duration(activity_resource.base_duration) + "\n"
+
+	# Requirements
+	if not activity_resource.requirements.is_empty():
+		tooltip += "\nRequirements:\n"
+		tooltip += activity_resource.get_requirements_text() + "\n"
+
+	# Rewards
+	if not activity_resource.rewards.is_empty():
+		tooltip += "\nRewards:\n"
+		tooltip += activity_resource.get_rewards_text() + "\n"
+
+	# Activity type and risk level
+	tooltip += "\nType: " + activity_resource.activity_type.capitalize()
+	tooltip += "\nRisk: " + activity_resource.risk_level.capitalize()
+
+	return tooltip
+
+# Create detailed tooltip for activity (legacy)
 func create_detailed_tooltip(activity: Dictionary) -> String:
 	var tooltip = ""
 

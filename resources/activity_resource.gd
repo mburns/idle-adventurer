@@ -1,5 +1,6 @@
-class_name ActivityResource
 extends Resource
+
+class_name ActivityResource
 
 # D&D Activity as a Godot Resource for better editor integration and type safety
 

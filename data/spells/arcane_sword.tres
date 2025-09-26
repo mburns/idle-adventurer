@@ -9,7 +9,7 @@ level = 1
 school = "evocation"
 casting_time = "1 action"
 spell_range = "60 feet"
-components = "V, S, M (a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp)"
+datacomponents = "V, S, M (a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp)"
 duration = "Concentration, up to 1 minute"
 description = "You create a sword-shaped plane of force that hovers within range. It lasts for the duration.
 

@@ -19,19 +19,19 @@ abilities = {
 "strength": 17,
 "wisdom": 13
 }
-saving_throws = "Array[String]([""])"
-skills = "Array[String](["skills"])"
-damage_immunities = "Array[String](["damage_immunities"])"
-damage_resistances = "Array[String]([""])"
-damage_vulnerabilities = "Array[String]([""])"
-condition_immunities = "Array[String]([""])"
+saving_throws = Array[String]([])
+skills = Array[String](["skills"])
+damage_immunities = Array[String](["damage_immunities"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
 senses = "darkvision 60 ft.", passive Perception 15"
-languages = "Array[String](["Common (cant speak in tiger form)"])"
+languages = Array[String](["Common (cant speak in tiger form)"])
 challenge_rating = "4"
 xp = 0
-traits = "Array[Dictionary]([])"
-actions = "Array[Dictionary]([])"
-reactions = "Array[Dictionary]([])"
-legendary_actions = "Array[Dictionary]([])"
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1
 passive_perception = "11"

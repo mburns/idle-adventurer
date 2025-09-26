@@ -5,11 +5,9 @@
 [resource]
 script = ExtResource("1_h368o")
 name = "Customizing NPCs"
-size = ""
-type = ""
-alignment = "
-armor_class = 0
-hit_points = 0
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "neutral"
 speed = ""
 abilities = {
 "charisma": 0,
@@ -19,19 +17,19 @@ abilities = {
 "strength": 0,
 "wisdom": 0
 }
-saving_throws = "Array[String]([""])"
-skills = "Array[String]([""])"
-damage_immunities = "Array[String]([""])"
-damage_resistances = "Array[String]([""])"
-damage_vulnerabilities = "Array[String]([""])"
-condition_immunities = "Array[String]([""])"
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
 senses = ""
-languages = "Array[String]([""])"
-challenge_rating = ''"
+languages = Array[String]([])
+challenge_rating = "0"
 xp = 0
-traits = "Array[Dictionary]([])"
-actions = "Array[Dictionary]([])"
-reactions = "Array[Dictionary]([])"
-legendary_actions = "Array[Dictionary]([])"
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1
 passive_perception = 5
