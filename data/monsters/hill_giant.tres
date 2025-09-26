@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_vbb47"]
+
+[resource]
+script = ExtResource("1_vbb47")
+name = "Hill Giant"
+size = "Huge giant"
+type = "chaotic evil"
+alignment = "
+armor_class = "13"
+hit_points = "105101240"
+speed = "40 ft."
+abilities = {
+"charisma": 6,
+"constitution": 19,
+"dexterity": 8,
+"intelligence": 5,
+"strength": 21,
+"wisdom": 9
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "passive Perception 12"
+languages = Array[String](["Giant"])"
+challenge_rating = "5"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 9

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"quests": {
+"description": "'The town guard needs help with a minor disturbance. This could be your chance to prove yourself.'",
+"giver": "'Town Guard Captain'",
+"location": "'Guard Barracks'",
+"objectives": {
+"description": "'Resolve the conflict peacefully'",
+"objective_type": "PERFORM_ACTIVITY",
+"objectives": ["id: investigate_disturbance", "id: resolve_conflict"],
+"requirements": {
+"activity": "'diplomacy'"
+},
+"target_value": 1
+},
+"prerequisites": "['first_steps']",
+"quest_type": "MAIN_STORY",
+"quests": ["id: first_steps", "id: town_guard_quest"],
+"requirements": {
+"character_level": 2,
+"faction_reputation": {
+"Town": 5
+}
+},
+"rewards": {
+"experience": 200,
+"gold": 100,
+"items": {
+"items": ["id: 'guard_badge'"],
+"quantity": 1
+},
+"reputation": {
+"Guard": 15,
+"Town": 20
+}
+},
+"status": "LOCKED",
+"time_limit": 7,
+"title": "'The Guard's Request'",
+"unlocks": "['faction_introduction']"
+}
+}

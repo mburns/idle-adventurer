@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_gwbpx"]
+
+[resource]
+script = ExtResource("1_gwbpx")
+name = "Dretch (Demon)"
+size = "Small fiend (demon)"
+type = "chaotic evil"
+alignment = "
+armor_class = "11"
+hit_points = "18464"
+speed = "20 ft."
+abilities = {
+"charisma": 3,
+"constitution": 12,
+"dexterity": 11,
+"intelligence": 5,
+"strength": 11,
+"wisdom": 8
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "darkvision 60 ft., passive Perception 9"
+languages = "Array[String](["Abyssal", "telepathy 60 ft. (works only with creatures that understand Abyssal)"])"
+challenge_rating = "1/4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 9

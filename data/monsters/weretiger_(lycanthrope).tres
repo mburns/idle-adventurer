@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_lcebu"]
+
+[resource]
+script = ExtResource("1_lcebu")
+name = "Weretiger (Lycanthrope)"
+size = "Medium humanoid (human"
+type = "shapechanger)"
+alignment = neutral"
+armor_class = "12"
+hit_points = "12016848"
+speed = "30 ft. (40 ft. in tiger form)"
+abilities = {
+"charisma": 11,
+"constitution": 16,
+"dexterity": 15,
+"intelligence": 10,
+"strength": 17,
+"wisdom": 13
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills"])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "darkvision 60 ft.", passive Perception 15"
+languages = "Array[String](["Common (cant speak in tiger form)"])"
+challenge_rating = "4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

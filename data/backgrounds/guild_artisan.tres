@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A set of artisan's tools (one of your choice)", "a letter of introduction from your guild", "a set of traveler's clothes", "and a belt pouch containing 15 gp"]
+},
+"feature": "Guild Membership",
+"languages": {
+"languages": ["One of your choice"]
+},
+"name": "Guild Artisan",
+"skill_proficiencies": {
+"skill_proficiencies": ["Insight", "Persuasion"]
+},
+"suggested_characteristics": "{}"
+}

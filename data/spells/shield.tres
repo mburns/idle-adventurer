@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Shield"
+level = 1
+school = "abjuration"
+casting_time = "1 reaction, which you take when you are hit by an attack or targeted by the *magic missile* spell"
+spell_range = "Self"
+components = "V, S"
+duration = "1 round"
+description = "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from *magic missile*."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard", "sorcerer"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

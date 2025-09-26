@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_5252d"]
+
+[resource]
+script = ExtResource("1_5252d")
+name = "Ranger"
+hit_die = "10"
+primary_ability = "strength"
+saving_throws = "Array[String](["saving_throws"])"
+skill_choices = 2
+skill_options = "Array[String]([""])"
+armor_proficiencies = "Array[String]([""])"
+weapon_proficiencies = "Array[String]([""])"
+tool_proficiencies = "Array[String]([""])"
+starting_equipment = {
+"equipment": ["(_a_) scale mail or (_b_) leather armor", "(_a_) two shortswords or (_b_) two simple melee weapons", "(_a_) a dungeoneer's pack or (_b_) an explorer's pack", "A longbow and a quiver of 20 arrows"]
+}
+features = Array[String](["Favored Enemy", "Choose a type of favored enemy", "Natural Explorer", "You are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain", "While traveling for an hour or more in your favored terrain, you gain the following benefits", "Fighting Style", "Archery", "Defense", "Dueling", "Two-Weapon Fighting", "Spell Slots", "Spells Known of 1st Level and Higher", "Spellcasting Ability", "Ranger Archetype", "Primeval Awareness", "Ability Score Improvement", "Extra Attack", "Land's Stride", "Hide in Plain Sight", "Vanish", "Feral Senses", "Foe Slayer", "The ideal of the ranger has two classic expressions", "Hunter", "Hunter's Prey", "Defensive Tactics", "Multiattack", "Superior Hunter's Defense"])
+spellcasting_ability = ""
+spell_slots_per_level = "Array[int]([])"
+level_features = "Array[Dictionary]([])"

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"quests": {
+"description": "'A merchant needs reliable suppliers for their trade routes. This could be profitable work.'",
+"giver": "'Merchant Guild Representative'",
+"location": "'Market Square'",
+"objectives": {
+"description": "'Generate profit through trade activities'",
+"objective_type": "SPEND_GOLD",
+"objectives": ["id: establish_trade_routes", "id: generate_profit"],
+"requirements": {
+"activity": "'trading'"
+},
+"target_value": 500
+},
+"prerequisites": Array[String]([]),
+"quest_type": "PROFESSION",
+"quests": ["id: apprentice_work", "id: journeyman_work", "id: merchant_contract"],
+"requirements": {
+"character_level": 2,
+"profession": "'merchant'"
+},
+"rewards": {
+"experience": 250,
+"gold": 200,
+"profession_modifiers": {
+"trade_efficiency": 1.15
+},
+"reputation": {
+"Merchant": 20,
+"Town": 10
+}
+},
+"status": "AVAILABLE",
+"time_limit": 30,
+"title": "'Merchant's Contract'",
+"unlocks": "['merchant_expansion']"
+}
+}

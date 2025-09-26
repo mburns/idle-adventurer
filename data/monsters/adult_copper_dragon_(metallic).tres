@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_yjljp"]
+
+[resource]
+script = ExtResource("1_yjljp")
+name = "Adult Copper Dragon (Metallic)"
+size = "Huge dragon"
+type = "chaotic good"
+alignment = "
+armor_class = "18"
+hit_points = "184161280"
+speed = "40 ft., climb 40 ft., fly 80 ft."
+abilities = {
+"charisma": 17,
+"constitution": 21,
+"dexterity": 12,
+"intelligence": 18,
+"strength": 23,
+"wisdom": 15
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "blindsight 60 ft., darkvision 120 ft., passive Perception 22"
+languages = "Array[String](["Common", "Draconic"])"
+challenge_rating = "14"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "12"

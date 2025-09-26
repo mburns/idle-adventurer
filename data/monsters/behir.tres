@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_wsesk"]
+
+[resource]
+script = ExtResource("1_wsesk")
+name = "Behir"
+size = "Huge monstrosity"
+type = "neutral evil"
+alignment = "
+armor_class = "17"
+hit_points = "168161264"
+speed = "50 ft., climb 40 ft."
+abilities = {
+"charisma": 12,
+"constitution": 18,
+"dexterity": 16,
+"intelligence": 7,
+"strength": 23,
+"wisdom": 14
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills"])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "darkvision 90 ft.", passive Perception 16"
+languages = "Array[String](["Draconic"])"
+challenge_rating = "11"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "12"

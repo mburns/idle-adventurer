@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A crowbar", "a set of dark common clothes including a hood", "and a belt pouch containing 15 gp"]
+},
+"feature": "Criminal Contact",
+"languages": {
+"languages": ["Thieves' Cant"]
+},
+"name": "Criminal",
+"skill_proficiencies": {
+"skill_proficiencies": ["Deception", "Stealth"]
+},
+"suggested_characteristics": "{}"
+}

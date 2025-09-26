@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_e71kv"]
+
+[resource]
+script = ExtResource("1_e71kv")
+name = "Solar (Angel)"
+size = "Large celestial"
+type = "lawful good"
+alignment = "
+armor_class = "21"
+hit_points = "2431810144"
+speed = "50 ft., fly 150 ft."
+abilities = {
+"charisma": 30,
+"constitution": 26,
+"dexterity": 22,
+"intelligence": 25,
+"strength": 26,
+"wisdom": 25
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "truesight 120 ft., passive Perception 24"
+languages = "Array[String](["all", "telepathy 120 ft."])"
+challenge_rating = "21"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "17"

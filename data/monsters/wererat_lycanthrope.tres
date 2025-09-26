@@ -1,0 +1,64 @@
+[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+
+[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+
+[resource]
+script = ExtResource("1)
+metadata/yaml_data = {
+  "name": Wererat (Lycanthrope),
+  "size": Medium humanoid (human,
+  "type": shapechanger),
+  "alignment": lawful evil,
+  "armor_class": 12,
+  "hit_points": 33 (6d8+6),
+  "speed": 30 ft.,
+  "abilities": {
+    strength": 10,"
+    "dexterity": 15,
+    constitution": 12,"
+    "intelligence": 11,
+    "wisdom": 10,
+    "charisma": 8
+  },
+  saving_throws": [],"
+  "skills: ["
+    Perception +2",
+    "Stealth +4"
+  ],
+  damage_immunities": ["
+    "bludgeoning,"
+    piercing",
+    "and slashing from nonmagical attacks not made with silvered weapons"
+  ],
+  damage_resistances": [],"
+  "damage_vulnerabilities: [],"
+  condition_immunities": [],"
+  "senses: darkvision 60 ft. (rat form only), passive Perception 12",
+  "languages: Common (can't speak in rat form)",
+  "challenge_rating": 2",
+  "xp": 0,
+  traits": [],"
+  "actions: ["
+    {
+      name": "Multiattack (Humanoid or Hybrid Form Only)***. The wererat makes two attacks, only one of which can be a bi,
+      description": "
+    },
+    {
+      name: "Bite (Rat or Hybrid Form Only)***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) piercing damage. If the target is a humanoid, it must succeed on a DC 11 Constitution saving throw or be cursed with wererat lycanthro",
+      description: "
+    },
+    {
+      name": Shortsword (Humanoid or Hybrid Form Only)***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing dama",
+      description":"
+    },
+    {
+      name": "Hand Crossbow (Humanoid or Hybrid Form Only)***. *Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6+2) piercing dama,
+      description": "
+    }
+  ],
+  legendary_actions: [],
+  "reactions": [],
+  spellcasting: {},
+  "description": ,
+  "category": monster"
+}

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_kf2ft"]
+
+[resource]
+script = ExtResource("1_kf2ft")
+name = "Lich"
+size = "Medium undead"
+type = "any evil alignment"
+alignment = "
+armor_class = "17"
+hit_points = "13518854"
+speed = "30 ft."
+abilities = {
+"charisma": 16,
+"constitution": 16,
+"dexterity": 16,
+"intelligence": 20,
+"strength": 11,
+"wisdom": 14
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "truesight 120 ft., passive Perception 19"
+languages = "Array[String](["Common plus up to five other languages"])"
+challenge_rating = "21"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "12"

@@ -1,0 +1,57 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"activity_categories": {
+"general": {
+"description": "Miscellaneous activities",
+"name": "General Activities",
+"priority": 5
+},
+"mental": {
+"description": "Activities that develop mental abilities",
+"name": "Mental Activities",
+"priority": 2
+},
+"physical": {
+"description": "Activities that develop physical abilities",
+"name": "Physical Activities",
+"priority": 1
+},
+"practical": {
+"description": "Activities that develop practical skills",
+"name": "Practical Activities",
+"priority": 4
+},
+"social": {
+"description": "Activities that develop social abilities",
+"name": "Social Activities",
+"priority": 3
+}
+},
+"activity_difficulty": {
+"activity_difficulty": ["id: BEGINNER", "id: INTERMEDIATE", "id: ADVANCED", "id: EXPERT"],
+"category": "very_hard",
+"color": "'#8B0000'  # Dark Red",
+"description": "Very difficult activities",
+"modifier": 3.0,
+"name": "Expert"
+},
+"activity_duration": {
+"activity_duration": ["id: QUICK", "id: STANDARD", "id: EXTENDED", "id: MARATHON"],
+"base_time": 1440,
+"category": "very_long",
+"color": "'#8B0000'  # Dark Red",
+"description": "Very long duration activities (days)",
+"name": "Marathon"
+},
+"activity_types": {
+"activity_types": ["id: STRENGTH", "id: DEXTERITY", "id: CONSTITUTION", "id: INTELLIGENCE", "id: WISDOM", "id: CHARISMA", "id: CRAFTING", "id: PROFESSION", "id: TRAINING", "id: GENERAL"],
+"category": "general",
+"color": "'#F0E68C'  # Khaki",
+"description": "Miscellaneous activities",
+"icon": "'general'",
+"name": "General Activities",
+"priority": 10
+}
+}

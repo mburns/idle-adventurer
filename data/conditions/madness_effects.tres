@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "madness",
+"description": "|-",
+"effects": Array[String]([]),
+"name": "Madness Effects",
+"type": "madness"
+}

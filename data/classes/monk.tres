@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_6euu2"]
+
+[resource]
+script = ExtResource("1_6euu2")
+name = "Monk"
+hit_die = 8
+primary_ability = "strength"
+saving_throws = "Array[String](["saving_throws"])"
+skill_choices = 2
+skill_options = "Array[String]([""])"
+armor_proficiencies = "Array[String]([""])"
+weapon_proficiencies = "Array[String]([""])"
+tool_proficiencies = "Array[String]([""])"
+starting_equipment = {
+"equipment": ["(*a*) a shortsword or (*b*) any simple weapon", "(*a*) a dungeoneer's pack or (*b*) an explorer's pack", "10 darts"]
+}
+features = Array[String](["Unarmored Defense", "Martial Arts", "You gain the following benefits while you are unarmed or wielding only monk weapons and you aren't wearing armor or wielding a shield", "Ki", "You can spend these points to fuel various ki features. You start knowing three such features", "Some of your ki features require your target to make a saving throw to resist the feature's effects. The saving throw DC is calculated as follows", "Flurry of Blows", "Patient Defense", "Step of the Wind", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Ability Score Improvement", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Evasion", "Stillness of Mind", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body", "Empty Body", "Perfect Self", "Way of the Open Hand", "Open Hand Technique", "Starting when you choose this tradition at 3rd level, you can manipulate your enemy's ki when you harness your own. Whenever you hit a creature with one of the attacks granted by your Flurry of Blows, you can impose one of the following effects on that target", "Wholeness of Body", "Tranquility", "Quivering Palm"])
+spellcasting_ability = ""
+spell_slots_per_level = "Array[int]([])"
+level_features = "Array[Dictionary]([])"

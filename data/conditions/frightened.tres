@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "condition",
+"description": "",
+"effects": {
+"effects": ["A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.", "The creature can't willingly move closer to the source of its fear."]
+},
+"name": "Frightened",
+"type": "condition"
+}

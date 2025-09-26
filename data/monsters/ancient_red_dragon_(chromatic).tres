@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_qd4lx"]
+
+[resource]
+script = ExtResource("1_qd4lx")
+name = "Ancient Red Dragon (Chromatic)"
+size = "Gargantuan dragon"
+type = "chaotic evil"
+alignment = "
+armor_class = "22"
+hit_points = "5462820252"
+speed = "40 ft., climb 40 ft., fly 80 ft."
+abilities = {
+"charisma": 23,
+"constitution": 29,
+"dexterity": 10,
+"intelligence": 18,
+"strength": 30,
+"wisdom": 15
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "blindsight 60 ft., darkvision 120 ft., passive Perception 26"
+languages = "Array[String](["Common", "Draconic"])"
+challenge_rating = "24"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "12"

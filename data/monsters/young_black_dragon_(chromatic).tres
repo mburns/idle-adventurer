@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7mnd8"]
+
+[resource]
+script = ExtResource("1_7mnd8")
+name = "Young Black Dragon (Chromatic)"
+size = "Large dragon"
+type = "chaotic evil"
+alignment = "
+armor_class = "18"
+hit_points = "127151045"
+speed = "40 ft., fly 80 ft., swim 40 ft."
+abilities = {
+"charisma": 15,
+"constitution": 17,
+"dexterity": 14,
+"intelligence": 12,
+"strength": 19,
+"wisdom": 11
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "blindsight 30 ft., darkvision 120 ft., passive Perception 16"
+languages = "Array[String](["Common", "Draconic"])"
+challenge_rating = "7"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

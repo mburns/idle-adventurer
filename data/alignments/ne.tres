@@ -1,0 +1,4 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {"name": "Neutral evil", "abbreviation": "NE", "description": "is the alignment of those who do whatever they can get away with, without compassion or qualms", "morality": "Evil", "attitude": "Neutral"}

@@ -1,0 +1,52 @@
+[gd_resource type="Resource script_class=Resource" load_steps=2 format=3]
+
+[ext_resource type="Script path="res://scripts/data/resource_data_loader.gd" id=1"]
+
+[resource]
+script = ExtResource("1)
+metadata/yaml_data = {
+  "name": Saber-Toothed Tiger,
+  "size": Large beast,
+  "type": unaligned,
+  "alignment": ,
+  "armor_class": 12,
+  "hit_points": 52 (7d10+14),
+  "speed": 40 ft.,
+  "abilities": {
+    strength": 18,"
+    "dexterity": 14,
+    constitution": 15,"
+    "intelligence": 3,
+    "wisdom": 12,
+    "charisma": 8
+  },
+  saving_throws": [],"
+  "skills: ["
+    Perception +3",
+    "Stealth +6"
+  ],
+  damage_immunities": [],"
+  "damage_resistances: [],"
+  damage_vulnerabilities": [],"
+  "condition_immunities: [],"
+  senses": "passive Perception 13,
+  languages": "-,
+  challenge_rating": "2,
+  xp": 0,"
+  "traits: [],"
+  actions": ["
+    {
+      "name: Bite***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 10 (1d10+5) piercing dama",
+      "description: "
+    },
+    {
+      "name: Claw***. *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 12 (2d6+5) slashing dama",
+      "description: "
+    }
+  ],
+  "legendary_actions: [],"
+  reactions": [],"
+  "spellcasting: {},"
+  description": ",
+  category: "monster"
+}

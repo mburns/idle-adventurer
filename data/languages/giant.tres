@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_3bieg"]
+
+[resource]
+script = ExtResource("1_3bieg")
+id = "giant"
+name = "Giant"
+description = "The language of giants and ogres"
+difficulty = 2
+learning_time_days = 300
+cost_per_day = 1.5
+category = "standard"
+writing_script = "Dwarvish"
+speakers = "Giants, ogres, some barbarians"

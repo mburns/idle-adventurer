@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+metadata/yaml_data = {
+  "standard": {
+    "name": "Standard Languages",
+    "description": "Common languages spoken by civilized races",
+    "learning_bonus": 0,
+    "availability": "common"
+  },
+  "exotic": {
+    "name": "Exotic Languages",
+    "description": "Rare languages from other planes or ancient times",
+    "learning_bonus": -1,
+    "availability": "rare"
+  }
+}

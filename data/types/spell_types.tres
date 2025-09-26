@@ -1,0 +1,80 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"spell_casting_time": {
+"category": "ritual",
+"color": "'#8B0000'  # Dark Red",
+"description": "Takes 1 hour to cast",
+"duration": 3600,
+"name": "1 Hour",
+"spell_casting_time": ["id: ACTION", "id: BONUS_ACTION", "id: REACTION", "id: MINUTE", "id: MINUTES_10", "id: HOUR"]
+},
+"spell_categories": {
+"death": {
+"description": "Spells that deal with death and undeath",
+"name": "Death Magic",
+"priority": 7
+},
+"deceptive": {
+"description": "Spells that create illusions and deception",
+"name": "Deceptive Magic",
+"priority": 6
+},
+"elemental": {
+"description": "Spells that manipulate energy and elements",
+"name": "Elemental Magic",
+"priority": 5
+},
+"knowledge": {
+"description": "Spells that provide information and insight",
+"name": "Knowledge Magic",
+"priority": 3
+},
+"mental": {
+"description": "Spells that affect the mind",
+"name": "Mental Magic",
+"priority": 4
+},
+"protective": {
+"description": "Spells that provide protection and defense",
+"name": "Protective Magic",
+"priority": 1
+},
+"summoning": {
+"description": "Spells that summon creatures or objects",
+"name": "Summoning Magic",
+"priority": 2
+},
+"transformation": {
+"description": "Spells that change and transform",
+"name": "Transformation Magic",
+"priority": 8
+}
+},
+"spell_components": {
+"category": "component",
+"color": "'#8B4513'  # Saddle Brown",
+"description": "Physical components required for the spell",
+"icon": "'material'",
+"name": "Material",
+"spell_components": ["id: VERBAL", "id: SOMATIC", "id: MATERIAL"]
+},
+"spell_levels": {
+"category": "ultimate",
+"color": "'#000000'  # Black",
+"description": "The most powerful spells",
+"level": 9,
+"name": "9th Level",
+"spell_levels": ["id: CANTRIP", "id: LEVEL_1", "id: LEVEL_2", "id: LEVEL_3", "id: LEVEL_4", "id: LEVEL_5", "id: LEVEL_6", "id: LEVEL_7", "id: LEVEL_8", "id: LEVEL_9"]
+},
+"spell_schools": {
+"category": "transformation",
+"color": "'#32CD32'  # Lime Green",
+"description": "Transformation and change magic",
+"icon": "'transmutation'",
+"name": "Transmutation",
+"priority": 8,
+"spell_schools": ["id: ABJURATION", "id: CONJURATION", "id: DIVINATION", "id: ENCHANTMENT", "id: EVOCATION", "id: ILLUSION", "id: NECROMANCY", "id: TRANSMUTATION"]
+}
+}

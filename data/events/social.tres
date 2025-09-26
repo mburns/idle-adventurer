@@ -1,0 +1,35 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"events": {
+"choices": {
+"choices": ["id: break_up_fight", "id: join_fight", "id: stay_out_of_it"],
+"consequences": {
+"NEUTRAL": {
+"reputation": {
+"Tavern": -5
+}
+}
+},
+"description": "'Stay out of the fight and let it resolve itself'",
+"requirements": "{}",
+"skill_check": {
+"difficulty": 15,
+"skill": "'athletics'"
+}
+},
+"cooldown_days": 3,
+"description": "'A fight breaks out in the tavern between two groups of adventurers. The innkeeper looks to you for help.'",
+"duration_hours": 1,
+"event_type": "SOCIAL",
+"events": ["id: mysterious_stranger", "id: noble_encounter", "id: tavern_brawl"],
+"name": "'Tavern Brawl'",
+"rarity": "COMMON",
+"requirements": {
+"character_level": 2,
+"location": "'tavern'",
+"time_of_day": "'evening'"
+}
+}
+}

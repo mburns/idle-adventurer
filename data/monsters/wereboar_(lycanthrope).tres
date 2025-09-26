@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_du0bo"]
+
+[resource]
+script = ExtResource("1_du0bo")
+name = "Wereboar (Lycanthrope)"
+size = "Medium humanoid (human"
+type = "shapechanger)"
+alignment = neutral evil"
+armor_class = "1011"
+hit_points = "7812824"
+speed = "30 ft. (40 ft. in boar form)"
+abilities = {
+"charisma": 8,
+"constitution": 15,
+"dexterity": 10,
+"intelligence": 10,
+"strength": 17,
+"wisdom": 11
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills"])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = passive Perception 12"
+languages = "Array[String](["Common (cant speak in boar form)"])"
+challenge_rating = "4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

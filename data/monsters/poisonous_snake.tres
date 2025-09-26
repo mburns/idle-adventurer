@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_6qxom"]
+
+[resource]
+script = ExtResource("1_6qxom")
+name = "Poisonous Snake"
+size = "Tiny beast"
+type = "unaligned"
+alignment = "
+armor_class = "13"
+hit_points = "214"
+speed = "30 ft., swim 30 ft."
+abilities = {
+"charisma": 3,
+"constitution": 11,
+"dexterity": 16,
+"intelligence": 1,
+"strength": 2,
+"wisdom": 10
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "blindsight 10 ft., passive Perception 10"
+languages = "Array[String]([""])"
+challenge_rating = 1/8"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

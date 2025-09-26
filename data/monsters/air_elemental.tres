@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_a6gna"]
+
+[resource]
+script = ExtResource("1_a6gna")
+name = "Air Elemental"
+size = "Large elemental"
+type = "neutral"
+alignment = "
+armor_class = "15"
+hit_points = "90121024"
+speed = "0 ft., fly 90 ft. (hover)"
+abilities = {
+"charisma": 6,
+"constitution": 14,
+"dexterity": 20,
+"intelligence": 6,
+"strength": 14,
+"wisdom": 10
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "darkvision 60 ft., passive Perception 10"
+languages = "Array[String](["Auran"])"
+challenge_rating = "5"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

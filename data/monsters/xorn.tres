@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_8snm1"]
+
+[resource]
+script = ExtResource("1_8snm1")
+name = "Xorn"
+size = "Medium elemental"
+type = "neutral"
+alignment = "
+armor_class = "19"
+hit_points = "737842"
+speed = "20 ft., burrow 20 ft."
+abilities = {
+"charisma": 11,
+"constitution": 22,
+"dexterity": 10,
+"intelligence": 11,
+"strength": 17,
+"wisdom": 10
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills"])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String](["damage_resistances])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([])"
+senses = "darkvision 60 ft., tremorsense 60 ft., passive Perception 16"
+languages = Array[String](["Terran"])"
+challenge_rating = "5"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

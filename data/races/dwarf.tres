@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RaceResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/race_resource.gd" id="1_g05gh"]
+
+[resource]
+script = ExtResource("1_g05gh)
+name = "Dwarf"
+ability_increases = {
+"constitution": 2
+}
+size = "Medium"
+speed = "25"
+height_range = {
+"max": 60,
+"min": 48
+}
+weight_range = {
+"max": 180,
+"min": 130
+}
+languages = "Array[String](["languages"])"
+racial_traits = Array[Dictionary]([{
+"description": "['Darkvision', 'Dwarven Resilience', 'Dwarven Combat Training', 'Tool Proficiency', 'Stonecunning', 'Dwarven Toughness']",
+"name": "traits"
+}])
+darkvision = 0
+resistances = "Array[String]([""])"
+immunities = "Array[String]([""])"
+vulnerabilities = "Array[String]([""])"
+subraces = "Array[Dictionary]([])"

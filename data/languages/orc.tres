@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_76dck"]
+
+[resource]
+script = ExtResource("1_76dck")
+id = "orc"
+name = "Orc"
+description = "The language of orcs"
+difficulty = 1
+learning_time_days = 200
+cost_per_day = 0.8
+category = "standard"
+writing_script = "Dwarvish"
+speakers = "Orcs, half-orcs, some barbarians"

@@ -1,0 +1,82 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"event_categories": {
+"adventure": {
+"description": "Events that lead to adventures and quests",
+"name": "Adventure Events",
+"priority": 10
+},
+"community": {
+"description": "Events involving the town and community",
+"name": "Community Events",
+"priority": 9
+},
+"danger": {
+"description": "Events involving risk, crime, and conflict",
+"name": "Dangerous Events",
+"priority": 4
+},
+"economy": {
+"description": "Events related to trade, commerce, and wealth",
+"name": "Economic Events",
+"priority": 2
+},
+"interaction": {
+"description": "Events involving social encounters and relationships",
+"name": "Social Interaction",
+"priority": 1
+},
+"magic": {
+"description": "Events involving magic and the supernatural",
+"name": "Mystical Events",
+"priority": 3
+},
+"nature": {
+"description": "Events involving weather and natural phenomena",
+"name": "Natural Events",
+"priority": 6
+},
+"personal": {
+"description": "Events involving personal character development",
+"name": "Personal Events",
+"priority": 8
+},
+"politics": {
+"description": "Events involving politics and intrigue",
+"name": "Political Events",
+"priority": 5
+},
+"work": {
+"description": "Events related to work and profession",
+"name": "Professional Events",
+"priority": 7
+}
+},
+"event_outcomes": {
+"category": "negative",
+"color": "'#8B0000'  # Dark Red",
+"description": "Exceptional negative outcome",
+"event_outcomes": ["id: SUCCESS", "id: FAILURE", "id: NEUTRAL", "id: MIXED", "id: CRITICAL_SUCCESS", "id: CRITICAL_FAILURE"],
+"modifier": -2.0,
+"name": "Critical Failure"
+},
+"event_rarities": {
+"category": "extremely_rare",
+"color": "'#FF1493'  # Deep Pink",
+"description": "Extremely rare events",
+"event_rarities": ["id: COMMON", "id: UNCOMMON", "id: RARE", "id: EPIC", "id: LEGENDARY"],
+"name": "Legendary",
+"weight": 2
+},
+"event_types": {
+"category": "adventure",
+"color": "'#DC143C'  # Crimson",
+"description": "Hooks for future adventures and quests",
+"event_types": ["id: SOCIAL", "id: ECONOMIC", "id: MYSTICAL", "id: CRIMINAL", "id: POLITICAL", "id: NATURAL", "id: PROFESSIONAL", "id: PERSONAL", "id: COMMUNITY", "id: ADVENTURE_HOOK"],
+"icon": "'adventure'",
+"name": "Adventure Hook",
+"priority": 10
+}
+}

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_o81g5"]
+
+[resource]
+script = ExtResource("1_o81g5")
+name = "Warhorse Skeleton"
+size = "Large undead"
+type = "lawful evil"
+alignment = "
+armor_class = "13"
+hit_points = "223106"
+speed = "60 ft."
+abilities = {
+"charisma": 5,
+"constitution": 15,
+"dexterity": 12,
+"intelligence": 2,
+"strength": 18,
+"wisdom": 8
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String](["damage_vulnerabilities"])"
+condition_immunities = "Array[String](["condition_immunities"])"
+senses = "darkvision 60 ft.", passive Perception 9"
+languages = "Array[String]([""])"
+challenge_rating = 1/2"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 9

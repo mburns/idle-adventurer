@@ -1,0 +1,43 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"events": {
+"choices": {
+"choices": ["id: embrace_storm", "id: seek_shelter", "id: study_storm"],
+"consequences": {
+"FAILURE": {
+"health_damage": 15,
+"status_effect": "'magical_overload'"
+},
+"SUCCESS": {
+"experience": 75,
+"magical_knowledge": "'storm_magic'",
+"reputation": {
+"Mystics": 10
+}
+}
+},
+"description": "'Study the magical properties of the storm'",
+"requirements": {
+"intelligence": 14
+},
+"skill_check": {
+"difficulty": 14,
+"skill": "'arcana'"
+}
+},
+"cooldown_days": 14,
+"description": "'A strange storm approaches, crackling with magical energy. The very air seems to shimmer with power, and you feel your magical abilities enhanced.'",
+"duration_hours": 6,
+"event_type": "MYSTICAL",
+"events": ["id: magical_artifact", "id: spirit_encounter", "id: magical_storm"],
+"name": "'Magical Storm'",
+"rarity": "UNCOMMON",
+"requirements": {
+"character_level": 4,
+"location": "'outdoors'",
+"weather": "'storm'"
+}
+}
+}

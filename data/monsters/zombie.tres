@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_qmruj"]
+
+[resource]
+script = ExtResource("1_qmruj")
+name = "Zombie"
+size = "Medium undead"
+type = "neutral evil"
+alignment = "
+armor_class = 8
+hit_points = "22389"
+speed = "20 ft."
+abilities = {
+"charisma": 5,
+"constitution": 16,
+"dexterity": 6,
+"intelligence": 3,
+"strength": 13,
+"wisdom": 6
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String](["condition_immunities"])"
+senses = "darkvision 60 ft., passive Perception 8"
+languages = "Array[String](["understands the languages it knew in life but cant speak"])"
+challenge_rating = 1/4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 8

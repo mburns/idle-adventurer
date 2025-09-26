@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "condition",
+"description": "",
+"effects": {
+"effects": ["A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects.", "The charmer has advantage on any ability check to interact socially with the creature."]
+},
+"name": "Charmed",
+"type": "condition"
+}

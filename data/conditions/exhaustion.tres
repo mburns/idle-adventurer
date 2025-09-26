@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "condition",
+"description": "|-",
+"effects": Array[String]([]),
+"name": "Exhaustion",
+"type": "condition"
+}

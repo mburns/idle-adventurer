@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_dv8o5"]
+
+[resource]
+script = ExtResource("1_dv8o5")
+name = "Giant Toad"
+size = "Large beast"
+type = "unaligned"
+alignment = "
+armor_class = "11"
+hit_points = "396106"
+speed = "20 ft., swim 40 ft."
+abilities = {
+"charisma": 3,
+"constitution": 13,
+"dexterity": 13,
+"intelligence": 2,
+"strength": 15,
+"wisdom": 10
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "darkvision 30 ft., passive Perception 10"
+languages = "Array[String]([""])"
+challenge_rating = "1"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "condition",
+"description": "",
+"effects": {
+"effects": ["A deafened creature can't hear and automatically fails any ability check that requires hearing."]
+},
+"name": "Deafened",
+"type": "condition"
+}

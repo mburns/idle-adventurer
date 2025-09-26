@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A musical instrument (one of your choice)", "the favor of an admirer (love letter, lock of hair, or trinket)", "a costume", "and a belt pouch containing 15 gp"]
+},
+"feature": "By Popular Demand",
+"languages": {
+"languages": ["One of your choice"]
+},
+"name": "Entertainer",
+"skill_proficiencies": {
+"skill_proficiencies": ["Acrobatics", "Performance"]
+},
+"suggested_characteristics": "{}"
+}

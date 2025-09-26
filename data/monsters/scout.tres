@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_dxu2a"]
+
+[resource]
+script = ExtResource("1_dxu2a")
+name = "Scout"
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "
+armor_class = "13"
+hit_points = "16383"
+speed = "30 ft."
+abilities = {
+"charisma": 11,
+"constitution": 12,
+"dexterity": 14,
+"intelligence": 11,
+"strength": 11,
+"wisdom": 13
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "passive Perception 15"
+languages = Array[String](["any one language (usually Common)"])"
+challenge_rating = 1/2"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

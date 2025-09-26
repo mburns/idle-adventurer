@@ -1,0 +1,4 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {"name": "Chaotic good", "abbreviation": "CG", "description": "creatures act as their conscience directs, with little regard for what others expect", "morality": "Good", "attitude": "Chaotic"}

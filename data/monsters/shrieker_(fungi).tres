@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_fgbaw"]
+
+[resource]
+script = ExtResource("1_fgbaw")
+name = "Shrieker (Fungi)"
+size = "Medium plant"
+type = "unaligned"
+alignment = "
+armor_class = 5
+hit_points = "1338"
+speed = "0 ft."
+abilities = {
+"charisma": 1,
+"constitution": 10,
+"dexterity": 1,
+"intelligence": 1,
+"strength": 1,
+"wisdom": 3
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "blindsight 30 ft. (blind beyond this radius), passive Perception 6"
+languages = Array[String](["])"
+challenge_rating = "0"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 6

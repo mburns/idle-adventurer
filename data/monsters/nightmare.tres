@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_yy7px"]
+
+[resource]
+script = ExtResource("1_yy7px")
+name = "Nightmare"
+size = "Large fiend"
+type = "neutral evil"
+alignment = "
+armor_class = "13"
+hit_points = "6881024"
+speed = "60 ft., fly 90 ft."
+abilities = {
+"charisma": 15,
+"constitution": 16,
+"dexterity": 15,
+"intelligence": 10,
+"strength": 18,
+"wisdom": 13
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "passive Perception 11"
+languages = "Array[String]([understands Abyssal", "Common", and Infernal but cant speak"])"
+challenge_rating = "3"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

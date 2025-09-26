@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_we122"]
+
+[resource]
+script = ExtResource("1_we122")
+name = "Pit Fiend (Devil)"
+size = "Large fiend (devil)"
+type = "lawful evil"
+alignment = "
+armor_class = "19"
+hit_points = "3002410168"
+speed = "30 ft., fly 60 ft."
+abilities = {
+"charisma": 24,
+"constitution": 24,
+"dexterity": 14,
+"intelligence": 22,
+"strength": 26,
+"wisdom": 18
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String](["condition_immunities"])"
+senses = "truesight 120 ft., passive Perception 14"
+languages = "Array[String](["Infernal", "telepathy 120 ft."])"
+challenge_rating = "20"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "14"

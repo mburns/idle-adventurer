@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_m02dp"]
+
+[resource]
+script = ExtResource("1_m02dp")
+name = "Balor (Demon)"
+size = "Huge fiend (demon)"
+type = "chaotic evil"
+alignment = "
+armor_class = "19"
+hit_points = "2622112126"
+speed = "40 ft., fly 80 ft."
+abilities = {
+"charisma": 22,
+"constitution": 22,
+"dexterity": 15,
+"intelligence": 20,
+"strength": 26,
+"wisdom": 16
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String](["damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String](["condition_immunities"])"
+senses = "truesight 120 ft., passive Perception 13"
+languages = "Array[String](["Abyssal", "telepathy 120 ft."])"
+challenge_rating = "19"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "13"

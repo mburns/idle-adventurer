@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_bdsnu"]
+
+[resource]
+script = ExtResource("1_bdsnu")
+name = "Priest"
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "
+armor_class = "13"
+hit_points = "27585"
+speed = "30 ft."
+abilities = {
+"charisma": 13,
+"constitution": 12,
+"dexterity": 10,
+"intelligence": 13,
+"strength": 10,
+"wisdom": 16
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "passive Perception 13"
+languages = Array[String](["any two languages"])"
+challenge_rating = "2"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "13"

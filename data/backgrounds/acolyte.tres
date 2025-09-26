@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A holy symbol (a gift to you when you entered the priesthood)", "a prayer book or prayer wheel", "5 sticks of incense", "vestments", "a set of common clothes", "and a pouch containing 15 gp"]
+},
+"feature": "Shelter of the Faithful",
+"languages": {
+"languages": ["Two of your choice"]
+},
+"name": "Acolyte",
+"skill_proficiencies": {
+"skill_proficiencies": ["Insight", "Religion"]
+},
+"suggested_characteristics": "{}"
+}

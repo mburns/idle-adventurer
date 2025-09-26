@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_uiksj"]
+
+[resource]
+script = ExtResource("1_uiksj")
+name = "Hyena"
+size = "Medium beast"
+type = "unaligned"
+alignment = "
+armor_class = "11"
+hit_points = "5181"
+speed = "50 ft."
+abilities = {
+"charisma": 5,
+"constitution": 12,
+"dexterity": 13,
+"intelligence": 2,
+"strength": 11,
+"wisdom": 12
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "passive Perception 13"
+languages = Array[String](["])"
+challenge_rating = "0"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

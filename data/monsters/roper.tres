@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_ch38r"]
+
+[resource]
+script = ExtResource("1_ch38r")
+name = "Roper"
+size = "Large monstrosity"
+type = "neutral evil"
+alignment = "
+armor_class = "20"
+hit_points = "93111033"
+speed = "10 ft., climb 10 ft."
+abilities = {
+"charisma": 6,
+"constitution": 17,
+"dexterity": 8,
+"intelligence": 7,
+"strength": 18,
+"wisdom": 16
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "darkvision 60 ft., passive Perception 16"
+languages = Array[String](["])"
+challenge_rating = "5"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "13"

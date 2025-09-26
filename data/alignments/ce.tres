@@ -1,0 +1,4 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {"name": "Chaotic evil", "abbreviation": "CE", "description": "creatures act with arbitrary violence, spurred by their greed, hatred, or bloodlust", "morality": "Evil", "attitude": "Chaotic"}

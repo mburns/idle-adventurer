@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RaceResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/race_resource.gd" id="1_0n6g7"]
+
+[resource]
+script = ExtResource("1_0n6g7)
+name = "Tiefling"
+ability_increases = {
+"charisma": 2,
+"intelligence": 1
+}
+size = "Medium"
+speed = "30"
+height_range = {}
+weight_range = {}
+languages = "Array[String](["languages"])"
+racial_traits = Array[Dictionary]([{
+"description": "['Darkvision', 'Hellish Resistance', 'Infernal Legacy']",
+"name": "traits"
+}])
+darkvision = 0
+resistances = "Array[String]([""])"
+immunities = "Array[String]([""])"
+vulnerabilities = "Array[String]([""])"
+subraces = "Array[Dictionary]([])"

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_talqv"]
+
+[resource]
+script = ExtResource("1_talqv")
+name = "Purple Worm"
+size = "Gargantuan monstrosity"
+type = "unaligned"
+alignment = "
+armor_class = "18"
+hit_points = "247152090"
+speed = "50 ft., burrow 30 ft."
+abilities = {
+"charisma": 4,
+"constitution": 22,
+"dexterity": 7,
+"intelligence": 1,
+"strength": 28,
+"wisdom": 8
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "blindsight 30 ft., tremorsense 60 ft., passive Perception 9"
+languages = Array[String](["])"
+challenge_rating = "15"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 9

@@ -1,0 +1,67 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"armor_types": {
+"armor_types": ["id: LIGHT_ARMOR", "id: MEDIUM_ARMOR", "id: HEAVY_ARMOR", "id: SHIELD"],
+"category": "armor",
+"color": "'#4169E1'  # Royal Blue",
+"description": "Handheld protection",
+"name": "Shield",
+"priority": 4
+},
+"item_categories": {
+"category": "treasure",
+"color": "'#FFD700'  # Gold",
+"description": "Valuable items and currency",
+"icon": "'treasure'",
+"item_categories": ["id: ARMOR", "id: WEAPON", "id: GEAR", "id: MAGIC_ITEM", "id: CONSUMABLE", "id: TREASURE"],
+"name": "Treasure",
+"priority": 6
+},
+"item_category_groups": {
+"consumable": {
+"description": "Items that are used up",
+"name": "Consumables",
+"priority": 3
+},
+"equipment": {
+"description": "Physical items and gear",
+"name": "Equipment",
+"priority": 1
+},
+"magical": {
+"description": "Items with magical properties",
+"name": "Magical Items",
+"priority": 2
+},
+"treasure": {
+"description": "Valuable items and currency",
+"name": "Treasure",
+"priority": 4
+}
+},
+"item_properties": {
+"category": "property",
+"color": "'#FF1493'  # Deep Pink",
+"description": "Has special properties",
+"item_properties": ["id: LIGHT", "id: FINESSE", "id: THROWN", "id: VERSATILE", "id: TWO_HANDED", "id: AMMUNITION", "id: LOADING", "id: REACH", "id: SPECIAL"],
+"name": "Special"
+},
+"item_rarities": {
+"category": "legendary",
+"color": "'#FF1493'  # Deep Pink",
+"description": "Legendary items of great power",
+"item_rarities": ["id: COMMON", "id: UNCOMMON", "id: RARE", "id: VERY_RARE", "id: LEGENDARY"],
+"name": "Legendary",
+"weight": 2
+},
+"weapon_types": {
+"category": "weapon",
+"color": "'#DC143C'  # Crimson",
+"description": "Advanced ranged weapons",
+"name": "Martial Ranged Weapons",
+"priority": 4,
+"weapon_types": ["id: SIMPLE_MELEE", "id: SIMPLE_RANGED", "id: MARTIAL_MELEE", "id: MARTIAL_RANGED"]
+}
+}

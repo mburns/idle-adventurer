@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_03yd5"]
+
+[resource]
+script = ExtResource("1_03yd5")
+id = "sylvan"
+name = "Sylvan"
+description = "The language of fey creatures"
+difficulty = 2
+learning_time_days = 300
+cost_per_day = 1.5
+category = "exotic"
+writing_script = "Elvish"
+speakers = "Fey creatures, some druids"

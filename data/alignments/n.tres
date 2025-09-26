@@ -1,0 +1,4 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {"name": "Neutral", "abbreviation": "N", "description": "is the alignment of those who prefer to steer clear of moral questions and don"t take sides, doing what seems best at the time", "morality": "Neutral", "attitude": "Neutral"}

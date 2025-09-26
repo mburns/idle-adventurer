@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_2txxl"]
+
+[resource]
+script = ExtResource("1_2txxl")
+name = "Druid"
+hit_die = 8
+primary_ability = "strength"
+saving_throws = "Array[String](["saving_throws"])"
+skill_choices = 2
+skill_options = "Array[String]([""])"
+armor_proficiencies = "Array[String]([""])"
+weapon_proficiencies = "Array[String]([""])"
+tool_proficiencies = "Array[String]([""])"
+starting_equipment = {
+"equipment": ["(*a*) a wooden shield or (*b*) any simple weapon", "(*a*) a scimitar or (*b*) any simple melee weapon", "Leather armor, an explorer's pack, and a druidic focus"]
+}
+features = Array[String](["Druidic", "Cantrips", "Preparing and Casting Spells", "You can also change your list of prepared spells when you finish a long rest. Preparing a new list of druid spells requires time spent in prayer and meditation", "Spellcasting Ability", "Ritual Casting", "Spellcasting Focus", "Wild Shape", "While you are transformed, the following rules apply", "Druid Circle", "Ability Score Improvement", "Timeless Body", "Beast Spells", "Archdruid", "Circle of the Land", "Bonus Cantrip", "Natural Recovery", "Circle Spells", "Land's Stride", "Nature's Ward", "Nature's Sanctuary"])
+spellcasting_ability = ""
+spell_slots_per_level = "Array[int]([])"
+level_features = "Array[Dictionary]([])"

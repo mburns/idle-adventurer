@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_d04n0"]
+
+[resource]
+script = ExtResource("1_d04n0")
+name = "Cloud Giant"
+size = "Huge giant"
+type = "neutral good (50%) or neutral evil (50%)"
+alignment = "
+armor_class = "14"
+hit_points = "200161296"
+speed = "40 ft."
+abilities = {
+"charisma": 16,
+"constitution": 22,
+"dexterity": 10,
+"intelligence": 12,
+"strength": 27,
+"wisdom": 16
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "passive Perception 17"
+languages = "Array[String](["Common", "Giant"])"
+challenge_rating = "9"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "13"

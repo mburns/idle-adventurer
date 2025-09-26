@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_jhe64"]
+
+[resource]
+script = ExtResource("1_jhe64")
+name = "Fighter"
+hit_die = "10"
+primary_ability = "strength"
+saving_throws = "Array[String](["saving_throws"])"
+skill_choices = 2
+skill_options = "Array[String]([""])"
+armor_proficiencies = "Array[String]([""])"
+weapon_proficiencies = "Array[String]([""])"
+tool_proficiencies = "Array[String]([""])"
+starting_equipment = {}
+features = Array[String](["Fighting Style", "Archery", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Two-Weapon Fighting", "Second Wind", "Action Surge", "Martial Archetype", "Ability Score Improvement", "Extra Attack", "Indomitable", "Champion", "Improved Critical", "Remarkable Athlete", "Additional Fighting Style", "Superior Critical", "Survivor"])
+spellcasting_ability = ""
+spell_slots_per_level = "Array[int]([])"
+level_features = "Array[Dictionary]([])"

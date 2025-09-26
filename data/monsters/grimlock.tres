@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_xt7xx"]
+
+[resource]
+script = ExtResource("1_xt7xx)
+name = "Grimlock"
+size = "Medium humanoid (grimlock)"
+type = "neutral evil"
+alignment = ""
+armor_class = "11"
+hit_points = "11282"
+speed = "30 ft."
+abilities = {
+"charisma": 6,
+"constitution": 12,
+"dexterity": 12,
+"intelligence": 9,
+"strength": 16,
+"wisdom": 8
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills"])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String](["condition_immunities"])"
+senses = "blindsight 30 ft. or 10 ft. while deafened (blind beyond this radius), passive Perception 13"
+languages = "Array[String](["Undercommon"])"
+challenge_rating = "1/4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 9

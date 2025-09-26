@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A scroll case stuffed full of notes from your studies or prayers", "a winter blanket", "a set of common clothes", "an herbalism kit", "and 5 gp"]
+},
+"feature": "Discovery",
+"languages": {
+"languages": ["One of your choice"]
+},
+"name": "Hermit",
+"skill_proficiencies": {
+"skill_proficiencies": ["Medicine", "Religion"]
+},
+"suggested_characteristics": "{}"
+}

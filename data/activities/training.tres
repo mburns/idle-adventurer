@@ -1,0 +1,4 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = [{"id": "learn_language", "name": "Learn Language", "description": "Learn a new language with an instructor", "ability": "intelligence", "daily_progress": 0.004, "cost_per_day": 1, "rewards": {"language_proficiency": 1, "intelligence_exp": 50}, "requirements": {"intelligence": 10, "gold": 250}}, {"id": "tool_proficiency", "name": "Tool Proficiency", "description": "Gain proficiency with a new set of tools", "ability": "intelligence", "daily_progress": 0.004, "cost_per_day": 1, "rewards": {"tool_proficiency": 1, "intelligence_exp": 50}, "requirements": {"intelligence": 10, "gold": 250}}, {"id": "skill_training", "name": "Skill Training", "description": "Train to gain proficiency in a new skill", "ability": "intelligence", "daily_progress": 0.004, "cost_per_day": 1, "rewards": {"skill_proficiency": 1, "intelligence_exp": 50}, "requirements": {"intelligence": 10, "gold": 250}}]

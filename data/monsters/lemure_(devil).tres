@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_xpjiv"]
+
+[resource]
+script = ExtResource("1_xpjiv")
+name = "Lemure (Devil)"
+size = "Medium fiend (devil)"
+type = "lawful evil"
+alignment = "
+armor_class = 7
+hit_points = "1338"
+speed = "15 ft."
+abilities = {
+"charisma": 3,
+"constitution": 11,
+"dexterity": 5,
+"intelligence": 1,
+"strength": 10,
+"wisdom": 11
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "darkvision 120 ft., passive Perception 10"
+languages = "Array[String](["understands Infernal but cant speak"])"
+challenge_rating = "0"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

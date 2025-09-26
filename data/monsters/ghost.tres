@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_ceorb"]
+
+[resource]
+script = ExtResource("1_ceorb")
+name = "Ghost"
+size = "Medium undead"
+type = "any alignment"
+alignment = "
+armor_class = "11"
+hit_points = "45108"
+speed = "0 ft., fly 40 ft. (hover)"
+abilities = {
+"charisma": 17,
+"constitution": 10,
+"dexterity": 13,
+"intelligence": 10,
+"strength": 7,
+"wisdom": 12
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([])"
+damage_immunities = "Array[String]([damage_immunities"])"
+damage_resistances = "Array[String](["damage_resistances"])"
+damage_vulnerabilities = "Array[String]([])"
+condition_immunities = "Array[String]([condition_immunities"])"
+senses = "darkvision 60 ft., passive Perception 11"
+languages = "Array[String](["any languages it knew in life"])"
+challenge_rating = "4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

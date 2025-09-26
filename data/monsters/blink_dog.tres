@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_f0786"]
+
+[resource]
+script = ExtResource("1_f0786")
+name = "Blink Dog"
+size = "Medium fey"
+type = "lawful good"
+alignment = "
+armor_class = "13"
+hit_points = "22484"
+speed = "40 ft."
+abilities = {
+"charisma": 11,
+"constitution": 12,
+"dexterity": 17,
+"intelligence": 10,
+"strength": 12,
+"wisdom": 13
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "passive Perception 13"
+languages = "Array[String]([Blink Dog", understands Sylvan but can"t speak it"])
+challenge_rating = "1/4"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

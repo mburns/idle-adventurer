@@ -1,0 +1,275 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"events": {
+"bandit_threat": {
+"description": "Bandits threaten the town's trade routes",
+"duration_days": 5,
+"effects": {
+"guard_patrols": 100,
+"security_increase": 50
+},
+"event_type": "EMERGENCY",
+"id": "bandit_threat",
+"name": "Bandit Threat",
+"requirements": {
+"guard_reputation": 10
+},
+"rewards": {
+"combat_exp": 30,
+"gold": 75,
+"guard_reputation": 15
+}
+},
+"construction_project": {
+"description": "A major construction project begins in town",
+"duration_days": 14,
+"effects": {
+"craftsman_activity": 150,
+"town_growth": 25
+},
+"event_type": "CONSTRUCTION",
+"id": "construction_project",
+"name": "Construction Project",
+"requirements": {
+"craftsman_reputation": 30
+},
+"rewards": {
+"construction_knowledge": 1,
+"craftsman_reputation": 15,
+"gold": 100
+}
+},
+"crime_wave": {
+"description": "Increased criminal activity requires extra vigilance",
+"duration_days": 7,
+"effects": {
+"guard_patrols": 50,
+"security_increase": 25
+},
+"event_type": "CRIME_WAVE",
+"id": "crime_wave",
+"name": "Crime Wave",
+"requirements": {
+"guard_reputation": 20
+},
+"rewards": {
+"combat_exp": 25,
+"guard_reputation": 10
+}
+},
+"harvest_festival": {
+"description": "A celebration of the harvest with food, music, and games",
+"duration_days": 3,
+"effects": {
+"town_morale": 50,
+"visitor_increase": 100
+},
+"event_type": "FESTIVAL",
+"id": "harvest_festival",
+"name": "Harvest Festival",
+"requirements": "{}",
+"rewards": {
+"gold": 50,
+"social_connections": 5,
+"town_reputation": 15
+}
+},
+"market_day": {
+"description": "A special market day with extra vendors and deals",
+"duration_days": 1,
+"effects": {
+"extra_vendors": 3,
+"shop_discounts": 0.2
+},
+"event_type": "MARKET_DAY",
+"id": "market_day",
+"name": "Market Day",
+"requirements": "{}",
+"rewards": {
+"gold": 25,
+"trade_opportunities": 2
+}
+},
+"merchant_caravan": {
+"description": "A wealthy merchant caravan arrives with exotic goods",
+"duration_days": 3,
+"effects": {
+"exotic_goods": 50,
+"trade_increase": 100
+},
+"event_type": "TRADE_DEAL",
+"id": "merchant_caravan",
+"name": "Merchant Caravan",
+"requirements": {
+"merchant_reputation": 15
+},
+"rewards": {
+"exotic_items": 2,
+"gold": 150,
+"merchant_reputation": 10
+}
+},
+"noble_visitor": {
+"description": "An important noble visits the town",
+"duration_days": 2,
+"effects": {
+"noble_attention": 100,
+"social_opportunities": 50
+},
+"event_type": "VISITOR",
+"id": "noble_visitor",
+"name": "Noble Visitor",
+"requirements": {
+"noble_reputation": 30
+},
+"rewards": {
+"noble_reputation": 20,
+"political_connections": 3
+}
+},
+"plague_outbreak": {
+"description": "A mysterious plague affects the town",
+"duration_days": 10,
+"effects": {
+"temple_activity": 200,
+"town_morale": -50
+},
+"event_type": "EMERGENCY",
+"id": "plague_outbreak",
+"name": "Plague Outbreak",
+"requirements": {
+"temple_reputation": 20
+},
+"rewards": {
+"gold": 50,
+"healing_knowledge": 1,
+"temple_reputation": 20
+}
+},
+"political_event": {
+"description": "A change in local government occurs",
+"duration_days": 7,
+"effects": {
+"political_activity": 100,
+"town_meetings": 200
+},
+"event_type": "POLITICAL_EVENT",
+"id": "political_event",
+"name": "Political Change",
+"requirements": {
+"town_reputation": 25
+},
+"rewards": {
+"gold": 40,
+"political_connections": 3,
+"town_reputation": 10
+}
+},
+"religious_event": {
+"description": "A major religious ceremony takes place",
+"duration_days": 2,
+"effects": {
+"religious_fervor": 150,
+"temple_activity": 300
+},
+"event_type": "RELIGIOUS_EVENT",
+"id": "religious_event",
+"name": "Religious Ceremony",
+"requirements": "{}",
+"rewards": {
+"gold": 25,
+"spiritual_peace": 1,
+"temple_reputation": 10
+}
+},
+"royal_visit": {
+"description": "A member of the royal family visits the town",
+"duration_days": 3,
+"effects": {
+"royal_attention": 200,
+"social_opportunities": 100
+},
+"event_type": "VISITOR",
+"id": "royal_visit",
+"name": "Royal Visit",
+"requirements": {
+"noble_reputation": 50
+},
+"rewards": {
+"gold": 100,
+"political_connections": 5,
+"royal_reputation": 25
+}
+},
+"spring_festival": {
+"description": "A celebration of spring with flowers, music, and dancing",
+"duration_days": 2,
+"effects": {
+"town_morale": 30,
+"visitor_increase": 50
+},
+"event_type": "FESTIVAL",
+"id": "spring_festival",
+"name": "Spring Festival",
+"requirements": "{}",
+"rewards": {
+"gold": 25,
+"social_connections": 3,
+"town_reputation": 10
+}
+},
+"trade_deal": {
+"description": "A lucrative trade opportunity presents itself",
+"duration_days": 5,
+"effects": {
+"merchant_activity": 100,
+"trade_increase": 75
+},
+"event_type": "TRADE_DEAL",
+"id": "trade_deal",
+"name": "Trade Deal",
+"requirements": {
+"merchant_reputation": 25
+},
+"rewards": {
+"gold": 200,
+"trade_connections": 5
+}
+},
+"weather_event": {
+"description": "Severe weather affects the town",
+"duration_days": 3,
+"effects": {
+"indoor_activity": 200,
+"travel_difficulty": 100
+},
+"event_type": "WEATHER_EVENT",
+"id": "weather_event",
+"name": "Severe Weather",
+"requirements": "{}",
+"rewards": {
+"gold": 20,
+"survival_skill": 5
+}
+},
+"winter_solstice": {
+"description": "A sacred religious ceremony celebrating the winter solstice",
+"duration_days": 1,
+"effects": {
+"religious_fervor": 100,
+"temple_activity": 200
+},
+"event_type": "RELIGIOUS_EVENT",
+"id": "winter_solstice",
+"name": "Winter Solstice",
+"requirements": "{}",
+"rewards": {
+"gold": 30,
+"spiritual_peace": 1,
+"temple_reputation": 15
+}
+}
+}
+}

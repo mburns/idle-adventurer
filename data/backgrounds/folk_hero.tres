@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A set of artisan's tools (one of your choice)", "a shovel", "an iron pot", "a set of common clothes", "and a belt pouch containing 10 gp"]
+},
+"feature": "Rustic Hospitality",
+"languages": {
+"languages": ["One of your choice"]
+},
+"name": "Folk Hero",
+"skill_proficiencies": {
+"skill_proficiencies": ["Animal Handling", "Survival"]
+},
+"suggested_characteristics": "{}"
+}

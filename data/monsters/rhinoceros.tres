@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7hiau"]
+
+[resource]
+script = ExtResource("1_7hiau")
+name = "Rhinoceros"
+size = "Large beast"
+type = "unaligned"
+alignment = "
+armor_class = "11"
+hit_points = "4561012"
+speed = "40 ft."
+abilities = {
+"charisma": 6,
+"constitution": 15,
+"dexterity": 8,
+"intelligence": 2,
+"strength": 21,
+"wisdom": 12
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String]([""])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([""])"
+senses = "passive Perception 11"
+languages = "Array[String]([""])"
+challenge_rating = "2"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

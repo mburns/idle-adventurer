@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CurrencyResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/currency_resource.gd" id="1_wsrmq"]
+
+[resource]
+script = ExtResource("1_wsrmq")
+id = "cp"
+name = "Copper Piece"
+plural = "Copper Pieces"
+abbreviation = "cp"
+weight = 0.02
+value_base = 1
+description = "'Common copper coins used for everyday transactions'"
+rarity = "common"
+material = "copper"

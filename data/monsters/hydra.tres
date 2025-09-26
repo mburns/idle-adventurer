@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_8400k"]
+
+[resource]
+script = ExtResource("1_8400k")
+name = "Hydra"
+size = "Huge monstrosity"
+type = "unaligned"
+alignment = "
+armor_class = "15"
+hit_points = "172151275"
+speed = "30 ft., swim 30 ft."
+abilities = {
+"charisma": 7,
+"constitution": 20,
+"dexterity": 12,
+"intelligence": 2,
+"strength": 20,
+"wisdom": 10
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "darkvision 60 ft., passive Perception 16"
+languages = Array[String](["])"
+challenge_rating = "8"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "10"

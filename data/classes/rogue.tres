@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_36qr1"]
+
+[resource]
+script = ExtResource("1_36qr1")
+name = "Rogue"
+hit_die = 8
+primary_ability = "strength"
+saving_throws = "Array[String](["saving_throws"])"
+skill_choices = 2
+skill_options = "Array[String]([""])"
+armor_proficiencies = "Array[String]([""])"
+weapon_proficiencies = "Array[String]([""])"
+tool_proficiencies = "Array[String]([""])"
+starting_equipment = {}
+features = Array[String](["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Ability Score Improvement", "Uncanny Dodge", "Evasion", "Reliable Talent", "Blindsense", "Slippery Mind", "Elusive", "Stroke of Luck", "Thief", "Fast Hands", "Second-Story Work", "Supreme Sneak", "Use Magic Device", "Thief's Reflexes"])
+spellcasting_ability = ""
+spell_slots_per_level = "Array[int]([])"
+level_features = "Array[Dictionary]([])"

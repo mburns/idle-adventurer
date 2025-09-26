@@ -1,0 +1,99 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"animation_durations": {
+"fast": 0.1,
+"normal": 0.2,
+"slow": 0.5,
+"very_slow": 1.0
+},
+"breakpoints": {
+"medium_desktop": 1600,
+"mobile": 600,
+"small_desktop": 1200,
+"tablet": 900
+},
+"button_sizes": {
+"achievement": "[0, 80]",
+"action": "[80, 0]",
+"activity": "[200, 120]",
+"character_selection": "[300, 60]",
+"delete": "[30, 30]",
+"inventory": "[100, 120]",
+"journal_entry": "[0, 120]",
+"large": "[200, 60]",
+"medium": "[150, 50]",
+"monster": "[200, 60]",
+"quantity_input": "[60, 0]",
+"small": "[100, 40]",
+"spell": "[0, 60]",
+"spell_level": "[30, 0]",
+"square": "[200, 200]",
+"store_item": "[0, 100]",
+"timeline_event": "[0, 80]"
+},
+"font_sizes": {
+"large": 16,
+"medium": 14,
+"normal": 12,
+"small": 10,
+"xlarge": 18,
+"xxlarge": 20
+},
+"grid_configs": {
+"large_desktop": 5,
+"medium_desktop": 4,
+"mobile": 1,
+"small_desktop": 3,
+"tablet": 2
+},
+"panel_sizes": {
+"character_portrait": "[120, 120]",
+"character_stat": "[300, 200]",
+"equipment_slot": "[80, 80]",
+"journal_content": "[400, 200]",
+"large": "[400, 300]",
+"medium": "[300, 200]",
+"notification": "[300, 100]",
+"small": "[200, 100]",
+"spell_description": "[400, 200]",
+"timeline_description": "[400, 100]"
+},
+"progress_bar_sizes": {
+"large": "[400, 30]",
+"medium": "[300, 25]",
+"small": "[200, 20]"
+},
+"scroll_container_sizes": {
+"large": "[800, 500]",
+"medium": "[600, 400]",
+"small": "[400, 300]"
+},
+"spacing": {
+"large": 20,
+"medium": 15,
+"small": 10,
+"tiny": 5,
+"xlarge": 25,
+"xxlarge": 30
+},
+"theme_colors": {
+"danger": "[0.8, 0.2, 0.2, 1.0]  # Red",
+"dark": "[0.1, 0.1, 0.1, 1.0]  # Dark Gray",
+"info": "[0.2, 0.6, 0.8, 1.0]  # Light Blue",
+"light": "[0.9, 0.9, 0.9, 1.0]  # Light Gray",
+"primary": "[0.2, 0.4, 0.8, 1.0]  # Blue",
+"secondary": "[0.8, 0.2, 0.2, 1.0]  # Red",
+"success": "[0.2, 0.8, 0.2, 1.0]  # Green",
+"warning": "[0.8, 0.8, 0.2, 1.0]  # Yellow"
+},
+"z_layers": {
+"background": -10,
+"content": 0,
+"modal": 20,
+"notification": 40,
+"overlay": 10,
+"tooltip": 30
+}
+}

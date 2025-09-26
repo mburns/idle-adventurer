@@ -1,0 +1,25 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"abilities": {
+"abilities": ["'strength'", "'dexterity'", "'constitution'", "'intelligence'", "'wisdom'", "'charisma'", "'general'"]
+},
+"ability_descriptions": {
+"charisma": "'Force of personality and leadership'",
+"constitution": "'Endurance, stamina, and health'",
+"dexterity": "'Agility, reflexes, and balance'",
+"general": "'Activities that don't require specific abilities'",
+"intelligence": "'Reasoning, memory, and analytical ability'",
+"strength": "'Physical power and athletic ability'",
+"wisdom": "'Awareness, intuition, and insight'"
+},
+"ability_modifiers": {
+"charisma": 0,
+"constitution": 0,
+"dexterity": 0,
+"intelligence": 0,
+"strength": 0,
+"wisdom": 0
+}
+}

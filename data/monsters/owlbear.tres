@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_tpm5n"]
+
+[resource]
+script = ExtResource("1_tpm5n")
+name = "Owlbear"
+size = "Large monstrosity"
+type = "unaligned"
+alignment = "
+armor_class = "13"
+hit_points = "5971021"
+speed = "40 ft."
+abilities = {
+"charisma": 7,
+"constitution": 17,
+"dexterity": 12,
+"intelligence": 3,
+"strength": 20,
+"wisdom": 12
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "darkvision 60 ft., passive Perception 13"
+languages = Array[String](["])"
+challenge_rating = "3"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "11"

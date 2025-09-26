@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Greater Restoration"
+level = 5
+school = "abjuration"
+casting_time = "1 action"
+spell_range = "Touch"
+components = "V, S, M (diamond dust worth at least 100 gp, which the spell consumes)"
+duration = "Instantaneous"
+description = "You imbue a creature you touch with positive energy to undo a debilitating effect. You can reduce the target's exhaustion level by one, or end one of the following effects on the target:
+
+• One effect that charmed or petrified the target
+• One curse, including the target's attunement to a cursed magic item
+• Any reduction to one of the target's ability scores
+• One effect reducing the target's hit point maximum"
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["bard", "cleric", "druid"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_ti3hp"]
+
+[resource]
+script = ExtResource("1_ti3hp")
+name = "Minotaur"
+size = "Large monstrosity"
+type = "chaotic evil"
+alignment = "
+armor_class = "14"
+hit_points = "7691027"
+speed = "40 ft."
+abilities = {
+"charisma": 9,
+"constitution": 16,
+"dexterity": 11,
+"intelligence": 6,
+"strength": 18,
+"wisdom": 16
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String]([""])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String]([])"
+senses = "darkvision 60 ft., passive Perception 17"
+languages = Array[String](["Abyssal"])"
+challenge_rating = "3"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = "13"

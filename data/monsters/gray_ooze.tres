@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_yhnpb"]
+
+[resource]
+script = ExtResource("1_yhnpb")
+name = "Gray Ooze"
+size = "Medium ooze"
+type = "unaligned"
+alignment = "
+armor_class = 8
+hit_points = "22389"
+speed = "10 ft., climb 10 ft."
+abilities = {
+"charisma": 2,
+"constitution": 16,
+"dexterity": 6,
+"intelligence": 1,
+"strength": 12,
+"wisdom": 6
+}
+saving_throws = "Array[String]([""])"
+skills = "Array[String](["skills"])"
+damage_immunities = "Array[String]([""])"
+damage_resistances = "Array[String](["damage_resistances])"
+damage_vulnerabilities = "Array[String]([""])"
+condition_immunities = "Array[String](["condition_immunities"])"
+senses = "blindsight 60 ft. (blind beyond this radius)", passive Perception 8"
+languages = "Array[String]([""])"
+challenge_rating = 1/2"
+xp = 0
+traits = "Array[Dictionary]([])"
+actions = "Array[Dictionary]([])"
+reactions = "Array[Dictionary]([])"
+legendary_actions = "Array[Dictionary]([])"
+proficiency_bonus = 1
+passive_perception = 8

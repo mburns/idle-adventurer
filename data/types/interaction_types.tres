@@ -1,0 +1,63 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"interaction_categories": {
+"adventure": {
+"description": "Quest-related and adventure interactions",
+"name": "Adventure Interactions",
+"priority": 4
+},
+"combat": {
+"description": "Fighting and aggressive actions",
+"name": "Combat Interactions",
+"priority": 7
+},
+"criminal": {
+"description": "Illegal or morally questionable actions",
+"name": "Criminal Interactions",
+"priority": 6
+},
+"economic": {
+"description": "Trade, commerce, and financial interactions",
+"name": "Economic Interactions",
+"priority": 2
+},
+"education": {
+"description": "Learning, training, and skill development",
+"name": "Educational Interactions",
+"priority": 3
+},
+"investigation": {
+"description": "Information gathering and detective work",
+"name": "Investigation Interactions",
+"priority": 8
+},
+"romance": {
+"description": "Romantic and courtship interactions",
+"name": "Romantic Interactions",
+"priority": 9
+},
+"service": {
+"description": "Professional services and assistance",
+"name": "Service Interactions",
+"priority": 5
+},
+"social": {
+"description": "General social encounters and conversations",
+"name": "Social Interactions",
+"priority": 1
+}
+},
+"interaction_types": {
+"base_duration": 15,
+"category": "social",
+"color": "'#DDA0DD'  # Plum",
+"description": "Share or gather gossip and rumors",
+"icon": "'gossip'",
+"interaction_types": ["id: TALK", "id: TRADE", "id: TRAIN", "id: QUEST", "id: HEAL", "id: REPAIR", "id: GIVE_GIFT", "id: STEAL", "id: ATTACK", "id: GATHER_INFO", "id: RECRUIT", "id: BARGAIN", "id: FLIRT", "id: INTIMIDATE", "id: PERSUADE", "id: GREETING", "id: SMALL_TALK", "id: DEEP_CONVERSATION", "id: BUSINESS", "id: TRAINING", "id: QUEST_GIVING", "id: ROMANCE", "id: CONFLICT", "id: HELP_REQUEST", "id: GOSSIP"],
+"name": "Gossip",
+"priority": 25,
+"requires_relationship": 0
+}
+}

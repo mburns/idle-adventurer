@@ -1,0 +1,575 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"services": {
+"accommodation": {
+"benefits": {
+"rest": true,
+"safety": true,
+"social_opportunities": 1
+},
+"cost": 2,
+"description": "Stay at a local inn or tavern",
+"duration_hours": 8,
+"id": "accommodation",
+"location": "golden_harp",
+"name": "Accommodation",
+"requirements": "{}",
+"service_type": "ACCOMMODATION"
+},
+"armor_repair": {
+"benefits": {
+"armor_repair": true
+},
+"cost": 25,
+"description": "Repair damaged armor",
+"duration_hours": 3,
+"id": "armor_repair",
+"location": "smithy",
+"name": "Armor Repair",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"artisan_goods": {
+"benefits": {
+"artisan_items": true
+},
+"cost": 25,
+"description": "Purchase high-quality artisan items",
+"duration_hours": 1,
+"id": "artisan_goods",
+"location": "artisan_quarter",
+"name": "Artisan Goods",
+"requirements": "{}",
+"service_type": "SHOPPING"
+},
+"book_access": {
+"benefits": {
+"book_knowledge": 1
+},
+"cost": 2,
+"description": "Access library books and scrolls",
+"duration_hours": 1,
+"id": "book_access",
+"location": "library",
+"name": "Book Access",
+"requirements": "{}",
+"service_type": "INFORMATION"
+},
+"combat_training": {
+"benefits": {
+"combat_skill": 5,
+"guard_reputation": 2
+},
+"cost": 30,
+"description": "Learn combat techniques from experienced guards",
+"duration_hours": 4,
+"id": "combat_training",
+"location": "guard_barracks",
+"name": "Combat Training",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"community_events": {
+"benefits": {
+"community_connections": 2,
+"social_reputation": 1
+},
+"cost": 0,
+"description": "Participate in community activities",
+"duration_hours": 2,
+"id": "community_events",
+"location": "residential_district",
+"name": "Community Events",
+"requirements": "{}",
+"service_type": "ENTERTAINMENT"
+},
+"custom_crafting": {
+"benefits": {
+"artisan_reputation": 1,
+"custom_items": true
+},
+"cost": 50,
+"description": "Commission custom crafted items",
+"duration_hours": 8,
+"id": "custom_crafting",
+"location": "artisan_quarter",
+"name": "Custom Crafting",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"donations": {
+"benefits": {
+"karma": 1,
+"temple_reputation": 1
+},
+"cost": 0,
+"description": "Make charitable donations",
+"duration_hours": 1,
+"id": "donations",
+"location": "temple",
+"name": "Donations",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"entertainment": {
+"benefits": {
+"charisma_exp": 5,
+"social_connections": 2
+},
+"cost": 3,
+"description": "Enjoy music, stories, and socializing",
+"duration_hours": 2,
+"id": "entertainment",
+"location": "golden_harp",
+"name": "Entertainment",
+"requirements": "{}",
+"service_type": "ENTERTAINMENT"
+},
+"food_vendor": {
+"benefits": {
+"food_supplies": 1
+},
+"cost": 5,
+"description": "Purchase food and provisions",
+"duration_hours": 1,
+"id": "food_vendor",
+"location": "market_square",
+"name": "Food Vendor",
+"requirements": "{}",
+"service_type": "SHOPPING"
+},
+"general_shopping": {
+"benefits": {
+"inventory_access": true,
+"trade_opportunities": 1
+},
+"cost": 0,
+"description": "Buy and sell general goods",
+"duration_hours": 1,
+"id": "general_shopping",
+"location": "market_square",
+"name": "General Shopping",
+"requirements": "{}",
+"service_type": "SHOPPING"
+},
+"guard_recruitment": {
+"benefits": {
+"guard_info": true
+},
+"cost": 0,
+"description": "Learn about joining the guard",
+"duration_hours": 1,
+"id": "guard_recruitment",
+"location": "guard_barracks",
+"name": "Guard Recruitment",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"guild_membership": {
+"benefits": {
+"guild_access": true,
+"guild_reputation": 10
+},
+"cost": 100,
+"description": "Join the craftsman guild",
+"duration_hours": 1,
+"id": "guild_membership",
+"location": "craftsman_guild",
+"name": "Guild Membership",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"healing": {
+"benefits": {
+"disease_cure": true,
+"hit_points": 10
+},
+"cost": 10,
+"description": "Receive magical or medical healing",
+"duration_hours": 1,
+"id": "healing",
+"location": "temple",
+"name": "Healing Services",
+"requirements": "{}",
+"service_type": "HEALING"
+},
+"housing": {
+"benefits": {
+"community_connections": 1,
+"permanent_housing": true
+},
+"cost": 5,
+"description": "Rent housing in the residential district",
+"duration_hours": 24,
+"id": "housing",
+"location": "residential_district",
+"name": "Housing",
+"requirements": "{}",
+"service_type": "ACCOMMODATION"
+},
+"information_broker": {
+"benefits": {
+"gossip_knowledge": 1,
+"quest_hints": 1
+},
+"cost": 10,
+"description": "Purchase valuable information",
+"duration_hours": 1,
+"id": "information_broker",
+"location": "market_square",
+"name": "Information Broker",
+"requirements": "{}",
+"service_type": "INFORMATION"
+},
+"language_learning": {
+"benefits": {
+"intelligence_exp": 5,
+"language_skill": 1
+},
+"cost": 15,
+"description": "Learn new languages",
+"duration_hours": 4,
+"id": "language_learning",
+"location": "library",
+"name": "Language Learning",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"legal_advice": {
+"benefits": {
+"legal_knowledge": 1,
+"official_connections": 1
+},
+"cost": 20,
+"description": "Get legal counsel from town officials",
+"duration_hours": 1,
+"id": "legal_advice",
+"location": "town_hall",
+"name": "Legal Advice",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"luxury_goods": {
+"benefits": {
+"luxury_items": true,
+"noble_connections": 1
+},
+"cost": 100,
+"description": "Purchase high-quality luxury items",
+"duration_hours": 1,
+"id": "luxury_goods",
+"location": "noble_manor",
+"name": "Luxury Goods",
+"requirements": {
+"noble_reputation": 30
+},
+"service_type": "SHOPPING"
+},
+"meals": {
+"benefits": {
+"nourishment": true,
+"social_opportunities": 1
+},
+"cost": 1,
+"description": "Purchase meals and drinks",
+"duration_hours": 1,
+"id": "meals",
+"location": "golden_harp",
+"name": "Meals",
+"requirements": "{}",
+"service_type": "ACCOMMODATION"
+},
+"metalwork_training": {
+"benefits": {
+"crafting_skill": 5,
+"smith_reputation": 2
+},
+"cost": 20,
+"description": "Learn metalworking from the master smith",
+"duration_hours": 6,
+"id": "metalwork_training",
+"location": "smithy",
+"name": "Metalwork Training",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"neighborhood_watch": {
+"benefits": {
+"community_reputation": 1,
+"security_knowledge": 1
+},
+"cost": 0,
+"description": "Participate in neighborhood security",
+"duration_hours": 2,
+"id": "neighborhood_watch",
+"location": "residential_district",
+"name": "Neighborhood Watch",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"noble_audience": {
+"benefits": {
+"noble_connections": 2,
+"political_advice": 1
+},
+"cost": 50,
+"description": "Meet with local nobility",
+"duration_hours": 1,
+"id": "noble_audience",
+"location": "noble_manor",
+"name": "Noble Audience",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"official_documents": {
+"benefits": {
+"official_document": true
+},
+"cost": 5,
+"description": "Obtain official documents",
+"duration_hours": 1,
+"id": "official_documents",
+"location": "town_hall",
+"name": "Official Documents",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"patrol_duty": {
+"benefits": {
+"combat_exp": 5,
+"guard_reputation": 2
+},
+"cost": 0,
+"description": "Join guard patrols",
+"duration_hours": 4,
+"id": "patrol_duty",
+"location": "guard_barracks",
+"name": "Patrol Duty",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"permits": {
+"benefits": {
+"official_permit": true,
+"town_reputation": 1
+},
+"cost": 10,
+"description": "Obtain official permits",
+"duration_hours": 1,
+"id": "permits",
+"location": "town_hall",
+"name": "Permits",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"political_advice": {
+"benefits": {
+"noble_reputation": 2,
+"political_knowledge": 1
+},
+"cost": 75,
+"description": "Get political counsel",
+"duration_hours": 1,
+"id": "political_advice",
+"location": "noble_manor",
+"name": "Political Advice",
+"requirements": "{}",
+"service_type": "INFORMATION"
+},
+"quiet_study": {
+"benefits": {
+"intelligence_exp": 2,
+"study_focus": true
+},
+"cost": 0,
+"description": "Study in a quiet environment",
+"duration_hours": 2,
+"id": "quiet_study",
+"location": "library",
+"name": "Quiet Study",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"religious_services": {
+"benefits": {
+"community_connections": 1,
+"religious_knowledge": 1
+},
+"cost": 0,
+"description": "Attend religious ceremonies",
+"duration_hours": 1,
+"id": "religious_services",
+"location": "temple",
+"name": "Religious Services",
+"requirements": "{}",
+"service_type": "ENTERTAINMENT"
+},
+"repair_services": {
+"benefits": {
+"equipment_repair": true
+},
+"cost": 15,
+"description": "Repair damaged equipment",
+"duration_hours": 2,
+"id": "repair_services",
+"location": "artisan_quarter",
+"name": "Repair Services",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"research": {
+"benefits": {
+"intelligence_exp": 3,
+"knowledge_gain": 1
+},
+"cost": 5,
+"description": "Conduct research in the library",
+"duration_hours": 2,
+"id": "research",
+"location": "library",
+"name": "Research",
+"requirements": "{}",
+"service_type": "INFORMATION"
+},
+"security_advice": {
+"benefits": {
+"guard_reputation": 1,
+"security_knowledge": 1
+},
+"cost": 15,
+"description": "Get security advice from guards",
+"duration_hours": 1,
+"id": "security_advice",
+"location": "guard_barracks",
+"name": "Security Advice",
+"requirements": "{}",
+"service_type": "INFORMATION"
+},
+"social_events": {
+"benefits": {
+"noble_connections": 3,
+"social_reputation": 2
+},
+"cost": 25,
+"description": "Attend noble social events",
+"duration_hours": 3,
+"id": "social_events",
+"location": "noble_manor",
+"name": "Social Events",
+"requirements": "{}",
+"service_type": "ENTERTAINMENT"
+},
+"social_gathering": {
+"benefits": {
+"charisma_exp": 2,
+"social_connections": 1
+},
+"cost": 0,
+"description": "Participate in social activities",
+"duration_hours": 2,
+"id": "social_gathering",
+"location": "golden_harp",
+"name": "Social Gathering",
+"requirements": "{}",
+"service_type": "ENTERTAINMENT"
+},
+"spiritual_guidance": {
+"benefits": {
+"spiritual_peace": true,
+"wisdom_exp": 3
+},
+"cost": 0,
+"description": "Receive spiritual counseling",
+"duration_hours": 1,
+"id": "spiritual_guidance",
+"location": "temple",
+"name": "Spiritual Guidance",
+"requirements": "{}",
+"service_type": "HEALING"
+},
+"stable_service": {
+"benefits": {
+"mount_care": true
+},
+"cost": 1,
+"description": "Care for your mount",
+"duration_hours": 1,
+"id": "stable_service",
+"location": "travelers_rest",
+"name": "Stable Service",
+"requirements": "{}",
+"service_type": "TRANSPORTATION"
+},
+"tool_making": {
+"benefits": {
+"crafted_tools": true,
+"smith_reputation": 2
+},
+"cost": 30,
+"description": "Create tools and equipment",
+"duration_hours": 4,
+"id": "tool_making",
+"location": "smithy",
+"name": "Tool Making",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"town_meetings": {
+"benefits": {
+"political_knowledge": 1,
+"town_connections": 1
+},
+"cost": 0,
+"description": "Attend town meetings",
+"duration_hours": 2,
+"id": "town_meetings",
+"location": "town_hall",
+"name": "Town Meetings",
+"requirements": "{}",
+"service_type": "ADMINISTRATION"
+},
+"trade_opportunities": {
+"benefits": {
+"trade_hints": 1
+},
+"cost": 0,
+"description": "Learn about trade opportunities",
+"duration_hours": 1,
+"id": "trade_opportunities",
+"location": "craftsman_guild",
+"name": "Trade Opportunities",
+"requirements": "{}",
+"service_type": "INFORMATION"
+},
+"training": {
+"benefits": {
+"guild_reputation": 1,
+"skill_exp": 5
+},
+"cost": 25,
+"description": "General skill training",
+"duration_hours": 4,
+"id": "training",
+"location": "craftsman_guild",
+"name": "Training",
+"requirements": "{}",
+"service_type": "TRAINING"
+},
+"weapon_crafting": {
+"benefits": {
+"crafted_weapons": true,
+"smith_reputation": 3
+},
+"cost": 75,
+"description": "Craft weapons and tools",
+"duration_hours": 8,
+"id": "weapon_crafting",
+"location": "smithy",
+"name": "Weapon Crafting",
+"requirements": "{}",
+"service_type": "TRAINING"
+}
+}
+}
