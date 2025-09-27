@@ -20,17 +20,31 @@ abilities = {
 "wisdom": 12
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills"])
-damage_immunities = Array[String](["damage_immunities"])
+skills = Array[String](["Perception +4"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
-senses = passive Perception 15"
-languages = Array[String](["Common", Giant", "Winter Wolf])
+senses = "passive Perception 15"
+languages = Array[String](["Common", "Giant", "Winter Wolf"])
 challenge_rating = "3"
 xp = 0
-traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+traits = Array[Dictionary]([
+	{
+        "name": "Pack Tactics",
+        "description": "The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally isn't incapacitated."
+    }
+])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The wolf makes two attacks: one with its bite and one with its claws"
+    },
+	{
+        "name": "Bite",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 7 (1d6+4) piercing damage"
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

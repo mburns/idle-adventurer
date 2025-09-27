@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7ihfq"]
 
 [resource]
-script = ExtResource("1_7ihfq)
+script = ExtResource("1_7ihfq")
 name = "Stirge"
 size = "Tiny beast"
 type = "unaligned"
@@ -27,7 +27,7 @@ damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "darkvision 60 ft., passive Perception 9"
 languages = Array[String]([])
-challenge_rating = 1/8"
+challenge_rating = "1/8"
 xp = 0
 traits = Array[Dictionary]([])
 actions = Array[Dictionary]([])

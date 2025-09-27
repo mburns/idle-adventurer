@@ -39,15 +39,15 @@ func convert_value_with_type(value: Variant, expected_type: String) -> Variant:
 			"float": return 0.0
 			"bool": return false
 			"Dictionary": return {}
-			"Array[String]": return [] as Array[String]
-			"Array[Dictionary]": return [] as Array[Dictionary]
-			"Array[int]": return [] as Array[int]
+			Array[String]: return [] as Array[String]
+			Array[Dictionary]: return [] as Array[Dictionary]
+			Array[int]: return [] as Array[int]
 			_: return value
 
 	# Handle array types
-	if expected_type.begins_with("Array["):
+	if expected_type.begins_with(Array[):
 		if value is Array:
-			var array_type = expected_type.substr(6, expected_type.length() - 7)  # Remove "Array[" and "]"
+			var array_type = expected_type.substr(6, expected_type.length() - 7)  # Remove Array[" and "]
 			match array_type:
 				"String":
 					var result: Array[String] = []
@@ -301,7 +301,7 @@ func yaml_to_race_resource(yaml_data: Dictionary) -> RaceResource:
 	resource.resistances = yaml_data.get("resistances", [] as Array[String])
 	resource.immunities = yaml_data.get("immunities", [] as Array[String])
 	resource.vulnerabilities = yaml_data.get("vulnerabilities", [] as Array[String])
-	resource.subraces = convert_value_with_type(yaml_data.get("subraces"), "Array[Dictionary]")
+	resource.subraces = convert_value_with_type(yaml_data.get("subraces"), Array[Dictionary])
 
 	return resource
 

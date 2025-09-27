@@ -20,7 +20,7 @@ abilities = {
 "wisdom": 7
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
+skills = Array[String](["Perception +8"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
@@ -30,7 +30,20 @@ languages = Array[String](["Common", "Giant"])
 challenge_rating = "2"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The ogre makes two attacks: one with its greatclub and one with its javelin"
+    },
+	{
+        "name": "Greatclub",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) bludgeoning damage"
+    },
+	{
+        "name": "Javelin",
+        "description": "*Melee or Ranged Weapon Attack:* +6 to hit, reach 5 ft. or range 30/120 ft., one target. *Hit:* 11 (2d6+4) piercing damage."
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1")
 metadata/yaml_data = {
-  "name": "Wand of the War Mage", +1, +2, or +3",
+  "name": "Wand of the War Mage, +1, +2, or +3",
   "type": "Wand",
   "rarity": "Uncommon",
   "attunement": "true",

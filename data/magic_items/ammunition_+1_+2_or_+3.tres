@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1")
 metadata/yaml_data = {
-  "name": "Ammunition", +1, +2, or +3",
+  "name": "Ammunition, +1, +2, or +3",
   "type": "Weapon",
   "rarity": "Uncommon",
   "attunement": "false",

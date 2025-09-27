@@ -4,7 +4,7 @@
 metadata/yaml_data = {
 "category": "disease",
 "cure": "",
-"description": "|-",
+"description": "",
 "name": "Sewer Plague",
 "symptoms": Array[String]([]),
 "transmission": "",

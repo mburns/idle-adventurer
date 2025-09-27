@@ -20,17 +20,19 @@ abilities = {
 "wisdom": 10
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
-damage_immunities = Array[String]([damage_immunities"])
-damage_resistances = Array[String](["damage_resistances"])
+skills = Array[String](["Perception +5"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
-condition_immunities = Array[String]([condition_immunities"])
+condition_immunities = Array[String]([])
 senses = "darkvision 60 ft., passive Perception 10"
 languages = Array[String](["understands all languages it knew in life but cant speak"])
 challenge_rating = "1"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Eternal Rest", "description": "The specter targets one creature it can see within 10 feet of it. If the target is a creature other than a specter, it must succeed on a DC 15 Wisdom saving throw or be forced to spend its action to take a long rest. A target that doesn't take a long rest by the end of its next turn is no longer under this effect."}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

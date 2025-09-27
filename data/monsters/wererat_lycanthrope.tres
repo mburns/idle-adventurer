@@ -1,64 +1,45 @@
-[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-metadata/yaml_data = {
-  "name": "Wererat (Lycanthrope)",
-  "size": Medium humanoid (human,
-  "type": shapechanger),
-  "alignment": lawful evil,
-  "armor_class": 12,
-  "hit_points": 33 (6d8+6),
-  "speed": 30 ft.,
-  "abilities": {
-    "strength": 10,
-    "dexterity": 15,
-    "constitution": 12,
-    "intelligence": 11,
-    "wisdom": 10,
-    "charisma": 8
-  },
-  "saving_throws": [],
-  "skills": [
-    Perception +2",
-    "Stealth +4"
-  ],
-  "damage_immunities": [
-    "bludgeoning,
-    piercing",
-    "and slashing from nonmagical attacks not made with silvered weapons"
-  ],
-  "damage_resistances": [],
-  "damage_vulnerabilities": [],
-  "condition_immunities": [],
-  "senses: darkvision 60 ft. (rat form only), passive Perception 12",
-  "languages: Common (can't speak in rat form)",
-  "challenge_rating": 2,
-  "xp": 0,
-  "traits": [],
-  "actions: ["
-    {
-      "name": "Multiattack (Humanoid or Hybrid Form Only)***. The wererat makes two attacks, only one of which can be a bi,
-      "description": ""
-    },
-    {
-      name: "Bite (Rat or Hybrid Form Only)***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) piercing damage. If the target is a humanoid, it must succeed on a DC 11 Constitution saving throw or be cursed with wererat lycanthro",
-      description: ""
-    },
-    {
-      "name": Shortsword (Humanoid or Hybrid Form Only)***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing dama",
-      "description":"
-    },
-    {
-      "name": "Hand Crossbow (Humanoid or Hybrid Form Only)***. *Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6+2) piercing dama,
-      "description": ""
-    }
-  ],
-  legendary_actions: [],
-  "reactions": [],
-  spellcasting: {},
-  "description": ,
-  "category": monster"
+name = "Wererat (Lycanthrope)"
+size = "Medium humanoid (human, shapechanger)"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "12"
+hit_points = "33"
+speed = "30 ft."
+abilities = {
+"charisma": 8,
+"constitution": 12,
+"dexterity": 15,
+"intelligence": 11,
+"strength": 10,
+"wisdom": 10
 }
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +2", "Stealth +4"])
+damage_immunities = Array[String](["bludgeoning", "piercing", "and slashing from nonmagical attacks not made with silvered weapons"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft. (rat form only), passive Perception 12"
+languages = Array[String](["Common (can't speak in rat form)"])
+challenge_rating = "2"
+xp = 450
+traits = Array[Dictionary]([
+	{"name": "Shapechanger", "description": "The wererat can use its action to polymorph into a rat-humanoid hybrid or into a giant rat, or back into its true form, which is humanoid. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies"},
+	{"name": "Keen Smell", "description": "The wererat has advantage on Wisdom (Perception) checks that rely on smell"}
+])
+actions = Array[Dictionary]([
+	{"name": "Multiattack (Humanoid or Hybrid Form Only)", "description": "The wererat makes two attacks, only one of which can be a bite"},
+	{"name": "Bite (Rat or Hybrid Form Only)", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) piercing damage. If the target is a humanoid, it must succeed on a DC 11 Constitution saving throw or be cursed with wererat lycanthropy"},
+	{"name": "Shortsword (Humanoid or Hybrid Form Only)", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing damage"},
+	{"name": "Hand Crossbow (Humanoid or Hybrid Form Only)", "description": "*Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6+2) piercing damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "12"

@@ -1,63 +1,44 @@
-[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-metadata/yaml_data = {
-  "name": "Imp (Devil)",
-  "size": Tiny fiend (devil,
-  "type": shapechanger),
-  "alignment": lawful evil,
-  "armor_class": 13,
-  "hit_points": 10 (3d4+3),
-  "speed": 20 ft., fly 40 ft.,
-  "abilities": {
-    "strength": 6,
-    "dexterity": 17,
-    "constitution": 13,
-    "intelligence": 11,
-    "wisdom": 12,
-    "charisma": 14
-  },
-  "saving_throws": [],
-  "skills": [
-    Deception +4",
-    "Insight +3,
-    Persuasion +4",
-    "Stealth +5"
-  ],
-  "damage_immunities": [
-    "fire,
-    poison"
-  ],
-  "damage_resistances: ["
-    cold; bludgeoning",
-    "piercing,
-    and slashing from nonmagical attacks not made with silvered weapons"
-  ],
-  "damage_vulnerabilities": [],
-  "condition_immunities": ["
-    "poisoned"
-  ],
-  "senses": "darkvision 120 ft., passive Perception 11,
-  "languages": "Infernal, Common,
-  "challenge_rating": 1,
-  "xp": 0,
-  "traits": [],
-  "actions": ["
-    {
-      "name: Sting (Bite in Beast Form)***. *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 5 (1d4+3) piercing damage, and the target must make on a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful o",
-      "description: ""
-    },
-    {
-      "name: Invisibility***. The imp magically turns invisible until it attacks or until its concentration ends (as if concentrating on a spell). Any equipment the imp wears or carries is invisible with",
-      "description: ""
-    }
-  ],
-  "legendary_actions": [],
-  "reactions": [],
-  "spellcasting: {},
-  "description": ",
-  category: "monster"
+name = "Imp (Devil)"
+size = "Tiny fiend (devil, shapechanger)"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "13"
+hit_points = "10"
+speed = "20 ft., fly 40 ft."
+abilities = {
+"charisma": 14,
+"constitution": 13,
+"dexterity": 17,
+"intelligence": 11,
+"strength": 6,
+"wisdom": 12
 }
+saving_throws = Array[String]([])
+skills = Array[String](["Deception +4", "Insight +3", "Persuasion +4", "Stealth +5"])
+damage_immunities = Array[String](["fire", "poison"])
+damage_resistances = Array[String](["cold", "bludgeoning", "piercing", "and slashing from nonmagical attacks not made with silvered weapons"])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["poisoned"])
+senses = "darkvision 120 ft., passive Perception 11"
+languages = Array[String](["Infernal", "Common"])
+challenge_rating = "1"
+xp = 200
+traits = Array[Dictionary]([
+	{"name": "Shapechanger", "description": "The imp can use its action to polymorph into a beast form that resembles a rat (speed 20 ft.), a raven (20 ft., fly 60 ft.), or a spider (20 ft., climb 20 ft.), or back into its true form. Its statistics are the same in each form, except for the speed changes noted. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies"},
+	{"name": "Devil's Sight", "description": "Magical darkness doesn't impede the imp's darkvision"},
+	{"name": "Magic Resistance", "description": "The imp has advantage on saving throws against spells and other magical effects"}
+])
+actions = Array[Dictionary]([
+	{"name": "Sting (Bite in Beast Form)", "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 5 (1d4+3) piercing damage, and the target must make on a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one"},
+	{"name": "Invisibility", "description": "The imp magically turns invisible until it attacks or until its concentration ends (as if concentrating on a spell). Any equipment the imp wears or carries is invisible with it"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "11"

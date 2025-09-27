@@ -20,16 +20,35 @@ abilities = {
 "wisdom": 8
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
-damage_immunities = Array[String]([damage_immunities"])
+skills = Array[String](["Perception +7"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String](["damage_vulnerabilities"])
-condition_immunities = Array[String](["condition_immunities"])
-senses = "darkvision 60 ft.", passive Perception 9"
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 9"
 languages = Array[String](["understands Abyssal but cant speak"])
 challenge_rating = "2"
 xp = 0
-traits = Array[Dictionary]([])
+traits = Array[Dictionary]([
+	{
+        "name": "Charge",
+        "description": "If the minotaur moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 (2d8) piercing damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be pushed up to 10 feet away and knocked prone."
+    },
+	{
+        "name": "Labyrinthine Recall",
+        "description": "The minotaur can perfectly recall any path it has traveled."
+    }
+])
+actions = Array[Dictionary]([
+	{
+        "name": "Greataxe",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 17 (2d12+4) slashing damage."
+    },
+	{
+        "name": "Gore",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) piercing damage."
+    }
+])
 actions = Array[Dictionary]([])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])

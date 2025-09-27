@@ -11,9 +11,12 @@ var character: Character
 var active_button: Button = null
 var activity_buttons: Dictionary = {} # activity_name -> button
 var enhanced_activities: EnhancedActivities
+var debug_config: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Debug configuration is now available as autoload
+
 	# Wait a frame to ensure all autoloads are ready
 	await get_tree().process_frame
 
@@ -27,9 +30,9 @@ func _ready():
 		CharacterManager.create_default_character()
 
 	character = CharacterManager.get_current_character()
-	print("DEBUG: Character loaded: ", character.name if character else "None")
-	if character:
-		print("DEBUG: Character XP: ", character.experience_points, ", Level: ", character.level)
+	# DebugConfig.debug_character_msg("Character loaded: " + (character.name if character else "None"))
+	# if character:
+	#	DebugConfig.debug_character_msg("Character XP: " + str(character.experience_points) + ", Level: " + str(character.level))
 
 	# Wait for dynamic UI to be created
 	await get_tree().process_frame
@@ -47,10 +50,10 @@ func _ready():
 	# setup_dynamic_button_connections()  # Disabled - dynamic UI handles button connections
 
 	# Test: Start an activity automatically to see if the system works
-	print("Testing activity system by starting Blacksmithing...")
+	debug_config.debug_activities("Testing activity system by starting Blacksmithing...")
 	start_activity("Blacksmithing")
 
-	print("DEBUG: Main ready complete - character: ", character.name if character else "None", ", enhanced_activities: ", enhanced_activities != null, ", progress_bar: ", activity_progress_bar != null)
+	debug_config.debug_ui("Main ready complete - character: " + (character.name if character else "None") + ", enhanced_activities: " + str(enhanced_activities != null) + ", progress_bar: " + str(activity_progress_bar != null))
 
 	# Configure progress bar if it exists
 	if activity_progress_bar:
@@ -150,19 +153,19 @@ func update_ui():
 # Update activity progress bar
 func update_activity_progress():
 	if character == null or enhanced_activities == null:
-		print("DEBUG: update_activity_progress - character or enhanced_activities is null")
+		debug_config.debug_ui("update_activity_progress - character or enhanced_activities is null")
 		return
 
 	# Get active activities from EnhancedActivities
 	var active_activities = enhanced_activities.active_activities
-	print("DEBUG: Active activities: ", active_activities.keys())
+	debug_config.debug_activities("Active activities: " + str(active_activities.keys()))
 
 	if character.name in active_activities:
 		var activity_data = active_activities[character.name]
 		var activity_name = activity_data.get("name", "")
 		var progress = activity_data.get("progress", 0.0)
 
-		print("DEBUG: Activity progress for ", character.name, " - ", activity_name, ": ", progress)
+		debug_config.debug_activities("Activity progress for " + character.name + " - " + activity_name + ": " + str(progress))
 
 		# Update the button background for the current activity
 		if activity_name in activity_buttons:
@@ -188,9 +191,9 @@ func update_activity_progress():
 				var button_width = button.size.x
 				progress_bar.size.x = button_width * progress
 				progress_bar.position.x = 0
-				print("DEBUG: Updated button progress bar for ", activity_name, " - width: ", progress_bar.size.x)
+				debug_config.debug_ui("Updated button progress bar for " + activity_name + " - width: " + str(progress_bar.size.x))
 	else:
-		print("DEBUG: No active activity for character: ", character.name)
+		debug_config.debug_activities("No active activity for character: " + character.name)
 
 	# Update the main progress bar to show level progress
 	update_level_progress()
@@ -198,7 +201,7 @@ func update_activity_progress():
 func update_level_progress():
 	"""Update the main progress bar to show level progress"""
 	if character == null or not activity_progress_bar:
-		print("DEBUG: update_level_progress - character or progress bar is null")
+		debug_config.debug_ui("update_level_progress - character or progress bar is null")
 		return
 
 	# Calculate level progress (assuming 1000 XP per level)
@@ -206,11 +209,11 @@ func update_level_progress():
 	var level_progress = float(current_level_xp) / 1000.0
 	var progress_value = level_progress * 100
 
-	print("DEBUG: Level progress - XP: ", character.experience_points, ", Level XP: ", current_level_xp, ", Progress: ", level_progress, ", Value: ", progress_value)
-	print("DEBUG: Progress bar min: ", activity_progress_bar.min_value, ", max: ", activity_progress_bar.max_value, ", current value: ", activity_progress_bar.value)
+	debug_config.debug_ui("Level progress - XP: " + str(character.experience_points) + ", Level XP: " + str(current_level_xp) + ", Progress: " + str(level_progress) + ", Value: " + str(progress_value))
+	debug_config.debug_ui("Progress bar min: " + str(activity_progress_bar.min_value) + ", max: " + str(activity_progress_bar.max_value) + ", current value: " + str(activity_progress_bar.value))
 
 	activity_progress_bar.value = progress_value
-	print("DEBUG: Progress bar value after setting: ", activity_progress_bar.value)
+	debug_config.debug_ui("Progress bar value after setting: " + str(activity_progress_bar.value))
 
 # Handle character changes
 func _on_character_changed(new_character: Character):

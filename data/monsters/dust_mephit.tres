@@ -20,14 +20,14 @@ abilities = {
 "wisdom": 11
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills"])
-damage_immunities = Array[String](["damage_immunities"])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
-damage_vulnerabilities = Array[String]([damage_vulnerabilities"])
-condition_immunities = Array[String](["condition_immunities"])
+damage_vulnerabilities = Array[String](["damage_vulnerabilities"])
+condition_immunities = Array[String]([])
 senses = "Darkvision 60 ft., passive Perception 12"
 languages = Array[String](["Auran", "Terran"])
-challenge_rating = 1/2"
+challenge_rating = "1/2"
 xp = 0
 traits = Array[Dictionary]([])
 actions = Array[Dictionary]([])

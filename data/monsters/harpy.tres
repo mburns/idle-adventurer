@@ -20,7 +20,7 @@ abilities = {
 "wisdom": 10
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
+skills = Array[String](["Perception +3"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
@@ -30,7 +30,20 @@ languages = Array[String](["Common"])
 challenge_rating = "1"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The harpy makes two attacks: one with its claws and one with its beak"
+    },
+	{
+        "name": "Claws",
+        "description": "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+1) slashing damage"
+    },
+	{
+        "name": "Beak",
+        "description": "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+1) piercing damage"
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

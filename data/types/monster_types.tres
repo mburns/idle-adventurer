@@ -3,12 +3,12 @@
 [resource]
 metadata/yaml_data = {
 "challenge_ratings": {
-"category": "extreme",
-"challenge_ratings": ["id: CR_0", "id: CR_1_8", "id: CR_1_4", "id: CR_1_2", "id: CR_1", "id: CR_2", "id: CR_3", "id: CR_4", "id: CR_5_PLUS"],
-"color": "'#000000'  # Black",
-"description": "Extremely deadly encounter",
-"name": "CR 5+",
-"xp": 1800
+    "category": "extreme",
+    "challenge_ratings": ["id: CR_0", "id: CR_1_8", "id: CR_1_4", "id: CR_1_2", "id: CR_1", "id: CR_2", "id: CR_3", "id: CR_4", "id: CR_5_PLUS"],
+    "color": "'#000000'  # Black",
+    "description": "Extremely deadly encounter",
+    "name": "CR 5+",
+    "xp": 1800
 },
 "monster_categories": {
 "alien": {
@@ -22,39 +22,39 @@ metadata/yaml_data = {
 "priority": 6
 },
 "evil": {
-"description": "Creatures aligned with evil",
-"name": "Evil Creatures",
-"priority": 3
+    "description": "Creatures aligned with evil",
+    "name": "Evil Creatures",
+    "priority": 3
 },
 "good": {
-"description": "Creatures aligned with good",
-"name": "Good Creatures",
-"priority": 4
+    "description": "Creatures aligned with good",
+    "name": "Good Creatures",
+    "priority": 4
 },
 "horror": {
-"description": "Creatures designed to inspire fear",
-"name": "Horror Creatures",
-"priority": 9
+    "description": "Creatures designed to inspire fear",
+    "name": "Horror Creatures",
+    "priority": 9
 },
 "humanoid": {
-"description": "Creatures with human-like characteristics",
-"name": "Humanoid Creatures",
-"priority": 8
+    "description": "Creatures with human-like characteristics",
+    "name": "Humanoid Creatures",
+    "priority": 8
 },
 "magical": {
-"description": "Creatures with magical origins",
-"name": "Magical Creatures",
-"priority": 2
+    "description": "Creatures with magical origins",
+    "name": "Magical Creatures",
+    "priority": 2
 },
 "natural": {
-"description": "Creatures that exist in nature",
-"name": "Natural Creatures",
-"priority": 1
+    "description": "Creatures that exist in nature",
+    "name": "Natural Creatures",
+    "priority": 1
 },
 "unnatural": {
-"description": "Creatures that defy natural laws",
-"name": "Unnatural Creatures",
-"priority": 5
+    "description": "Creatures that defy natural laws",
+    "name": "Unnatural Creatures",
+    "priority": 5
 }
 },
 "monster_sizes": {

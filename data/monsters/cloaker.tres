@@ -12,15 +12,15 @@ armor_class = "14"
 hit_points = "78121012"
 speed = "10 ft., fly 40 ft."
 abilities = {
-"charisma": 14,
-"constitution": 12,
-"dexterity": 15,
-"intelligence": 13,
-"strength": 17,
-"wisdom": 12
+    "charisma": 14,
+    "constitution": 12,
+    "dexterity": 15,
+    "intelligence": 13,
+    "strength": 17,
+    "wisdom": 12
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Stealth +5"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])

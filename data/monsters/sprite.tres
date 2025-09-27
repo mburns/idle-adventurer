@@ -20,17 +20,19 @@ abilities = {
 "wisdom": 13
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Perception +3"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "passive Perception 13"
-languages = Array[String]([Common", "Elvish", Sylvan])
+languages = Array[String](["Common", "Elvish", "Sylvan"])
 challenge_rating = "1/4"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Dagger", "description": "*Melee or Ranged Weapon Attack:* +3 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 3 (1d4) piercing damage"}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

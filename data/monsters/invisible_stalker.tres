@@ -20,16 +20,26 @@ abilities = {
 "wisdom": 15
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills"])
-damage_immunities = Array[String](["damage_immunities"])
-damage_resistances = Array[String](["damage_resistances"])
+skills = Array[String](["Perception +8", "Stealth +10"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
-condition_immunities = Array[String](["condition_immunities"])
+condition_immunities = Array[String]([])
 senses = "darkvision 60 ft., passive Perception 18"
-languages = Array[String]([Auran", "understands Common but doesnt speak it])
+languages = Array[String](["Auran", "understands Common but doesnt speak it"])
 challenge_rating = "6"
 xp = 0
 traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The stalker makes two slam attacks"
+    },
+	{
+        "name": "Slam",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) bludgeoning damage"
+    }
+])
 actions = Array[Dictionary]([])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])

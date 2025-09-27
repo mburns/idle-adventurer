@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7noc8"]
 
 [resource]
-script = ExtResource("1_7noc8)
+script = ExtResource("1_7noc8")
 name = "Dire Wolf"
 size = "Large beast"
 type = "unaligned"
@@ -20,13 +20,13 @@ abilities = {
 "wisdom": 12
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills"])
+skills = Array[String]([])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "passive Perception 13"
-languages = Array[String]([""])"
+languages = Array[String]([])
 challenge_rating = "1"
 xp = 0
 traits = Array[Dictionary]([])

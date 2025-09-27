@@ -20,17 +20,22 @@ abilities = {
 "wisdom": 13
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Perception +5", "Stealth +4"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "darkvision 120 ft., passive Perception 15"
-languages = Array[String]([Giant Owl", "understands Common", Elvish, "and Sylvan but cant speak them])
-challenge_rating = 1/4"
+languages = Array[String](["Giant Owl", "understands Common", "Elvish", "and Sylvan but cant speak them"])
+challenge_rating = "1/4"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Talons",
+        "description": "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 8 (2d6+1) slashing damage"
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

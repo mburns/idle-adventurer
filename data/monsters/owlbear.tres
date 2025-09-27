@@ -20,17 +20,21 @@ abilities = {
 "wisdom": 12
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Perception +3"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "darkvision 60 ft., passive Perception 13"
-languages = Array[String](["])"
+languages =Array[String]([])
 challenge_rating = "3"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The owlbear makes two attacks: one with its beak and one with its claws"},
+	{"name": "Beak", "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one creature. *Hit:* 10 (1d10+5) piercing damage"},
+	{"name": "Claws", "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 14 (2d8+5) slashing damage"}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

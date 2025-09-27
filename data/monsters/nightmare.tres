@@ -21,12 +21,12 @@ abilities = {
 }
 saving_throws = Array[String]([])
 skills = Array[String]([])
-damage_immunities = Array[String](["damage_immunities"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "passive Perception 11"
-languages = Array[String]([understands Abyssal", "Common", and Infernal but cant speak"])
+languages = Array[String](["understands Abyssal", "Common", "and Infernal but cant speak"])
 challenge_rating = "3"
 xp = 0
 traits = Array[Dictionary]([])

@@ -20,13 +20,13 @@ abilities = {
 "wisdom": 14
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Perception +8"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "darkvision 60 ft., passive Perception 18"
-languages = Array[String]([understands Draconic but can"t speak"])
+languages = Array[String](["understands Draconic but can't speak"])
 challenge_rating = "6"
 xp = 0
 traits = Array[Dictionary]([])

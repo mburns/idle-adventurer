@@ -1,19 +1,37 @@
-[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MagicItemResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-metadata/yaml_data = {
-  "name": "Arrow-Catching Shield"",
-  "type": "Armor",
-  "rarity": "Rare",
-  "attunement": "true",
-  "description": "You gain a +2 bonus to AC against ranged attacks while you wield this shield. This bonus is in addition to the shield's normal bonus to AC. In addition, whenever an attacker makes a ranged attack against a target within 5 feet of you, you can use your reaction to become the target of the attack instead.",
-  "properties": [],
-  "effects": [],
-  "requirements": "attunement",
-  "weight": "",
-  "value": "",
-  "category": "magic_item"
-}
+name = "Arrow-Catching Shield"
+type = "Armor (shield)"
+rarity = "rare"
+attunement = true
+description = "You gain a +2 bonus to AC against ranged attacks while you wield this shield. This bonus is in addition to the shield's normal bonus to AC. In addition, whenever an attacker makes a ranged attack against a target within 5 feet of you, you can use your reaction to become the target of the attack instead."
+properties = Array[String]([])
+effects = Array[Dictionary]([])
+requirements = "attunement"
+weight = ""
+value = ""
+category = "magic_item"
+charges = 0
+max_charges = 0
+recharge_rate = ""
+spell_list = Array[String]([])
+spell_level = 0
+uses_per_day = 0
+cursed = false
+sentient = false
+armor_class_bonus = 2
+attack_bonus = 0
+damage_bonus = 0
+ability_bonuses = {}
+skill_bonuses = {}
+saving_throw_bonuses = {}
+resistance_types = Array[String]([])
+immunity_types = Array[String]([])
+vulnerability_types = Array[String]([])
+requires_identification = true
+identification_difficulty = 15
+detect_magic_visible = true

@@ -20,17 +20,21 @@ abilities = {
 "wisdom": 16
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
+skills = Array[String](["Perception +13"])
 damage_immunities = Array[String]([])
-damage_resistances = Array[String]([damage_resistances"])
+damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String](["damage_vulnerabilities"])
 condition_immunities = Array[String]([])
-senses = passive Perception 13"
-languages = Array[String](["Common", Druidic", "Elvish, Sylvan])
+senses = "passive Perception 13"
+languages = Array[String](["Common", "Druidic", "Elvish", "Sylvan"])
 challenge_rating = "9"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The treant makes two slam attacks"},
+	{"name": "Slam", "description": "*Melee Weapon Attack:* +10 to hit, reach 5 ft., one target. *Hit:* 16 (3d6+6) bludgeoning damage"},
+	{"name": "Rock", "description": "*Ranged Weapon Attack:* +10 to hit, range 60/180 ft., one target. *Hit:* 28 (4d10+6) bludgeoning damage"}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

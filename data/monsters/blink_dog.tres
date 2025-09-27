@@ -20,18 +20,20 @@ abilities = {
 "wisdom": 13
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Perception +3", "Stealth +5"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "passive Perception 13"
-languages = Array[String]([Blink Dog", understands Sylvan but can"t speak it])
+languages = Array[String](["Blink Dog", "understands Sylvan but can't speak it"])
 challenge_rating = "1/4"
 xp = 0
 traits = Array[Dictionary]([])
 actions = Array[Dictionary]([])
-reactions = Array[Dictionary]([])
+reactions = Array[Dictionary]([
+	{"name": "Teleport", "description": "The dog magically teleports, along with any equipment it is wearing or carrying, up to 40 feet to an unoccupied space it can see. Before or after teleporting, the dog can make one bite attack."}
+])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1
 passive_perception = "11"
