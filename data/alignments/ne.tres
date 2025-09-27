@@ -1,4 +1,13 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/alignment_resource.gd" id="1"]
 
 [resource]
-metadata/yaml_data = {"name": "Neutral evil", "abbreviation": "NE", "description": ""is the alignment of those who do whatever they can get away with", without compassion or qualms", "morality": "Evil", "attitude": "Neutral"}
+script = ExtResource("1")
+metadata/yaml_data = {
+  "name": "Neutral Evil",
+  "abbreviation": "NE",
+  "description": "Is the alignment of those who do whatever they can get away with, without compassion or qualms.",
+  "morality": "Evil",
+  "attitude": "Neutral"
+}

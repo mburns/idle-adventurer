@@ -9,6 +9,20 @@ var class_manager: ClassResourceManager
 var race_manager: RaceResourceManager
 
 func _init():
+	# Use global managers from AutoloadManager if available
+	if Engine.has_singleton("AutoloadManager"):
+		var autoload_manager = Engine.get_singleton("AutoloadManager")
+		if autoload_manager:
+			class_manager = autoload_manager.class_manager
+			race_manager = autoload_manager.race_manager
+			print("DEBUG: Character creation - using AutoloadManager managers")
+		else:
+			_create_fallback_managers()
+	else:
+		_create_fallback_managers()
+
+func _create_fallback_managers():
+	"""Create fallback managers if AutoloadManager is not available"""
 	class_manager = ClassResourceManager.new()
 	race_manager = RaceResourceManager.new()
 	add_child(class_manager)
@@ -18,6 +32,65 @@ func _init():
 	class_manager.load_all_classes()
 	race_manager.load_all_races()
 
+	# Force load races directly if the race manager has no races
+	if race_manager.get_all_races().is_empty():
+		_load_races_directly()
+
+	# Force load classes directly if the class manager has no classes
+	if class_manager.get_all_classes().is_empty():
+		_load_classes_directly()
+
+func _load_races_directly():
+	"""Load races directly from .tres files as a fallback"""
+	var races_dir = "res://data/races/"
+	var dir = DirAccess.open(races_dir)
+	if not dir:
+		return
+
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".tres"):
+			var file_path = races_dir + file_name
+			var race_resource = load(file_path) as RaceResource
+			if race_resource and race_resource.name != "":
+				# Add directly to the race manager's storage
+				race_manager.races[race_resource.name] = race_resource
+
+func _load_classes_directly():
+	"""Load classes directly from .tres files as a fallback"""
+	var classes_dir = "res://data/classes/"
+	var dir = DirAccess.open(classes_dir)
+	if not dir:
+		return
+
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".tres"):
+			var file_path = classes_dir + file_name
+			var class_resource = load(file_path) as CharacterClassResource
+			if class_resource and class_resource.name != "":
+				# Add directly to the class manager's storage
+				class_manager.classes[class_resource.name] = class_resource
+
+func _ready():
+	"""Try to use AutoloadManager managers if they're now available"""
+	if not Engine.has_singleton("AutoloadManager"):
+		return
+
+	var autoload_manager = Engine.get_singleton("AutoloadManager")
+	if autoload_manager and autoload_manager.class_manager and autoload_manager.race_manager:
+		# Remove fallback managers if we created them
+		if class_manager and is_instance_valid(class_manager) and class_manager.get_parent() == self:
+			remove_child(class_manager)
+			class_manager.queue_free()
+		if race_manager and is_instance_valid(race_manager) and race_manager.get_parent() == self:
+			remove_child(race_manager)
+			race_manager.queue_free()
+
+		# Use AutoloadManager managers
+		class_manager = autoload_manager.class_manager
+		race_manager = autoload_manager.race_manager
+
 func create_character(character_name: String, race: String, character_class: String, background: String) -> Character:
 	var character = Character.new()
 	character.name = character_name
@@ -26,9 +99,9 @@ func create_character(character_name: String, race: String, character_class: Str
 	character.background = background
 
 	# Apply race benefits using Resource
-	var race_resource = race_manager.get_race(race)
+	var race_resource = get_race_resource(race)
 	if race_resource != null:
-		race_manager.apply_racial_benefits(character, race_resource)
+		apply_racial_benefits(character, race_resource)
 
 	# Apply class benefits using Resource
 	var class_resource = class_manager.get_class_resource(character_class)
@@ -69,9 +142,21 @@ func validate_character_creation(character_name: String, _race: String, _class_t
 	return true
 
 func get_available_races() -> Array[String]:
-	# Use race resource manager for type-safe race names
+	# Try to use AutoloadManager race manager first
+	if Engine.has_singleton("AutoloadManager"):
+		var autoload_manager = Engine.get_singleton("AutoloadManager")
+		if autoload_manager and autoload_manager.race_manager:
+			var race_names: Array[String] = []
+			var all_races = autoload_manager.race_manager.get_all_races()
+			if all_races.size() > 0:
+				for race_resource in all_races:
+					race_names.append(race_resource.name)
+				return race_names
+
+	# Fallback to local race manager
 	var race_names: Array[String] = []
-	for race_resource in race_manager.get_all_races():
+	var all_races = race_manager.get_all_races()
+	for race_resource in all_races:
 		race_names.append(race_resource.name)
 	return race_names
 
@@ -139,8 +224,25 @@ func validate_race_selection(race_name: String) -> bool:
 # New Race-based functions
 
 func get_race_resource(race_name: String) -> RaceResource:
-	"""Get race resource by name"""
+	"""Get race resource by name, preferring AutoloadManager"""
+	if Engine.has_singleton("AutoloadManager"):
+		var autoload_manager = Engine.get_singleton("AutoloadManager")
+		if autoload_manager and autoload_manager.race_manager:
+			return autoload_manager.race_manager.get_race(race_name)
+
+	# Fallback to local race manager
 	return race_manager.get_race(race_name)
+
+func apply_racial_benefits(character: Character, race_resource: RaceResource):
+	"""Apply racial benefits to character"""
+	if Engine.has_singleton("AutoloadManager"):
+		var autoload_manager = Engine.get_singleton("AutoloadManager")
+		if autoload_manager and autoload_manager.race_manager:
+			autoload_manager.race_manager.apply_racial_benefits(character, race_resource)
+			return
+
+	# Fallback to local race manager
+	race_manager.apply_racial_benefits(character, race_resource)
 
 func get_race_recommendations_for_class(class_type: String) -> Array[RaceResource]:
 	"""Get race recommendations based on class"""

@@ -1,4 +1,13 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/alignment_resource.gd" id="1"]
 
 [resource]
-metadata/yaml_data = {"name": "Lawful evil", "abbreviation": "LE", "description": ""creatures methodically take what they want", within the limits of a code of tradition, loyalty, or order", "morality": "Evil", "attitude": "Lawful"}
+script = ExtResource("1")
+metadata/yaml_data = {
+  "name": "Lawful Evil",
+  "abbreviation": "LE",
+  "description": "Creatures methodically take what they want, within the limits of a code of tradition, loyalty, or order.",
+  "morality": "Evil",
+  "attitude": "Lawful"
+}

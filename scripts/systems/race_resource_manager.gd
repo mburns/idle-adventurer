@@ -21,16 +21,20 @@ func _ready() -> void:
 			data_loader = autoload_manager.data_loader
 		else:
 			data_loader = ResourceDataLoader.new()
-			
+
 	else:
 		data_loader = ResourceDataLoader.new()
-		
+
+	# Connect to data loaded signal
+	if data_loader and data_loader.has_signal("data_loaded"):
+		data_loader.data_loaded.connect(_on_data_loaded)
 
 	load_all_races()
 
-func _init():
-	# Initialize data loader early for immediate use
-	data_loader = ResourceDataLoader.new()
+# Signal handler for data loading
+func _on_data_loaded(data_type: String, count: int) -> void:
+	if data_type == "races":
+		_load_races_from_data_loader()
 
 # Load all races from .tres files
 func load_all_races() -> void:
@@ -38,11 +42,18 @@ func load_all_races() -> void:
 		print("Error: Data loader not initialized")
 		return
 
-	# Wait for data loader to finish loading
-	await data_loader.data_loaded
+	# Try to load races immediately if data is already available
+	_load_races_from_data_loader()
+
+# Internal method to load races from data loader
+func _load_races_from_data_loader() -> void:
+	if not data_loader:
+		return
 
 	# Get races from data loader
 	var all_races = data_loader.get_all_races()
+	if all_races.is_empty():
+		return
 
 	# Populate our storage
 	for race_resource in all_races:

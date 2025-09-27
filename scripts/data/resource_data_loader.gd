@@ -319,10 +319,19 @@ func load_level_requirements() -> void:
 		return
 
 	var level_reqs_data = resource.get_meta("yaml_data")
-	if level_reqs_data is Array:
-		for level_req_data in level_reqs_data:
-			if level_req_data is Dictionary and level_req_data.has("level"):
-				level_requirements[level_req_data["level"]] = level_req_data
+	if level_reqs_data is Dictionary and level_reqs_data.has("level_requirements"):
+		var level_reqs_dict = level_reqs_data["level_requirements"]
+		if level_reqs_dict is Dictionary:
+			for level_str in level_reqs_dict.keys():
+				var level = int(level_str)
+				var xp_required = level_reqs_dict[level_str]
+
+				var requirement_resource = LevelRequirementResource.new()
+				requirement_resource.level = level
+				requirement_resource.experience_required = xp_required
+				requirement_resource.config_name = "standard"
+
+				level_requirements[level] = requirement_resource
 
 	print("Loaded ", level_requirements.size(), " level requirements")
 	data_loaded.emit("level_requirements", level_requirements.size())
@@ -341,15 +350,21 @@ func load_names() -> void:
 
 	var names_data = resource.get_meta("yaml_data")
 	if names_data is Dictionary:
-		# Names file has first_names and last_names arrays
+		# Names file has first_names and last_names arrays of simple strings
 		if names_data.has("first_names") and names_data["first_names"] is Array:
-			for name_data in names_data["first_names"]:
-				if name_data is Dictionary and name_data.has("name"):
-					names[name_data["name"]] = name_data
+			for name_string in names_data["first_names"]:
+				if name_string is String:
+					var name_resource = NameResource.new()
+					name_resource.name = name_string
+					name_resource.category = "first_name"
+					names[name_string] = name_resource
 		if names_data.has("last_names") and names_data["last_names"] is Array:
-			for name_data in names_data["last_names"]:
-				if name_data is Dictionary and name_data.has("name"):
-					names[name_data["name"]] = name_data
+			for name_string in names_data["last_names"]:
+				if name_string is String:
+					var name_resource = NameResource.new()
+					name_resource.name = name_string
+					name_resource.category = "last_name"
+					names[name_string] = name_resource
 
 	print("Loaded ", names.size(), " names")
 	data_loaded.emit("names", names.size())
@@ -378,7 +393,10 @@ func get_race_by_name(race_name: String) -> RaceResource:
 
 func get_all_races() -> Array[RaceResource]:
 	"""Get all races"""
-	return races.values()
+	var race_array: Array[RaceResource] = []
+	for race_resource in races.values():
+		race_array.append(race_resource)
+	return race_array
 
 func get_class_by_name(class_type: String) -> CharacterClassResource:
 	"""Get a class by name"""

@@ -1,4 +1,13 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/alignment_resource.gd" id="1"]
 
 [resource]
-metadata/yaml_data = {"name": "Chaotic evil", "abbreviation": "CE", "description": ""creatures act with arbitrary violence", spurred by their greed, hatred, or bloodlust", "morality": "Evil", "attitude": "Chaotic"}
+script = ExtResource("1")
+metadata/yaml_data = {
+  "name": "Chaotic Evil",
+  "abbreviation": "CE",
+  "description": "Creatures act with arbitrary violence, spurred by their greed, hatred, or bloodlust.",
+  "morality": "Evil",
+  "attitude": "Chaotic"
+}

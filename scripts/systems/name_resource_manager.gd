@@ -25,33 +25,47 @@ func _ready() -> void:
 	else:
 		data_loader = ResourceDataLoader.new()
 
+	# Connect to data loaded signal
+	if data_loader and data_loader.has_signal("data_loaded"):
+		data_loader.data_loaded.connect(_on_data_loaded)
+
 	load_all_names()
 
 func _init():
 	# Initialize data loader early for immediate use
 	data_loader = ResourceDataLoader.new()
 
+# Signal handler for data loading
+func _on_data_loaded(data_type: String, count: int) -> void:
+	if data_type == "names":
+		_load_names_from_data_loader()
+
 # Load all names from resource file
 func load_all_names() -> void:
-	var names_data = data_loader.get_all_names()
-	if names_data.is_empty():
-		print("Warning: No names data found")
+	if not data_loader:
+		print("Error: Data loader not initialized")
 		return
 
-	# Process names data - this should be an array of name dictionaries
-	if names_data is Array:
-		for name_data in names_data:
-			var name_resource = NameResource.new()
-			name_resource.name = name_data.get("name") if name_data.get("name") != null else ""
-			name_resource.category = name_data.get("category") if name_data.get("category") != null else ""
-			name_resource.gender = name_data.get("gender") if name_data.get("gender") != null else ""
-			name_resource.origin = name_data.get("origin") if name_data.get("origin") != null else ""
-			name_resource.rarity = name_data.get("rarity") if name_data.get("rarity") != null else "common"
+	# Try to load names immediately if data is already available
+	_load_names_from_data_loader()
 
-			if name_resource.category == "first":
-				first_names.append(name_resource)
-			elif name_resource.category == "last":
-				last_names.append(name_resource)
+# Internal method to load names from data loader
+func _load_names_from_data_loader() -> void:
+	if not data_loader:
+		return
+
+	var names_data = data_loader.get_all_names()
+	if names_data.is_empty():
+		return
+
+	# Process names data - this should be an array of NameResource objects
+	if names_data is Array:
+		for name_resource in names_data:
+			if name_resource is NameResource:
+				if name_resource.category == "first_name":
+					first_names.append(name_resource)
+				elif name_resource.category == "last_name":
+					last_names.append(name_resource)
 
 	print("Loaded " + str(first_names.size()) + " first names and " + str(last_names.size()) + " last names")
 

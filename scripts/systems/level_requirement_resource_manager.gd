@@ -21,10 +21,13 @@ func _ready() -> void:
 			data_loader = autoload_manager.data_loader
 		else:
 			data_loader = ResourceDataLoader.new()
-			
+
 	else:
 		data_loader = ResourceDataLoader.new()
-		
+
+	# Connect to data loaded signal
+	if data_loader and data_loader.has_signal("data_loaded"):
+		data_loader.data_loaded.connect(_on_data_loaded)
 
 	load_all_level_requirements()
 
@@ -32,14 +35,35 @@ func _init():
 	# Initialize data loader early for immediate use
 	data_loader = ResourceDataLoader.new()
 
+# Signal handler for data loading
+func _on_data_loaded(data_type: String, count: int) -> void:
+	if data_type == "level_requirements":
+		_load_level_requirements_from_data_loader()
+
 # Load all level requirements from resource file
 func load_all_level_requirements() -> void:
-	var level_requirements_data = data_loader.get_all_level_requirements()
-	if level_requirements_data.is_empty():
-		print("Warning: No level requirements data found")
+	if not data_loader:
+		print("Error: Data loader not initialized")
 		return
 
-	level_requirements = level_requirements_data
+	# Try to load level requirements immediately if data is already available
+	_load_level_requirements_from_data_loader()
+
+# Internal method to load level requirements from data loader
+func _load_level_requirements_from_data_loader() -> void:
+	if not data_loader:
+		return
+
+	var level_requirements_data = data_loader.get_all_level_requirements()
+	if level_requirements_data.is_empty():
+		return
+
+	# Process level requirements data - this should be an array of LevelRequirementResource objects
+	if level_requirements_data is Array:
+		for requirement_resource in level_requirements_data:
+			if requirement_resource is LevelRequirementResource:
+				level_requirements[requirement_resource.level] = requirement_resource
+
 	print("Loaded " + str(level_requirements.size()) + " level requirements")
 
 # Public API methods

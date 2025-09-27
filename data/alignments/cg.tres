@@ -1,4 +1,13 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/alignment_resource.gd" id="1"]
 
 [resource]
-metadata/yaml_data = {"name": "Chaotic good", "abbreviation": "CG", "description": ""creatures act as their conscience directs", with little regard for what others expect", "morality": "Good", "attitude": "Chaotic"}
+script = ExtResource("1")
+metadata/yaml_data = {
+  "name": "Chaotic Good",
+  "abbreviation": "CG",
+  "description": "Creatures act as their conscience directs, with little regard for what others expect.",
+  "morality": "Good",
+  "attitude": "Chaotic"
+}

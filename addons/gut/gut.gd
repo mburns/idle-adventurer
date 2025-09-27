@@ -98,10 +98,11 @@ func _run_test_method(test_instance: Node, method_name: String):
 
     # Run the test
     var test_passed = true
-    try:
+    if test_instance.has_method(method_name):
         test_instance.call(method_name)
-    except:
+    else:
         test_passed = false
+        push_error("Test method " + method_name + " not found")
 
     # Call after_each if it exists
     if test_instance.has_method("after_each"):

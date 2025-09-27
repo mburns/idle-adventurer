@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
 metadata/yaml_data = {
-  "name": "Shield", +1, +2, or +3",
+  "name": "Shield, +1, +2, or +3",
   "type": "Armor",
   "rarity": "Uncommon",
-  "attunement": "false",
+  "attunement": false,
   "description": "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC.",
   "properties": [],
   "effects": [],
