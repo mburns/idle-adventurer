@@ -175,11 +175,18 @@ func apply_racial_benefits(character: Character, race_resource: RaceResource) ->
 	for ability in race_resource.ability_increases.keys():
 		var current_score = character.get(ability)
 		var increase = race_resource.ability_increases[ability]
+		# Ensure increase is an integer
+		if increase is String:
+			increase = int(increase)
 		character.set(ability, current_score + increase)
 
 	# Set size and speed
 	character.size = race_resource.size
-	character.speed = race_resource.speed
+	# Ensure speed is an integer
+	var speed_value = race_resource.speed
+	if speed_value is String:
+		speed_value = int(speed_value)
+	character.speed = speed_value
 
 	# Add languages
 	for language in race_resource.languages:

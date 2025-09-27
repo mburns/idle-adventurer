@@ -21,6 +21,11 @@ var test_results = {
     "warnings": 0
 }
 
+# Track assertion failures
+var current_test_failed = false
+var assertion_count = 0
+var failed_assertions = []
+
 func set_include_subdirs(value: bool):
     include_subdirs = value
 
@@ -40,6 +45,8 @@ func run_tests():
     tests.clear()
     test_results = {"tests": 0, "passed": 0, "failed": 0, "warnings": 0}
     current_test_index = 0
+    assertion_count = 0
+    failed_assertions.clear()
 
     # Find all test files
     _find_test_files("res://tests/")
@@ -74,6 +81,11 @@ func _run_test_file(file_path: String):
 
     var test_instance = Node.new()
     test_instance.set_script(test_script)
+    
+    # Pass GUT instance to the test
+    if test_instance.has_method("set_gut_instance"):
+        test_instance.set_gut_instance(self)
+    
     add_child(test_instance)
 
     # Find all test methods
@@ -91,6 +103,8 @@ func _run_test_file(file_path: String):
 
 func _run_test_method(test_instance: Node, method_name: String):
     test_results.tests += 1
+    current_test_failed = false
+    assertion_count = 0
 
     # Call before_each if it exists
     if test_instance.has_method("before_each"):
@@ -100,6 +114,7 @@ func _run_test_method(test_instance: Node, method_name: String):
     var test_passed = true
     if test_instance.has_method(method_name):
         test_instance.call(method_name)
+        test_passed = not current_test_failed
     else:
         test_passed = false
         push_error("Test method " + method_name + " not found")
@@ -110,8 +125,14 @@ func _run_test_method(test_instance: Node, method_name: String):
 
     if test_passed:
         test_results.passed += 1
+        if should_print_to_console:
+            print("✅ " + method_name + " - PASSED")
     else:
         test_results.failed += 1
+        if should_print_to_console:
+            print("❌ " + method_name + " - FAILED")
+            for assertion in failed_assertions:
+                print("   " + assertion)
 
     test_finished.emit(method_name, test_passed)
 
@@ -121,10 +142,14 @@ func _run_test_method(test_instance: Node, method_name: String):
 func get_summary() -> Dictionary:
     return test_results
 
-# Simple assertion functions
+# Enhanced assertion functions that track failures
 func assert_true(condition: bool, message: String = ""):
+    assertion_count += 1
     if not condition:
-        push_error("Assertion failed: " + message)
+        var error_msg = "Assertion failed: " + message
+        push_error(error_msg)
+        failed_assertions.append(error_msg)
+        current_test_failed = true
         return false
     return true
 
@@ -132,7 +157,8 @@ func assert_false(condition: bool, message: String = ""):
     return assert_true(not condition, message)
 
 func assert_eq(actual, expected, message: String = ""):
-    return assert_true(actual == expected, message + " (expected: " + str(expected) + ", actual: " + str(actual) + ")")
+    var full_message = message + " (expected: " + str(expected) + ", actual: " + str(actual) + ")"
+    return assert_true(actual == expected, full_message)
 
 func assert_ne(actual, expected, message: String = ""):
     return assert_true(actual != expected, message)

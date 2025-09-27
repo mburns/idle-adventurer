@@ -4,6 +4,61 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### 🔧 **Test Runner and Data Loading Fixes** - December 2024
+
+**🚀 Test Framework and Data System Improvements**
+
+- **✅ Test Runner Fixes**: Fixed GUT addon parse errors and test execution issues
+  - Fixed Python-style `try:` syntax in `gut.gd` with proper GDScript `has_method()` checks
+  - Added automatic test execution in headless mode for CI/CD compatibility
+  - Resolved test runner initialization and signal connection issues
+- **✅ Data Loading Improvements**: Fixed names and level requirements loading from .tres files
+  - Fixed `NameResource` property access (changed `type` to `category`)
+  - Fixed `LevelRequirementResource` parsing from dictionary data
+  - Added proper type casting for string/int values in resource files
+- **✅ Race Manager Fixes**: Resolved race loading timing issues and character creation problems
+  - Fixed multiple `ResourceDataLoader` instances causing empty race data
+  - Connected managers to `data_loaded` signal for proper initialization timing
+  - Added fallback direct loading for character creation when AutoloadManager unavailable
+- **✅ Resource Script Updates**: Updated RaceResource to handle string/int speed values properly
+  - Changed `speed` property from `int` to `Variant` to handle both types
+  - Added type-safe getter methods with proper casting
+  - Updated all speed-related methods to use type-safe accessors
+- **✅ Script Cleanup**: Removed 10 obsolete conversion and fix scripts
+  - Deleted Python conversion scripts: `convert_magic_items.py`, `convert_monster_with_actions.py`
+  - Deleted fix scripts: `fix_all_tres_errors.py`, `fix_data_formatting.py`, etc.
+  - Cleaned up temporary files and backup scripts
+- **✅ Character Creation**: Fixed fallback manager initialization and data loading
+  - Added robust fallback system for when AutoloadManager is not available
+  - Implemented direct resource loading as backup mechanism
+  - Fixed race and class availability for character creation
+- **✅ Type Safety**: Fixed "Invalid operands 'int' and 'String'" errors in resource managers
+  - Added explicit type casting in `RaceResourceManager.apply_racial_benefits`
+  - Fixed string/int arithmetic operations throughout resource system
+  - Enhanced error handling and type validation
+
+**📁 Files Fixed**
+
+- **Test Framework**: GUT addon and test runner configuration
+- **Resource Scripts**: RaceResource, NameResource, LevelRequirementResource
+- **Data Loaders**: ResourceDataLoader, RaceResourceManager, NameResourceManager
+- **Character Creation**: CharacterCreation script with fallback mechanisms
+
+**🔧 System Improvements**
+
+- **Test Runner**: Automatic execution in headless mode for CI/CD
+- **Data Loading**: Proper signal-based initialization and timing
+- **Resource System**: Type-safe handling of mixed string/int data
+- **Character Creation**: Robust fallback system for data availability
+
+**📊 Results**
+
+- **✅ Test Runner Functional**: Tests execute automatically in headless mode
+- **✅ Data Loading**: Names, level requirements, and races loading successfully
+- **✅ Character Creation**: Random character creation working without errors
+- **✅ Type Safety**: Eliminated string/int arithmetic errors
+- **✅ Script Cleanup**: Removed 10 obsolete scripts, cleaner codebase
+
 ### 🔧 **Script Cleanup and Final JSON Error Resolution** - December 2024
 
 **🚀 Major Bug Fixes and Cleanup**

@@ -5,16 +5,22 @@ extends Node
 # Reference to the GUT instance
 var gut: Node
 
-func _ready():
+func _init():
 	# Find the GUT instance in the scene tree
-	gut = get_tree().get_first_node_in_group("gut")
-	if gut == null:
-		# If not found in group, try to find by script
-		var nodes = get_tree().get_nodes_in_group("")
-		for node in nodes:
-			if node.get_script() and node.get_script().get_path().ends_with("gut.gd"):
-				gut = node
-				break
+	# This will be called when the test instance is created
+	call_deferred("_find_gut_instance")
+
+func _find_gut_instance():
+	# Try to find GUT instance in the scene tree
+	if get_tree():
+		gut = get_tree().get_first_node_in_group("gut")
+		if gut == null:
+			# If not found in group, try to find by script
+			var nodes = get_tree().get_nodes_in_group("")
+			for node in nodes:
+				if node.get_script() and node.get_script().get_path().ends_with("gut.gd"):
+					gut = node
+					break
 
 	if gut == null:
 		push_error("GUT instance not found! Tests will not work properly.")

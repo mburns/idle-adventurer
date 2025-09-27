@@ -26,6 +26,12 @@ func _ready():
         if gut:
             print("Gut signals: ", gut.get_signal_list())
 
+    # Auto-run tests in headless mode
+    if OS.has_feature("headless") or OS.has_feature("server"):
+        print("Running tests automatically in headless mode...")
+        await get_tree().process_frame
+        _on_run_tests_button_pressed()
+
 func _on_run_tests_button_pressed():
     test_results.text = "Running tests...\n"
     if gut and gut.has_method("run_tests"):

@@ -6,14 +6,15 @@ An idle D&D game where characters progress between adventures through activities
 
 ## ✅ **Completed Tasks**
 
-### 🔧 **Script Cleanup and JSON Error Resolution** - December 2024
+### 🔧 **Test Runner and Data Loading Fixes** - December 2024
 
-- [x] **Obsolete Script Removal**: Removed 13 unused Python fix scripts and GDScript conversion tools
-- [x] **JSON Parse Error Fixes**: Fixed remaining JSON parsing errors in .tres files
-- [x] **Merge Conflict Resolution**: Resolved all merge conflicts in core game files
-- [x] **Code Quality Improvements**: Fixed type hints and function signatures
-- [x] **Autoload Manager Cleanup**: Removed non-existent manager references
-- [x] **Game Startup Verification**: Confirmed game loads successfully with all fixes
+- [x] **Test Runner Fixes**: Fixed GUT addon parse errors and test execution issues
+- [x] **Data Loading Improvements**: Fixed names and level requirements loading from .tres files
+- [x] **Race Manager Fixes**: Resolved race loading timing issues and character creation problems
+- [x] **Resource Script Updates**: Updated RaceResource to handle string/int speed values properly
+- [x] **Script Cleanup**: Removed 10 obsolete conversion and fix scripts
+- [x] **Character Creation**: Fixed fallback manager initialization and data loading
+- [x] **Type Safety**: Fixed "Invalid operands 'int' and 'String'" errors in resource managers
 
 ### 🎯 **MAJOR MILESTONE: Complete YAML to .tres Migration** - December 2024
 

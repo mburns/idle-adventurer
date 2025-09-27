@@ -5,7 +5,7 @@ class_name RaceResource
 @export var name: String = ""
 @export var ability_increases: Dictionary = {}
 @export var size: String = "Medium"
-@export var speed: int = 30
+@export var speed: Variant = 30
 @export var height_range: Dictionary = {}
 @export var weight_range: Dictionary = {}
 @export var languages: Array[String] = []
@@ -54,6 +54,8 @@ func get_size_category() -> String:
 	return size
 
 func get_movement_speed() -> int:
+	if speed is String:
+		return int(speed)
 	return speed
 
 func get_subrace_names() -> Array[String]:
@@ -73,7 +75,7 @@ func get_subrace(subrace_name: String) -> Dictionary:
 func get_racial_bonuses() -> Dictionary:
 	return {
 		"ability_increases": ability_increases.duplicate(),
-		"speed": speed,
+		"speed": get_movement_speed(),
 		"darkvision": darkvision,
 		"resistances": resistances.duplicate(),
 		"immunities": immunities.duplicate(),
@@ -83,7 +85,7 @@ func get_racial_bonuses() -> Dictionary:
 func get_race_summary() -> String:
 	var summary = name + ":\n"
 	summary += "Size: " + size + "\n"
-	summary += "Speed: " + str(speed) + " feet\n"
+	summary += "Speed: " + str(get_movement_speed()) + " feet\n"
 	if darkvision > 0:
 		summary += "Darkvision: " + str(darkvision) + " feet\n"
 	if not ability_increases.is_empty():
