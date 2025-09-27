@@ -1,57 +1,43 @@
-[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-metadata/yaml_data = {
-  "name": "Ghast (Ghoul)",
-  "size": Medium undead,
-  "type": chaotic evil,
-  "alignment": ,
-  "armor_class": 13,
-  "hit_points": 36 (8d8),
-  "speed": 30 ft.,
-  "abilities": {
-    "strength": 16,
-    "dexterity": 17,
-    "constitution": 10,
-    "intelligence": 11,
-    "wisdom": 10,
-    "charisma": 8
-  },
-  "saving_throws": [],
-  "skills": [],
-  "damage_immunities": [
-    "poison"
-  ],
-  "damage_resistances": ["
-    "necrotic"
-  ],
-  "damage_vulnerabilities": [],
-  "condition_immunities: ["
-    charmed",
-    "exhaustion,
-    poisoned"
-  ],
-  "senses: darkvision 60 ft., passive Perception 10",
-  "languages: Common",
-  "challenge_rating": 2,
-  "xp": 0,
-  "traits": [],
-  "actions: ["
-    {
-      "name": "Bite***. *Melee Weapon Attack:* +3 to hit, reach 5 ft., one creature. *Hit:* 12 (2d8+3) piercing dama,
-      "description": ""
-    },
-    {
-      name: "Claws.*** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) slashing damage. If the target is a creature other than an undead, it must succeed on a DC 10 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a succe",
-      description: ""
-    }
-  ],
-  "legendary_actions": [],
-  "reactions": [],
-  "spellcasting": {},
-  "description": ",
-  "category": monster"
+name = "Ghast (Ghoul)"
+size = "Medium undead"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "13"
+hit_points = "36"
+speed = "30 ft."
+abilities = {
+"charisma": 8,
+"constitution": 10,
+"dexterity": 17,
+"intelligence": 11,
+"strength": 16,
+"wisdom": 10
 }
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String](["poison"])
+damage_resistances = Array[String](["necrotic"])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["charmed", "exhaustion", "poisoned"])
+senses = "darkvision 60 ft., passive Perception 10"
+languages = Array[String](["Common"])
+challenge_rating = "2"
+xp = 450
+traits = Array[Dictionary]([
+	{"name": "Stench", "description": "Any creature that starts its turn within 5 feet of the ghast must succeed on a DC 10 Constitution saving throw or be poisoned until the start of its next turn. On a successful saving throw, the creature is immune to the ghast's Stench for 24 hours"},
+	{"name": "Turning Defiance", "description": "The ghast and any ghouls within 30 feet of it have advantage on saving throws against effects that turn undead"}
+])
+actions = Array[Dictionary]([
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one creature. *Hit:* 12 (2d8+3) piercing damage"},
+	{"name": "Claws", "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) slashing damage. If the target is a creature other than an undead, it must succeed on a DC 10 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "10"

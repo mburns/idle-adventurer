@@ -20,17 +20,21 @@ abilities = {
 "wisdom": 14
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Deception +5", "Insight +4", "Investigation +5", "Perception +6", "Persuasion +5", "Sleight of Hand +4", "Stealth +4"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "passive Perception 16"
-languages = Array[String](["any two languages"])"
+languages = Array[String](["any two languages"])
 challenge_rating = "1"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The spy makes two melee attacks"},
+	{"name": "Shortsword", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) piercing damage"},
+	{"name": "Hand Crossbow", "description": "*Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6 + 2) piercing damage"}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

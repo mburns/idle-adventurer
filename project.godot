@@ -23,6 +23,7 @@ DataLoader="*res://scripts/data/data_loader.gd"
 GameEvents="*res://scripts/events/game_events.gd"
 AnimationManager="*res://scripts/visual/animation_manager.gd"
 ThemeManager="*res://scripts/visual/theme_manager.gd"
+DebugConfig="res://scripts/core/debug_config.gd"
 
 [display]
 

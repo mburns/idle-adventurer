@@ -3,7 +3,7 @@
 
 extends Node
 
-signal test_finished(test_name: String, did_pass: bool)
+signal test_finished(test_name, did_pass)
 signal all_tests_finished()
 
 var test_prefix = "test_"

@@ -20,17 +20,19 @@ abilities = {
 "wisdom": 8
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Stealth +2"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "blindsight 30 ft., passive Perception 9"
-languages = Array[String](["])"
+languages = Array[String]([])
 challenge_rating = "0"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Claw", "description": "*Melee Weapon Attack:* +0 to hit, reach 5 ft., one target. *Hit:* 1 bludgeoning damage."}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

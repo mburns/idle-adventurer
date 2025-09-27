@@ -20,7 +20,7 @@ abilities = {
 "wisdom": 12
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
+skills = Array[String](["Perception +5"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
@@ -30,7 +30,20 @@ languages = Array[String](["Common"])
 challenge_rating = "3"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The manticore makes two attacks: one with its bite and one with its claws"
+    },
+	{
+        "name": "Bite",
+        "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6+3) piercing damage"
+    },
+	{
+        "name": "Claws",
+        "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6+3) slashing damage"
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

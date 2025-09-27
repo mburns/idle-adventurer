@@ -9,7 +9,7 @@ size = "Medium humanoid (any race)"
 type = "any alignment"
 alignment = "any alignment"
 armor_class = "10"
-hit_points = 9
+hit_points = "9"
 speed = "30 ft."
 abilities = {
 "charisma": 11,

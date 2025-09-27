@@ -20,12 +20,12 @@ abilities = {
 "wisdom": 14
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills"])
-damage_immunities = Array[String](["damage_immunities"])
+skills = Array[String](["Perception +6"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
-senses = "darkvision 90 ft.", passive Perception 16"
+senses = "darkvision 90 ft., passive Perception 16"
 languages = Array[String](["Draconic"])
 challenge_rating = "11"
 xp = 0

@@ -1,63 +1,45 @@
-[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-metadata/yaml_data = {
-  "name": "Werebear (Lycanthrope)",
-  "size": Medium humanoid (human,
-  "type": shapechanger),
-  "alignment": neutral good,
-  "armor_class": 10 in humanoid form, 11 (natural armor) in bear and hybrid form,
-  "hit_points": 135 (18d8+54),
-  "speed": 30 ft. (40 ft., climb 30 ft. in bear or hybrid form),
-  "abilities": {
-    "strength": 19,
-    "dexterity": 10,
-    "constitution": 17,
-    "intelligence": 11,
-    "wisdom": 12,
-    "charisma": 12
-  },
-  "saving_throws": [],
-  "skills": [
-    Perception +7"
-  ],
-  "damage_immunities: ["
-    bludgeoning",
-    "piercing,
-    and slashing from nonmagical attacks not made with silvered weapons"
-  ],
-  "damage_resistances": [],
-  "damage_vulnerabilities": [],
-  "condition_immunities": [],
-  "senses": "passive Perception 17,
-  "languages": "Common (can't speak in bear form),
-  "challenge_rating": 5,
-  "xp": 0,
-  "traits": [],
-  "actions": ["
-    {
-      "name: Multiattack***. In bear form, the werebear makes two claw attacks. In humanoid form, it makes two greataxe attacks. In hybrid form, it can attack like a bear or a humano",
-      "description: ""
-    },
-    {
-      "name: Bite (Bear or Hybrid Form Only)***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 15 (2d10+4) piercing damage. If the target is a humanoid, it must succeed on a DC 14 Constitution saving throw or be cursed with werebear lycanthro",
-      "description: ""
-    },
-    {
-      "name: Claw (Bear or Hybrid Form Only)***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) slashing dama",
-      "description: ""
-    },
-    {
-      "name: Greataxe (Humanoid or Hybrid Form Only)***. *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 10 (1d12+4) slashing dama",
-      "description: ""
-    }
-  ],
-  "legendary_actions": [],
-  "reactions": [],
-  "spellcasting: {},
-  "description": ",
-  category: "monster"
+name = "Werebear (Lycanthrope)"
+size = "Medium humanoid (human, shapechanger)"
+type = "neutral good"
+alignment = "neutral good"
+armor_class = "10"
+hit_points = "135"
+speed = "30 ft. (40 ft., climb 30 ft. in bear or hybrid form)"
+abilities = {
+"charisma": 12,
+"constitution": 17,
+"dexterity": 10,
+"intelligence": 11,
+"strength": 19,
+"wisdom": 12
 }
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +7"])
+damage_immunities = Array[String](["bludgeoning", "piercing", "and slashing from nonmagical attacks not made with silvered weapons"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 17"
+languages = Array[String](["Common (can't speak in bear form)"])
+challenge_rating = "5"
+xp = 1800
+traits = Array[Dictionary]([
+	{"name": "Shapechanger", "description": "The werebear can use its action to polymorph into a Large bear-humanoid hybrid or into a Large bear, or back into its true form, which is humanoid. Its statistics, other than its size and AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies"},
+	{"name": "Keen Smell", "description": "The werebear has advantage on Wisdom (Perception) checks that rely on smell"}
+])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "In bear form, the werebear makes two claw attacks. In humanoid form, it makes two greataxe attacks. In hybrid form, it can attack like a bear or a humanoid"},
+	{"name": "Bite (Bear or Hybrid Form Only)", "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 15 (2d10+4) piercing damage. If the target is a humanoid, it must succeed on a DC 14 Constitution saving throw or be cursed with werebear lycanthropy"},
+	{"name": "Claw (Bear or Hybrid Form Only)", "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) slashing damage"},
+	{"name": "Greataxe (Humanoid or Hybrid Form Only)", "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 10 (1d12+4) slashing damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 3
+passive_perception = "17"

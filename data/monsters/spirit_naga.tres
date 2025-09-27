@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_gupwn"]
 
 [resource]
-script = ExtResource("1_gupwn)
+script = ExtResource("1_gupwn")
 name = "Spirit Naga"
 size = "Large monstrosity"
 type = "chaotic evil"
@@ -20,17 +20,35 @@ abilities = {
 "wisdom": 15
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
-damage_immunities = Array[String](["damage_immunities"])
+skills = Array[String](["Perception +4"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
-condition_immunities = Array[String](["condition_immunities"])
+condition_immunities = Array[String](["poisoned"])
 senses = "darkvision 60 ft., passive Perception 12"
 languages = Array[String](["Abyssal", "Common"])
 challenge_rating = "8"
 xp = 0
-traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+traits = Array[Dictionary]([
+	{
+        "name": "Rejuvenation",
+        "description": "If it dies, the naga returns to life in 1d6 days and regains all its hit points. Only a *wish* spell can prevent this trait from functioning."
+    },
+	{
+        "name": "Spellcasting",
+        "description": "The naga is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following wizard spells prepared:"
+    }
+])
+actions = Array[Dictionary]([
+	{
+        "name": "Bite",
+        "description": "*Melee Weapon Attack:* +7 to hit, reach 10 ft., one creature. *Hit:* 7 (1d6+4) piercing damage, and the target must make a DC 13 Constitution saving throw, taking 31 (7d8) poison damage on a failed save, or half as much damage on a successful one."
+    },
+	{
+        "name": "Spit Poison",
+        "description": "*Ranged Weapon Attack:* +7 to hit, range 15/30 ft., one creature. *Hit:* The target must make a DC 13 Constitution saving throw, taking 31 (7d8) poison damage on a failed save, or half as much damage on a successful one."
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

@@ -1,59 +1,40 @@
-[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-metadata/yaml_data = {
-  "name": "Copper Dragon Wyrmling (Metallic)",
-  "size": Medium dragon,
-  "type": chaotic good,
-  "alignment": ,
-  "armor_class": 16 (natural armor),
-  "hit_points": 22 (4d8+4),
-  "speed": 30 ft., climb 30 ft., fly 60 ft.,
-  "abilities": {
-    "strength": 15,
-    "dexterity": 12,
-    "constitution": 13,
-    "intelligence": 14,
-    "wisdom": 11,
-    "charisma": 13
-  },
-  "saving_throws": ["
-    "Dex +3,
-    Con +3",
-    "Wis +2,
-    Cha +3"
-  ],
-  "skills": [
-    Perception +4",
-    "Stealth +3"
-  ],
-  "damage_immunities": [
-    "acid"
-  ],
-  "damage_resistances": [],
-  "damage_vulnerabilities": [],
-  "condition_immunities": [],
-  "senses: blindsight 10 ft., darkvision 60 ft., passive Perception 14",
-  "languages: Draconic",
-  "challenge_rating": 1,
-  "xp": 0,
-  "traits": [],
-  "actions: ["
-    {
-      "name": "Bite***. *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 7 (1d10+2) piercing dama,
-      "description": ""
-    },
-    {
-      name: "Breath Weapons (Recharge 5-6)***. The dragon uses one of the following breath weapo",
-      description: ""
-    }
-  ],
-  "legendary_actions": [],
-  "reactions": [],
-  "spellcasting": {},
-  "description": ",
-  "category": monster"
+name = "Copper Dragon Wyrmling (Metallic)"
+size = "Medium dragon"
+type = "chaotic good"
+alignment = "chaotic good"
+armor_class = "16"
+hit_points = "22"
+speed = "30 ft., climb 30 ft., fly 60 ft."
+abilities = {
+"charisma": 13,
+"constitution": 13,
+"dexterity": 12,
+"intelligence": 14,
+"strength": 15,
+"wisdom": 11
 }
+saving_throws = Array[String](["Dex +3", "Con +3", "Wis +2", "Cha +3"])
+skills = Array[String](["Perception +4", "Stealth +3"])
+damage_immunities = Array[String](["acid"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 10 ft., darkvision 60 ft., passive Perception 14"
+languages = Array[String](["Draconic"])
+challenge_rating = "1"
+xp = 200
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 7 (1d10+2) piercing damage"},
+	{"name": "Breath Weapons (Recharge 5-6)", "description": "The dragon uses one of the following breath weapons.\n\n**Acid Breath**. The dragon exhales acid in an 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 18 (4d8) acid damage on a failed save, or half as much damage on a successful one.\n\n**Slowing Breath**. The dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "14"

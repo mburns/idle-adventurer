@@ -21,12 +21,12 @@ abilities = {
 }
 saving_throws = Array[String]([])
 skills = Array[String]([])
-damage_immunities = Array[String](["damage_immunities"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
 senses = "passive Perception 16"
-languages = Array[String](["Giant"])"
+languages = Array[String](["Giant"])
 challenge_rating = "9"
 xp = 0
 traits = Array[Dictionary]([])

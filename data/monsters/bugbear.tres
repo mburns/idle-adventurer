@@ -20,7 +20,7 @@ abilities = {
 "wisdom": 11
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills])
+skills = Array[String](["Perception +10"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
@@ -28,9 +28,13 @@ condition_immunities = Array[String]([])
 senses = "darkvision 60 ft., passive Perception 10"
 languages = Array[String](["Common", "Goblin"])
 challenge_rating = "1"
-xp = 0
+xp = 200
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The bugbear makes two attacks: one with its bite and one with its claws"},
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing damage"},
+	{"name": "Claw", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) slashing damage"}
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

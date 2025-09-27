@@ -21,10 +21,10 @@ abilities = {
 }
 saving_throws = Array[String]([])
 skills = Array[String]([])
-damage_immunities = Array[String](["damage_immunities"])
-damage_resistances = Array[String](["damage_resistances"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
-condition_immunities = Array[String](["condition_immunities"])
+condition_immunities = Array[String](["poisoned"])
 senses = "darkvision 120 ft., passive Perception 10"
 languages = Array[String](["Infernal", "telepathy 120 ft."])
 challenge_rating = "3"

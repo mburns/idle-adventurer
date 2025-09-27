@@ -4,7 +4,7 @@
 metadata/yaml_data = {
 "category": "disease",
 "cure": "",
-"description": "|-",
+"description": "",
 "name": "Sight Rot",
 "symptoms": Array[String]([]),
 "transmission": "",

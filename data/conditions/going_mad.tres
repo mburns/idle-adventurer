@@ -3,7 +3,7 @@
 [resource]
 metadata/yaml_data = {
 "category": "madness",
-"description": "|-",
+"description": "",
 "effects": Array[String]([]),
 "name": "Going Mad",
 "type": "madness"

@@ -20,7 +20,7 @@ abilities = {
 "wisdom": 13
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
+skills = Array[String](["Perception +6"])
 damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
@@ -30,7 +30,16 @@ languages = Array[String](["Otyugh"])
 challenge_rating = "5"
 xp = 0
 traits = Array[Dictionary]([])
-actions = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The otyugh makes two attacks: one with its bite and one with its tentacles"
+    },
+	{
+        "name": "Bite",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) piercing damage"
+    }
+])
 reactions = Array[Dictionary]([])
 legendary_actions = Array[Dictionary]([])
 proficiency_bonus = 1

@@ -20,12 +20,12 @@ abilities = {
 "wisdom": 10
 }
 saving_throws = Array[String]([])
-skills = Array[String]([])
-damage_immunities = Array[String](["damage_immunities"])
+skills = Array[String](["Stealth +2"])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
-condition_immunities = Array[String](["condition_immunities"])
-senses = "darkvision 60 ft.", passive Perception 10"
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
 languages = Array[String](["Aquan", "Ignan"])
 challenge_rating = "1/4"
 xp = 0

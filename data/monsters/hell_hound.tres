@@ -20,12 +20,12 @@ abilities = {
 "wisdom": 13
 }
 saving_throws = Array[String]([])
-skills = Array[String](["skills"])
-damage_immunities = Array[String](["damage_immunities"])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
 damage_resistances = Array[String]([])
 damage_vulnerabilities = Array[String]([])
 condition_immunities = Array[String]([])
-senses = "darkvision 60 ft.", passive Perception 15"
+senses = "darkvision 60 ft., passive Perception 15"
 languages = Array[String](["understands Infernal but cant speak it"])
 challenge_rating = "3"
 xp = 0
