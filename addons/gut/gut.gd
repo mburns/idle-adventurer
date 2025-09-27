@@ -81,11 +81,11 @@ func _run_test_file(file_path: String):
 
     var test_instance = Node.new()
     test_instance.set_script(test_script)
-    
+
     # Pass GUT instance to the test
     if test_instance.has_method("set_gut_instance"):
         test_instance.set_gut_instance(self)
-    
+
     add_child(test_instance)
 
     # Find all test methods

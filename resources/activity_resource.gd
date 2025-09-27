@@ -10,11 +10,15 @@ class_name ActivityResource
 @export var description: String = ""
 
 # Activity mechanics
-@export var base_duration: float = 10.0
+@export var base_duration: float = 45.0  # Duration in seconds (30-60 seconds)
 @export var base_xp: int = 10
 @export var base_gold: int = 0
-@export var daily_progress: float = 0.1
-@export var cost_per_day: float = 0.0
+@export var daily_progress: float = 0.1  # Legacy field, kept for compatibility
+@export var cost_per_day: float = 0.0  # Legacy field, kept for compatibility
+@export var cycle_duration: float = 15.0  # Duration of one activity cycle in seconds
+@export var cycle_xp: int = 5  # XP gained per cycle
+@export var cycle_gold: int = 2  # Gold gained per cycle
+@export var cycle_cost: float = 0.0  # Cost per cycle
 
 # Requirements and rewards
 @export var requirements: Dictionary = {}
@@ -150,7 +154,7 @@ func _character_has_tools(character: Character) -> bool:
 	# For now, assume character has tools if they have enough gold
 	return character.gold >= 50
 
-func _character_in_location(character: Character, required_location: String) -> bool:
+func _character_in_location(_character: Character, _required_location: String) -> bool:
 	"""Check if character is in required location"""
 	# For now, assume character can be anywhere
 	# This would integrate with location/town system
@@ -197,3 +201,46 @@ func get_category_color() -> Color:
 			return Color.ORANGE
 		_:
 			return Color.WHITE
+
+func get_cycle_duration() -> float:
+	"""Get the duration of one activity cycle in seconds"""
+	return cycle_duration
+
+func get_cycle_xp(character_level: int = 1) -> int:
+	"""Get XP reward for one cycle, scaled by character level"""
+	if not scales_with_level:
+		return cycle_xp
+
+	var scaled_xp = cycle_xp * (1.0 + (character_level - 1) * xp_scaling_factor * 0.1)
+	return int(scaled_xp)
+
+func get_cycle_gold(character_level: int = 1) -> int:
+	"""Get gold reward for one cycle, scaled by character level"""
+	if not scales_with_level:
+		return cycle_gold
+
+	var scaled_gold = cycle_gold * (1.0 + (character_level - 1) * gold_scaling_factor * 0.1)
+	return int(scaled_gold)
+
+func get_cycle_cost() -> float:
+	"""Get cost for one cycle"""
+	return cycle_cost
+
+func get_cycle_rewards(character_level: int = 1) -> Dictionary:
+	"""Get all rewards for one cycle"""
+	var cycle_rewards = {}
+
+	# Add XP and gold from cycle values
+	if cycle_xp > 0:
+		var ability_exp_key = ability + "_exp"
+		cycle_rewards[ability_exp_key] = get_cycle_xp(character_level)
+
+	if cycle_gold != 0:
+		cycle_rewards["gold"] = get_cycle_gold(character_level)
+
+	# Add any additional rewards from the rewards dictionary
+	for reward_type in rewards.keys():
+		if reward_type not in cycle_rewards:
+			cycle_rewards[reward_type] = rewards[reward_type]
+
+	return cycle_rewards

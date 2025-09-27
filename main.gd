@@ -11,7 +11,7 @@ var character: Character
 var active_button: Button = null
 var activity_buttons: Dictionary = {} # activity_name -> button
 var enhanced_activities: EnhancedActivities
-var debug_config: Node
+# DebugConfig is available as autoload
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,10 +50,15 @@ func _ready():
 	# setup_dynamic_button_connections()  # Disabled - dynamic UI handles button connections
 
 	# Test: Start an activity automatically to see if the system works
-	debug_config.debug_activities("Testing activity system by starting Blacksmithing...")
-	start_activity("Blacksmithing")
+	DebugConfig.debug_activities_msg("Testing activity system by starting Blacksmithing...")
+	# Give character enough gold for testing
+	character.add_gold(50)
+	DebugConfig.debug_character_msg("Character gold: " + str(character.gold))
+	print("DEBUG: Starting activity 'Blacksmithing'")
+	var result = start_activity("Blacksmithing")
+	print("DEBUG: Activity start result: ", result)
 
-	debug_config.debug_ui("Main ready complete - character: " + (character.name if character else "None") + ", enhanced_activities: " + str(enhanced_activities != null) + ", progress_bar: " + str(activity_progress_bar != null))
+	DebugConfig.debug_ui_msg("Main ready complete - character: " + (character.name if character else "None") + ", enhanced_activities: " + str(enhanced_activities != null) + ", progress_bar: " + str(activity_progress_bar != null))
 
 	# Configure progress bar if it exists
 	if activity_progress_bar:
@@ -67,7 +72,7 @@ func _ready():
 
 func register_activity_button(activity_name: String, button: Button):
 	"""Register an activity button for progress tracking"""
-	print("Registering activity button for: ", activity_name)
+	# print("Registering activity button for: ", activity_name)
 	activity_buttons[activity_name] = button
 	# Set initial button styling
 	button.add_theme_color_override("font_color", Color(1, 1, 1, 1))
@@ -81,8 +86,8 @@ func register_activity_button(activity_name: String, button: Button):
 	button.add_theme_color_override("bg_color_pressed", Color(0.4, 0.4, 0.4, 1.0))
 	button.add_theme_color_override("bg_color_disabled", Color(0.1, 0.1, 0.1, 1.0))
 
-	print("Activity button registered. Total buttons: ", activity_buttons.size())
-	print("Available buttons: ", activity_buttons.keys())
+	# print("Activity button registered. Total buttons: ", activity_buttons.size())
+	# print("Available buttons: ", activity_buttons.keys())
 
 
 func setup_dynamic_button_connections():
@@ -153,21 +158,23 @@ func update_ui():
 # Update activity progress bar
 func update_activity_progress():
 	if character == null or enhanced_activities == null:
-		debug_config.debug_ui("update_activity_progress - character or enhanced_activities is null")
+		DebugConfig.debug_ui_msg("update_activity_progress - character or enhanced_activities is null")
 		return
 
 	# Get active activities from EnhancedActivities
 	var active_activities = enhanced_activities.active_activities
-	debug_config.debug_activities("Active activities: " + str(active_activities.keys()))
+	print("DEBUG: Active activities: ", active_activities.keys())
+	print("DEBUG: Character name: ", character.name)
 
-	if character.name in active_activities:
-		var activity_data = active_activities[character.name]
+	if character in active_activities:
+		var activity_data = active_activities[character]
 		var activity_name = activity_data.get("name", "")
 		var progress = activity_data.get("progress", 0.0)
 
-		debug_config.debug_activities("Activity progress for " + character.name + " - " + activity_name + ": " + str(progress))
+		# DebugConfig.debug_activities_msg("Activity progress for " + character.name + " - " + activity_name + ": " + str(progress))
 
 		# Update the button background for the current activity
+		# print("DEBUG: Looking for activity_name '", activity_name, "' in activity_buttons: ", activity_buttons.keys())
 		if activity_name in activity_buttons:
 			var button = activity_buttons[activity_name]
 			if button:
@@ -191,9 +198,9 @@ func update_activity_progress():
 				var button_width = button.size.x
 				progress_bar.size.x = button_width * progress
 				progress_bar.position.x = 0
-				debug_config.debug_ui("Updated button progress bar for " + activity_name + " - width: " + str(progress_bar.size.x))
+				print("Updated button progress bar for " + activity_name + " - width: " + str(progress_bar.size.x))
 	else:
-		debug_config.debug_activities("No active activity for character: " + character.name)
+		print("No active activity for character: " + character.name)
 
 	# Update the main progress bar to show level progress
 	update_level_progress()
@@ -201,7 +208,7 @@ func update_activity_progress():
 func update_level_progress():
 	"""Update the main progress bar to show level progress"""
 	if character == null or not activity_progress_bar:
-		debug_config.debug_ui("update_level_progress - character or progress bar is null")
+		DebugConfig.debug_ui_msg("update_level_progress - character or progress bar is null")
 		return
 
 	# Calculate level progress (assuming 1000 XP per level)
@@ -209,11 +216,11 @@ func update_level_progress():
 	var level_progress = float(current_level_xp) / 1000.0
 	var progress_value = level_progress * 100
 
-	debug_config.debug_ui("Level progress - XP: " + str(character.experience_points) + ", Level XP: " + str(current_level_xp) + ", Progress: " + str(level_progress) + ", Value: " + str(progress_value))
-	debug_config.debug_ui("Progress bar min: " + str(activity_progress_bar.min_value) + ", max: " + str(activity_progress_bar.max_value) + ", current value: " + str(activity_progress_bar.value))
+	DebugConfig.debug_ui_msg("Level progress - XP: " + str(character.experience_points) + ", Level XP: " + str(current_level_xp) + ", Progress: " + str(level_progress) + ", Value: " + str(progress_value))
+	DebugConfig.debug_ui_msg("Progress bar min: " + str(activity_progress_bar.min_value) + ", max: " + str(activity_progress_bar.max_value) + ", current value: " + str(activity_progress_bar.value))
 
 	activity_progress_bar.value = progress_value
-	debug_config.debug_ui("Progress bar value after setting: " + str(activity_progress_bar.value))
+	DebugConfig.debug_ui_msg("Progress bar value after setting: " + str(activity_progress_bar.value))
 
 # Handle character changes
 func _on_character_changed(new_character: Character):

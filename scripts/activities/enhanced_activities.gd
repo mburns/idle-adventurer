@@ -16,20 +16,20 @@ var active_activities: Dictionary = {} # character_id -> activity_data
 
 func _init():
 	# Don't initialize activity manager here - wait for _ready()
-	setup_activity_system()
+	pass
 
 func _ready():
-	print("DEBUG: EnhancedActivities._ready() called")
+	# print("DEBUG: EnhancedActivities._ready() called")
 	# Initialize activity manager after autoloads are ready
 	if Engine.has_singleton("AutoloadManager"):
-		print("DEBUG: AutoloadManager singleton available")
+		# print("DEBUG: AutoloadManager singleton available")
 		var autoload_manager = Engine.get_singleton("AutoloadManager")
 		if autoload_manager:
-			print("DEBUG: AutoloadManager instance retrieved")
+			# print("DEBUG: AutoloadManager instance retrieved")
 			if autoload_manager.activity_manager:
 				activity_manager = autoload_manager.activity_manager
-				print("DEBUG: EnhancedActivities using global activity manager")
-				print("DEBUG: Global activity manager has ", activity_manager.get_activity_count(), " activities")
+				# print("DEBUG: EnhancedActivities using global activity manager")
+				# print("DEBUG: Global activity manager has ", activity_manager.get_activity_count(), " activities")
 			else:
 				print("DEBUG: AutoloadManager available but activity_manager is null")
 		else:
@@ -42,16 +42,21 @@ func _ready():
 		activity_manager.data_loader = data_loader
 		activity_manager.load_all_activities()
 		add_child(activity_manager)
-		print("DEBUG: Fallback activity manager created with ", activity_manager.get_activity_count(), " activities")
-		print("DEBUG: Available activity names: ", activity_manager.get_all_activity_names())
+		# print("DEBUG: Fallback activity manager created with ", activity_manager.get_activity_count(), " activities")
+		# print("DEBUG: Available activity names: ", activity_manager.get_all_activity_names())
+
+	# Setup activity system after the node is in the scene tree
+	setup_activity_system()
+
+func _process(_delta):
+	"""Process activities every frame"""
+	if not active_activities.is_empty():
+		_process_activities()
 
 func setup_activity_system():
 	"""Initialize the enhanced activities system"""
-	var timer = Timer.new()
-	timer.wait_time = 1.0 # Check every second
-	timer.timeout.connect(_process_activities)
-	timer.autostart = true
-	add_child(timer)
+	# Don't create a timer - we'll use _process() for real-time updates
+	# The timer was causing conflicts with frame-based processing
 
 func get_activities_for_ability(ability: String) -> Array[ActivityResource]:
 	"""Get all activities for a specific ability score using Resources"""
@@ -100,7 +105,7 @@ func _resource_to_dict(activity_resource: ActivityResource) -> Dictionary:
 	}
 
 
-func can_start_activity(character: Character, activity_id: String, ability: String) -> bool:
+func can_start_activity(character: Character, activity_id: String, _ability: String) -> bool:
 	"""Check if character can start a specific activity using Resources"""
 	var activity_resource = activity_manager.get_activity_by_name(activity_id)
 	if activity_resource == null:
@@ -133,70 +138,112 @@ func start_activity(character: Character, activity_id: String, ability: String):
 		"name": activity_resource.activity_name,
 		"ability": ability,
 		"description": activity_resource.description,
+		"cycle_duration": activity_resource.get_cycle_duration(),
+		"cycle_cost": activity_resource.get_cycle_cost(),
+		"cycle_rewards": activity_resource.get_cycle_rewards(),
+		"progress": 0.0,
+		"cycles_completed": 0,
+		"start_time": Time.get_unix_time_from_system(),
+		"last_cycle_time": Time.get_unix_time_from_system(),
+		# Legacy fields for compatibility
 		"daily_progress": activity_resource.daily_progress,
 		"cost_per_day": activity_resource.cost_per_day,
 		"rewards": activity_resource.rewards,
-		"progress": 0.0,
-		"start_time": Time.get_unix_time_from_system(),
 		"last_payment": Time.get_unix_time_from_system()
 	}
 
-	active_activities[character.name] = activity_data
+	active_activities[character] = activity_data
 	activity_started.emit(activity_resource, character, ability)
 
-	print("Started " + activity_resource.activity_name + " for " + character.name)
+	print("Started activity '", activity_resource.activity_name, "' for ", character.name)
 	return true
 
 func _process_activities():
 	"""Process all active activities"""
 	var current_time = Time.get_unix_time_from_system()
 
-	for character_name in active_activities.keys():
-		var activity = active_activities[character_name]
-		var character = get_character_by_name(character_name)
-
-		if not character:
-			continue
-
+	for character in active_activities.keys():
+		var activity = active_activities[character]
 		process_activity(character, activity, current_time)
 
 func process_activity(character: Character, activity: Dictionary, current_time: float):
-	"""Process a single activity with offline progress tracking"""
-	var days_elapsed = (current_time - activity.last_payment) / 86400.0
+	"""Process a single activity with cycle-based timing (30-60 seconds)"""
+	var activity_resource = activity.get("resource", null)
+	if not activity_resource:
+		print("ERROR: Activity resource not found")
+		return
 
-	# Process all elapsed time, not just daily chunks
-	if days_elapsed > 0:
-		# Calculate ability-based scaling
-		var ability = activity.get("ability", "general")
-		var ability_score = 10
-		if ability != "general":
-			ability_score = character.get(ability)
-		var level_scaling = 1.0 + (ability_score - 10) * 0.1 # 10% bonus per point above 10
+	var cycle_duration = activity_resource.get_cycle_duration()
+	var start_time = activity.get("start_time", current_time)
+	var last_cycle_time = activity.get("last_cycle_time", start_time)
+	var seconds_elapsed = current_time - last_cycle_time
 
-		# Handle costs for elapsed time
-		var daily_cost = activity.get("cost_per_day", 0.0)
-		var total_cost = daily_cost * days_elapsed
-		if total_cost > 0:
-			if character.gold >= total_cost:
-				character.gold -= total_cost
-			else:
-				stop_activity(character.name, "Insufficient funds")
-				return
+	# Debug timing info (commented out to reduce noise)
+	# print("Processing ", activity_resource.activity_name, " - elapsed: ", seconds_elapsed, "s, progress: ", activity["progress"])
 
-		# Calculate progress with level scaling
-		var base_daily_progress = activity.get("daily_progress", 0.0)
-		var scaled_progress = base_daily_progress * level_scaling * days_elapsed
-		activity["progress"] += scaled_progress
+	# Calculate real-time progress within current cycle
+	var current_cycle_progress = seconds_elapsed / cycle_duration
+	var cycles_completed = activity.get("cycles_completed", 0)
+	var total_progress = (cycles_completed + current_cycle_progress) / 10.0  # 10 cycles = 100% progress
+	activity["progress"] = min(total_progress, 1.0)
 
-		# Apply rewards with level scaling
-		apply_scaled_rewards(character, activity, days_elapsed, level_scaling)
+	# Emit progress update for UI
+	activity_progress.emit(activity_resource, character, activity["progress"])
 
-		activity["last_payment"] = current_time
-		activity_progress.emit(activity["name"], character, activity["progress"])
+	# Debug progress info (commented out to reduce noise)
+	# print(activity_resource.activity_name, " - elapsed: ", seconds_elapsed, "s, progress: ", activity["progress"])
 
-		# Check for completion (100% progress)
-		if activity["progress"] >= 1.0:
+	# Check if a cycle has completed
+	if seconds_elapsed >= cycle_duration:
+		var cycles_to_process = int(seconds_elapsed / cycle_duration)
+		print("Completed ", cycles_to_process, " cycles")
+
+		# Process each completed cycle
+		for i in range(cycles_to_process):
+			process_activity_cycle(character, activity, activity_resource)
+
+		# Update timing for remaining partial cycle
+		var remaining_time = seconds_elapsed - (cycles_to_process * cycle_duration)
+		activity["last_cycle_time"] = current_time - remaining_time
+
+		# Update cycles completed
+		activity["cycles_completed"] = activity.get("cycles_completed", 0) + cycles_to_process
+
+		# Check for completion (10 cycles = 100% progress)
+		if activity["cycles_completed"] >= 10:
 			complete_activity(character, activity)
+
+func process_activity_cycle(character: Character, _activity: Dictionary, activity_resource: ActivityResource):
+	"""Process a single activity cycle and apply rewards"""
+	# print("Processing cycle for ", activity_resource.activity_name)
+
+	# Check if character can afford the cycle cost
+	var cycle_cost = activity_resource.get_cycle_cost()
+	if cycle_cost > 0:
+		if character.gold < cycle_cost:
+			stop_activity(character, "Insufficient funds for cycle")
+			return
+		character.gold -= int(cycle_cost)
+
+	# Apply cycle rewards
+	var cycle_rewards = activity_resource.get_cycle_rewards(character.level)
+	apply_cycle_rewards(character, cycle_rewards)
+
+	# print("Applied cycle rewards: ", cycle_rewards)
+
+func apply_cycle_rewards(character: Character, cycle_rewards: Dictionary):
+	"""Apply rewards from a single activity cycle"""
+	for reward_type in cycle_rewards.keys():
+		var amount = cycle_rewards[reward_type]
+
+		match reward_type:
+			"gold":
+				character.gold += amount
+			"strength_exp", "dexterity_exp", "constitution_exp", "intelligence_exp", "wisdom_exp", "charisma_exp":
+				add_ability_experience(character, reward_type, amount)
+			_:
+				# Other rewards would be handled by specific systems
+				print(character.name + " gained " + str(amount) + " " + reward_type)
 
 func apply_scaled_rewards(character: Character, activity: Dictionary, days_elapsed: float, level_scaling: float):
 	"""Apply scaled rewards from an activity based on time elapsed and ability level"""
@@ -277,18 +324,21 @@ func restart_activity(character: Character, activity: Dictionary):
 
 	# Reset progress to 0
 	activity["progress"] = 0.0
+	activity["cycles_completed"] = 0
+	activity["last_cycle_time"] = Time.get_unix_time_from_system()
+	# Legacy field for compatibility
 	activity["last_payment"] = Time.get_unix_time_from_system()
 
 	# Keep the activity active
-	active_activities[character.name] = activity
+	active_activities[character] = activity
 
 	print(character.name + " restarted " + activity["name"])
 
-func stop_activity(character_name: String, reason: String = ""):
+func stop_activity(character: Character, reason: String = ""):
 	"""Stop an activity for a character"""
-	if character_name in active_activities:
-		active_activities.erase(character_name)
-		print("Stopped activity for " + character_name + " (" + reason + ")")
+	if character in active_activities:
+		active_activities.erase(character)
+		print("Stopped activity for " + character.name + " (" + reason + ")")
 
 func get_character_by_name(character_name: String) -> Character:
 	"""Get character by name using CharacterManager"""
@@ -299,14 +349,22 @@ func get_character_by_name(character_name: String) -> Character:
 
 	if autoload_manager and autoload_manager.character_manager:
 		var character = autoload_manager.character_manager.get_current_character()
-		if character and character.name == character_name:
-			return character
+		if character:
+			print("DEBUG: Found character: ", character.name, " looking for: ", character_name)
+			if character.name == character_name:
+				return character
+			else:
+				print("DEBUG: Character name mismatch - found: ", character.name, " expected: ", character_name)
+		else:
+			print("DEBUG: No current character found")
+	else:
+		print("DEBUG: AutoloadManager or character_manager not available")
 	return null
 
 func get_active_activities() -> Dictionary:
 	"""Get all active activities"""
 	return active_activities.duplicate()
 
-func get_character_activity(character_name: String) -> Dictionary:
+func get_character_activity(character: Character) -> Dictionary:
 	"""Get activity for specific character"""
-	return active_activities.get(character_name, {})
+	return active_activities.get(character, {})

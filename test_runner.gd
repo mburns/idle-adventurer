@@ -29,7 +29,17 @@ func _ready():
     # Auto-run tests in headless mode
     if OS.has_feature("headless") or OS.has_feature("server"):
         print("Running tests automatically in headless mode...")
+        # Wait for autoloads to initialize
         await get_tree().process_frame
+        await get_tree().process_frame
+        await get_tree().process_frame
+
+        # Check if AutoloadManager is ready
+        if AutoloadManager and AutoloadManager.data_loader:
+            print("AutoloadManager and data loader are ready")
+        else:
+            print("Warning: AutoloadManager or data loader not ready, proceeding anyway")
+
         _on_run_tests_button_pressed()
 
 func _on_run_tests_button_pressed():

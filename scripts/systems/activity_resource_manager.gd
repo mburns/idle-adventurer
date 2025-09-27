@@ -45,6 +45,12 @@ func _dict_to_activity_resource(activity_dict: Dictionary) -> ActivityResource:
 	activity_resource.daily_progress = activity_dict.get("daily_progress", 0.0)
 	activity_resource.cost_per_day = activity_dict.get("cost_per_day", 0.0)
 
+	# Set cycle-based fields (new system)
+	activity_resource.cycle_duration = activity_dict.get("cycle_duration", 15.0)
+	activity_resource.cycle_xp = activity_dict.get("cycle_xp", 5)
+	activity_resource.cycle_gold = activity_dict.get("cycle_gold", 2)
+	activity_resource.cycle_cost = activity_dict.get("cycle_cost", 0.0)
+
 	# Set rewards
 	var rewards = activity_dict.get("rewards", {})
 	if rewards is Dictionary:
@@ -85,12 +91,12 @@ func load_all_activities() -> void:
 
 		# Convert dictionaries to ActivityResource objects
 		for activity_dict in ability_activities:
-			print("DEBUG: Converting activity dict: ", activity_dict)
+			# print("DEBUG: Converting activity dict: ", activity_dict)
 			var activity_resource = _dict_to_activity_resource(activity_dict)
 			if activity_resource:
 				activities_by_ability[ability].append(activity_resource)
 				activities[activity_resource.activity_name] = activity_resource
-				print("Loaded activity: ", activity_resource.activity_name)
+				# print("Loaded activity: ", activity_resource.activity_name)
 			else:
 				print("DEBUG: Failed to convert activity dict to resource")
 

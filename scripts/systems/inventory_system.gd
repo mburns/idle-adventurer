@@ -36,7 +36,7 @@ func _init() -> void:
 
 func setup_inventory_system() -> void:
 	"""Initialize the inventory system"""
-	print("Inventory System initialized")
+	# print("Inventory System initialized")
 	load_item_types()
 
 func load_item_types() -> void:

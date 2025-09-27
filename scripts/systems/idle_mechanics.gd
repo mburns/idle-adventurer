@@ -209,6 +209,12 @@ static func create_activity_resource_from_data(activity_data: Dictionary) -> Act
 	activity_resource.activity_type = activity_data.get("activity_type", "rest")
 	activity_resource.category = activity_data.get("category", "general")
 
+	# Set cycle-based fields (new system)
+	activity_resource.cycle_duration = activity_data.get("cycle_duration", 15.0)
+	activity_resource.cycle_xp = activity_data.get("cycle_xp", 5)
+	activity_resource.cycle_gold = activity_data.get("cycle_gold", 2)
+	activity_resource.cycle_cost = activity_data.get("cycle_cost", 0.0)
+
 	return activity_resource
 
 static func load_default_rest_activities() -> void:

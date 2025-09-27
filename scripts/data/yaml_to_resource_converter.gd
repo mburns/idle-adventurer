@@ -121,6 +121,12 @@ func yaml_to_activity_resource(yaml_data: Dictionary) -> ActivityResource:
 	resource.daily_progress = yaml_data.get("daily_progress", 0.1)
 	resource.cost_per_day = yaml_data.get("cost_per_day", 0.0)
 
+	# Set cycle-based fields (new system)
+	resource.cycle_duration = yaml_data.get("cycle_duration", 15.0)
+	resource.cycle_xp = yaml_data.get("cycle_xp", 5)
+	resource.cycle_gold = yaml_data.get("cycle_gold", 2)
+	resource.cycle_cost = yaml_data.get("cycle_cost", 0.0)
+
 	# Requirements and rewards
 	resource.requirements = yaml_data.get("requirements", {})
 	resource.rewards = yaml_data.get("rewards", {})

@@ -7,27 +7,27 @@ metadata/yaml_data = {
 "description": "Bandits threaten the town's trade routes",
 "duration_days": 5,
 "effects": {
-"guard_patrols": 100,
-"security_increase": 50
+    "guard_patrols": 100,
+    "security_increase": 50
 },
 "event_type": "EMERGENCY",
 "id": "bandit_threat",
 "name": "Bandit Threat",
 "requirements": {
-"guard_reputation": 10
+    "guard_reputation": 10
 },
 "rewards": {
-"combat_exp": 30,
-"gold": 75,
-"guard_reputation": 15
+    "combat_exp": 30,
+    "gold": 75,
+    "guard_reputation": 15
 }
 },
 "construction_project": {
 "description": "A major construction project begins in town",
 "duration_days": 14,
 "effects": {
-"craftsman_activity": 150,
-"town_growth": 25
+    "craftsman_activity": 150,
+    "town_growth": 25
 },
 "event_type": "CONSTRUCTION",
 "id": "construction_project",

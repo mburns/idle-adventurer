@@ -216,7 +216,7 @@ func create_activity_button(parent: GridContainer, ability: String, activity_id:
 
 	# Temporarily disable requirement checking for testing
 	can_perform = true
-	print("DEBUG: Creating button for activity: ", activity_id, ", can_perform: ", can_perform)
+	# print("DEBUG: Creating button for activity: ", activity_id, ", can_perform: ", can_perform)
 
 	# Add tooltip with improved formatting
 	var tooltip_text = create_detailed_tooltip(activity)
@@ -226,11 +226,11 @@ func create_activity_button(parent: GridContainer, ability: String, activity_id:
 		# Gray out the button and disable it
 		button.disabled = true
 		button.modulate = Color(0.5, 0.5, 0.5, 1.0)
-		print("DEBUG: Button disabled for activity: ", activity_id)
+		# print("DEBUG: Button disabled for activity: ", activity_id)
 	else:
 		# Connect button to dynamic handler only if character can perform it
 		button.pressed.connect(func(): _on_activity_button_pressed(activity_id, ability))
-		print("DEBUG: Button connected for activity: ", activity_id)
+		# print("DEBUG: Button connected for activity: ", activity_id)
 
 	# Add button to grid container
 	parent.add_child(button)
@@ -244,6 +244,7 @@ func create_activity_button(parent: GridContainer, ability: String, activity_id:
 	var main_script = get_node("../")
 	if main_script and main_script.has_method("register_activity_button"):
 		var activity_name = get_activity_name_by_id(activity_id, ability)
+		# print("DEBUG: Registering button for activity_id: '", activity_id, "', ability: '", ability, "', activity_name: '", activity_name, "'")
 		main_script.register_activity_button(activity_name, button)
 
 
@@ -279,15 +280,15 @@ func update_grid_columns(grid_container: GridContainer):
 
 func _on_activity_button_pressed(activity_id: String, ability: String):
 	"""Handle activity button press"""
-	print("DEBUG: Activity button pressed: ", activity_id, " (", ability, ")")
+	# print("DEBUG: Activity button pressed: ", activity_id, " (", ability, ")")
 
 	# Get the main script to start the activity
 	var main_script = get_node("../")
 	if main_script and main_script.has_method("start_activity"):
 		var activity_name = get_activity_name_by_id(activity_id, ability)
-		print("DEBUG: Extracted activity name: '", activity_name, "'")
+		# print("DEBUG: Extracted activity name: '", activity_name, "'")
 		if activity_name != "":
-			print("DEBUG: Calling main_script.start_activity with: '", activity_name, "'")
+			# print("DEBUG: Calling main_script.start_activity with: '", activity_name, "'")
 			main_script.start_activity(activity_name)
 		else:
 			print("DEBUG: Warning: Could not find activity name for ID: ", activity_id)

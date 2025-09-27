@@ -49,7 +49,7 @@ func load_all_data() -> void:
 	print("Data loading complete!")
 
 func load_activities() -> void:
-	"""Load activities from .tres files"""
+	"""Load activities from .tres files with YAML data"""
 	var activities_dir = "res://data/activities/"
 	var dir = DirAccess.open(activities_dir)
 	if not dir:
@@ -106,6 +106,9 @@ func load_races() -> void:
 			var file_path = races_dir + file_name
 			var race_resource = load(file_path) as RaceResource
 			if race_resource and race_resource.name != "":
+				# Fix type conversion issues
+				if race_resource.speed is String:
+					race_resource.speed = int(race_resource.speed)
 				races[race_resource.name] = race_resource
 
 	print("Loaded ", races.size(), " races")
@@ -171,17 +174,27 @@ func load_monsters() -> void:
 func load_equipment() -> void:
 	"""Load equipment from .tres files"""
 	var equipment_dir = "res://data/equipment/"
+	print("DEBUG: Attempting to open equipment directory: ", equipment_dir)
 	var dir = DirAccess.open(equipment_dir)
 	if not dir:
-		print("Error: Could not open equipment directory")
+		print("Error: Could not open equipment directory: ", equipment_dir)
+		print("DEBUG: DirAccess.open() returned null")
 		return
 
 	var files = dir.get_files()
+	print("DEBUG: Found ", files.size(), " files in equipment directory")
 	for file_name in files:
 		if file_name.ends_with(".tres"):
 			var file_path = equipment_dir + file_name
-			var equipment_resource = load(file_path) as EquipmentResource
-			if equipment_resource and equipment_resource.item_name != "":
+			print("DEBUG: Loading equipment file: ", file_path)
+			var equipment_set_resource = load(file_path)
+			if equipment_set_resource and equipment_set_resource.has_method("get") and equipment_set_resource.get("set_name") != "":
+				# Convert EquipmentSetResource to EquipmentResource for compatibility
+				var equipment_resource = EquipmentResource.new()
+				equipment_resource.item_name = equipment_set_resource.get("set_name")
+				equipment_resource.description = equipment_set_resource.get("description")
+				equipment_resource.item_type = EquipmentResource.EquipmentType.ARMOR  # Equipment sets are typically armor
+				equipment_resource.rarity = equipment_set_resource.get("rarity")
 				equipment[equipment_resource.item_name] = equipment_resource
 
 	print("Loaded ", equipment.size(), " equipment items")
@@ -256,9 +269,17 @@ func load_alignments() -> void:
 	for file_name in files:
 		if file_name.ends_with(".tres"):
 			var file_path = alignments_dir + file_name
-			var alignment_resource = load(file_path) as AlignmentResource
-			if alignment_resource and alignment_resource.name != "":
-				alignments[alignment_resource.name] = alignment_resource
+			var resource = load(file_path) as Resource
+			if resource and resource.has_meta("yaml_data"):
+				var alignment_data = resource.get_meta("yaml_data")
+				if alignment_data is Dictionary and alignment_data.has("name"):
+					var alignment_resource = AlignmentResource.new()
+					alignment_resource.name = alignment_data.get("name")
+					alignment_resource.abbreviation = alignment_data.get("abbreviation")
+					alignment_resource.description = alignment_data.get("description")
+					alignment_resource.moral_axis = alignment_data.get("morality")
+					alignment_resource.ethical_axis = alignment_data.get("attitude")
+					alignments[alignment_resource.name] = alignment_resource
 
 	print("Loaded ", alignments.size(), " alignments")
 	data_loaded.emit("alignments", alignments.size())
@@ -298,8 +319,8 @@ func load_lifestyles() -> void:
 		return
 
 	var lifestyles_data = resource.get_meta("yaml_data")
-	if lifestyles_data is Array:
-		for lifestyle_data in lifestyles_data:
+	if lifestyles_data is Dictionary and lifestyles_data.has("lifestyles"):
+		for lifestyle_data in lifestyles_data["lifestyles"]:
 			if lifestyle_data is Dictionary and lifestyle_data.has("id"):
 				lifestyles[lifestyle_data["id"]] = lifestyle_data
 

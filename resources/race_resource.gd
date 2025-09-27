@@ -5,7 +5,7 @@ class_name RaceResource
 @export var name: String = ""
 @export var ability_increases: Dictionary = {}
 @export var size: String = "Medium"
-@export var speed: Variant = 30
+@export var speed: int = 30
 @export var height_range: Dictionary = {}
 @export var weight_range: Dictionary = {}
 @export var languages: Array[String] = []
@@ -54,8 +54,6 @@ func get_size_category() -> String:
 	return size
 
 func get_movement_speed() -> int:
-	if speed is String:
-		return int(speed)
 	return speed
 
 func get_subrace_names() -> Array[String]:
