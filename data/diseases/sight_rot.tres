@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "disease",
+"cure": "",
+"description": "",
+"name": "Sight Rot",
+"symptoms": Array[String]([]),
+"transmission": "",
+"type": "disease"
+}

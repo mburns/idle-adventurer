@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_84oyc"]
+
+[resource]
+script = ExtResource("1_84oyc")
+name = "Bugbear"
+size = "Medium humanoid (goblinoid)"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "16"
+hit_points = "27585"
+speed = "30 ft."
+abilities = {
+"charisma": 9,
+"constitution": 13,
+"dexterity": 14,
+"intelligence": 8,
+"strength": 15,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +10"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
+languages = Array[String](["Common", "Goblin"])
+challenge_rating = "1"
+xp = 200
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The bugbear makes two attacks: one with its bite and one with its claws"},
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing damage"},
+	{"name": "Claw", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) slashing damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

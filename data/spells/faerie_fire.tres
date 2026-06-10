@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Faerie Fire"
+level = 1
+school = "evocation"
+casting_time = "1 action"
+spell_range = "60 feet"
+components = "V"
+duration = "Concentration, up to 1 minute"
+description = "Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice). Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius.\n\nAny attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can't benefit from being invisible."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

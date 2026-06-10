@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Ancient Green Dragon (Chromatic)"
+size = "Gargantuan dragon"
+type = "lawful evil"
+alignment = "neutral"
+armor_class = "21"
+hit_points = "385"
+speed = "40 ft., fly 80 ft., swim 40 ft."
+abilities = {
+"charisma": 19,
+"constitution": 25,
+"dexterity": 12,
+"intelligence": 20,
+"strength": 27,
+"wisdom": 17
+}
+saving_throws = Array[String](["Dex +8", "Con +14", "Wis +10", "Cha +11"])
+skills = Array[String](["Deception +11", "Insight +10", "Perception +17", "Persuasion +11", "Stealth +8"])
+damage_immunities = Array[String](["poison"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["poisoned"])
+senses = "blindsight 60 ft., darkvision 120 ft., passive Perception 27"
+languages = Array[String](["Common", "Draconic"])
+challenge_rating = "22"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

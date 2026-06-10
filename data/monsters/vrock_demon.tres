@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Vrock (Demon)"
+size = "Large fiend (demon)"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "15"
+hit_points = "104"
+speed = "40 ft., fly 60 ft."
+abilities = {
+"charisma": 8,
+"constitution": 18,
+"dexterity": 15,
+"intelligence": 8,
+"strength": 17,
+"wisdom": 13
+}
+saving_throws = Array[String](["Dex +5", "Wis +4", "Cha +2"])
+skills = Array[String]([])
+damage_immunities = Array[String](["poison"])
+damage_resistances = Array[String](["cold", "fire", "lightning", "bludgeoning", "piercing", "and slashing from nonmagical attacks"])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["poisoned"])
+senses = "darkvision 120 ft., passive Perception 11"
+languages = Array[String](["Abyssal", "telepathy 120 ft."])
+challenge_rating = "6"
+xp = 2300
+traits = Array[Dictionary]([
+	{"name": "Magic Resistance", "description": "The vrock has advantage on saving throws against spells and other magical effects"}
+])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The vrock makes two attacks: one with its beak and one with its talons"
+    },
+	{
+        "name": "Beak",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 10 (2d6+3) piercing damage"
+    },
+	{
+        "name": "Talons",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 14 (2d10+3) slashing damage"
+    },
+	{
+        "name": "Spores (Recharge 6)",
+        "description": "A 15-foot radius cloud of toxic spores extends out from the vrock. The spores spread around corners. Each creature in that area must succeed on a DC 14 Constitution saving throw or become poisoned. While poisoned in this way, a target takes 5 (1d10) poison damage at the start of each of its turns. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Emptying a vial of holy water on the target also ends the effect on it"
+    },
+	{
+        "name": "Stunning Screech (1/Day)",
+        "description": "The vrock emits a horrific screech. Each creature within 20 feet of it that can hear it and that isn't a demon must succeed on a DC 14 Constitution saving throw or be stunned until the end of the vrock's next turn"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 3
+passive_perception = "11"

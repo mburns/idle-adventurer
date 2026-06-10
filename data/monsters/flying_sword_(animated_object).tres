@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_f2527"]
+
+[resource]
+script = ExtResource("1_f2527")
+name = "Flying Sword (Animated Object)"
+size = "Small construct"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "17"
+hit_points = "1756"
+speed = "0 ft., fly 50 ft. (hover)"
+abilities = {
+"charisma": 1,
+"constitution": 11,
+"dexterity": 15,
+"intelligence": 1,
+"strength": 12,
+"wisdom": 5
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 60 ft. (blind beyond this radius), passive Perception 7"
+languages = Array[String]([])
+challenge_rating = "1/4"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = 7

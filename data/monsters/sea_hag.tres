@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7rgey"]
+
+[resource]
+script = ExtResource("1_7rgey")
+name = "Sea Hag"
+size = "Medium fey"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "14"
+hit_points = "527821"
+speed = "30 ft., swim 40 ft."
+abilities = {
+"charisma": 13,
+"constitution": 16,
+"dexterity": 13,
+"intelligence": 12,
+"strength": 16,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 11"
+languages = Array[String](["Aquan", "Common", "Giant"])
+challenge_rating = "2"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

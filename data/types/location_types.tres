@@ -1,0 +1,75 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"location_accessibility": {
+"category": "exclusive",
+"color": "'#8B0000'  # Dark Red",
+"description": "Requires membership or affiliation",
+"location_accessibility": ["id: PUBLIC", "id: RESTRICTED", "id: PRIVATE", "id: MEMBERS_ONLY"],
+"name": "Members Only"
+},
+"location_categories": {
+"administrative": {
+"description": "Places for government and official business",
+"name": "Administrative Locations",
+"priority": 7
+},
+"commercial": {
+"description": "Places focused on trade and commerce",
+"name": "Commercial Locations",
+"priority": 1
+},
+"crafting": {
+"description": "Places for creating and repairing items",
+"name": "Crafting Locations",
+"priority": 6
+},
+"educational": {
+"description": "Places for learning and knowledge",
+"name": "Educational Locations",
+"priority": 5
+},
+"military": {
+"description": "Places for security and defense",
+"name": "Military Locations",
+"priority": 8
+},
+"professional": {
+"description": "Places for work and professional activities",
+"name": "Professional Locations",
+"priority": 4
+},
+"religious": {
+"description": "Places of worship and spiritual activity",
+"name": "Religious Locations",
+"priority": 3
+},
+"residential": {
+"description": "Places where people live",
+"name": "Residential Locations",
+"priority": 9
+},
+"social": {
+"description": "Places for social interaction and entertainment",
+"name": "Social Locations",
+"priority": 2
+}
+},
+"location_hours": {
+"category": "appointment",
+"color": "'#9370DB'  # Medium Purple",
+"description": "Requires scheduling",
+"location_hours": ["id: ALWAYS_OPEN", "id: BUSINESS_HOURS", "id: EVENING_ONLY", "id: BY_APPOINTMENT"],
+"name": "By Appointment"
+},
+"location_types": {
+"category": "residential",
+"color": "'#20B2AA'  # Light Sea Green",
+"description": "Residential areas for common folk",
+"icon": "'residential'",
+"location_types": ["id: MARKET", "id: TAVERN", "id: TEMPLE", "id: GUILD_HALL", "id: LIBRARY", "id: SMITHY", "id: TOWN_HALL", "id: GUARD_BARRACKS", "id: NOBLE_DISTRICT", "id: RESIDENTIAL"],
+"name": "Residential",
+"priority": 10
+}
+}

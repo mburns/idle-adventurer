@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Ray of Enfeeblement"
+level = 2
+school = "necromancy"
+casting_time = "1 action"
+spell_range = "60 feet"
+datacomponents = "V, S"
+duration = "Concentration, up to 1 minute"
+description = "A black beam of enervating energy springs from your finger toward a creature within range. Make a ranged spell attack against the target. On a hit, the target deals only half damage with weapon attacks that use Strength until the spell ends.\n\nAt the end of each of the target's turns, it can make a Constitution saving throw against the spell. On a success, the spell ends."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["sorcerer", "warlock", "wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

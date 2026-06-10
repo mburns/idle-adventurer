@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "True Seeing"
+level = 1
+school = "evocation"
+casting_time = "1 action"
+spell_range = "Touch"
+datacomponents = "V, S, M (an ointment for the eyes that costs 25 gp; is made from mushroom powder, saffron, and fat; and is consumed by the spell)"
+duration = "1 hour"
+description = "This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has truesight, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

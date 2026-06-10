@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_r44a4"]
+
+[resource]
+script = ExtResource("1_r44a4")
+name = "Ettercap"
+size = "Medium monstrosity"
+type = "neutral evil"
+alignment = "neutral evil"
+armor_class = "13"
+hit_points = "44888"
+speed = "30 ft., climb 30 ft."
+abilities = {
+"charisma": 8,
+"constitution": 13,
+"dexterity": 15,
+"intelligence": 7,
+"strength": 14,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 13"
+languages =Array[String]([])
+challenge_rating = "2"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

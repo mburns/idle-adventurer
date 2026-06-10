@@ -1,0 +1,26 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"item_types": {
+"item_types": ["weapon", "armor", "shield", "tool", "consumable", "miscellaneous", "magic_item", "treasure"]
+},
+"equipment_slots": {
+"equipment_slots": ["head", "chest", "legs", "feet", "hands", "weapon", "shield", "ring", "amulet", "backpack", "quiver"]
+},
+"rarity_levels": {
+"rarity_levels": ["common", "uncommon", "rare", "very_rare", "legendary", "artifact"]
+},
+"damage_types": {
+"damage_types": ["slashing", "piercing", "bludgeoning", "fire", "cold", "lightning", "acid", "poison", "necrotic", "radiant", "psychic", "force", "thunder"]
+},
+"weapon_types": {
+"weapon_types": ["melee", "ranged", "thrown", "versatile", "finesse", "light", "heavy", "two_handed", "reach", "ammunition"]
+},
+"armor_types": {
+"armor_types": ["light", "medium", "heavy", "shield"]
+},
+"tool_types": {
+"tool_types": ["artisan", "musical", "gaming", "thieves", "herbalism", "poisoner", "alchemist", "brewer", "calligrapher", "carpenter", "cartographer", "cobbler", "cook", "glassblower", "jeweler", "leatherworker", "mason", "painter", "potter", "smith", "tinker", "weaver", "woodcarver"]
+}
+}

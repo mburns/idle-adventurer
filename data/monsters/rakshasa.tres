@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_hw6u7"]
+
+[resource]
+script = ExtResource("1_hw6u7")
+name = "Rakshasa"
+size = "Medium fiend"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "16"
+hit_points = "11013852"
+speed = "40 ft."
+abilities = {
+"charisma": 20,
+"constitution": 18,
+"dexterity": 17,
+"intelligence": 13,
+"strength": 14,
+"wisdom": 16
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String](["damage_vulnerabilities"])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 13"
+languages = Array[String](["Common", "Infernal"])
+challenge_rating = "13"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "13"

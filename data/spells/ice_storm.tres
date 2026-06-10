@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Ice Storm"
+level = 4
+school = "evocation"
+casting_time = "1 action"
+spell_range = "300 feet"
+datacomponents = "V, S, M (a pinch of dust and a few drops of water)"
+duration = "Instantaneous"
+description = "A hail of rock-hard ice pounds to the ground in a 20-foot radius, 40-foot high cylinder centered on a point within range. Each creature in the cylinder must make a Dexterity saving throw. A creature takes 2d8 bludgeoning damage and 4d6 cold damage on a failed save, or half as much damage on a successful one.\n\nHailstones turn the storm's area of effect into difficult terrain until the end of your next turn."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["druid", "sorcerer", "wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_75fn7"]
+
+[resource]
+script = ExtResource("1_75fn7")
+id = "goblin"
+name = "Goblin"
+description = "The language of goblins and hobgoblins"
+difficulty = 1
+learning_time_days = 200
+cost_per_day = 0.8
+category = "standard"
+writing_script = "Dwarvish"
+speakers = "Goblins, hobgoblins, bugbears"

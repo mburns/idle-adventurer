@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MagicItemResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1_vg7uh"]
+
+[resource]
+script = ExtResource("1_vg7uh")
+name = "Amulet of the Planes"
+type = "Wondrous item"
+rarity = "Very Rare"
+attunement = true
+description = "While wearing this amulet, you can use an action to name a location that you are familiar with on another plane of existence. Then make a DC 15 Intelligence check. On a successful check, you cast the *plane shift* spell. On a failure, you and each creature and object within 15 feet of you travel to a random destination. Roll a d100. On a 1-60, you travel to a random location on the plane you named. On a 61-100, you travel to a randomly determined plane of existence."
+properties = Array[String]([])
+effects = Array[Dictionary]([])
+requirements = "attunement"
+weight = ""
+value = ""
+category = "magic_item"
+charges = 0
+max_charges = 0
+recharge_rate = ""
+spell_list = Array[String]([])
+spell_level = 0
+uses_per_day = 0
+cursed = false
+sentient = false
+armor_class_bonus = 0
+attack_bonus = 0
+damage_bonus = 0
+ability_bonuses = {}
+skill_bonuses = {}
+saving_throw_bonuses = {}
+resistance_types = Array[String]([])
+immunity_types = Array[String]([])
+vulnerability_types = Array[String]([])
+requires_identification = true
+identification_difficulty = 15
+detect_magic_visible = true

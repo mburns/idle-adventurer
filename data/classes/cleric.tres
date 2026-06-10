@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_xgeyr"]
+
+[resource]
+script = ExtResource("1_xgeyr")
+name = "Cleric"
+hit_die = 8
+primary_ability = "strength"
+saving_throws = Array[String](["saving_throws"])
+skill_choices = 2
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
+starting_equipment = {
+"equipment": ["(*a*) a mace or (*b*) a warhammer (if proficient)", "(*a*) scale mail, (*b*) leather armor, or (*c*) chain mail (if proficient)", "(*a*) a light crossbow and 20 bolts or (*b*) any simple weapon", "(*a*) a priest's pack or (*b*) an explorer's pack", "A shield and a holy symbol"]
+}
+features = Array[String](["Cantrips", "Preparing and Casting Spells", "You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation", "Spellcasting Ability", "Ritual Casting", "Spellcasting Focus", "Divine Domain", "Domain Spells", "Channel Divinity", "At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects", "Channel Divinity", "Ability Score Improvement", "Destroy Undead", "Divine Intervention", "Life Domain", "Bonus Proficiency", "Disciple of Life", "Blessed Healer", "Divine Strike", "Supreme Healing"])
+spellcasting_ability = ""
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_v4hl7"]
+
+[resource]
+script = ExtResource("1_v4hl7")
+name = "Ice Devil"
+size = "Large fiend (devil)"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "18"
+hit_points = "180191076"
+speed = "40 ft."
+abilities = {
+"charisma": 18,
+"constitution": 18,
+"dexterity": 14,
+"intelligence": 18,
+"strength": 21,
+"wisdom": 15
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 60 ft., darkvision 120 ft., passive Perception 12"
+languages = Array[String](["Infernal", "telepathy 120 ft."])
+challenge_rating = "14"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

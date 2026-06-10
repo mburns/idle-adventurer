@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Detect Evil and Good"
+level = 1
+school = "evocation"
+casting_time = "1 action"
+spell_range = "Self"
+datacomponents = "V, S"
+duration = "Concentration, up to 10 minutes"
+description = "For the duration, you know if there is an aberration, celestial, elemental, fey, fiend, or undead within 30 feet of you, as well as where the creature is located. Similarly, you know if there is a place or object within 30 feet of you that has been magically consecrated or desecrated.\n\nThe spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

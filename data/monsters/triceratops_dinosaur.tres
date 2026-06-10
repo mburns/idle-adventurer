@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Triceratops (Dinosaur)"
+size = "Huge beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "13"
+hit_points = "95"
+speed = "50 ft."
+abilities = {
+"charisma": 5,
+"constitution": 17,
+"dexterity": 9,
+"intelligence": 2,
+"strength": 22,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 10"
+languages = Array[String]([])
+challenge_rating = "5"
+xp = 1800
+traits = Array[Dictionary]([
+	{
+        "name": "Trampling Charge",
+        "description": "If the triceratops moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone.\n\nIf the target is prone, the triceratops can make one stomp attack against it as a bonus action"
+    }
+])
+actions = Array[Dictionary]([
+	{
+        "name": "Gore",
+        "description": "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one target. *Hit:* 24 (4d8+6) piercing damage"
+    },
+	{
+        "name": "Stomp",
+        "description": "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one prone creature. *Hit:* 22 (3d10+6) bludgeoning damage"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 3
+passive_perception = "10"

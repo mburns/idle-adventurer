@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Religious Services"
+ability_resource = null
+skill = ""
+description = "Attend ceremonies and spiritual growth"
+cycle_duration = 15.0
+cycle_xp = 3
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.0167
+cost_per_day = 0.1
+rewards = {"wisdom_exp": 5, "spiritual_insight": 1}
+requirements = {"wisdom": 9}

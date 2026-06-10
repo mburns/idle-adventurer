@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_37y4e"]
+
+[resource]
+script = ExtResource("1_37y4e")
+name = "Green Hag"
+size = "Medium fey"
+type = "neutral evil"
+alignment = "neutral evil"
+armor_class = "17"
+hit_points = "8211833"
+speed = "30 ft."
+abilities = {
+"charisma": 14,
+"constitution": 16,
+"dexterity": 12,
+"intelligence": 13,
+"strength": 18,
+"wisdom": 14
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Arcana +3", "Deception +4", "Perception +4", "Stealth +3"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 14"
+languages = Array[String](["Common", "Draconic", "Sylvan"])
+challenge_rating = "3"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Claws",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) slashing damage"
+    },
+	{
+        "name": "Illusory Appearance",
+        "description": "The hag covers herself and anything she is wearing or carrying with a magical illusion that makes her look like another creature of her general size and humanoid shape. The illusion ends if the hag takes a bonus action to end it or if she dies. The changes wrought by this effect fail to hold up to physical inspection. For example, the hag could appear to have smooth skin, but someone touching her would feel her rough flesh. Otherwise, a creature must take an action to visually inspect the illusion and succeed on a DC 20 Intelligence (Investigation) check to discern that the hag is disguised."
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

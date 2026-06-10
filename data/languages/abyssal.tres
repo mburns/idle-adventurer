@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_4the5"]
+
+[resource]
+script = ExtResource("1_4the5")
+id = "abyssal"
+name = "Abyssal"
+description = "The language of demons"
+difficulty = 3
+learning_time_days = 400
+cost_per_day = 2.0
+category = "exotic"
+writing_script = "Infernal"
+speakers = "Demons, some cultists"

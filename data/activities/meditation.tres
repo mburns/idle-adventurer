@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Meditation"
+ability_resource = null
+skill = "Meditation"
+description = "Focused meditation for mental clarity and wisdom"
+cycle_duration = 30.0
+cycle_xp = 8
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.15
+cost_per_day = 0.0
+rewards = {"wisdom_exp": 8, "mental_clarity": 1, "stress_reduction": 1}
+requirements = {"wisdom": 12}

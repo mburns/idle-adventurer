@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_3adgk"]
+
+[resource]
+script = ExtResource("1_3adgk")
+id = "deep_speech"
+name = "Deep Speech"
+description = "The language of aberrations"
+difficulty = 4
+learning_time_days = 500
+cost_per_day = 3.0
+category = "exotic"
+writing_script = "None"
+speakers = "Aberrations, some warlocks"

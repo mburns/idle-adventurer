@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Strongman Competition"
+ability_resource = null
+skill = ""
+description = "Compete in feats of strength like lifting boulders"
+cycle_duration = 15.0
+cycle_xp = 8
+cycle_gold = 5
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.0
+rewards = {"strength_exp": 20, "gold": 10, "reputation": 5}
+requirements = {"strength": 15}

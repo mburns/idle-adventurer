@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_p72sh"]
+
+[resource]
+script = ExtResource("1_p72sh")
+name = "Lamia"
+size = "Large monstrosity"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "13"
+hit_points = "97131026"
+speed = "30 ft."
+abilities = {
+"charisma": 16,
+"constitution": 15,
+"dexterity": 13,
+"intelligence": 14,
+"strength": 16,
+"wisdom": 15
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 12"
+languages = Array[String](["Abyssal", "Common"])
+challenge_rating = "4"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

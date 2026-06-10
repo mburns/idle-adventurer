@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipmentSetResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/equipment_set_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+set_id = "plate_armor_set"
+set_name = "Plate Armor Set"
+description = "Heavy armor set for maximum protection"
+pieces = Array[String](["Plate Armor", "Plate Boots", "Plate Gauntlets", "Plate Helmet"])
+bonuses = {
+"armor_class": 2,
+"damage_resistance": "piercing"
+}
+rarity = "rare"
+required_class = ""
+required_level = 1

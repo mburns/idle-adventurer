@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_u5ccu"]
+
+[resource]
+script = ExtResource("1_u5ccu")
+name = "Giant Centipede"
+size = "Small beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "13"
+hit_points = "4161"
+speed = "30 ft., climb 30 ft."
+abilities = {
+"charisma": 3,
+"constitution": 12,
+"dexterity": 14,
+"intelligence": 1,
+"strength": 5,
+"wisdom": 7
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 30 ft., passive Perception 8"
+languages = Array[String]([])
+challenge_rating = "1/4"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = 8

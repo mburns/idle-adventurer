@@ -1,13 +1,14 @@
 extends Node
 
-# Monster glossary system for managing D&D monsters from wiki
+# Monster glossary system for managing D&D monsters using Resource system
 
 class_name MonsterGlossary
 
-signal monster_loaded(monster: Dictionary)
+signal monster_loaded(monster: MonsterResource)
 signal glossary_updated()
 
-var monsters: Dictionary = {} # monster_name -> monster_data
+var monster_manager: MonsterResourceManager
+var monsters: Dictionary = {} # monster_name -> MonsterResource
 var monster_categories: Dictionary = {} # category -> [monster_names]
 var monster_challenge_ratings: Dictionary = {} # cr -> [monster_names]
 
@@ -17,38 +18,41 @@ func _init():
 func setup_monster_glossary():
     """Initialize the monster glossary system"""
     print("Monster Glossary initialized")
+
+    # Initialize monster manager
+    monster_manager = MonsterResourceManager.new()
+    add_child(monster_manager)
+
     load_all_monsters()
 
 func load_all_monsters():
-    """Load all monsters from wiki/Monsters/ directory"""
-    var monsters_dir = "res://wiki/Monsters/"
-    var dir = DirAccess.open(monsters_dir)
+    """Load all monsters using Resource manager"""
+    # Monsters are already loaded by MonsterResourceManager
+    monsters = monster_manager.monsters.duplicate()
 
-    if dir == null:
-        print("Monsters directory not found")
-        return
+    # Organize monsters by categories
+    for monster_name in monsters.keys():
+        var monster_resource = monsters[monster_name]
+        categorize_monster_resource(monster_resource)
 
-    var files = dir.get_files()
-    for file in files:
-        if file.ends_with(".md"):
-            var monster_name = file.replace(".md", "")
-            load_monster_from_file(monster_name, monsters_dir + file)
+    print("Loaded ", monsters.size(), " monsters using Resource system")
+    glossary_updated.emit()
 
-func load_monster_from_file(monster_name: String, file_path: String):
-    """Load a single monster from markdown file"""
-    var file = FileAccess.open(file_path, FileAccess.READ)
-    if file == null:
-        print("Could not open monster file: " + file_path)
-        return
+func categorize_monster_resource(monster_resource: MonsterResource):
+    """Categorize a monster resource by type and challenge rating"""
+    var monster_name = monster_resource.name
 
-    var content = file.get_as_text()
-    file.close()
+    # Categorize by type
+    var monster_type = monster_resource.type.to_lower()
+    if not monster_categories.has(monster_type):
+        monster_categories[monster_type] = []
+    monster_categories[monster_type].append(monster_name)
 
-    var monster_data = parse_monster_markdown(content, monster_name)
-    if monster_data:
-        monsters[monster_name] = monster_data
-        categorize_monster(monster_data)
-        monster_loaded.emit(monster_data)
+    # Categorize by challenge rating
+    var cr = monster_resource.challenge_rating
+    if not monster_challenge_ratings.has(cr):
+        monster_challenge_ratings[cr] = []
+    monster_challenge_ratings[cr].append(monster_name)
 
 func parse_monster_markdown(content: String, monster_name: String) -> Dictionary:
     """Parse monster data from markdown content"""
@@ -249,9 +253,9 @@ func categorize_monster(monster_data: Dictionary):
         monster_challenge_ratings[cr_key] = []
     monster_challenge_ratings[cr_key].append(monster_name)
 
-func get_monster(monster_name: String) -> Dictionary:
-    """Get monster data by name"""
-    return monsters.get(monster_name, {})
+func get_monster(monster_name: String) -> MonsterResource:
+    """Get monster resource by name"""
+    return monsters.get(monster_name, null)
 
 func get_all_monsters() -> Dictionary:
     """Get all monsters"""
@@ -366,12 +370,12 @@ func filter_monsters(filters: Dictionary) -> Array:
 
     return results
 
-func get_random_monster(criteria: Dictionary = {}) -> Dictionary:
+func get_random_monster(criteria: Dictionary = {}) -> MonsterResource:
     """Get a random monster matching criteria"""
     var filtered = filter_monsters(criteria)
 
     if filtered.is_empty():
-        return {}
+        return null
 
     var random_index = randi() % filtered.size()
     var monster_name = filtered[random_index]
@@ -383,8 +387,7 @@ func export_monster_data(monster_name: String) -> String:
     if monster.is_empty():
         return ""
 
-    var json = JSON.new()
-    return json.stringify(monster)
+    return JSON.stringify(monster)
 
 func import_monster_data(json_string: String) -> bool:
     """Import monster data from JSON string"""

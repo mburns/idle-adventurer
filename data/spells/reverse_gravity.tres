@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Reverse Gravity"
+level = 1
+school = "evocation"
+casting_time = "1 action"
+spell_range = "100 feet"
+datacomponents = "V, S, M (a lodestone and iron filings)"
+duration = "Concentration, up to 1 minute"
+description = "This spell reverses gravity in a 50-foot radius, 100-foot high cylinder centered on a point within range. All creatures and objects that aren't somehow anchored to the ground in the area fall upward and reach the top of the area when you cast this spell. A creature can make a Dexterity saving throw to grab onto a fixed object it can reach, thus avoiding the fall.\n\nIf some solid object (such as a ceiling) is encountered in this fall, falling objects and creatures strike it just as they would during a normal downward fall. If an object or creature reaches the top of the area without striking anything, it remains there, oscillating slightly, for the duration.
+
+At the end of the duration, affected objects and creatures fall back down."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

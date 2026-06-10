@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7okxu"]
+
+[resource]
+script = ExtResource("1_7okxu")
+name = "Shield Guardian"
+size = "Large construct"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "17"
+hit_points = "142151060"
+speed = "30 ft."
+abilities = {
+"charisma": 3,
+"constitution": 18,
+"dexterity": 8,
+"intelligence": 7,
+"strength": 18,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 10 ft., darkvision 60 ft., passive Perception 10"
+languages = Array[String](["understands commands given in any language but cant speak"])
+challenge_rating = "7"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

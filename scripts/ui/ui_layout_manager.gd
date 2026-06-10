@@ -15,6 +15,110 @@ func initialize(tab_container_ref: TabContainer) -> void:
 	# Connect to viewport resize events
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
 
+# UI configuration loaded from resource
+var ui_config: Dictionary = {}
+
+# Load UI configuration from resource
+func load_ui_config() -> void:
+	var resource_path = "res://data/types/ui_layout_types.tres"
+	var resource = load(resource_path)
+
+	if resource == null:
+		print("Warning: Could not load UI config from ", resource_path)
+		load_default_ui_config()
+		return
+
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	if resource_data.size() > 0:
+		ui_config = resource_data
+		print("Loaded UI configuration with ", ui_config.size(), " categories")
+	else:
+		print("No UI config found, using defaults")
+		load_default_ui_config()
+
+# Parse UI config YAML (simplified parser)
+func parse_ui_config_yaml(yaml_content: String) -> Dictionary:
+	var config = {}
+	var lines = yaml_content.split("\n")
+	var current_section = ""
+	var current_dict = {}
+
+	for line in lines:
+		line = line.strip()
+		if line == "" or line.begins_with("#"):
+			continue
+
+		if line.ends_with(":"):
+			# Save previous section
+			if current_section != "":
+				config[current_section] = current_dict
+
+			# Start new section
+			current_section = line.rstrip(":")
+			current_dict = {}
+		elif ":" in line and current_section != "":
+			var parts = line.split(":", 1)
+			var key = parts[0].strip()
+			var value = parts[1].strip()
+
+			# Parse array values
+			if value.starts_with("[") and value.ends_with("]"):
+				var array_content = value.substr(1, value.length() - 2)
+				var array_items = array_content.split(",")
+				var parsed_array = []
+				for item in array_items:
+					var trimmed_item = item.strip()
+					if trimmed_item.is_valid_float():
+						parsed_array.append(trimmed_item.to_float())
+					elif trimmed_item.is_valid_int():
+						parsed_array.append(trimmed_item.to_int())
+					else:
+						parsed_array.append(trimmed_item)
+				current_dict[key] = parsed_array
+			elif value.is_valid_float():
+				current_dict[key] = value.to_float()
+			elif value.is_valid_int():
+				current_dict[key] = value.to_int()
+			else:
+				current_dict[key] = value
+
+	# Save last section
+	if current_section != "":
+		config[current_section] = current_dict
+
+	return config
+
+# Load default UI config if YAML fails
+func load_default_ui_config() -> void:
+	ui_config = {
+		"button_sizes": {
+			"small": [100, 40],
+			"medium": [150, 50],
+			"large": [200, 60],
+			"square": [200, 200],
+			"activity": [200, 120]
+		},
+		"panel_sizes": {
+			"small": [200, 100],
+			"medium": [300, 200],
+			"large": [400, 300]
+		},
+		"grid_configs": {
+			"mobile": 1,
+			"tablet": 2,
+			"small_desktop": 3,
+			"medium_desktop": 4,
+			"large_desktop": 5
+		},
+		"breakpoints": {
+			"mobile": 600,
+			"tablet": 900,
+			"small_desktop": 1200,
+			"medium_desktop": 1600
+		}
+	}
 # Update grid columns based on viewport size
 func update_grid_columns(grid_container: GridContainer) -> void:
 	var viewport_width = get_viewport().size.x

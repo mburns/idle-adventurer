@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_dxipd"]
+
+[resource]
+script = ExtResource("1_dxipd")
+name = "Hawk"
+size = "Tiny beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "13"
+hit_points = "1141"
+speed = "10 ft., fly 60 ft."
+abilities = {
+"charisma": 6,
+"constitution": 8,
+"dexterity": 16,
+"intelligence": 2,
+"strength": 5,
+"wisdom": 14
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 14"
+languages =Array[String]([])
+challenge_rating = "0"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

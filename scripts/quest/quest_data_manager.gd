@@ -9,62 +9,60 @@ class_name QuestDataManager
 var quest_templates: Dictionary = {} # template_id -> QuestResource
 var quest_configuration: Dictionary = {}
 
-# YAML parser instance
-var yaml_parser: YAMLParser
-
 func _init():
-	yaml_parser = YAMLParser.new()
+	pass
 
 # Load all quest data from files
 func load_quest_data() -> void:
-	"""Load all quest data from YAML files"""
+	"""Load all quest data from resource files"""
 	load_quest_configuration()
 	load_quest_templates()
 	print("Loaded " + str(quest_templates.size()) + " quest templates")
 
 # Load quest configuration
 func load_quest_configuration() -> void:
-	"""Load quest configuration from YAML file"""
-	var file_path = "res://data/quests/quest_config.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Warning: Could not open quest config file: " + file_path)
+	"""Load quest configuration from resource file"""
+	var resource_path = "res://data/quests/quest_config.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Warning: Could not load quest config from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	quest_configuration = yaml_parser.parse_yaml_quest_config(yaml_string)
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	quest_configuration = resource_data
 	print("Loaded quest configuration")
 
 # Load quest templates
 func load_quest_templates() -> void:
-	"""Load quest templates from YAML files"""
-	var quest_files = yaml_parser.get_yaml_files_in_directory("res://data/quests/")
+	"""Load quest templates from resource files"""
+	var dir = DirAccess.open("res://data/quests/")
+	if dir == null:
+		print("Error: Could not open quests directory")
+		return
 
-	for file_path in quest_files:
-		if file_path.ends_with("quest_config.yaml"):
-			continue  # Skip config file
-		load_quests_from_file(file_path)
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".tres") and file_name != "quest_config.tres":
+			var file_path = "res://data/quests/" + file_name
+			load_quests_from_file(file_path)
 
 # Load quests from a specific file
 func load_quests_from_file(file_path: String) -> void:
-	"""Load quest templates from a specific YAML file"""
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Error: Could not open quest file: " + file_path)
+	"""Load quest templates from a specific resource file"""
+	var resource = load(file_path)
+	if resource == null:
+		print("Error: Could not load quest resource: " + file_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var quest_data = yaml_parser.parse_yaml_quests(yaml_string)
-	if quest_data.is_empty():
-		print("Error: Could not parse quest data from: " + file_path)
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null or resource_data.is_empty():
+		print("Error: No quest data found in: " + file_path)
 		return
 
 	# Process quest templates
-	var quests = quest_data.get("quests", [])
+	var quests = resource_data.get("quests", [])
 	for quest_template_data in quests:
 		var quest_template = create_quest_from_template_data(quest_template_data)
 		if quest_template:

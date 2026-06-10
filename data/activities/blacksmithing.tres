@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Blacksmithing"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Craft weapons and armor"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 2
+cycle_cost = 0.0
+daily_progress = 0.05
+cost_per_day = 0.0
+rewards = {"crafting_skill": 1, "strength_exp": 8, "gold": 5}
+requirements = {"strength": 11, "tools": "smith_tools"}

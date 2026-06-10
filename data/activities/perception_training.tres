@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Perception Training"
+ability_resource = null
+skill = "Perception"
+description = "Awareness exercises and sensory training"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.11
+cost_per_day = 0.2
+rewards = {"perception_skill": 1, "wisdom_exp": 10}
+requirements = {"wisdom": 10}

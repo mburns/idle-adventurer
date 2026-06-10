@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MagicItemResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1_ltj4c"]
+
+[resource]
+script = ExtResource("1_ltj4c")
+name = "Gloves of Missile Snaring"
+type = "Wondrous item"
+rarity = "Uncommon"
+attunement = true
+description = "These gloves seem to almost meld into your hands when you don them. When a ranged weapon attack hits you while you're wearing them, you can use your reaction to reduce the damage by 1d10+your Dexterity modifier, provided that you have a free hand. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in that hand."
+properties = Array[String]([])
+effects = Array[Dictionary]([])
+requirements = "attunement"
+weight = ""
+value = ""
+category = "magic_item"
+charges = 0
+max_charges = 0
+recharge_rate = ""
+spell_list = Array[String]([])
+spell_level = 0
+uses_per_day = 0
+cursed = false
+sentient = false
+armor_class_bonus = 0
+attack_bonus = 0
+damage_bonus = 0
+ability_bonuses = {}
+skill_bonuses = {}
+saving_throw_bonuses = {}
+resistance_types = Array[String]([])
+immunity_types = Array[String]([])
+vulnerability_types = Array[String]([])
+requires_identification = true
+identification_difficulty = 15
+detect_magic_visible = true

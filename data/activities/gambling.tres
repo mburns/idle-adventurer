@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Gambling"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Games of chance and risk-taking"
+cycle_duration = 15.0
+cycle_xp = 3
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.0167
+cost_per_day = 0.0
+rewards = {"gold": 0, "charisma_exp": 3}
+requirements = {"charisma": 10, "gold": 5}

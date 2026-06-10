@@ -70,11 +70,11 @@ func update_class_features():
     for child in features_container.get_children():
         child.queue_free()
 
-    # Get class features for current level
+    # Get class features for current level using Resource manager
+    var class_resource = AutoloadManager.get_class_manager().get_class_resource(character.character_class)
     var class_data = {}
-    if Engine.has_singleton("DataLoader"):
-        var data_loader = Engine.get_singleton("DataLoader")
-        class_data = data_loader.get_class_data(character.character_class)
+    if class_resource:
+        class_data = {"features": class_resource.features}
 
     var all_features = class_data.get("features", {})
 

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RaceResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/race_resource.gd" id="1_8dsae"]
+
+[resource]
+script = ExtResource("1_8dsae")
+name = "Human"
+ability_increases = {
+"charisma": 1,
+"constitution": 1,
+"dexterity": 1,
+"intelligence": 1,
+"strength": 1,
+"wisdom": 1
+}
+size = "Medium"
+speed = "30"
+height_range = {
+"max": "78",
+"min": "60"
+}
+weight_range = {
+"max": "200",
+"min": "120"
+}
+languages = Array[String](["languages"])
+racial_traits = Array[Dictionary]([])
+darkvision = 0
+resistances = Array[String]([])
+immunities = Array[String]([])
+vulnerabilities = Array[String]([])
+subraces = Array[Dictionary]([])

@@ -1,0 +1,10 @@
+[gd_resource type="SkillResource" format=3]
+
+[resource]
+skill_name = "History"
+description = "Knowledge of historical events, legendary people, and ancient kingdoms"
+ability_resource = ExtResource("ability_intelligence")
+is_proficient = false
+proficiency_bonus = 0
+is_armor_penalty = false
+is_passive = false

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Insight Practice"
+ability_resource = null
+skill = "Insight"
+description = "People watching and psychology study"
+cycle_duration = 15.0
+cycle_xp = 3
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.1
+rewards = {"insight_skill": 1, "wisdom_exp": 8}
+requirements = {"wisdom": 10}

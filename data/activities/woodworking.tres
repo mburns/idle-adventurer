@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Woodworking"
+ability_resource = null
+skill = ""
+description = "Craft wooden furniture and tools"
+cycle_duration = 15.0
+cycle_xp = 9
+cycle_gold = 9
+cycle_cost = 0.0
+daily_progress = 0.04
+cost_per_day = 0.0
+rewards = {"crafting_skill": 1, "strength_exp": 22, "gold": 9}
+requirements = {"strength": 12, "tools": "woodcarver_tools"}

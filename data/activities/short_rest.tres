@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Short Rest"
+ability_resource = null
+skill = "Short Rest"
+description = "Take a short rest to recover hit points and abilities"
+cycle_duration = 20.0
+cycle_xp = 5
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.0
+rewards = {"xp": 5, "hit_points": 10, "ability_recovery": 1}
+requirements = {}

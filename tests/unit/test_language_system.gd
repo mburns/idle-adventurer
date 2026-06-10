@@ -9,7 +9,7 @@ func before_each():
     language_system = LanguageSystem.new()
     test_character = Character.new()
     test_character.name = "TestCharacter"
-    test_character.known_languages = ["Common"]
+    test_character.known_languages = ["Common"] as Array[String]
 
 func test_language_system_initialization():
     """Test that language system initializes correctly"""
@@ -212,7 +212,7 @@ func test_language_fluency_levels():
     assert_gt(fluency_levels.size(), 0, "Should have fluency levels")
 
     # Test getting fluency level for character
-    test_character.known_languages = ["Common", "Elvish"]
+    test_character.known_languages = ["Common", "Elvish"] as Array[String]
     var common_fluency = language_system.get_character_fluency(test_character, "Common")
     var elvish_fluency = language_system.get_character_fluency(test_character, "Elvish")
     var unknown_fluency = language_system.get_character_fluency(test_character, "Dwarvish")
@@ -250,7 +250,7 @@ func test_language_learning_limits():
 
 func test_language_forgetting():
     """Test forgetting languages (if implemented)"""
-    test_character.known_languages = ["Common", "Elvish", "Dwarvish"]
+    test_character.known_languages = ["Common", "Elvish", "Dwarvish"] as Array[String]
     var initial_count = test_character.known_languages.size()
 
     # Try to forget Common (should fail - can't forget Common)

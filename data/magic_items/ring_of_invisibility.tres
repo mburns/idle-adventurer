@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MagicItemResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1_1qrkx"]
+
+[resource]
+script = ExtResource("1_1qrkx")
+name = "Ring of Invisibility"
+type = "Ring"
+rarity = "Legendary"
+attunement = true
+description = "While wearing this ring, you can turn invisible as an action. Anything you are wearing or carrying is invisible with you. You remain invisible until the ring is removed, until you attack or cast a spell, or until you use a bonus action to become visible again."
+properties = Array[String]([])
+effects = Array[Dictionary]([])
+requirements = "attunement"
+weight = ""
+value = ""
+category = "magic_item"
+charges = 0
+max_charges = 0
+recharge_rate = ""
+spell_list = Array[String]([])
+spell_level = 0
+uses_per_day = 0
+cursed = false
+sentient = false
+armor_class_bonus = 0
+attack_bonus = 0
+damage_bonus = 0
+ability_bonuses = {}
+skill_bonuses = {}
+saving_throw_bonuses = {}
+resistance_types = Array[String]([])
+immunity_types = Array[String]([])
+vulnerability_types = Array[String]([])
+requires_identification = true
+identification_difficulty = 15
+detect_magic_visible = true

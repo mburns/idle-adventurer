@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_wpkci"]
+
+[resource]
+script = ExtResource("1_wpkci")
+name = "Specter"
+size = "Medium undead"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "12"
+hit_points = "2258"
+speed = "0 ft., fly 50 ft. (hover)"
+abilities = {
+"charisma": 11,
+"constitution": 11,
+"dexterity": 14,
+"intelligence": 10,
+"strength": 1,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +5"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
+languages = Array[String](["understands all languages it knew in life but cant speak"])
+challenge_rating = "1"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Eternal Rest", "description": "The specter targets one creature it can see within 10 feet of it. If the target is a creature other than a specter, it must succeed on a DC 15 Wisdom saving throw or be forced to spend its action to take a long rest. A target that doesn't take a long rest by the end of its next turn is no longer under this effect."}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

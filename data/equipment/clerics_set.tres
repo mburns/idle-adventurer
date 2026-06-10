@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipmentSetResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/equipment_set_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+set_id = "clerics_set"
+set_name = "Cleric's Set"
+description = "Religious equipment set for clerics"
+pieces = Array[String](["Scale Mail", "Shield", "Mace", "Holy Symbol"])
+bonuses = {
+"healing_power": 1,
+"divine_spell_bonus": 1
+}
+rarity = "common"
+required_class = "cleric"
+required_level = 1

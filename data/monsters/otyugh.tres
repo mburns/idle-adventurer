@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_0x8ve"]
+
+[resource]
+script = ExtResource("1_0x8ve")
+name = "Otyugh"
+size = "Large aberration"
+type = "neutral"
+alignment = "neutral"
+armor_class = "14"
+hit_points = "114121048"
+speed = "30 ft."
+abilities = {
+"charisma": 6,
+"constitution": 19,
+"dexterity": 11,
+"intelligence": 6,
+"strength": 16,
+"wisdom": 13
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +6"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 120 ft., passive Perception 11"
+languages = Array[String](["Otyugh"])
+challenge_rating = "5"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The otyugh makes two attacks: one with its bite and one with its tentacles"
+    },
+	{
+        "name": "Bite",
+        "description": "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8+4) piercing damage"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A staff", "a hunting trap", "a trophy from an animal you killed", "a set of traveler's clothes", "and a belt pouch containing 10 gp"]
+},
+"feature": "Wanderer",
+"languages": {
+"languages": ["One of your choice"]
+},
+"name": "Outlander",
+"skill_proficiencies": {
+"skill_proficiencies": ["Athletics", "Survival"]
+},
+"suggested_characteristics": "{}"
+}

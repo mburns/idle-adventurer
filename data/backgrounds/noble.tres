@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"equipment": {
+"equipment": ["A signet ring", "a scroll of pedigree", "a set of fine clothes", "and a purse containing 25 gp"]
+},
+"feature": "Position of Privilege",
+"languages": {
+"languages": ["One of your choice"]
+},
+"name": "Noble",
+"skill_proficiencies": {
+"skill_proficiencies": ["History", "Persuasion"]
+},
+"suggested_characteristics": "{}"
+}

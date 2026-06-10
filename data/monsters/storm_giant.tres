@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_vkc4y"]
+
+[resource]
+script = ExtResource("1_vkc4y")
+name = "Storm Giant"
+size = "Huge giant"
+type = "chaotic good"
+alignment = "chaotic good"
+armor_class = "16"
+hit_points = "2302012100"
+speed = "50 ft., swim 50 ft."
+abilities = {
+"charisma": 18,
+"constitution": 20,
+"dexterity": 14,
+"intelligence": 16,
+"strength": 29,
+"wisdom": 18
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +7"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 19"
+languages = Array[String](["Common", "Giant"])
+challenge_rating = "13"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The storm giant makes two greatsword attacks"},
+	{"name": "Greatsword", "description": "*Melee Weapon Attack:* +12 to hit, reach 5 ft., one target. *Hit:* 18 (3d8+6) slashing damage"},
+	{"name": "Lightning Bolt (Recharge 5-6)", "description": "The storm giant hurls a lightning bolt at one creature it can see within 120 feet of it. Each creature in a 20-foot-radius sphere centered on that point must make a DC 16 Dexterity saving throw, taking 56 (16d6) lightning damage on a failed save, or half as much damage on a successful one"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "14"

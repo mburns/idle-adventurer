@@ -1,0 +1,48 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"skill_types": {
+"skill_types": ["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival", "deception", "intimidation", "performance", "persuasion"]
+},
+"skill_descriptions": {
+"athletics": "Physical tasks like climbing, jumping, and swimming",
+"acrobatics": "Balance, tumbling, and staying on your feet",
+"sleight_of_hand": "Manual dexterity, pickpocketing, and sleight of hand tricks",
+"stealth": "Hiding and moving silently",
+"arcana": "Knowledge of magic, magical items, and planes of existence",
+"history": "Knowledge of historical events, legendary people, and ancient kingdoms",
+"investigation": "Looking for clues and making deductions",
+"nature": "Knowledge of terrain, plants, animals, weather, and natural cycles",
+"religion": "Knowledge of deities, religious rites, and divine magic",
+"animal_handling": "Calming down domesticated animals and intuiting their intentions",
+"insight": "Determining the true intentions of others",
+"medicine": "Diagnosing illnesses and treating wounds",
+"perception": "Noticing details in your environment",
+"survival": "Following tracks, hunting, and navigating wilderness",
+"deception": "Lying convincingly and disguising your intentions",
+"intimidation": "Influencing others through threats and fear",
+"performance": "Entertaining others through music, dance, acting, or storytelling",
+"persuasion": "Influencing others through diplomacy and social skills"
+},
+"skill_abilities": {
+"athletics": "strength",
+"acrobatics": "dexterity",
+"sleight_of_hand": "dexterity",
+"stealth": "dexterity",
+"arcana": "intelligence",
+"history": "intelligence",
+"investigation": "intelligence",
+"nature": "intelligence",
+"religion": "intelligence",
+"animal_handling": "wisdom",
+"insight": "wisdom",
+"medicine": "wisdom",
+"perception": "wisdom",
+"survival": "wisdom",
+"deception": "charisma",
+"intimidation": "charisma",
+"performance": "charisma",
+"persuasion": "charisma"
+}
+}

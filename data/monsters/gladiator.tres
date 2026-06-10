@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_caocw"]
+
+[resource]
+script = ExtResource("1_caocw")
+name = "Gladiator"
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "any alignment"
+armor_class = "16"
+hit_points = "11215845"
+speed = "30 ft."
+abilities = {
+"charisma": 15,
+"constitution": 16,
+"dexterity": 15,
+"intelligence": 10,
+"strength": 18,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 11"
+languages = Array[String](["any one language (usually Common)"])
+challenge_rating = "5"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The gladiator makes three melee attacks or two ranged attacks"
+    },
+	{
+        "name": "Spear",
+        "description": "*Melee or Ranged Weapon Attack:* +7 to hit, reach 5 ft. and range 20/60 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack"
+    },
+	{
+        "name": "Shield Bash",
+        "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one creature. *Hit:* 9 (2d4 + 4) bludgeoning damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Strength saving throw or be knocked prone"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

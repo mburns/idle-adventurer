@@ -1,0 +1,77 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"challenge_ratings": {
+    "category": "extreme",
+    "challenge_ratings": ["id: CR_0", "id: CR_1_8", "id: CR_1_4", "id: CR_1_2", "id: CR_1", "id: CR_2", "id: CR_3", "id: CR_4", "id: CR_5_PLUS"],
+    "color": "'#000000'  # Black",
+    "description": "Extremely deadly encounter",
+    "name": "CR 5+",
+    "xp": 1800
+},
+"monster_categories": {
+"alien": {
+"description": "Creatures from beyond normal reality",
+"name": "Alien Creatures",
+"priority": 7
+},
+"artificial": {
+"description": "Creatures created by magic or technology",
+"name": "Artificial Creatures",
+"priority": 6
+},
+"evil": {
+    "description": "Creatures aligned with evil",
+    "name": "Evil Creatures",
+    "priority": 3
+},
+"good": {
+    "description": "Creatures aligned with good",
+    "name": "Good Creatures",
+    "priority": 4
+},
+"horror": {
+    "description": "Creatures designed to inspire fear",
+    "name": "Horror Creatures",
+    "priority": 9
+},
+"humanoid": {
+    "description": "Creatures with human-like characteristics",
+    "name": "Humanoid Creatures",
+    "priority": 8
+},
+"magical": {
+    "description": "Creatures with magical origins",
+    "name": "Magical Creatures",
+    "priority": 2
+},
+"natural": {
+    "description": "Creatures that exist in nature",
+    "name": "Natural Creatures",
+    "priority": 1
+},
+"unnatural": {
+    "description": "Creatures that defy natural laws",
+    "name": "Unnatural Creatures",
+    "priority": 5
+}
+},
+"monster_sizes": {
+"category": "gargantuan",
+"color": "'#4B0082'  # Indigo",
+"description": "Massive creatures",
+"monster_sizes": ["id: TINY", "id: SMALL", "id: MEDIUM", "id: LARGE", "id: HUGE", "id: GARGANTUAN"],
+"name": "Gargantuan",
+"space": "'20 by 20 feet or larger'"
+},
+"monster_types": {
+"category": "horror",
+"color": "'#8B008B'  # Dark Magenta",
+"description": "Horrific creatures of unknown origin",
+"icon": "'monstrosity'",
+"monster_types": ["id: BEAST", "id: DRAGON", "id: ELEMENTAL", "id: FIEND", "id: CELESTIAL", "id: UNDEAD", "id: CONSTRUCT", "id: ABERRATION", "id: HUMANoid", "id: MONSTROSITY"],
+"name": "Monstrosity",
+"priority": 10
+}
+}

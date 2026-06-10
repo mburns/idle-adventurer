@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RaceResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/race_resource.gd" id="1_2wtqn"]
+
+[resource]
+script = ExtResource("1_2wtqn")
+name = "Gnome"
+ability_increases = {
+"intelligence": "2",
+}
+size = "Small"
+speed = "25"
+height_range = {}
+weight_range = {}
+languages = Array[String](["languages"])
+racial_traits = Array[Dictionary]([{
+"description": "['Darkvision', 'Gnome Cunning', 'Artificer's Lore', 'Tinker', 'Clockwork Toy', 'Fire Starter', 'Music Box']",
+"name": "traits"
+}])
+darkvision = 0
+resistances = Array[String]([])
+immunities = Array[String]([])
+vulnerabilities = Array[String]([])
+subraces = Array[Dictionary]([])

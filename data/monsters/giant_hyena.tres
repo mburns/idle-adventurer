@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_k51lq"]
+
+[resource]
+script = ExtResource("1_k51lq")
+name = "Giant Hyena"
+size = "Large beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "12"
+hit_points = "4561012"
+speed = "50 ft."
+abilities = {
+"charisma": 7,
+"constitution": 14,
+"dexterity": 14,
+"intelligence": 2,
+"strength": 16,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 13"
+languages =Array[String]([])
+challenge_rating = "1"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

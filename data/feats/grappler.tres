@@ -1,0 +1,24 @@
+[gd_resource type="FeatResource" format=3]
+
+[resource]
+feat_name = "Grappler"
+description = "You've developed the skills necessary to hold your own in close-quarters grappling."
+prerequisites = {"strength": 13}
+benefits = ["You have advantage on attack rolls against a creature you are grappling.", "You can use your action to try to pin a creature grappled by you. To do so, make another grapple check. If you succeed, you and the creature are both restrained until the grapple ends."]
+is_combat_feat = true
+is_skill_feat = false
+is_magic_feat = false
+ability_score_increase = {}
+skill_proficiencies = []
+tool_proficiencies = []
+language_proficiencies = []
+weapon_proficiencies = []
+armor_proficiencies = []
+saving_throw_proficiencies = []
+spell_slots = {}
+spells_known = []
+special_abilities = ["grappling_advantage", "pin_action"]
+is_half_feat = false
+can_take_multiple_times = false
+source_book = "PHB"
+rarity = "common"

@@ -1,5 +1,6 @@
-class_name EquipmentResource
 extends Resource
+
+class_name EquipmentResource
 
 # D&D Equipment as a Godot Resource for better editor integration
 

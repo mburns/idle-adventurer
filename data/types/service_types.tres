@@ -1,0 +1,70 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"service_availability": {
+"category": "limited",
+"color": "'#FF0000'  # Red",
+"description": "Service has limited availability",
+"name": "Limited",
+"service_availability": ["id: ALWAYS_AVAILABLE", "id: SCHEDULED", "id: BY_REQUEST", "id: LIMITED"]
+},
+"service_categories": {
+"commercial": {
+"description": "Services related to trade and commerce",
+"name": "Commercial Services",
+"priority": 1
+},
+"educational": {
+"description": "Services for learning and skill development",
+"name": "Educational Services",
+"priority": 3
+},
+"governmental": {
+"description": "Official government and administrative services",
+"name": "Governmental Services",
+"priority": 7
+},
+"hospitality": {
+"description": "Services for accommodation and comfort",
+"name": "Hospitality Services",
+"priority": 2
+},
+"informational": {
+"description": "Services for knowledge and intelligence",
+"name": "Information Services",
+"priority": 5
+},
+"medical": {
+"description": "Services for health and healing",
+"name": "Medical Services",
+"priority": 4
+},
+"recreational": {
+"description": "Services for entertainment and leisure",
+"name": "Recreational Services",
+"priority": 6
+},
+"travel": {
+"description": "Services for transportation and movement",
+"name": "Travel Services",
+"priority": 8
+}
+},
+"service_requirements": {
+"category": "skill",
+"color": "'#32CD32'  # Lime Green",
+"description": "Requires certain skill level",
+"name": "Skill Required",
+"service_requirements": ["id: NONE", "id: REPUTATION", "id: MEMBERSHIP", "id: PAYMENT", "id: SKILL"]
+},
+"service_types": {
+"category": "travel",
+"color": "'#20B2AA'  # Light Sea Green",
+"description": "Travel and transport services",
+"icon": "'transportation'",
+"name": "Transportation",
+"priority": 8,
+"service_types": ["id: SHOPPING", "id: ACCOMMODATION", "id: TRAINING", "id: HEALING", "id: INFORMATION", "id: ENTERTAINMENT", "id: ADMINISTRATION", "id: TRANSPORTATION"]
+}
+}

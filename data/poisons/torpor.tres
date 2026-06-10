@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "poison",
+"description": "",
+"effects": "",
+"name": "Torpor",
+"price": "600 gp",
+"type": "Ingested"
+}

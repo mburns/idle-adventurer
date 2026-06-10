@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_0cof1"]
+
+[resource]
+script = ExtResource("1_0cof1")
+name = "Sea Horse"
+size = "Tiny beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "11"
+hit_points = "1141"
+speed = "0 ft., swim 20 ft."
+abilities = {
+"charisma": 2,
+"constitution": 8,
+"dexterity": 12,
+"intelligence": 1,
+"strength": 1,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 10"
+languages = Array[String]([])
+challenge_rating = "0"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

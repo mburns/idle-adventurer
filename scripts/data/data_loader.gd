@@ -88,10 +88,6 @@ func load_yaml_data(data_name: String) -> Dictionary:
 	var file_path = "res://data/" + data_name + ".yaml"
 	return load_yaml_file(file_path)
 
-# Parse YAML activities array format
-func parse_yaml_activities(yaml_string: String) -> Array:
-	return yaml_parser.parse_yaml_activities(yaml_string)
-
 # Get race names
 func get_race_names() -> Array[String]:
 	var names: Array[String] = []
@@ -163,7 +159,7 @@ func _load_activities_from_file(file_path: String) -> void:
 	var yaml_string = file.get_as_text()
 	file.close()
 
-	var activities_array = parse_yaml_activities(yaml_string)
+	var activities_array = yaml_parser.parse_yaml_activities(yaml_string)
 	if not activities_array is Array:
 		print("Error: ", file_path, " does not contain an array")
 		return
@@ -178,7 +174,8 @@ func _load_activities_from_file(file_path: String) -> void:
 			continue
 
 		# Ensure ability is valid
-		if not ability in activities_data:
+		var valid_abilities = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "general"]
+		if not ability in valid_abilities:
 			print("Invalid ability '", ability, "' for activity '", activity_id, "' in ", file_path)
 			ability = "general"
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/alignment_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+metadata/yaml_data = {
+  "name": "Chaotic Neutral",
+  "abbreviation": "CN",
+  "description": "Creatures follow their whims, holding their personal freedom above all else.",
+  "morality": "Neutral",
+  "attitude": "Chaotic"
+}

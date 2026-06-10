@@ -75,27 +75,38 @@ class ProfessionalWork:
 var professions: Dictionary = {} # profession_id -> Profession
 var active_work: Dictionary = {} # character_id -> ProfessionalWork
 var professional_reputation: Dictionary = {} # character_id -> profession_id -> reputation
-var yaml_parser: YAMLParser
 
 func _init():
-	yaml_parser = YAMLParser.new()
 	setup_professions()
 
 func setup_professions():
-	"""Load professions from data files"""
+	"""Load professions from resource files"""
 	load_professions_from_directory("res://data/professions/")
 	print("Loaded " + str(professions.size()) + " professions")
 
 func load_professions_from_directory(directory_path: String) -> void:
 	"""Load all profession files from a directory"""
-	var yaml_files = yaml_parser.get_yaml_files_in_directory(directory_path)
+	var dir = DirAccess.open(directory_path)
+	if dir == null:
+		print("Error: Could not open professions directory: " + directory_path)
+		return
 
-	for file_path in yaml_files:
-		load_professions_from_file(file_path)
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".tres"):
+			var file_path = directory_path + file_name
+			load_professions_from_file(file_path)
 
 func load_professions_from_file(file_path: String) -> void:
-	"""Load professions from a specific YAML file"""
-	var profession_data = yaml_parser.parse_yaml_file(file_path)
+	"""Load professions from a specific .tres file"""
+	var resource = load(file_path)
+	if resource == null:
+		print("Error: Could not load profession resource: " + file_path)
+		return
+
+	var profession_data = resource.get("metadata/yaml_data")
+	if profession_data == null:
+		profession_data = {}
 
 	if profession_data.is_empty():
 		print("Error: Could not load professions from " + file_path)

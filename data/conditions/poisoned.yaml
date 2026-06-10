@@ -1,6 +1,0 @@
-name: Poisoned
-type: condition
-description: ""
-effects:
-  - A poisoned creature has disadvantage on attack rolls and ability checks.
-category: condition

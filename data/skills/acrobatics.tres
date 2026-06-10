@@ -1,0 +1,11 @@
+[gd_resource type="SkillResource" format=3]
+
+[resource]
+id = "skill_acrobatics"
+skill_name = "Acrobatics"
+description = "Balance, tumbling, and staying on your feet"
+ability_resource = ExtResource("ability_dexterity")
+is_proficient = false
+proficiency_bonus = 0
+is_armor_penalty = true
+is_passive = false

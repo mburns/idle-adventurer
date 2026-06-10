@@ -59,6 +59,9 @@ var event_history: Dictionary = {} # character_id -> Array[event_data]
 var active_events: Dictionary = {} # character_id -> RandomEvent
 var event_cooldowns: Dictionary = {} # character_id -> event_id -> cooldown_end_time
 
+# YAML parser instance
+var yaml_parser: YAMLParser
+
 # Dynamic event system data
 var event_types: Dictionary = {} # event_type_id -> event_type_data
 var event_outcomes: Dictionary = {} # outcome_id -> outcome_data
@@ -69,7 +72,7 @@ func _init():
 	setup_event_system()
 
 func setup_event_system():
-	"""Initialize the event system with YAML data"""
+	"""Initialize the event system with resource data"""
 	load_event_configuration()
 	load_event_data()
 	print("Random Events System initialized with " + str(events.size()) + " events")
@@ -262,19 +265,18 @@ func get_event_history(character: Character) -> Array:
 
 # YAML loading functions for random events system
 func load_event_configuration() -> void:
-	"""Load event types, outcomes, and rarity levels from YAML"""
-	var file_path = "res://data/events/event_types.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Error: Could not open event types file: " + file_path)
+	"""Load event types, outcomes, and rarity levels from resources"""
+	var resource_path = "res://data/events/event_types.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Error: Could not load event types from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var event_config = parse_yaml_event_config(yaml_string)
+	var event_config = resource.get("metadata/yaml_data")
 	if event_config == null:
-		print("Error parsing event configuration YAML")
+		event_config = {}
+	if event_config.is_empty():
+		print("Error: No event configuration data found")
 		return
 
 	# Load event types
@@ -306,7 +308,7 @@ func load_event_configuration() -> void:
 	print("Loaded " + str(event_types.size()) + " event types, " + str(event_outcomes.size()) + " outcomes, " + str(event_rarities.size()) + " rarities")
 
 func load_event_data() -> void:
-	"""Load event data from YAML files"""
+	"""Load event data from resource files"""
 	var events_dir = "res://data/events/"
 	var dir = DirAccess.open(events_dir)
 
@@ -314,28 +316,24 @@ func load_event_data() -> void:
 		print("Error: Could not open events directory: " + events_dir)
 		return
 
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-
-	while file_name != "":
-		if file_name.ends_with(".yaml") and file_name != "event_types.yaml":
+	var files = dir.get_files()
+	for file_name in files:
+		if file_name.ends_with(".tres") and file_name != "event_types.tres":
 			var file_path = events_dir + file_name
 			load_events_from_file(file_path)
-		file_name = dir.get_next()
 
 func load_events_from_file(file_path: String) -> void:
-	"""Load events from a specific YAML file"""
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Error: Could not open event file: " + file_path)
+	"""Load events from a specific resource file"""
+	var resource = load(file_path)
+	if resource == null:
+		print("Error: Could not load event resource: " + file_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var event_data = parse_yaml_events(yaml_string)
+	var event_data = resource.get("metadata/yaml_data")
 	if event_data == null:
-		print("Error parsing events YAML: " + file_path)
+		event_data = {}
+	if event_data.is_empty():
+		print("Error: No event data found in: " + file_path)
 		return
 
 	var events_data = event_data.get("events", [])
@@ -347,80 +345,14 @@ func load_events_from_file(file_path: String) -> void:
 
 	print("Loaded " + str(events_data.size()) + " events from " + file_path)
 
-func parse_yaml_event_config(yaml_string: String) -> Dictionary:
-	"""Parse YAML event configuration"""
-	var lines = yaml_string.split("\n")
-	var result = {}
-	var current_section = ""
-	var current_array = []
-	var current_object = {}
-	var in_object = false
-	var object_key = ""
-	var in_multiline = false
-	var indent_level = 0
+# Custom YAML parsing function removed - now using unified YAMLParser
+func parse_yaml_event_config_removed(yaml_string: String) -> Dictionary:
+	"""Parse YAML event configuration - DEPRECATED: Use YAMLParser instead"""
+	# This function is kept for reference but should not be used
+	# Use yaml_parser.parse_yaml_string(yaml_string) instead
+	return {}
 
-	for line in lines:
-		line = line.strip_edges()
-		if line.is_empty() or line.begins_with("#"):
-			continue
-
-		var line_indent = get_indent_level(line)
-
-		# Handle top-level sections
-		if line_indent == 0 and ":" in line and not line.begins_with("-"):
-			# Save previous section if exists
-			if current_section != "" and current_array.size() > 0:
-				result[current_section] = current_array
-
-			var parts = line.split(":", 1)
-			current_section = parts[0].strip_edges()
-			current_array = []
-			continue
-
-		# Handle array items within sections
-		if line.begins_with("- ") and line_indent == 0:
-			# Save previous object if exists
-			if in_object and current_object.size() > 0:
-				current_array.append(current_object)
-
-			# Start new object
-			current_object = {}
-			in_object = true
-			continue
-		elif line.begins_with("-") and line_indent > 0:
-			# Handle nested array items
-			var item = line.substr(1).strip_edges()
-			if not current_object.has(object_key):
-				current_object[object_key] = []
-			current_object[object_key].append(parse_value(item))
-		elif ":" in line and line_indent > 0:
-			# Handle key-value pairs within objects
-			if in_multiline and object_key != "":
-				current_object[object_key] = current_object.get(object_key, "").strip_edges()
-				in_multiline = false
-
-			var parts = line.split(":", 1)
-			object_key = parts[0].strip_edges()
-			var value = parts[1].strip_edges()
-
-			if value.is_empty():
-				in_multiline = true
-				current_object[object_key] = ""
-			else:
-				current_object[object_key] = parse_value(value)
-		elif in_multiline and line_indent > indent_level:
-			# Continue multiline value
-			current_object[object_key] += "\n" + line
-
-	# Add last object and section
-	if in_object and current_object.size() > 0:
-		current_array.append(current_object)
-	if current_section != "" and current_array.size() > 0:
-		result[current_section] = current_array
-
-	return result
-
-func parse_yaml_events(yaml_string: String) -> Dictionary:
+func parse_yaml_events_removed(yaml_string: String) -> Dictionary:
 	"""Parse YAML event data"""
 	var lines = yaml_string.split("\n")
 	var result = {}
@@ -493,33 +425,5 @@ func parse_yaml_events(yaml_string: String) -> Dictionary:
 
 	return result
 
-func get_indent_level(line: String) -> int:
-	"""Get the indentation level of a line"""
-	var indent = 0
-	for i in range(line.length()):
-		if line[i] == " ":
-			indent += 1
-		elif line[i] == "\t":
-			indent += 4
-		else:
-			break
-	return indent
-
-func parse_value(value: String) -> Variant:
-	"""Parse a YAML value string into appropriate type"""
-	# Try to parse as number
-	if value.is_valid_int():
-		return value.to_int()
-	elif value.is_valid_float():
-		return value.to_float()
-	# Try to parse as boolean
-	elif value == "true":
-		return true
-	elif value == "false":
-		return false
-	# Try to parse as null/empty
-	elif value == "null" or value == "~" or value == "":
-		return null
-	# Return as string
-	else:
-		return value
+# Helper functions removed - now using unified YAMLParser
+# These functions are no longer needed as YAMLParser handles all parsing

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MagicItemResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1_lfthf"]
+
+[resource]
+script = ExtResource("1_lfthf")
+name = "Philter of Love"
+type = "Potion"
+rarity = "Uncommon"
+attunement = false
+description = "The next time you see a creature within 10 minutes after drinking this philter", you become charmed by that creature for 1 hour. If the creature is of a species and gender you are normally attracted to, you regard it as your true love while you are charmed. This potion"s rose-hued, effervescent liquid contains one easy-to-miss bubble shaped like a heart."
+properties = Array[String]([])
+effects = Array[Dictionary]([])
+requirements = ""
+weight = ""
+value = ""
+category = "magic_item"
+charges = 0
+max_charges = 0
+recharge_rate = ""
+spell_list = Array[String]([])
+spell_level = 0
+uses_per_day = 0
+cursed = false
+sentient = false
+armor_class_bonus = 0
+attack_bonus = 0
+damage_bonus = 0
+ability_bonuses = {}
+skill_bonuses = {}
+saving_throw_bonuses = {}
+resistance_types = Array[String]([])
+immunity_types = Array[String]([])
+vulnerability_types = Array[String]([])
+requires_identification = true
+identification_difficulty = 15
+detect_magic_visible = true

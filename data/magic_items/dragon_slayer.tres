@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MagicItemResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/magic_item_resource.gd" id="1_3rl3r"]
+
+[resource]
+script = ExtResource("1_3rl3r")
+name = "Dragon Slayer"
+type = "Weapon"
+rarity = "Rare"
+attunement = false
+description = ""
+properties = Array[String]([])
+effects = Array[Dictionary]([])
+requirements = ""
+weight = ""
+value = ""
+category = "magic_item"
+charges = 0
+max_charges = 0
+recharge_rate = ""
+spell_list = Array[String]([])
+spell_level = 0
+uses_per_day = 0
+cursed = false
+sentient = false
+armor_class_bonus = 0
+attack_bonus = 0
+damage_bonus = 0
+ability_bonuses = {}
+skill_bonuses = {}
+saving_throw_bonuses = {}
+resistance_types = Array[String]([])
+immunity_types = Array[String]([])
+vulnerability_types = Array[String]([])
+requires_identification = true
+identification_difficulty = 15
+detect_magic_visible = true

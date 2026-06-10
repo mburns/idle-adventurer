@@ -1,0 +1,40 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"quests": {
+"description": "'Spend time in the local tavern, listening to stories and sharing your own adventures.'",
+"giver": "'Tavern Keeper'",
+"location": "'The Prancing Pony Tavern'",
+"objectives": {
+"description": "'Share your own adventure stories'",
+"objective_type": "PERFORM_ACTIVITY",
+"objectives": ["id: listen_to_stories", "id: share_adventures"],
+"requirements": {
+"activity": "'storytelling'",
+"audience": "'tavern_patrons'"
+},
+"target_value": 3
+},
+"prerequisites": Array[String]([]),
+"quest_type": "SOCIAL",
+"quests": ["id: noble_party", "id: noble_favor", "id: tavern_tales"],
+"requirements": {
+"character_level": 1
+},
+"rewards": {
+"experience": 75,
+"gold": 25,
+"information": {
+"information": ["'local_gossip'", "'rumors'", "'potential_jobs'"]
+},
+"reputation": {
+"Town": 5
+}
+},
+"status": "AVAILABLE",
+"time_limit": 0,
+"title": "'Tavern Tales and Tall Stories'",
+"unlocks": "['tavern_regular']"
+}
+}

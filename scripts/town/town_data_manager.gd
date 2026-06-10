@@ -10,38 +10,33 @@ var locations: Dictionary = {} # location_id -> Location
 var services: Dictionary = {} # service_id -> Service
 var events: Dictionary = {} # event_id -> TownEvent
 
-# YAML parser instance
-var yaml_parser: YAMLParser
-
 func _init():
-	yaml_parser = YAMLParser.new()
+	pass
 
 # Load all town data
 func load_town_data() -> void:
-	"""Load all town data from YAML files"""
-	load_locations_from_yaml()
-	load_services_from_yaml()
-	load_events_from_yaml()
+	"""Load all town data from resource files"""
+	load_locations_from_resources()
+	load_services_from_resources()
+	load_events_from_resources()
 	print("Loaded " + str(locations.size()) + " locations, " + str(services.size()) + " services, " + str(events.size()) + " events")
 
-# Load locations from YAML
-func load_locations_from_yaml() -> void:
-	"""Load town locations from YAML file"""
-	var file_path = "res://data/towns/locations.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Warning: Could not open locations file: " + file_path)
+# Load locations from resources
+func load_locations_from_resources() -> void:
+	"""Load town locations from resource file"""
+	var resource_path = "res://data/towns/locations.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Warning: Could not load locations from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var locations_data = yaml_parser.parse_yaml_file(file_path)
-	if locations_data.is_empty():
-		print("Error: Could not parse locations data")
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	var locations_list = resource_data.get("locations", [])
+	if locations_list.is_empty():
+		print("Warning: No locations data found in " + resource_path)
 		return
-
-	var locations_list = locations_data.get("locations", [])
 	for location_data in locations_list:
 		var location_id = location_data.get("id", "")
 		if location_id != "":
@@ -50,24 +45,22 @@ func load_locations_from_yaml() -> void:
 
 	print("Loaded " + str(locations_list.size()) + " locations")
 
-# Load services from YAML
-func load_services_from_yaml() -> void:
-	"""Load town services from YAML file"""
-	var file_path = "res://data/towns/services.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Warning: Could not open services file: " + file_path)
+# Load services from resources
+func load_services_from_resources() -> void:
+	"""Load town services from resource file"""
+	var resource_path = "res://data/towns/services.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Warning: Could not load services from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var services_data = yaml_parser.parse_yaml_file(file_path)
-	if services_data.is_empty():
-		print("Error: Could not parse services data")
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	var services_list = resource_data.get("services", [])
+	if services_list.is_empty():
+		print("Warning: No services data found in " + resource_path)
 		return
-
-	var services_list = services_data.get("services", [])
 	for service_data in services_list:
 		var service_id = service_data.get("id", "")
 		if service_id != "":
@@ -76,24 +69,22 @@ func load_services_from_yaml() -> void:
 
 	print("Loaded " + str(services_list.size()) + " services")
 
-# Load events from YAML
-func load_events_from_yaml() -> void:
-	"""Load town events from YAML file"""
-	var file_path = "res://data/towns/events.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Warning: Could not open events file: " + file_path)
+# Load events from resources
+func load_events_from_resources() -> void:
+	"""Load town events from resource file"""
+	var resource_path = "res://data/towns/events.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Warning: Could not load events from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var events_data = yaml_parser.parse_yaml_file(file_path)
-	if events_data.is_empty():
-		print("Error: Could not parse events data")
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	var events_list = resource_data.get("events", [])
+	if events_list.is_empty():
+		print("Warning: No events data found in " + resource_path)
 		return
-
-	var events_list = events_data.get("events", [])
 	for event_data in events_list:
 		var event_id = event_data.get("id", "")
 		if event_id != "":

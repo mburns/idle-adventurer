@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Arcana Research"
+ability_resource = null
+ability_name = ""
+skill = "Arcana"
+description = "Study magic, spells, and magical theory"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 0
+cycle_cost = 3.0
+daily_progress = 0.07
+cost_per_day = 1.0
+rewards = {"arcana_skill": 1, "intelligence_exp": 15, "spell_knowledge": 1}
+requirements = {"intelligence": 13, "gold": 100}

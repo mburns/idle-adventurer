@@ -1,0 +1,10 @@
+[gd_resource type="SkillResource" format=3]
+
+[resource]
+skill_name = "Athletics"
+description = "Physical tasks like climbing, jumping, and swimming"
+ability_resource = ExtResource("ability_strength")
+is_proficient = false
+proficiency_bonus = 0
+is_armor_penalty = false
+is_passive = false

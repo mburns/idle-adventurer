@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Elf, Drow"
+size = "Medium humanoid (elf)"
+type = "neutral evil"
+alignment = "neutral evil"
+armor_class = "15"
+hit_points = "13"
+speed = "30 ft."
+abilities = {
+"charisma": 12,
+"constitution": 10,
+"dexterity": 14,
+"intelligence": 11,
+"strength": 10,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +2", "Stealth +4"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 120 ft., passive Perception 12"
+languages = Array[String](["Elvish", "Undercommon"])
+challenge_rating = "1/4"
+xp = 50
+traits = Array[Dictionary]([
+	{"name": "Fey Ancestry", "description": "The drow has advantage on saving throws against being charmed, and magic can't put the drow to sleep"},
+	{"name": "Innate Spellcasting", "description": "The drow's spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spells, requiring no material Components\n\nAt will: *dancing lights*\n\n1/day each: *darkness*, *faerie fire*"},
+	{"name": "Sunlight Sensitivity", "description": "While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight"}
+])
+actions = Array[Dictionary]([
+	{"name": "Shortsword", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6+2) piercing damage"},
+	{"name": "Hand Crossbow", "description": "*Ranged Weapon Attack:* +4 to hit, range 30/120 ft., one target. *Hit:* 5 (1d6+2) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the target is also unconscious while poisoned in this way. The target wakes up if it takes damage or if another creature takes an action to shake it awake"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "12"

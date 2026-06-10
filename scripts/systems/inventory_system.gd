@@ -24,28 +24,10 @@ enum ItemCategory {
 	MISC
 }
 
-# TODO define item types dynamically
-
-# Item types that can stack
-var stackable_types = [
-	"consumable",
-	"ammunition",
-	"spell_component",
-	"treasure",
-	"food",
-	"potion",
-	"scroll"
-]
-
-# Item types that don't stack (unique items)
-var unique_types = [
-	"weapon",
-	"armor",
-	"tool",
-	"adventuring_gear",
-	"magic_item",
-	"equipment"
-]
+# Item types loaded dynamically from data/types/item_types.tres
+var stackable_types: Array = []
+var unique_types: Array = []
+var item_types_data: Dictionary = {}
 
 var character_inventories: Dictionary = {} # character_name -> inventory_data
 
@@ -54,8 +36,150 @@ func _init() -> void:
 
 func setup_inventory_system() -> void:
 	"""Initialize the inventory system"""
-	print("Inventory System initialized")
+	# print("Inventory System initialized")
+	load_item_types()
 
+func load_item_types() -> void:
+	"""Load item types dynamically from data/types/item_types.tres"""
+	var resource_path = "res://data/types/item_types.tres"
+	var resource = load(resource_path)
+
+	if resource == null:
+		print("Warning: Could not load item types from ", resource_path, ". Using defaults.")
+		load_default_item_types()
+		return
+
+	# Try to get data from resource
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	if resource_data.size() > 0:
+		item_types_data = resource_data
+		populate_item_type_arrays()
+		print("Loaded item types from .tres successfully")
+	else:
+		print("Failed to parse item types from .tres, using defaults")
+		load_default_item_types()
+
+func parse_item_types_yaml(yaml_content: String) -> Dictionary:
+	"""Parse item types YAML content"""
+	var result = {}
+	var lines = yaml_content.split("\n")
+	var current_section = ""
+	var current_array = []
+	var in_array = false
+
+	for line in lines:
+		line = line.strip_edges()
+
+		# Skip empty lines and comments
+		if line.is_empty() or line.begins_with("#"):
+			continue
+
+		# Check for section headers
+		if line.ends_with(":"):
+			# Save previous section
+			if current_section != "" and current_array.size() > 0:
+				result[current_section] = current_array
+
+			# Start new section
+			current_section = line.rstrip(":")
+			current_array = []
+			in_array = true
+			continue
+
+		# Parse array items
+		if in_array and line.begins_with("- "):
+			var item_content = line.substr(2).strip_edges()
+			var item_data = parse_yaml_item(item_content)
+			if item_data.size() > 0:
+				current_array.append(item_data)
+
+	# Save last section
+	if current_section != "" and current_array.size() > 0:
+		result[current_section] = current_array
+
+	return result
+
+func parse_yaml_item(item_line: String) -> Dictionary:
+	"""Parse a single YAML item line"""
+	var item_data = {}
+
+	# Simple parsing for basic key-value pairs
+	if "id:" in item_line:
+		var parts = item_line.split("id:", 1)
+		if parts.size() > 1:
+			item_data["id"] = parts[1].strip_edges()
+
+	return item_data
+
+func populate_item_type_arrays() -> void:
+	"""Populate stackable_types and unique_types from parsed data"""
+	stackable_types.clear()
+	unique_types.clear()
+
+	# Extract item categories and determine which are stackable/unique
+	if item_types_data.has("item_categories"):
+		var categories_data = item_types_data["item_categories"]
+		# Handle both array and object formats
+		var categories = []
+		if categories_data is Array:
+			categories = categories_data
+		elif categories_data is Dictionary and categories_data.has("item_categories"):
+			categories = categories_data["item_categories"]
+
+		for category in categories:
+			var category_id = ""
+			if category is String:
+				category_id = category.replace("id: ", "")
+			elif category is Dictionary and category.has("id"):
+				category_id = category["id"]
+
+			# Determine if this category should be stackable or unique
+			if category_id != "":
+				match category_id:
+					"CONSUMABLE", "AMMUNITION", "SPELL_COMPONENT", "TOOL", "GEAR":
+						stackable_types.append(category_id.to_lower())
+					"ARMOR", "WEAPON", "SHIELD", "ACCESSORY", "ARTIFACT":
+						unique_types.append(category_id.to_lower())
+
+	# If no categories found, use item properties
+	if item_types_data.has("item_properties"):
+		var properties = item_types_data["item_properties"]
+		for prop in properties:
+			var prop_id = ""
+			if prop is String:
+				prop_id = prop
+			elif prop is Dictionary and prop.has("id"):
+				prop_id = prop["id"]
+				if "stackable" in prop_id.to_lower():
+					stackable_types.append(prop_id.to_lower())
+				elif "unique" in prop_id.to_lower():
+					unique_types.append(prop_id.to_lower())
+
+	print("Loaded ", stackable_types.size(), " stackable types and ", unique_types.size(), " unique types from YAML")
+
+func load_default_item_types() -> void:
+	"""Load default item types if YAML loading fails"""
+	# TODO can this be done dynamically to support more item types?
+	stackable_types = [
+		"consumable",
+		"ammunition",
+		"spell_component",
+		"treasure",
+		"food",
+		"potion",
+		"scroll"
+	]
+
+	unique_types = [
+		"weapon",
+		"armor",
+		"tool",
+		"adventuring_gear",
+		"magic_item",
+		"equipment"
+	]
 func get_character_inventory(character: Character) -> Dictionary:
 	"""Get character's inventory"""
 	if not character_inventories.has(character.name):
@@ -377,7 +501,7 @@ func get_inventory_summary(character: Character) -> Dictionary:
 		"categories": categories
 	}
 
-func clear_inventory(character: Character):
+func clear_inventory(character: Character) -> void:
 	"""Clear character's entire inventory"""
 	var inventory = get_character_inventory(character)
 	inventory["items"].clear()

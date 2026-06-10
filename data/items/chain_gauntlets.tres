@@ -1,0 +1,25 @@
+[gd_resource type="ItemResource" format=3]
+
+[resource]
+item_name = "Chain Gauntlets"
+description = "Heavy gauntlets made of interlocking metal rings. Provides protection for the hands and forearms."
+item_type = "armor"
+rarity = "common"
+cost = 20
+weight = 4.0
+is_magical = false
+is_consumable = false
+stack_size = 1
+equipment_slot = "hands"
+armor_class_bonus = 1
+damage_dice = ""
+damage_type = ""
+weapon_type = ""
+range = 0
+properties = ["stealth_disadvantage"]
+requirements = {}
+effects = []
+crafting_materials = ["iron_rings", "leather_padding", "metal_fasteners"]
+crafting_difficulty = 2
+is_tradeable = true
+vendor_price = 10

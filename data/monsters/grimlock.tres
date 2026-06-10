@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_xt7xx"]
+
+[resource]
+script = ExtResource("1_xt7xx")
+name = "Grimlock"
+size = "Medium humanoid (grimlock)"
+type = "neutral evil"
+alignment = "neutral evil"
+armor_class = "11"
+hit_points = "11282"
+speed = "30 ft."
+abilities = {
+"charisma": 6,
+"constitution": 12,
+"dexterity": 12,
+"intelligence": 9,
+"strength": 16,
+"wisdom": 8
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Athletics +5", "Perception +3", "Stealth +3"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["blinded"])
+senses = "blindsight 30 ft. or 10 ft. while deafened (blind beyond this radius), passive Perception 13"
+languages = Array[String](["Undercommon"])
+challenge_rating = "1/4"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Spiked Bone Club",
+        "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 5 (1d4+3) bludgeoning damage plus 2 (1d4) piercing damage"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = 9

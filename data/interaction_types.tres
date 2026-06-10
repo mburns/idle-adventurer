@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+metadata/yaml_data = {
+  "interaction_types": [
+    {
+      "id": "TALK",
+      "name": "Talk",
+      "description": "Engage in conversation",
+      "category": "social",
+      "requires_target": true,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "TRADE",
+      "name": "Trade",
+      "description": "Exchange goods or services",
+      "category": "economic",
+      "requires_target": true,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "EXAMINE",
+      "name": "Examine",
+      "description": "Closely inspect an object or area",
+      "category": "investigation",
+      "requires_target": true,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "USE",
+      "name": "Use",
+      "description": "Activate or operate something",
+      "category": "utility",
+      "requires_target": true,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "ATTACK",
+      "name": "Attack",
+      "description": "Initiate combat",
+      "category": "combat",
+      "requires_target": true,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "CAST_SPELL",
+      "name": "Cast Spell",
+      "description": "Use magical abilities",
+      "category": "magic",
+      "requires_target": false,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "REST",
+      "name": "Rest",
+      "description": "Take a break to recover",
+      "category": "recovery",
+      "requires_target": false,
+      "cooldown_seconds": 0
+    },
+    {
+      "id": "TRAVEL",
+      "name": "Travel",
+      "description": "Move to a different location",
+      "category": "movement",
+      "requires_target": true,
+      "cooldown_seconds": 0
+    }
+  ],
+  "categories": {
+    "social": "Social interactions with NPCs",
+    "economic": "Trade and commerce",
+    "investigation": "Examination and discovery",
+    "utility": "Practical use of objects",
+    "combat": "Combat and fighting",
+    "magic": "Magical abilities and spells",
+    "recovery": "Rest and healing",
+    "movement": "Travel and navigation"
+  }
+}

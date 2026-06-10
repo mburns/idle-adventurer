@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_lpi3m"]
+
+[resource]
+script = ExtResource("1_lpi3m")
+name = "Veteran"
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "any alignment"
+armor_class = "17"
+hit_points = "589818"
+speed = "30 ft."
+abilities = {
+"charisma": 10,
+"constitution": 14,
+"dexterity": 13,
+"intelligence": 10,
+"strength": 16,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 12"
+languages = Array[String](["any one language (usually Common)"])
+challenge_rating = "3"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

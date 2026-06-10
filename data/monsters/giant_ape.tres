@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_82qxj"]
+
+[resource]
+script = ExtResource("1_82qxj")
+name = "Giant Ape"
+size = "Huge beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "12"
+hit_points = "157151260"
+speed = "40 ft., climb 40 ft."
+abilities = {
+"charisma": 7,
+"constitution": 18,
+"dexterity": 14,
+"intelligence": 7,
+"strength": 23,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 14"
+languages =Array[String]([])
+challenge_rating = "7"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

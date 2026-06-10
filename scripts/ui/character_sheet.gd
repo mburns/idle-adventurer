@@ -416,13 +416,11 @@ func update_class_abilities():
 	for child in class_abilities_container.get_children():
 		child.queue_free()
 
-	# Get class features for current level
-	var class_data = {}
-	if Engine.has_singleton("DataLoader"):
-		var data_loader = Engine.get_singleton("DataLoader")
-		class_data = data_loader.get_class_data(character.character_class)
-
-	var all_features = class_data.get("features", {})
+	# Get class features for current level using Resource manager
+	var class_resource = AutoloadManager.get_class_manager().get_class_resource(character.character_class)
+	var all_features = {}
+	if class_resource:
+		all_features = class_resource.features
 
 	# Show features up to current level
 	for feature_name in all_features.keys():

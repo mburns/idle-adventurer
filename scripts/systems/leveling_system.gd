@@ -201,46 +201,25 @@ func get_character_by_name(name: String) -> Character:
 
 # Level requirements loading functions
 func load_level_requirements() -> void:
-    """Load level requirements from YAML file"""
-    var file_path = "res://data/level_requirements.yaml"
-    var file = FileAccess.open(file_path, FileAccess.READ)
-    if file == null:
-        print("Error: Could not open level requirements file: " + file_path)
+    """Load level requirements from resource manager"""
+    # Use the resource manager instead of custom parsing
+    var level_requirement_manager = AutoloadManager.get_level_requirement_manager()
+    if level_requirement_manager == null:
+        print("Error: Level requirement manager not available")
         return
 
-    var yaml_string = file.get_as_text()
-    file.close()
-
-    var level_config = parse_yaml_level_requirements(yaml_string)
-    if level_config == null:
-        print("Error parsing level requirements YAML")
-        return
-
-    # Load main level requirements
-    var main_requirements = level_config.get("level_requirements", {})
-    if main_requirements is Dictionary and main_requirements.size() > 0:
-        level_requirements = main_requirements
-        print("Loaded " + str(level_requirements.size()) + " level requirements")
-    else:
-        print("Warning: level_requirements is not a Dictionary, got: ", typeof(main_requirements))
+    # Copy level requirements from resource manager
+    var all_requirements = level_requirement_manager.get_all_level_requirements()
+    for level in all_requirements:
+        var requirement = all_requirements[level]
+        level_requirements[level] = requirement.experience_required
 
     # Load alternative configurations
-    var alternative_configs = level_config.get("alternative_configs", {})
-    if alternative_configs is Dictionary:
-        for config_name in alternative_configs.keys():
-            leveling_configs[config_name] = alternative_configs[config_name]
-    else:
-        print("Warning: alternative_configs is not a Dictionary, got: ", typeof(alternative_configs))
+    var alternative_configs = level_requirement_manager.get_alternative_configs()
+    for config_name in alternative_configs:
+        self.alternative_configs[config_name] = alternative_configs[config_name]
 
-    # Load configuration info
-    var config_info = level_config.get("config_info", {})
-    if config_info is Dictionary:
-        current_config = config_info.get("default_config", "standard")
-    else:
-        print("Warning: config_info is not a Dictionary, got: ", typeof(config_info))
-        current_config = "standard"
-
-    print("Loaded " + str(leveling_configs.size()) + " alternative leveling configurations")
+    print("Loaded " + str(level_requirements.size()) + " level requirements")
 
 func set_leveling_config(config_name: String) -> bool:
     """Switch to a different leveling configuration"""
@@ -261,7 +240,9 @@ func get_current_config() -> String:
     """Get the current leveling configuration name"""
     return current_config
 
-func parse_yaml_level_requirements(yaml_string: String) -> Dictionary:
+# Custom YAML parsing functions removed - now using unified YAMLParser via resource manager
+
+func parse_yaml_level_requirements_removed(yaml_string: String) -> Dictionary:
     """Parse YAML level requirements configuration"""
     var lines = yaml_string.split("\n")
     var result = {}
@@ -333,39 +314,22 @@ func load_class_features() -> void:
         print("Error: Could not open classes directory: " + classes_dir)
         return
 
-    dir.list_dir_begin()
-    var file_name = dir.get_next()
-
-    while file_name != "":
-        if file_name.ends_with(".yaml"):
-            var class_id = file_name.get_basename()
-            var file_path = classes_dir + file_name
-            load_class_features_from_file(class_id, file_path)
-        file_name = dir.get_next()
+    # Load class features from resource manager instead of YAML files
+    var class_manager = AutoloadManager.get_class_manager()
+    if class_manager:
+        var all_classes = class_manager.get_all_classes()
+        for class_id in all_classes.keys():
+            var class_data = all_classes[class_id]
+            if class_data.has("features"):
+                class_features[class_id] = class_data["features"]
 
     print("Loaded class features for " + str(class_features.size()) + " classes")
 
 func load_class_features_from_file(class_id: String, file_path: String) -> void:
-    """Load class features from a specific YAML file"""
-    var file = FileAccess.open(file_path, FileAccess.READ)
-    if file == null:
-        print("Error: Could not open class file: " + file_path)
-        return
+    """Load class features from resource manager (deprecated - use load_class_features instead)"""
+    print("Warning: load_class_features_from_file is deprecated, use load_class_features() instead")
 
-    var yaml_string = file.get_as_text()
-    file.close()
-
-    var class_data = parse_yaml_class_features(yaml_string)
-    if class_data == null:
-        print("Error parsing class features for: " + class_id)
-        return
-
-    var level_features = class_data.get("level_features", {})
-    if level_features.size() > 0:
-        class_features[class_id] = level_features
-        print("Loaded " + str(level_features.size()) + " levels for " + class_id)
-
-func parse_yaml_class_features(yaml_string: String) -> Dictionary:
+func parse_yaml_class_features_removed(yaml_string: String) -> Dictionary:
     """Parse YAML class features configuration"""
     var lines = yaml_string.split("\n")
     var result = {}

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharacterClassResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/character_class_resource.gd" id="1_p8rm0"]
+
+[resource]
+script = ExtResource("1_p8rm0")
+name = "Paladin"
+hit_die = "10"
+primary_ability = "strength"
+saving_throws = Array[String](["saving_throws"])
+skill_choices = 2
+skill_options = Array[String]([])
+armor_proficiencies = Array[String]([])
+weapon_proficiencies = Array[String]([])
+tool_proficiencies = Array[String]([])
+starting_equipment = {
+    "equipment": ["(*a*) a martial weapon and a shield or (*b*) two martial weapons", "(*a*) five javelins or (*b*) any simple melee weapon", "(*a*) a priest's pack or (*b*) an explorer's pack", "Chain mail and a holy symbol"]
+}
+features = Array[String](["Divine Sense", "Lay on Hands", "Fighting Style", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Preparing and Casting Spells", "You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation", "Spellcasting Ability", "Spellcasting Focus", "Divine Smite", "Divine Health", "Sacred Oath", "Oath Spells", "Channel Divinity", "Ability Score Improvement", "Extra Attack", "Aura of Protection", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Oath of Devotion", "Tenets of Devotion", "Aura of Devotion", "Purity of Spirit", "Holy Nimbus"])
+spellcasting_ability = ""
+spell_slots_per_level = Array[int]([])
+level_features = Array[Dictionary]([])

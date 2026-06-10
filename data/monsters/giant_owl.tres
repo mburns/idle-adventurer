@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7t7h6"]
+
+[resource]
+script = ExtResource("1_7t7h6")
+name = "Giant Owl"
+size = "Large beast"
+type = "neutral"
+alignment = "neutral"
+armor_class = "12"
+hit_points = "193103"
+speed = "5 ft., fly 60 ft."
+abilities = {
+"charisma": 10,
+"constitution": 12,
+"dexterity": 15,
+"intelligence": 8,
+"strength": 13,
+"wisdom": 13
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +5", "Stealth +4"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 120 ft., passive Perception 15"
+languages = Array[String](["Giant Owl", "understands Common", "Elvish", "and Sylvan but cant speak them"])
+challenge_rating = "1/4"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Talons",
+        "description": "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 8 (2d6+1) slashing damage"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

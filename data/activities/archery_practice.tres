@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Archery Practice"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Target shooting with bow and arrow"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.5
+rewards = {"archery_skill": 1, "dexterity_exp": 10}
+requirements = {"dexterity": 13, "gold": 25}

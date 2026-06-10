@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Clairvoyance"
+level = 1
+school = "evocation"
+casting_time = "10 minutes"
+spell_range = "1 mile"
+datacomponents = "V, S, M (a focus worth at least 100 gp, either a jeweled horn for hearing or a glass eye for seeing)"
+duration = "Concentration, up to 10 minutes"
+description = "You create an invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The sensor remains in place for the duration, and it can't be attacked or otherwise interacted with.\n\nWhen you cast the spell, you choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As your action, you can switch between seeing and hearing.
+
+A creature that can see the sensor (such as a creature benefiting from *see invisibility* or truesight) sees a luminous, intangible orb about the size of your fist."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

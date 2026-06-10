@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Efreeti (Genie)"
+size = "Large elemental"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "17"
+hit_points = "200"
+speed = "40 ft., fly 60 ft."
+abilities = {
+"charisma": 16,
+"constitution": 24,
+"dexterity": 12,
+"intelligence": 16,
+"strength": 22,
+"wisdom": 15
+}
+saving_throws = Array[String](["Int +7", "Wis +6", "Cha +7"])
+skills = Array[String]([])
+damage_immunities = Array[String](["fire"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 120 ft., passive Perception 12"
+languages = Array[String](["Ignan"])
+challenge_rating = "11"
+xp = 7200
+traits = Array[Dictionary]([
+	{"name": "Elemental Demise", "description": "If the efreeti dies, its body disintegrates in a flash of fire and puff of smoke, leaving behind only equipment the efreeti was wearing or carrying"},
+	{"name": "Innate Spellcasting", "description": "The efreeti's innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). It can innately cast the following spells, requiring no material Components\n\nAt will: *detect magic*\n\n3/day each: *enlarge/reduce*, *tongues*\n\n1/day each: *conjure elemental* (fire elemental only), *gaseous form*, *invisibility*, *major image*, *plane shift*, *wall of fire*"}
+])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The efreeti makes two scimitar attacks or uses its Hurl Flame twice"},
+	{"name": "Scimitar", "description": "*Melee Weapon Attack:* +10 to hit, reach 5 ft., one target. *Hit:* 13 (2d6+6) slashing damage plus 7 (2d6) fire damage"},
+	{"name": "Hurl Flame", "description": "*Ranged Spell Attack:* +7 to hit, range 120 ft., one target. *Hit:* 17 (5d6) fire damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 4
+passive_perception = "12"

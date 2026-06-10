@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Long Rest"
+ability_resource = null
+skill = "Long Rest"
+description = "Take a long rest to fully recover hit points, abilities, and spell slots"
+cycle_duration = 60.0
+cycle_xp = 10
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.0
+rewards = {"xp": 10, "hit_points": 50, "ability_recovery": 2, "spell_slots": 1}
+requirements = {}

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CurrencyResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/currency_resource.gd" id="1_ss0dx"]
+
+[resource]
+script = ExtResource("1_ss0dx")
+id = "ep"
+name = "Electrum Piece"
+plural = "Electrum Pieces"
+abbreviation = "ep"
+weight = 0.02
+value_base = 50
+description = "'Electrum coins worth 50 copper pieces'"
+rarity = "uncommon"
+material = "electrum"

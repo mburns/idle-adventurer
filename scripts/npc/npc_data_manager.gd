@@ -9,37 +9,33 @@ class_name NPCDataManager
 var npcs: Dictionary = {} # npc_id -> NPCResource
 var social_events: Dictionary = {} # event_id -> SocialEvent
 
-# YAML parser instance
-var yaml_parser: YAMLParser
-
 func _init():
-	yaml_parser = YAMLParser.new()
+	pass
 
 # Load all NPC data
 func load_npc_data() -> void:
-	"""Load all NPC data from YAML files"""
-	load_npcs_from_yaml()
-	load_social_events_from_yaml()
+	"""Load all NPC data from resource files"""
+	load_npcs_from_resources()
+	load_social_events_from_resources()
 	print("Loaded " + str(npcs.size()) + " NPCs and " + str(social_events.size()) + " social events")
 
-# Load NPCs from YAML
-func load_npcs_from_yaml() -> void:
-	"""Load NPCs from YAML file"""
-	var file_path = "res://data/npcs/npcs.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Warning: Could not open NPCs file: " + file_path)
+# Load NPCs from resources
+func load_npcs_from_resources() -> void:
+	"""Load NPCs from resource files"""
+	var resource_path = "res://data/npcs/npcs.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Warning: Could not load NPCs from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var npcs_data = yaml_parser.parse_yaml_file(file_path)
-	if npcs_data.is_empty():
-		print("Error: Could not parse NPCs data")
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	var npcs_list = resource_data.get("npcs", [])
+	if npcs_list.is_empty():
+		print("Warning: No NPC data found in " + resource_path)
 		return
 
-	var npcs_list = npcs_data.get("npcs", [])
 	for npc_data in npcs_list:
 		var npc_id = npc_data.get("id", "")
 		if npc_id != "":
@@ -48,24 +44,23 @@ func load_npcs_from_yaml() -> void:
 
 	print("Loaded " + str(npcs_list.size()) + " NPCs")
 
-# Load social events from YAML
-func load_social_events_from_yaml() -> void:
-	"""Load social events from YAML file"""
-	var file_path = "res://data/npcs/social_events.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Warning: Could not open social events file: " + file_path)
+# Load social events from resources
+func load_social_events_from_resources() -> void:
+	"""Load social events from resource files"""
+	var resource_path = "res://data/npcs/social_events.tres"
+	var resource = load(resource_path)
+	if resource == null:
+		print("Warning: Could not load social events from " + resource_path)
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
-
-	var events_data = yaml_parser.parse_yaml_file(file_path)
-	if events_data.is_empty():
-		print("Error: Could not parse social events data")
+	var resource_data = resource.get("metadata/yaml_data")
+	if resource_data == null:
+		resource_data = {}
+	var events_list = resource_data.get("events", [])
+	if events_list.is_empty():
+		print("Warning: No social events data found in " + resource_path)
 		return
 
-	var events_list = events_data.get("events", [])
 	for event_data in events_list:
 		var event_id = event_data.get("id", "")
 		if event_id != "":
@@ -102,28 +97,28 @@ func create_npc_from_data(npc_id: String, data: Dictionary) -> NPCResource:
 		npc_resource.personality = {}
 
 	# Set interests
-	var interests = data.get("interests", [])
-	if interests is Array:
-		npc_resource.interests = interests
-	else:
-		print("Warning: interests is not an Array for NPC ", npc_id)
-		npc_resource.interests = []
+	var interests_data = data.get("interests", [])
+	var interests: Array[String] = []
+	if interests_data is Array:
+		for interest in interests_data:
+			interests.append(str(interest))
+	npc_resource.interests = interests
 
 	# Set quests
-	var quests = data.get("quests", [])
-	if quests is Array:
-		npc_resource.quests = quests
-	else:
-		print("Warning: quests is not an Array for NPC ", npc_id)
-		npc_resource.quests = []
+	var quests_data = data.get("quests", [])
+	var quests: Array[String] = []
+	if quests_data is Array:
+		for quest in quests_data:
+			quests.append(str(quest))
+	npc_resource.quests = quests
 
 	# Set services
-	var services = data.get("services", [])
-	if services is Array:
-		npc_resource.services = services
-	else:
-		print("Warning: services is not an Array for NPC ", npc_id)
-		npc_resource.services = []
+	var services_data = data.get("services", [])
+	var services: Array[String] = []
+	if services_data is Array:
+		for service in services_data:
+			services.append(str(service))
+	npc_resource.services = services
 
 	# Set dialogue with type safety
 	var dialogue = data.get("dialogue", {})
@@ -141,13 +136,42 @@ func create_npc_from_data(npc_id: String, data: Dictionary) -> NPCResource:
 		print("Warning: requirements is not a Dictionary for NPC ", npc_id)
 		npc_resource.requirements = {}
 
-	# Set additional properties
-	npc_resource.interests = data.get("interests", [])
-	npc_resource.dislikes = data.get("dislikes", [])
-	npc_resource.fears = data.get("fears", [])
-	npc_resource.training_skills = data.get("training_skills", [])
-	npc_resource.items_for_sale = data.get("items_for_sale", [])
-	npc_resource.items_bought = data.get("items_bought", [])
+	# Set additional properties (already handled above, but keeping for completeness)
+	# npc_resource.interests = interests (already set above)
+
+	var dislikes_data = data.get("dislikes", [])
+	var dislikes: Array[String] = []
+	if dislikes_data is Array:
+		for dislike in dislikes_data:
+			dislikes.append(str(dislike))
+	npc_resource.dislikes = dislikes
+
+	var fears_data = data.get("fears", [])
+	var fears: Array[String] = []
+	if fears_data is Array:
+		for fear in fears_data:
+			fears.append(str(fear))
+	npc_resource.fears = fears
+
+	var training_skills_data = data.get("training_skills", [])
+	var training_skills: Array[String] = []
+	if training_skills_data is Array:
+		for skill in training_skills_data:
+			training_skills.append(str(skill))
+	npc_resource.training_skills = training_skills
+
+	var items_for_sale_data = data.get("items_for_sale", [])
+	var items_for_sale: Array[String] = []
+	if items_for_sale_data is Array:
+		for item in items_for_sale_data:
+			items_for_sale.append(str(item))
+	npc_resource.items_for_sale = items_for_sale
+	var items_bought_data = data.get("items_bought", [])
+	var items_bought: Array[String] = []
+	if items_bought_data is Array:
+		for item in items_bought_data:
+			items_bought.append(str(item))
+	npc_resource.items_bought = items_bought
 	npc_resource.faction = data.get("faction", "")
 	npc_resource.faction_rank = data.get("faction_rank", "")
 	npc_resource.wealth_level = data.get("wealth_level", "modest")

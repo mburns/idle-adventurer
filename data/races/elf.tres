@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RaceResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/race_resource.gd" id="1_feua4"]
+
+[resource]
+script = ExtResource("1_feua4")
+name = "Elf"
+ability_increases = {
+"dexterity": "2",
+}
+size = "Medium"
+speed = "30"
+height_range = {
+"max": "72",
+"min": "54"
+}
+weight_range = {
+"max": "160",
+"min": "90"
+}
+languages = Array[String](["languages"])
+racial_traits = Array[Dictionary]([{
+"description": "['Darkvision', 'Keen Senses', 'Fey Ancestry', 'Trance', 'Elf Weapon Training', 'Cantrip', 'Extra Language']",
+"name": "traits"
+}])
+darkvision = 0
+resistances = Array[String]([])
+immunities = Array[String]([])
+vulnerabilities = Array[String]([])
+subraces = Array[Dictionary]([])

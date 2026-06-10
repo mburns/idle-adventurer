@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Prestidigitation"
+level = 0
+school = "transmutation"
+casting_time = "1 action"
+spell_range = "10 feet"
+datacomponents = "V, S"
+duration = "Up to 1 hour"
+description = "This spell is a minor magical trick that novice spellcasters use for practice. You create one of the following magical effects within Range:\n\n• You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.
+• You instantaneously light or snuff out a candle, a torch, or a small campfire.
+• You instantaneously clean or soil an object no larger than 1 cubic foot.
+• You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour.
+• You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour.
+• You create a nonmagical trinket or an illusory image that can fit in your hand and that lasts until the end of your next turn.
+
+If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard", "sorcerer"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

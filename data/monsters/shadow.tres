@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_slxde"]
+
+[resource]
+script = ExtResource("1_slxde")
+name = "Shadow"
+size = "Medium undead"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "12"
+hit_points = "16383"
+speed = "40 ft."
+abilities = {
+"charisma": 8,
+"constitution": 13,
+"dexterity": 14,
+"intelligence": 6,
+"strength": 6,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String](["damage_vulnerabilities"])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
+languages = Array[String]([])
+challenge_rating = "1/2"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

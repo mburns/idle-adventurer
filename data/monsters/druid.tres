@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_vm60e"]
+
+[resource]
+script = ExtResource("1_vm60e")
+name = "Druid"
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "any alignment"
+armor_class = "1116"
+hit_points = "27585"
+speed = "30 ft."
+abilities = {
+"charisma": 11,
+"constitution": 13,
+"dexterity": 12,
+"intelligence": 12,
+"strength": 10,
+"wisdom": 15
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 14"
+languages = Array[String](["Druidic plus any two languages"])
+challenge_rating = "2"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

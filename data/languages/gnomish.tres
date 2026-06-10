@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_bkwmv"]
+
+[resource]
+script = ExtResource("1_bkwmv")
+id = "gnomish"
+name = "Gnomish"
+description = "The language of gnomes"
+difficulty = 1
+learning_time_days = 250
+cost_per_day = 1.0
+category = "standard"
+writing_script = "Dwarvish"
+speakers = "Gnomes, some tinkerers"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Social Networking"
+ability_resource = null
+skill = ""
+description = "Building relationships and reputation"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.07
+cost_per_day = 1.0
+rewards = {"charisma_exp": 8, "reputation": 2, "connections": 1}
+requirements = {"charisma": 12, "gold": 50}

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_jhghj"]
+
+[resource]
+script = ExtResource("1_jhghj")
+name = "Giant Spider"
+size = "Large beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "14"
+hit_points = "264104"
+speed = "30 ft., climb 30 ft."
+abilities = {
+"charisma": 4,
+"constitution": 12,
+"dexterity": 16,
+"intelligence": 2,
+"strength": 14,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 10 ft., darkvision 60 ft., passive Perception 10"
+languages =Array[String]([])
+challenge_rating = "1"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

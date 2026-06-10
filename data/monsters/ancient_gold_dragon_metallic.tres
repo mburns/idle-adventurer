@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Ancient Gold Dragon (Metallic)"
+size = "Gargantuan dragon"
+type = "lawful good"
+alignment = "neutral"
+armor_class = "22"
+hit_points = "546"
+speed = "40 ft., fly 80 ft., swim 40 ft."
+abilities = {
+"charisma": 28,
+"constitution": 29,
+"dexterity": 14,
+"intelligence": 18,
+"strength": 30,
+"wisdom": 17
+}
+saving_throws = Array[String](["Dex +9", "Con +16", "Wis +10", "Cha +16"])
+skills = Array[String](["Insight +10", "Perception +17", "Persuasion +16", "Stealth +9"])
+damage_immunities = Array[String](["fire"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 60 ft., darkvision 120 ft., passive Perception 27"
+languages = Array[String](["Common", "Draconic"])
+challenge_rating = "24"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

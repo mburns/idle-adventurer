@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LanguageResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/language_resource.gd" id="1_oh1y8"]
+
+[resource]
+script = ExtResource("1_oh1y8")
+id = "common"
+name = "Common"
+description = "The most widely spoken language"
+difficulty = 0
+learning_time_days = 0
+cost_per_day = 0.0
+category = "standard"
+writing_script = "Common"
+speakers = "Humans, most civilized races"

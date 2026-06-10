@@ -1,9 +1,11 @@
 extends Control
 
 # Spellbook screen for viewing known spells and learning new ones
+# Now uses hybrid YAML + Resource approach for type safety
 
 var character: Character
-var all_spells: Dictionary = {}
+var spell_manager: SpellResourceManager
+var all_spells: Dictionary = {} # spell_name -> SpellResource
 var filtered_spells: Dictionary = {}
 
 func _ready():
@@ -13,8 +15,12 @@ func _ready():
     # Get current character
     character = CharacterManager.current_character
 
-    # Load all spells from wiki
-    load_spells_from_wiki()
+    # Initialize spell manager
+    spell_manager = SpellResourceManager.new()
+    add_child(spell_manager)
+
+    # Load all spells using Resources
+    load_spells_from_resources()
 
     # Setup filter dropdown
     setup_filter_dropdown()
@@ -22,11 +28,11 @@ func _ready():
     # Display spells
     display_spells()
 
-func load_spells_from_wiki():
-    """Load all spells from the wiki directory"""
-    # Note: Spell loading from wiki not implemented in DataLoader yet
-    all_spells = {}
-    print("⚠️  Spell loading from wiki not implemented in DataLoader yet")
+func load_spells_from_resources():
+    """Load all spells using Resource instances"""
+    # Spells are already loaded by SpellResourceManager
+    all_spells = spell_manager.spells.duplicate()
+    print("Loaded " + str(all_spells.size()) + " spells using Resources")
 
 func setup_filter_dropdown():
     """Setup the spell level filter dropdown"""
@@ -58,10 +64,10 @@ func display_spells():
         spell_container.add_child(no_spells_label)
         return
 
-    # Create spell buttons
+    # Create spell buttons using Resources
     for spell_name in spells_to_show.keys():
-        var spell_data = spells_to_show[spell_name]
-        var spell_button = create_spell_button(spell_name, spell_data)
+        var spell_resource = spells_to_show[spell_name]
+        var spell_button = create_spell_button_from_resource(spell_name, spell_resource)
         spell_container.add_child(spell_button)
 
 func get_filtered_spells() -> Dictionary:
@@ -76,13 +82,13 @@ func get_filtered_spells() -> Dictionary:
     var filtered = {}
 
     for spell_name in all_spells.keys():
-        var spell_data = all_spells[spell_name]
-        if spell_data.get("level", 0) == target_level:
-            filtered[spell_name] = spell_data
+        var spell_resource = all_spells[spell_name]
+        if spell_resource.level == target_level:
+            filtered[spell_name] = spell_resource
 
     return filtered
 
-func create_spell_button(spell_name: String, spell_data: Dictionary) -> Button:
+func create_spell_button_from_resource(spell_name: String, spell_resource: SpellResource) -> Button:
     """Create a button for a spell"""
     var button = Button.new()
     button.custom_minimum_size = Vector2(0, 60)
@@ -94,7 +100,7 @@ func create_spell_button(spell_name: String, spell_data: Dictionary) -> Button:
 
     # Spell level indicator
     var level_label = Label.new()
-    var level = spell_data.get("level", 0)
+    var level = spell_resource.level
     if level == 0:
         level_label.text = "C" # Cantrip
         level_label.add_theme_color_override("font_color", Color.CYAN)
@@ -125,8 +131,8 @@ func create_spell_button(spell_name: String, spell_data: Dictionary) -> Button:
 
     # Spell school and casting time
     var details_label = Label.new()
-    var school = spell_data.get("school", "evocation")
-    var casting_time = spell_data.get("casting_time", "1 action")
+    var school = spell_resource.school
+    var casting_time = spell_resource.casting_time
     details_label.text = school.capitalize() + " • " + casting_time
     details_label.add_theme_font_size_override("font_size", 12)
     details_label.add_theme_color_override("font_color", Color.GRAY)
@@ -145,14 +151,14 @@ func create_spell_button(spell_name: String, spell_data: Dictionary) -> Button:
     else:
         action_button.text = "Learn"
         action_button.add_theme_color_override("font_color", Color.GREEN)
-        action_button.pressed.connect(func(): learn_spell(spell_name, spell_data))
+        action_button.pressed.connect(func(): learn_spell_from_resource(spell_name, spell_resource))
 
     container.add_child(action_button)
 
     button.add_child(container)
 
     # Connect to show spell details
-    button.pressed.connect(func(): show_spell_details(spell_name, spell_data))
+    button.pressed.connect(func(): show_spell_details_from_resource(spell_name, spell_resource))
 
     return button
 
@@ -170,8 +176,22 @@ func get_spell_level_color(level: int) -> Color:
         9: return Color.GOLD
         _: return Color.WHITE
 
+func learn_spell_from_resource(spell_name: String, spell_resource: SpellResource):
+    """Learn a new spell using Resource"""
+    if not character:
+        print("No character loaded")
+        return
+
+    # Use spell manager to learn spell
+    if spell_manager.learn_spell_for_character(character, spell_resource):
+        print("Learned spell: " + spell_name)
+        display_spells() # Refresh display
+    else:
+        print("Character cannot learn this spell")
+
+# Legacy function for backward compatibility
 func learn_spell(spell_name: String, spell_data: Dictionary):
-    """Learn a new spell"""
+    """Learn a new spell (legacy)"""
     if not character:
         print("No character loaded")
         return
@@ -208,8 +228,51 @@ func can_character_learn_spell(spell_name: String, spell_data: Dictionary) -> bo
 
     return true
 
+func show_spell_details_from_resource(spell_name: String, spell_resource: SpellResource):
+    """Show detailed information about a spell using Resource"""
+    var dialog = AcceptDialog.new()
+    dialog.title = spell_name
+
+    var content = VBoxContainer.new()
+
+    # Spell level and school
+    var level_school = Label.new()
+    var level = spell_resource.level
+    var level_text = "Cantrip" if level == 0 else "Level " + str(level)
+    level_school.text = level_text + " " + spell_resource.school.capitalize()
+    level_school.add_theme_font_size_override("font_size", 14)
+    content.add_child(level_school)
+
+    # Casting details
+    var casting_details = Label.new()
+    casting_details.text = "Casting Time: " + spell_resource.casting_time + "\n"
+    casting_details.text += "Range: " + spell_resource.spell_range + "\n"
+    casting_details.text += "Components: " + spell_resource.components + "\n"
+    casting_details.text += "Duration: " + spell_resource.duration
+    casting_details.add_theme_font_size_override("font_size", 12)
+    content.add_child(casting_details)
+
+    # Spell effects
+    if spell_resource.damage_dice != "":
+        var damage_label = Label.new()
+        damage_label.text = "Damage: " + spell_resource.damage_dice + " " + spell_resource.damage_type
+        damage_label.add_theme_font_size_override("font_size", 12)
+        content.add_child(damage_label)
+
+    # Description
+    var description = RichTextLabel.new()
+    description.text = spell_resource.description
+    description.custom_minimum_size = Vector2(400, 200)
+    description.fit_content = true
+    content.add_child(description)
+
+    dialog.add_child(content)
+    add_child(dialog)
+    dialog.popup_centered()
+
+# Legacy function for backward compatibility
 func show_spell_details(spell_name: String, spell_data: Dictionary):
-    """Show detailed information about a spell"""
+    """Show detailed information about a spell (legacy)"""
     var dialog = AcceptDialog.new()
     dialog.title = spell_name
 

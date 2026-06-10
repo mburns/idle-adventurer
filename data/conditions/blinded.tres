@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "condition",
+"description": "",
+"effects": {
+"effects": ["A blinded creature can't see and automatically fails any ability check that requires sight.", "Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage."]
+},
+"name": "Blinded",
+"type": "condition"
+}

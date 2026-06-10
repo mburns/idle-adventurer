@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Fasting & Meditation"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Spiritual endurance and self-discipline"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.0
+rewards = {"constitution_exp": 10, "wisdom_exp": 5, "spiritual_insight": 1}
+requirements = {"constitution": 13, "wisdom": 11}

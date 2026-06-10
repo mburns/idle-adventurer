@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Mass Cure Wounds"
+level = 5
+school = "evocation"
+casting_time = "1 action"
+spell_range = "60 feet"
+datacomponents = "V, S"
+duration = "Instantaneous"
+description = "A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot radius sphere centered on that point. Each target regains hit points equal to 3d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["bard", "cleric"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

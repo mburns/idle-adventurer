@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Royal Court Attendance"
+ability_resource = null
+skill = ""
+description = "Attend royal court events and ceremonies to build political connections"
+cycle_duration = 15.0
+cycle_xp = 8
+cycle_gold = 15
+cycle_cost = 0.0
+daily_progress = 0.06
+cost_per_day = 2.0
+rewards = {"charisma_exp": 20, "reputation": 5, "political_connections": 2, "gold": 15}
+requirements = {"charisma": 16, "gold": 500}

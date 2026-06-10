@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_b1on3"]
+
+[resource]
+script = ExtResource("1_b1on3")
+name = "Gibbering Mouther"
+size = "Medium aberration"
+type = "neutral"
+alignment = "neutral"
+hit_points = "679827"
+speed = "10 ft., swim 10 ft."
+abilities = {
+"charisma": 6,
+"constitution": 16,
+"dexterity": 8,
+"intelligence": 3,
+"strength": 10,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +10"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
+languages =Array[String]([])
+challenge_rating = "2"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The mouther makes two attacks: one with its bite and one with its claws"
+    },
+	{
+        "name": "Bite",
+        "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d6+2) piercing damage"
+    },
+	{
+        "name": "Claws",
+        "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4+2) slashing damage"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

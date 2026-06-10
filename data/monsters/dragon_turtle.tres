@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_qgc2e"]
+
+[resource]
+script = ExtResource("1_qgc2e")
+name = "Dragon Turtle"
+size = "Gargantuan dragon"
+type = "neutral"
+alignment = "neutral"
+armor_class = "20"
+hit_points = "3412220110"
+speed = "20 ft., swim 40 ft."
+abilities = {
+"charisma": 12,
+"constitution": 20,
+"dexterity": 10,
+"intelligence": 10,
+"strength": 25,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 120 ft., passive Perception 11"
+languages = Array[String](["Aquan", "Draconic"])
+challenge_rating = "17"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

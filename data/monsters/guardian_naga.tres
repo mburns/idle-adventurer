@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_o7kfj"]
+
+[resource]
+script = ExtResource("1_o7kfj")
+name = "Guardian Naga"
+size = "Large monstrosity"
+type = "lawful good"
+alignment = "lawful good"
+armor_class = "18"
+hit_points = "127151045"
+speed = "40 ft."
+abilities = {
+"charisma": 18,
+"constitution": 16,
+"dexterity": 18,
+"intelligence": 16,
+"strength": 19,
+"wisdom": 19
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +5"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 14"
+languages = Array[String](["Celestial", "Common"])
+challenge_rating = "10"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +8 to hit, reach 10 ft., one creature. *Hit:* 8 (1d8+4) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one."},
+	{"name": "Spit Poison", "description": "*Ranged Weapon Attack:* +8 to hit, range 15/30 ft., one creature. *Hit:* The target must make a DC 15 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one."}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "14"

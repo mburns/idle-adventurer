@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Academic Work"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Teaching, writing, and research"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 3
+cycle_cost = 0.0
+daily_progress = 0.06
+cost_per_day = 0.0
+rewards = {"intelligence_exp": 12, "gold": 4, "reputation": 1}
+requirements = {"intelligence": 14}

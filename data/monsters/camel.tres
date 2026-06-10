@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_acgny"]
+
+[resource]
+script = ExtResource("1_acgny")
+name = "Camel"
+size = "Large beast"
+type = "unaligned"
+alignment = "unaligned"
+hit_points = "152104"
+speed = "50 ft."
+abilities = {
+"charisma": 5,
+"constitution": 14,
+"dexterity": 8,
+"intelligence": 2,
+"strength": 16,
+"wisdom": 8
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 9"
+languages = Array[String]([])
+challenge_rating = "1/8"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = 9

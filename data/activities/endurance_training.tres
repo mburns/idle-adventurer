@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Endurance Training"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Long-distance running and stamina building"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.12
+cost_per_day = 0.1
+rewards = {"constitution_exp": 15, "hit_points": 1}
+requirements = {"constitution": 12}

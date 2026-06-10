@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Religion Study"
+ability_resource = null
+skill = "Religion"
+description = "Study theology and divine lore"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 1.0
+daily_progress = 0.08
+cost_per_day = 0.4
+rewards = {"religion_skill": 1, "intelligence_exp": 10}
+requirements = {"intelligence": 11}

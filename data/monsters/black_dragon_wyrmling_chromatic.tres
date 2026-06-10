@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Black Dragon Wyrmling (Chromatic)"
+size = "Medium dragon"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "17"
+hit_points = "33"
+speed = "30 ft., fly 60 ft., swim 30 ft."
+abilities = {
+"charisma": 13,
+"constitution": 13,
+"dexterity": 14,
+"intelligence": 10,
+"strength": 15,
+"wisdom": 11
+}
+saving_throws = Array[String](["Dex +4", "Con +3", "Wis +2", "Cha +3"])
+skills = Array[String](["Perception +4", "Stealth +4"])
+damage_immunities = Array[String](["acid"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 10 ft., darkvision 60 ft., passive Perception 14"
+languages = Array[String](["Draconic"])
+challenge_rating = "2"
+xp = 450
+traits = Array[Dictionary]([
+	{"name": "Amphibious", "description": "The dragon can breathe air and water"}
+])
+actions = Array[Dictionary]([
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 7 (1d10+2) piercing damage plus 2 (1d4) acid damage"},
+	{"name": "Acid Breath (Recharge 5-6)", "description": "The dragon exhales acid in a 15-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "14"

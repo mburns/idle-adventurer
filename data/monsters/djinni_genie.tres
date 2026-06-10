@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Djinni (Genie)"
+size = "Large elemental"
+type = "chaotic good"
+alignment = "chaotic good"
+armor_class = "17"
+hit_points = "161"
+speed = "30 ft., fly 90 ft."
+abilities = {
+"charisma": 20,
+"constitution": 22,
+"dexterity": 15,
+"intelligence": 15,
+"strength": 21,
+"wisdom": 16
+}
+saving_throws = Array[String](["Dex +6", "Wis +7", "Cha +9"])
+skills = Array[String]([])
+damage_immunities = Array[String](["lightning", "thunder"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 120 ft., passive Perception 13"
+languages = Array[String](["Auran"])
+challenge_rating = "11"
+xp = 7200
+traits = Array[Dictionary]([
+	{"name": "Elemental Demise", "description": "If the djinni dies, its body disintegrates into a warm breeze, leaving behind only equipment the djinni was wearing or carrying."},
+	{"name": "Innate Spellcasting", "description": "The djinni's innate spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). It can innately cast the following spells, requiring no material Components\n\nAt will: *detect evil and good*, *detect magic*, *thunderwave*\n\n3/day each: *create food and water* (can create wine instead of water), *tongues*, *wind walk*\n\n1/day each: *conjure elemental* (air elemental only), *creation*, *gaseous form*, *invisibility*, *major image*, *plane shift*"}
+])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The djinni makes three scimitar attacks"},
+	{"name": "Scimitar", "description": "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one target. *Hit:* 12 (2d6+5) slashing damage plus 3 (1d6) lightning or thunder damage (djinni's choice)"},
+	{"name": "Create Whirlwind", "description": "A 5-foot radius, 30-foot tall cylinder of swirling air magically forms on a point the djinni can see within 120 feet of it. The whirlwind lasts as long as the djinni maintains concentration (as if concentrating on a spell). Any creature but the djinni that enters the whirlwind must succeed on a DC 18 Strength saving throw or be restrained by it. The djinni can move the whirlwind up to 60 feet as an action, and creatures restrained by the whirlwind move with it. The whirlwind ends if the djinni loses sight of it.\n\nA creature can use its action to free a creature restrained by the whirlwind, including itself, by succeeding on a DC 18 Strength check. If the check succeeds, the creature is no longer restrained and moves to the nearest space outside the whirlwind"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 4
+passive_perception = "13"

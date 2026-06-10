@@ -5,19 +5,8 @@ extends Node
 # Reference to the GUT instance
 var gut: Node
 
-func _ready():
-	# Find the GUT instance in the scene tree
-	gut = get_tree().get_first_node_in_group("gut")
-	if gut == null:
-		# If not found in group, try to find by script
-		var nodes = get_tree().get_nodes_in_group("")
-		for node in nodes:
-			if node.get_script() and node.get_script().get_path().ends_with("gut.gd"):
-				gut = node
-				break
-
-	if gut == null:
-		push_error("GUT instance not found! Tests will not work properly.")
+func set_gut_instance(gut_instance: Node):
+	gut = gut_instance
 
 # Assertion methods that delegate to GUT
 func assert_true(condition: bool, message: String = ""):

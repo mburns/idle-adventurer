@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_bgttk"]
+
+[resource]
+script = ExtResource("1_bgttk")
+name = "Oni"
+size = "Large giant"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "16"
+hit_points = "110131039"
+speed = "30 ft., fly 30 ft."
+abilities = {
+"charisma": 15,
+"constitution": 16,
+"dexterity": 11,
+"intelligence": 14,
+"strength": 19,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 14"
+languages = Array[String](["Common", "Giant"])
+challenge_rating = "7"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

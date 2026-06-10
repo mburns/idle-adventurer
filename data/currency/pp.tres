@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CurrencyResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/currency_resource.gd" id="1_skvqe"]
+
+[resource]
+script = ExtResource("1_skvqe")
+id = "pp"
+name = "Platinum Piece"
+plural = "Platinum Pieces"
+abbreviation = "pp"
+weight = 0.02
+value_base = 1000
+description = "'Platinum coins worth 1000 copper pieces'"
+rarity = "rare"
+material = "platinum"

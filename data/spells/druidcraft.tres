@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Druidcraft"
+level = 0
+school = "transmutation"
+casting_time = "1 action"
+spell_range = "30 feet"
+datacomponents = "V, S"
+duration = "Instantaneous"
+description = "Whispering to the spirits of nature, you create one of the following effects within range:\n\n• You create a tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.
+• You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.
+• You create an instantaneous, harmless sensory effect, such as falling leaves, a puff of wind, the sound of a small animal, or the faint odor of skunk. The effect must fit in a 5-foot cube.
+• You instantly light or snuff out a candle, a torch, or a small campfire."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["druid"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

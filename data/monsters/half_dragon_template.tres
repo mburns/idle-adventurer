@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Half-Dragon Template"
+size = "Varies"
+type = "Varies"
+alignment = "Varies"
+armor_class = "Varies"
+hit_points = "Varies"
+speed = "Varies"
+abilities = {
+"charisma": 0,
+"constitution": 0,
+"dexterity": 0,
+"intelligence": 0,
+"strength": 0,
+"wisdom": 0
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 10 ft., darkvision 60 ft."
+languages = Array[String](["Draconic"])
+challenge_rating = "Varies"
+xp = 0
+traits = Array[Dictionary]([
+	{"name": "Half-Dragon Template", "description": "A beast, humanoid, giant, or monstrosity can become a half-dragon. It keeps its statistics, except as follows.\n\n**Challenge**. To avoid recalculating the creature's challenge rating, apply the template only to a creature that meets the optional prerequisite in the Breath Weapon table below. Otherwise, recalculate the rating after you apply the template.\n\n**Senses**. The half-dragon gains blindsight with a radius of 10 feet and darkvision with a radius of 60 feet.\n\n**Resistances**. The half-dragon gains resistance to a type of damage based on its color.\n\n**Languages**. The half-dragon speaks Draconic in addition to any other languages it knows.\n\n**New Action: Breath Weapon**. The half-dragon has the breath weapon of its dragon half. The half- dragon's size determines how this action functions."},
+	{"name": "Damage Resistance by Color", "description": "Black or copper: Acid\nBlue or bronze: Lightning\nBrass, gold, or red: Fire\nGreen: Poison\nSilver or white: Cold"},
+	{"name": "Breath Weapon by Size", "description": "Large or smaller: As a wyrmling (Challenge 2 or higher prerequisite)\nHuge: As a young dragon (Challenge 7 or higher prerequisite)\nGargantuan: As an adult dragon (Challenge 8 or higher prerequisite)"}
+])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 0
+passive_perception = "0"

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_dvc04"]
+
+[resource]
+script = ExtResource("1_dvc04")
+name = "Frost Giant"
+size = "Huge giant"
+type = "neutral evil"
+alignment = "neutral evil"
+armor_class = "15"
+hit_points = "138121260"
+speed = "40 ft."
+abilities = {
+"charisma": 12,
+"constitution": 21,
+"dexterity": 9,
+"intelligence": 9,
+"strength": 23,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 13"
+languages = Array[String](["Giant"])
+challenge_rating = "8"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

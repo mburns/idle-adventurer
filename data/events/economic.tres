@@ -1,0 +1,36 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"events": {
+"choices": {
+"choices": ["id: play_high_stakes", "id: play_moderate_stakes", "id: observe_only"],
+"consequences": {
+"NEUTRAL": {
+"information": "'criminal_network'",
+"reputation": {
+"Criminals": 2
+}
+}
+},
+"description": "'Just observe the games without participating'",
+"requirements": "{}",
+"skill_check": {
+"difficulty": 13,
+"skill": "'deception'"
+}
+},
+"cooldown_days": 7,
+"description": "'You discover a hidden gambling den in the town's underbelly. The stakes are high, but so are the potential rewards.'",
+"duration_hours": 3,
+"event_type": "ECONOMIC",
+"events": ["id: merchant_opportunity", "id: treasure_hunt_rumor", "id: gambling_den"],
+"name": "'Gambling Den'",
+"rarity": "UNCOMMON",
+"requirements": {
+"character_level": 3,
+"gold": 50,
+"location": "'seedy_district'"
+}
+}
+}

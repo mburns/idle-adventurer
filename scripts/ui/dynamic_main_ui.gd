@@ -1,11 +1,11 @@
 extends Node
 
 # Dynamic UI generator for main scene - eliminates hardcoded buttons!
-# Generates all activity buttons from data/activities/*.yaml files
+# Generates all activity buttons from .tres Resource files
 
 # Preload required classes
-const EnhancedActivities = preload("res://scripts/activities/enhanced_activities.gd")
-const Character = preload("res://scripts/core/character.gd")
+const EnhancedActivitiesClass = preload("res://scripts/activities/enhanced_activities.gd")
+const CharacterClass = preload("res://scripts/core/character.gd")
 
 var tab_container: TabContainer
 var ability_icons: Dictionary = {
@@ -81,14 +81,57 @@ func generate_dynamic_main_ui():
 	# Add progress bars to Rest activities
 	setup_rest_progress_bars()
 
-	# Get all activities from JSON data
-	var enhanced_activities = EnhancedActivities.new()
-	var all_activities = enhanced_activities.get_all_activities()
+	# Get all activities from global activity manager or create fallback
+	var all_activities = {}
+	var activity_manager: ActivityResourceManager
+
+	if Engine.has_singleton("AutoloadManager"):
+		var autoload_manager = Engine.get_singleton("AutoloadManager")
+		if autoload_manager and autoload_manager.activity_manager:
+			activity_manager = autoload_manager.activity_manager
+		else:
+			print("Warning: AutoloadManager available but activity_manager not initialized, creating fallback")
+			activity_manager = ActivityResourceManager.new()
+			var data_loader = ResourceDataLoader.new()
+			data_loader.load_activities()
+			activity_manager.data_loader = data_loader
+			activity_manager.load_all_activities()
+	else:
+		print("Warning: AutoloadManager not available, creating fallback activity manager")
+		activity_manager = ActivityResourceManager.new()
+		var data_loader = ResourceDataLoader.new()
+		data_loader.load_activities()
+		activity_manager.data_loader = data_loader
+		activity_manager.load_all_activities()
+
+	# Convert ActivityResource objects to the format expected by UI
+	var abilities = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "general"]
+	for ability in abilities:
+		var ability_activities = activity_manager.get_activities_by_ability(ability)
+		all_activities[ability] = {}
+		for activity_resource in ability_activities:
+			var activity_id = ability + "_" + activity_resource.activity_name.to_lower().replace(" ", "_")
+			all_activities[ability][activity_id] = {
+				"id": activity_id,
+				"name": activity_resource.activity_name,
+				"description": activity_resource.description,
+				"ability": activity_resource.ability,
+				"daily_progress": activity_resource.daily_progress,
+				"cost_per_day": activity_resource.cost_per_day,
+				"rewards": activity_resource.rewards,
+				"requirements": activity_resource.requirements,
+				"activity_type": activity_resource.activity_type
+			}
+
+	print("UI: Found ", all_activities.size(), " ability categories")
+	for ability in all_activities.keys():
+		print("UI: ", ability, " has ", all_activities[ability].size(), " activities")
 
 	# Create tabs for each ability that has activities
 	for ability in all_activities.keys():
 		var activities = all_activities[ability]
 		if activities.size() > 0:
+			print("UI: Creating tab for ", ability)
 			create_ability_tab(ability, activities)
 
 func clear_activity_tabs():
@@ -173,6 +216,7 @@ func create_activity_button(parent: GridContainer, ability: String, activity_id:
 
 	# Temporarily disable requirement checking for testing
 	can_perform = true
+	# print("DEBUG: Creating button for activity: ", activity_id, ", can_perform: ", can_perform)
 
 	# Add tooltip with improved formatting
 	var tooltip_text = create_detailed_tooltip(activity)
@@ -182,9 +226,11 @@ func create_activity_button(parent: GridContainer, ability: String, activity_id:
 		# Gray out the button and disable it
 		button.disabled = true
 		button.modulate = Color(0.5, 0.5, 0.5, 1.0)
+		# print("DEBUG: Button disabled for activity: ", activity_id)
 	else:
 		# Connect button to dynamic handler only if character can perform it
 		button.pressed.connect(func(): _on_activity_button_pressed(activity_id, ability))
+		# print("DEBUG: Button connected for activity: ", activity_id)
 
 	# Add button to grid container
 	parent.add_child(button)
@@ -198,6 +244,7 @@ func create_activity_button(parent: GridContainer, ability: String, activity_id:
 	var main_script = get_node("../")
 	if main_script and main_script.has_method("register_activity_button"):
 		var activity_name = get_activity_name_by_id(activity_id, ability)
+		# print("DEBUG: Registering button for activity_id: '", activity_id, "', ability: '", ability, "', activity_name: '", activity_name, "'")
 		main_script.register_activity_button(activity_name, button)
 
 
@@ -233,34 +280,37 @@ func update_grid_columns(grid_container: GridContainer):
 
 func _on_activity_button_pressed(activity_id: String, ability: String):
 	"""Handle activity button press"""
-	print("Activity button pressed: ", activity_id, " (", ability, ")")
-	var focused_button = get_viewport().gui_get_focus_owner()
-	print("Button state before activity start - disabled: ", focused_button.disabled if focused_button else "no focus")
-
-	# Debug: Check what activities are available
-	var enhanced_activities = EnhancedActivities.new()
-	var all_activities = enhanced_activities.get_all_activities()
-	print("Available activities: ", all_activities.keys())
-	if ability in all_activities:
-		print("Activities for ", ability, ": ", all_activities[ability].keys())
-	else:
-		print("No activities found for ability: ", ability)
+	# print("DEBUG: Activity button pressed: ", activity_id, " (", ability, ")")
 
 	# Get the main script to start the activity
 	var main_script = get_node("../")
 	if main_script and main_script.has_method("start_activity"):
 		var activity_name = get_activity_name_by_id(activity_id, ability)
-		print("Starting activity: ", activity_name)
+		# print("DEBUG: Extracted activity name: '", activity_name, "'")
 		if activity_name != "":
+			# print("DEBUG: Calling main_script.start_activity with: '", activity_name, "'")
 			main_script.start_activity(activity_name)
-			print("Activity started, checking button state after...")
 		else:
-			print("Warning: Could not find activity name for ID: ", activity_id)
+			print("DEBUG: Warning: Could not find activity name for ID: ", activity_id)
 	else:
-		print("Error: Main script not found or start_activity method not available")
+		print("DEBUG: Error: Main script not found or start_activity method not available")
 
 func get_activity_name_by_id(activity_id: String, ability: String) -> String:
 	"""Get activity name by ID and ability"""
+	# Extract activity name from the ID (format: "ability_activity_name")
+	var prefix = ability + "_"
+	if activity_id.begins_with(prefix):
+		var activity_name_part = activity_id.substr(prefix.length())
+		# Convert back from snake_case to proper name
+		var words = activity_name_part.split("_")
+		var activity_name = ""
+		for i in range(words.size()):
+			if i > 0:
+				activity_name += " "
+			activity_name += words[i].capitalize()
+		return activity_name
+
+	# Fallback: try to find in activities dictionary
 	var enhanced_activities = EnhancedActivities.new()
 	var all_activities = enhanced_activities.get_all_activities()
 

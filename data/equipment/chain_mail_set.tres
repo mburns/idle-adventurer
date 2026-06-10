@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipmentSetResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/equipment_set_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+set_id = "chain_mail_set"
+set_name = "Chain Mail Set"
+description = "Medium armor set for balanced protection"
+pieces = Array[String](["Chain Mail", "Chain Boots", "Chain Gauntlets"])
+bonuses = {
+"armor_class": 1,
+"damage_resistance": "slashing"
+}
+rarity = "uncommon"
+required_class = ""
+required_level = 1

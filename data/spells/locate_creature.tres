@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Locate Creature"
+level = 1
+school = "evocation"
+casting_time = "1 action"
+spell_range = "Self"
+datacomponents = "V, S, M (a bit of fur from a bloodhound)"
+duration = "Concentration, up to 1 hour"
+description = "Describe or name a creature that is familiar to you. You sense the direction to the creature's location, as long as that creature is within 1,000 feet of you. If the creature is moving, you know the direction of its movement.\n\nThe spell can locate a specific creature known to you, or the nearest creature of a specific kind (such as a human or a unicorn), so long as you have seen such a creature up close-within 30 feet-at least once. If the creature you described or named is in a different form, such as being under the effects of a *polymorph* spell, this spell doesn't locate the creature.
+
+This spell can't locate a creature if running water at least 10 feet wide blocks a direct path between you and the creature."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

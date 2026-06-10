@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_e3bp2"]
+
+[resource]
+script = ExtResource("1_e3bp2")
+name = "Mummy"
+size = "Medium undead"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "11"
+hit_points = "589818"
+speed = "20 ft."
+abilities = {
+"charisma": 12,
+"constitution": 15,
+"dexterity": 8,
+"intelligence": 6,
+"strength": 16,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String](["damage_vulnerabilities"])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
+languages = Array[String](["the languages it knew in life"])
+challenge_rating = "3"
+xp = 700
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_6lrnv"]
+
+[resource]
+script = ExtResource("1_6lrnv")
+name = "Hobgoblin"
+size = "Medium humanoid (goblinoid)"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "18"
+hit_points = "11282"
+speed = "30 ft."
+abilities = {
+"charisma": 9,
+"constitution": 12,
+"dexterity": 12,
+"intelligence": 10,
+"strength": 13,
+"wisdom": 10
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +4"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 10"
+languages = Array[String](["Common", "Goblin"])
+challenge_rating = "1/2"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{
+        "name": "Multiattack",
+        "description": "The hobgoblin makes two attacks: one with its greataxe and one with its scimitar"
+    },
+	{
+        "name": "Greataxe",
+        "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 11 (2d6+4) slashing damage"
+    }
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

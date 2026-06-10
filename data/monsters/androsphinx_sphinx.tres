@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Androsphinx (Sphinx)"
+size = "Large monstrosity"
+type = "lawful neutral"
+alignment = "neutral"
+armor_class = "17"
+hit_points = "199"
+speed = "40 ft., fly 60 ft."
+abilities = {
+"charisma": 23,
+"constitution": 20,
+"dexterity": 10,
+"intelligence": 16,
+"strength": 22,
+"wisdom": 18
+}
+saving_throws = Array[String](["Dex +6", "Con +11", "Int +9", "Wis +10"])
+skills = Array[String](["Arcana +9", "Perception +10", "Religion +15"])
+damage_immunities = Array[String](["psychic", "bludgeoning", "piercing", "and slashing from nonmagical attacks"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["charmed", "frightened"])
+senses = "truesight 120 ft., passive Perception 20"
+languages = Array[String](["Common", "Sphinx"])
+challenge_rating = "17"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

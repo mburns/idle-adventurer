@@ -10,9 +10,16 @@ extends Control
 var character: Character
 var active_button: Button = null
 var activity_buttons: Dictionary = {} # activity_name -> button
+var enhanced_activities: EnhancedActivities
+# DebugConfig is available as autoload
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Load custom resource classes first for headless mode compatibility
+	load_resource_classes()
+
+	# Debug configuration is now available as autoload
+
 	# Wait a frame to ensure all autoloads are ready
 	await get_tree().process_frame
 
@@ -26,19 +33,87 @@ func _ready():
 		CharacterManager.create_default_character()
 
 	character = CharacterManager.get_current_character()
+	# DebugConfig.debug_character_msg("Character loaded: " + (character.name if character else "None"))
+	# if character:
+	#	DebugConfig.debug_character_msg("Character XP: " + str(character.experience_points) + ", Level: " + str(character.level))
 
 	# Wait for dynamic UI to be created
 	await get_tree().process_frame
 	await get_tree().process_frame
 
+	# Initialize EnhancedActivities after autoloads are ready
+	enhanced_activities = EnhancedActivities.new()
+	add_child(enhanced_activities)
+
+	# Wait for EnhancedActivities to be ready
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	# setup_button_progress_bars()  # Disabled - dynamic UI handles progress bar creation and registration
 	# setup_dynamic_button_connections()  # Disabled - dynamic UI handles button connections
+
+	# Test: Start an activity automatically to see if the system works
+	DebugConfig.debug_activities_msg("Testing activity system by starting Blacksmithing...")
+	# Give character enough gold for testing
+	character.add_gold(50)
+	DebugConfig.debug_character_msg("Character gold: " + str(character.gold))
+	print("DEBUG: Starting activity 'Blacksmithing'")
+	var result = start_activity("Blacksmithing")
+	print("DEBUG: Activity start result: ", result)
+
+	DebugConfig.debug_ui_msg("Main ready complete - character: " + (character.name if character else "None") + ", enhanced_activities: " + str(enhanced_activities != null) + ", progress_bar: " + str(activity_progress_bar != null))
+
+	# Configure progress bar if it exists
+	if activity_progress_bar:
+		activity_progress_bar.min_value = 0
+		activity_progress_bar.max_value = 100
+		activity_progress_bar.value = 0
+		print("DEBUG: Progress bar configured - min: ", activity_progress_bar.min_value, ", max: ", activity_progress_bar.max_value)
+
 	update_ui()
 
 
+func load_resource_classes():
+	"""Load all custom resource classes to ensure they're available in headless mode"""
+	print("Loading custom resource classes for headless mode...")
+
+	# Load the resource scripts to register the classes
+	var resource_scripts = [
+		"res://resources/activity_resource.gd",
+		"res://resources/ability_resource.gd",
+		"res://resources/skill_resource.gd",
+		"res://resources/item_resource.gd",
+		"res://resources/feat_resource.gd"
+	]
+
+	for script_path in resource_scripts:
+		var script = load(script_path)
+		if script:
+			print("Loaded resource script: ", script_path)
+			# Force the script to be instantiated to register the class
+			var instance = script.new()
+			if instance:
+				instance.free()
+		else:
+			print("Failed to load resource script: ", script_path)
+
+	print("Resource class loading complete!")
+
+	# Test if classes are registered
+	print("Testing class registration...")
+	if ClassDB.class_exists("ActivityResource"):
+		print("ActivityResource class is registered")
+	else:
+		print("ActivityResource class is NOT registered")
+
+	if ClassDB.class_exists("AbilityResource"):
+		print("AbilityResource class is registered")
+	else:
+		print("AbilityResource class is NOT registered")
+
 func register_activity_button(activity_name: String, button: Button):
 	"""Register an activity button for progress tracking"""
-	print("Registering activity button for: ", activity_name)
+	# print("Registering activity button for: ", activity_name)
 	activity_buttons[activity_name] = button
 	# Set initial button styling
 	button.add_theme_color_override("font_color", Color(1, 1, 1, 1))
@@ -52,15 +127,15 @@ func register_activity_button(activity_name: String, button: Button):
 	button.add_theme_color_override("bg_color_pressed", Color(0.4, 0.4, 0.4, 1.0))
 	button.add_theme_color_override("bg_color_disabled", Color(0.1, 0.1, 0.1, 1.0))
 
-	print("Activity button registered. Total buttons: ", activity_buttons.size())
-	print("Available buttons: ", activity_buttons.keys())
+	# print("Activity button registered. Total buttons: ", activity_buttons.size())
+	# print("Available buttons: ", activity_buttons.keys())
 
 
 func setup_dynamic_button_connections():
 	"""Automatically connect activity buttons to the dynamic handler"""
 	# Get all activities from JSON data to know which buttons to look for
-	var enhanced_activities = EnhancedActivities.new()
-	var all_activities = enhanced_activities.get_all_activities()
+	var enhanced_activities_instance = EnhancedActivities.new()
+	var all_activities = enhanced_activities_instance.get_all_activities()
 
 	# Find and connect all activity buttons
 	_connect_activity_buttons_recursively(self, all_activities)
@@ -82,26 +157,9 @@ func _connect_activity_buttons_recursively(node: Node, all_activities: Dictionar
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if character != null:
-		# Check if current activity is complete
-		if character.is_activity_complete():
-			# Store the activity name before completing it
-			var activity_name = character.current_activity
-			var rewards = IdleMechanics.complete_activity(character)
-			if rewards.xp > 0 or rewards.gold > 0:
-				print("Activity completed! Gained %d XP and %d gold" % [rewards.xp, rewards.gold])
-
-			# Restart the same activity automatically
-			if activity_name != "":
-				# Clear the progress bar for the completed activity
-				clear_activity_progress(activity_name)
-				# Restart the activity
-				IdleMechanics.start_activity(activity_name, character)
-
-			update_ui()
-		else:
-			# Update activity progress
-			update_activity_progress()
+	if character != null and enhanced_activities != null:
+		# Update activity progress
+		update_activity_progress()
 
 # Update UI elements
 func update_ui():
@@ -122,8 +180,16 @@ func update_ui():
 
 	# Update current activity
 	if current_activity_label:
-		if character.current_activity != "":
-			current_activity_label.text = "Currently: %s" % character.current_activity
+		# Get current activity from EnhancedActivities
+		if enhanced_activities != null:
+			var active_activities = enhanced_activities.active_activities
+
+			if character.name in active_activities:
+				var activity_data = active_activities[character.name]
+				var activity_name = activity_data.get("name", "")
+				current_activity_label.text = "Currently: %s" % activity_name
+			else:
+				current_activity_label.text = "Idle"
 		else:
 			current_activity_label.text = "Idle"
 
@@ -132,44 +198,50 @@ func update_ui():
 
 # Update activity progress bar
 func update_activity_progress():
-	if character == null or character.current_activity == "":
+	if character == null or enhanced_activities == null:
+		DebugConfig.debug_ui_msg("update_activity_progress - character or enhanced_activities is null")
 		return
 
-	var time_remaining = character.get_activity_time_remaining()
-	var total_duration = character.activity_duration
-	var progress = 1.0 - (time_remaining / total_duration)
+	# Get active activities from EnhancedActivities
+	var active_activities = enhanced_activities.active_activities
+	print("DEBUG: Active activities: ", active_activities.keys())
+	print("DEBUG: Character name: ", character.name)
 
-	# Update the button background for the current activity
-	if character.current_activity in activity_buttons:
-		var button = activity_buttons[character.current_activity]
-		if button:
-			# Create a progress bar overlay
-			var progress_bar = button.get_node_or_null("ProgressOverlay")
-			if not progress_bar:
-				# Create progress bar overlay
-				progress_bar = ColorRect.new()
-				progress_bar.name = "ProgressOverlay"
-				progress_bar.color = Color(0.0, 1.0, 0.0, 0.6)  # Green with transparency
-				button.add_child(progress_bar)
+	if character in active_activities:
+		var activity_data = active_activities[character]
+		var activity_name = activity_data.get("name", "")
+		var progress = activity_data.get("progress", 0.0)
 
-				# Position it to cover the button
-				progress_bar.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-				progress_bar.offset_left = 2
-				progress_bar.offset_top = 2
-				progress_bar.offset_right = -2
-				progress_bar.offset_bottom = -2
+		# DebugConfig.debug_activities_msg("Activity progress for " + character.name + " - " + activity_name + ": " + str(progress))
 
-			# Update progress bar width
-			var button_width = button.size.x
-			progress_bar.size.x = button_width * progress
-			progress_bar.position.x = 0
+		# Update the button background for the current activity
+		# print("DEBUG: Looking for activity_name '", activity_name, "' in activity_buttons: ", activity_buttons.keys())
+		if activity_name in activity_buttons:
+			var button = activity_buttons[activity_name]
+			if button:
+				# Create a progress bar overlay
+				var progress_bar = button.get_node_or_null("ProgressOverlay")
+				if not progress_bar:
+					# Create progress bar overlay
+					progress_bar = ColorRect.new()
+					progress_bar.name = "ProgressOverlay"
+					progress_bar.color = Color(0.0, 1.0, 0.0, 0.6)  # Green with transparency
+					button.add_child(progress_bar)
 
-			# Debug output every 10% progress
-			# if int(progress * 10) % 1 == 0:
-			# 	print("Updated button progress for ", character.current_activity, " to ", progress)
+					# Position it to cover the button
+					progress_bar.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+					progress_bar.offset_left = 2
+					progress_bar.offset_top = 2
+					progress_bar.offset_right = -2
+					progress_bar.offset_bottom = -2
+
+				# Update progress bar width
+				var button_width = button.size.x
+				progress_bar.size.x = button_width * progress
+				progress_bar.position.x = 0
+				print("Updated button progress bar for " + activity_name + " - width: " + str(progress_bar.size.x))
 	else:
-		print("No button found for activity: ", character.current_activity)
-		print("Available buttons: ", activity_buttons.keys())
+		print("No active activity for character: " + character.name)
 
 	# Update the main progress bar to show level progress
 	update_level_progress()
@@ -177,12 +249,19 @@ func update_activity_progress():
 func update_level_progress():
 	"""Update the main progress bar to show level progress"""
 	if character == null or not activity_progress_bar:
+		DebugConfig.debug_ui_msg("update_level_progress - character or progress bar is null")
 		return
 
 	# Calculate level progress (assuming 1000 XP per level)
 	var current_level_xp = character.experience_points % 1000
 	var level_progress = float(current_level_xp) / 1000.0
-	activity_progress_bar.value = level_progress * 100
+	var progress_value = level_progress * 100
+
+	DebugConfig.debug_ui_msg("Level progress - XP: " + str(character.experience_points) + ", Level XP: " + str(current_level_xp) + ", Progress: " + str(level_progress) + ", Value: " + str(progress_value))
+	DebugConfig.debug_ui_msg("Progress bar min: " + str(activity_progress_bar.min_value) + ", max: " + str(activity_progress_bar.max_value) + ", current value: " + str(activity_progress_bar.value))
+
+	activity_progress_bar.value = progress_value
+	DebugConfig.debug_ui_msg("Progress bar value after setting: " + str(activity_progress_bar.value))
 
 # Handle character changes
 func _on_character_changed(new_character: Character):
@@ -197,12 +276,25 @@ func _on_grant_coins_button_pressed():
 
 # Start an activity
 func start_activity(activity_name: String):
+	print("DEBUG: start_activity called with: '", activity_name, "'")
 	if character != null:
+		print("DEBUG: Character is available: ", character.name)
 		# Clear all button progress bars
 		clear_all_button_progress()
 
-		if IdleMechanics.start_activity(activity_name, character):
-			update_ui()
+		# Use EnhancedActivities to start the activity
+		if enhanced_activities != null:
+			print("DEBUG: EnhancedActivities is available, calling start_activity")
+			var result = enhanced_activities.start_activity(character, activity_name, "general")
+			if result:
+				print("DEBUG: Activity started successfully: ", activity_name)
+				update_ui()
+			else:
+				print("DEBUG: Failed to start activity: ", activity_name)
+		else:
+			print("DEBUG: EnhancedActivities not initialized!")
+	else:
+		print("DEBUG: Character is null!")
 
 func clear_all_button_progress():
 	"""Clear progress from all activity buttons"""
@@ -289,8 +381,8 @@ func _on_activity_button_pressed(button_name: String):
 func _find_activity_name_for_button(button_name: String) -> String:
 	"""Find the activity name that corresponds to a button name"""
 	# Get all activities from JSON data
-	var enhanced_activities = EnhancedActivities.new()
-	var all_activities = enhanced_activities.get_all_activities()
+	var enhanced_activities_instance = EnhancedActivities.new()
+	var all_activities = enhanced_activities_instance.get_all_activities()
 
 	# Clean the button name for matching
 	var clean_button_name = button_name.replace("_", " ").to_lower()

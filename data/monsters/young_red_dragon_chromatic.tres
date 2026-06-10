@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Young Red Dragon (Chromatic)"
+size = "Large dragon"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "18"
+hit_points = "178"
+speed = "40 ft., climb 40 ft., fly 80 ft."
+abilities = {
+"charisma": 19,
+"constitution": 21,
+"dexterity": 10,
+"intelligence": 14,
+"strength": 23,
+"wisdom": 11
+}
+saving_throws = Array[String](["Dex +4", "Con +9", "Wis +4", "Cha +8"])
+skills = Array[String](["Perception +8", "Stealth +4"])
+damage_immunities = Array[String](["fire"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 30 ft., darkvision 120 ft., passive Perception 18"
+languages = Array[String](["Common", "Draconic"])
+challenge_rating = "10"
+xp = 5900
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The dragon makes three attacks: one with its bite and two with its claws"},
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +10 to hit, reach 10 ft., one target. *Hit:* 17 (2d10+6) piercing damage plus 3 (1d6) fire damage"},
+	{"name": "Claw", "description": "*Melee Weapon Attack:* +10 to hit, reach 5 ft., one target. *Hit:* 13 (2d6+6) slashing damage"},
+	{"name": "Fire Breath (Recharge 5-6)", "description": "The dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 56 (16d6) fire damage on a failed save, or half as much damage on a successful one"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 4
+passive_perception = "18"

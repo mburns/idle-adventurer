@@ -1,0 +1,52 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"professions": {
+"advancement_requirements": {
+"level_2": {
+"experience_days": 28,
+"gold_cost": 180,
+"reputation": 45
+},
+"level_3": {
+"experience_days": 55,
+"gold_cost": 450,
+"reputation": 90
+}
+},
+"benefits": {
+"level_1": {
+"level_1": ["'Basic leather goods'", "'Simple armor'"]
+},
+"level_2": {
+"level_2": ["'Advanced leather armor'", "'Quality accessories'", "'Tool making'"]
+},
+"level_3": {
+"level_3": ["'Masterwork leather'", "'Magical leather items'", "'Teaching ability'"]
+}
+},
+"daily_income": 13,
+"description": "'Craft leather goods, armor, and accessories'",
+"location": "'Leatherworker's Shop'",
+"name": "'Leatherworker'",
+"profession_type": "'ARTISAN'",
+"professions": ["id: 'blacksmith'", "id: 'carpenter'", "id: 'leatherworker'"],
+"reputation_gain": 1,
+"requirements": {
+"dexterity": 13,
+"gold": 80
+},
+"schedule": {
+"days": "['monday', 'tuesday', 'wednesday', 'thursday', 'friday']",
+"end_hour": 18,
+"start_hour": 8
+},
+"skill_requirements": {
+"skill_requirements": ["'Leatherworker's Tools'", "'Sleight of Hand'"]
+},
+"tool_requirements": {
+"tool_requirements": ["'Leatherworker's Tools'", "'Tanning Vat'"]
+}
+}
+}

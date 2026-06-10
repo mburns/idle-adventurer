@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CurrencyResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/currency_resource.gd" id="1_wati5"]
+
+[resource]
+script = ExtResource("1_wati5")
+id = "gp"
+name = "Gold Piece"
+plural = "Gold Pieces"
+abbreviation = "gp"
+weight = 0.02
+value_base = 100
+description = "'Gold coins worth 100 copper pieces'"
+rarity = "common"
+material = "gold"

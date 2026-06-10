@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_4jc67"]
+
+[resource]
+script = ExtResource("1_4jc67")
+name = "Dryad"
+size = "Medium fey"
+type = "neutral"
+alignment = "neutral"
+armor_class = "1116"
+hit_points = "2258"
+speed = "30 ft."
+abilities = {
+"charisma": 18,
+"constitution": 11,
+"dexterity": 12,
+"intelligence": 14,
+"strength": 10,
+"wisdom": 15
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 14"
+languages = Array[String](["Elvish", "Sylvan"])
+challenge_rating = "1"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

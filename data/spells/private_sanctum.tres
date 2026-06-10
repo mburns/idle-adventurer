@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Private Sanctum"
+level = 1
+school = "evocation"
+casting_time = "10 minutes"
+spell_range = "120 feet"
+datacomponents = "V, S, M (a thin sheet of lead, a piece of opaque glass, a wad of cotton or cloth, and powdered chrysolite)"
+duration = "24 hours"
+description = "You make an area within range magically secure. The area is a cube that can be as small as 5 feet to as large as 100 feet on each side. The spell lasts for the duration or until you use an action to dismiss it.\n\nWhen you cast the spell, you decide what sort of security the spell provides, choosing any or all of the following properties:
+• Sound can't pass through the barrier at the edge of the warded area.
+• The barrier of the warded area appears dark and foggy, preventing vision (including darkvision) through it.
+• Sensors created by divination spells can't appear inside the protected area or pass through the barrier at its perimeter.
+• Creatures in the area can't be targeted by divination spells.
+• Nothing can teleport into or out of the warded area.
+• Planar travel is blocked within the warded area. Casting this spell on the same spot every day for a year makes this effect permanent."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

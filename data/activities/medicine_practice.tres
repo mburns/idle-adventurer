@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Medicine Practice"
+ability_resource = null
+skill = "Medicine"
+description = "Healing practice and medical research"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.09
+cost_per_day = 0.5
+rewards = {"medicine_skill": 1, "wisdom_exp": 12}
+requirements = {"wisdom": 12}

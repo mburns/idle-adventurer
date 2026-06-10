@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Athletics Training"
+ability_resource = null
+ability_name = ""
+skill = "Athletics"
+description = "Practice climbing, jumping, and swimming"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.5
+rewards = {"athletics_skill": 1, "strength_exp": 10}
+requirements = {"strength": 10}

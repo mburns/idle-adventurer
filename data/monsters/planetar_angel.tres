@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Planetar (Angel)"
+size = "Large celestial"
+type = "lawful good"
+alignment = "lawful good"
+armor_class = "19"
+hit_points = "200"
+speed = "40 ft., fly 120 ft."
+abilities = {
+"charisma": 25,
+"constitution": 24,
+"dexterity": 20,
+"intelligence": 19,
+"strength": 24,
+"wisdom": 22
+}
+saving_throws = Array[String](["Con +12", "Wis +11", "Cha +12"])
+skills = Array[String](["Perception +11"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String](["radiant", "bludgeoning", "piercing", "and slashing from nonmagical attacks"])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["charmed", "exhaustion", "frightened"])
+senses = "truesight 120 ft., passive Perception 21"
+languages = Array[String](["all", "telepathy 120 ft."])
+challenge_rating = "16"
+xp = 15000
+traits = Array[Dictionary]([
+	{"name": "Angelic Weapons", "description": "The planetar's weapon attacks are magical. When the planetar hits with any weapon, the weapon deals an extra 5d8 radiant damage (included in the attack)"},
+	{"name": "Divine Awareness", "description": "The planetar knows if it hears a lie"},
+	{"name": "Innate Spellcasting", "description": "The planetar's spellcasting ability is Charisma (spell save DC 20). The planetar can innately cast the following spells, requiring no material Components\n\nAt will: *detect evil and good*, *invisibility* (self only)\n\n3/day each: *blade barrier*, *dispel evil and good*, *flame strike*, *raise dead*\n\n1/day each: *commune*, *control weather*, *insect plague*"},
+	{"name": "Magic Resistance", "description": "The planetar has advantage on saving throws against spells and other magical effects"}
+])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The planetar makes two melee attacks"},
+	{"name": "Greatsword", "description": "*Melee Weapon Attack:* +12 to hit, reach 5 ft., one target. *Hit:* 21 (4d6+7) slashing damage plus 22 (5d8) radiant damage"},
+	{"name": "Healing Touch (4/Day)", "description": "The planetar touches another creature. The target magically regains 30 (6d8+3) hit points and is freed from any curse, disease, poison, blindness, or deafness"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 5
+passive_perception = "21"

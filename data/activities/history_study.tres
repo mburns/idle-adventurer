@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "History Study"
+ability_resource = null
+skill = "History"
+description = "Research past events and ancient civilizations"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 0
+cycle_cost = 1.0
+daily_progress = 0.08
+cost_per_day = 0.5
+rewards = {"history_skill": 1, "intelligence_exp": 12}
+requirements = {"intelligence": 11}

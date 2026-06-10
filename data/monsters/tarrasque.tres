@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_csj3c"]
+
+[resource]
+script = ExtResource("1_csj3c")
+name = "Tarrasque"
+size = "Gargantuan monstrosity (titan)"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "25"
+hit_points = "6763320330"
+speed = "40 ft."
+abilities = {
+"charisma": 11,
+"constitution": 30,
+"dexterity": 11,
+"intelligence": 3,
+"strength": 30,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 120 ft., passive Perception 10"
+languages = Array[String]([])
+challenge_rating = "30"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "10"

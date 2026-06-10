@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_qt5qb"]
+
+[resource]
+script = ExtResource("1_qt5qb")
+name = "Chimera"
+size = "Large monstrosity"
+type = "chaotic evil"
+alignment = "chaotic evil"
+armor_class = "14"
+hit_points = "114121048"
+speed = "30 ft., fly 60 ft."
+abilities = {
+"charisma": 10,
+"constitution": 19,
+"dexterity": 11,
+"intelligence": 3,
+"strength": 19,
+"wisdom": 14
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +8"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 18"
+languages = Array[String](["understands Draconic but can't speak"])
+challenge_rating = "6"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

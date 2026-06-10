@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "condition",
+"description": "",
+"effects": {
+"effects": ["A poisoned creature has disadvantage on attack rolls and ability checks."]
+},
+"name": "Poisoned",
+"type": "condition"
+}

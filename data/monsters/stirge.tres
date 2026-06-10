@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7ihfq"]
+
+[resource]
+script = ExtResource("1_7ihfq")
+name = "Stirge"
+size = "Tiny beast"
+type = "unaligned"
+alignment = "neutral"
+armor_class = "14"
+hit_points = "214"
+speed = "10 ft., fly 40 ft."
+abilities = {
+"charisma": 6,
+"constitution": 11,
+"dexterity": 16,
+"intelligence": 2,
+"strength": 4,
+"wisdom": 8
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "darkvision 60 ft., passive Perception 9"
+languages = Array[String]([])
+challenge_rating = "1/8"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = 9

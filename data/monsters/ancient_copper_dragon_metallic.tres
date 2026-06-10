@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Ancient Copper Dragon (Metallic)"
+size = "Gargantuan dragon"
+type = "chaotic good"
+alignment = "neutral"
+armor_class = "21"
+hit_points = "350"
+speed = "40 ft., climb 40 ft., fly 80 ft."
+abilities = {
+"charisma": 19,
+"constitution": 25,
+"dexterity": 12,
+"intelligence": 20,
+"strength": 27,
+"wisdom": 17
+}
+saving_throws = Array[String](["Dex +8", "Con +14", "Wis +10", "Cha +11"])
+skills = Array[String](["Deception +11", "Perception +17", "Stealth +8"])
+damage_immunities = Array[String](["acid"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 60 ft., darkvision 120 ft., passive Perception 27"
+languages = Array[String](["Common", "Draconic"])
+challenge_rating = "21"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "12"

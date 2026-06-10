@@ -233,147 +233,37 @@ func get_lifestyle_benefits_summary(character: Character) -> Dictionary:
 
 # YAML loading functions for lifestyle system
 func load_lifestyle_data() -> void:
-	"""Load lifestyle data from YAML file"""
-	var file_path = "res://data/lifestyles.yaml"
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	if file == null:
-		print("Error: Could not open lifestyles file: " + file_path)
+	"""Load lifestyle data using the resource manager"""
+	var lifestyle_manager = AutoloadManager.get_lifestyle_manager()
+	if lifestyle_manager == null:
+		print("Error: Lifestyle manager not available")
 		return
 
-	var yaml_string = file.get_as_text()
-	file.close()
+	# Copy lifestyles from resource manager to local storage
+	var all_lifestyles = lifestyle_manager.get_all_lifestyles()
+	for lifestyle_id in all_lifestyles:
+		var lifestyle_resource = all_lifestyles[lifestyle_id]
 
-	var lifestyle_config = parse_yaml_lifestyles(yaml_string)
-	if lifestyle_config == null:
-		print("Error parsing lifestyles YAML")
-		return
+		# Convert resource to legacy Lifestyle class
+		var lifestyle_data = {
+			"id": lifestyle_resource.id,
+			"name": lifestyle_resource.name,
+			"daily_cost": lifestyle_resource.daily_cost,
+			"description": lifestyle_resource.description,
+			"benefits": lifestyle_resource.benefits,
+			"profession_modifiers": lifestyle_resource.profession_modifiers
+		}
 
-	# Load benefits
-	var benefits_data = lifestyle_config.get("benefits", [])
-	for benefit_data in benefits_data:
-		var benefit_id = benefit_data.get("id", "")
-		if benefit_id != "":
-			lifestyle_benefits[benefit_id] = benefit_data
+		var lifestyle = Lifestyle.new(lifestyle_data)
+		lifestyles[lifestyle_id] = lifestyle
 
-	# Load penalties
-	var penalties_data = lifestyle_config.get("penalties", [])
-	for penalty_data in penalties_data:
-		var penalty_id = penalty_data.get("id", "")
-		if penalty_id != "":
-			lifestyle_penalties[penalty_id] = penalty_data
+	# Copy benefits from resource manager
+	var all_benefits = lifestyle_manager.get_all_benefits()
+	for benefit_id in all_benefits:
+		lifestyle_benefits[benefit_id] = all_benefits[benefit_id]
 
-	# Load lifestyle data
-	var lifestyles_data = lifestyle_config.get("lifestyles", [])
-	for lifestyle_data in lifestyles_data:
-		var lifestyle_id = lifestyle_data.get("id", "")
-		if lifestyle_id != "":
-			var lifestyle = Lifestyle.new(lifestyle_data)
-			lifestyles[lifestyle_id] = lifestyle
+	print("Loaded " + str(lifestyles.size()) + " lifestyles, " + str(lifestyle_benefits.size()) + " benefits")
 
-	print("Loaded " + str(lifestyles.size()) + " lifestyles, " + str(lifestyle_benefits.size()) + " benefits, " + str(lifestyle_penalties.size()) + " penalties")
-
-func parse_yaml_lifestyles(yaml_string: String) -> Dictionary:
-	"""Parse YAML lifestyle configuration - returns dictionary with benefits, penalties, and lifestyles"""
-	var lines = yaml_string.split("\n")
-	var result = {}
-	var current_section = ""
-	var current_array = []
-	var current_object = {}
-	var in_object = false
-	var object_key = ""
-	var in_multiline = false
-	var indent_level = 0
-
-	for line in lines:
-		line = line.strip_edges()
-		if line.is_empty() or line.begins_with("#"):
-			continue
-
-		var line_indent = get_indent_level(line)
-
-		# Handle top-level sections
-		if line_indent == 0 and ":" in line and not line.begins_with("-"):
-			# Save previous section if exists
-			if current_section != "" and current_array.size() > 0:
-				result[current_section] = current_array
-
-			var parts = line.split(":", 1)
-			current_section = parts[0].strip_edges()
-			current_array = []
-			continue
-
-		# Handle array items within sections
-		if line.begins_with("- ") and line_indent == 0:
-			# Save previous object if exists
-			if in_object and current_object.size() > 0:
-				current_array.append(current_object)
-
-			# Start new object
-			current_object = {}
-			in_object = true
-			continue
-		elif line.begins_with("-") and line_indent > 0:
-			# Handle nested array items
-			var item = line.substr(1).strip_edges()
-			if not current_object.has(object_key):
-				current_object[object_key] = []
-			current_object[object_key].append(parse_value(item))
-		elif ":" in line and line_indent > 0:
-			# Handle key-value pairs within objects
-			if in_multiline and object_key != "":
-				current_object[object_key] = current_object.get(object_key, "").strip_edges()
-				in_multiline = false
-
-			var parts = line.split(":", 1)
-			object_key = parts[0].strip_edges()
-			var value = parts[1].strip_edges()
-
-			if value.is_empty():
-				in_multiline = true
-				current_object[object_key] = ""
-			else:
-				current_object[object_key] = parse_value(value)
-		elif in_multiline and line_indent > indent_level:
-			# Continue multiline value
-			current_object[object_key] += "\n" + line
-
-	# Add last object and section
-	if in_object and current_object.size() > 0:
-		current_array.append(current_object)
-	if current_section != "" and current_array.size() > 0:
-		result[current_section] = current_array
-
-	return result
-
-func get_indent_level(line: String) -> int:
-	"""Get the indentation level of a line"""
-	var indent = 0
-	for i in range(line.length()):
-		if line[i] == " ":
-			indent += 1
-		elif line[i] == "\t":
-			indent += 4
-		else:
-			break
-	return indent
-
-func parse_value(value: String) -> Variant:
-	"""Parse a YAML value string into appropriate type"""
-	# Try to parse as number
-	if value.is_valid_int():
-		return value.to_int()
-	elif value.is_valid_float():
-		return value.to_float()
-	# Try to parse as boolean
-	elif value == "true":
-		return true
-	elif value == "false":
-		return false
-	# Try to parse as null/empty
-	elif value == "null" or value == "~" or value == "":
-		return null
-	# Return as string
-	else:
-		return value
+# Custom YAML parsing functions removed - now using unified YAMLParser via resource manager
 
 # Dynamic lifestyle system - no more enum conversions needed

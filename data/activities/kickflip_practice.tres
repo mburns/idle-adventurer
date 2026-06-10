@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Do a Kickflip"
+ability_resource = null
+skill = "Acrobatics"
+description = "Practice skateboard tricks and stunts"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 1
+cycle_cost = 0.0
+daily_progress = 0.15
+cost_per_day = 0.0
+rewards = {"acrobatics_skill": 2, "dexterity_exp": 15, "gold": 1}
+requirements = {"dexterity": 12}

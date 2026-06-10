@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/spell_resource.gd" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+spell_name = "Earthquake"
+level = 1
+school = "evocation"
+casting_time = "1 action"
+spell_range = "500 feet"
+datacomponents = "V, S, M (a pinch of dirt, a piece of rock, and a lump of clay)"
+duration = "Concentration, up to 1 minute"
+description = "You create a seismic disturbance at a point on the ground that you can see within range. For the duration, an intense tremor rips through the ground in a 100-foot radius circle centered on that point and shakes creatures and structures in contact with the ground in that area.\n\nThe ground in the area becomes difficult terrain.
+
+Each creature on the ground that is concentrating must make a Constitution saving throw. On a failed save, the creature's concentration is broken.
+
+When you cast this spell and at the end of each turn you spend concentrating on it, each creature on the ground in the area must make a Dexterity saving throw. On a failed save, the creature is knocked prone.
+
+This spell can have additional effects depending on the terrain in the area, as determined by the GM."
+higher_levels = ""
+ritual = "false"
+concentration = "false"
+classes = ["wizard"]
+damage_dice = "1d6"
+damage_type = "acid"
+saving_throw = "Dexterity"
+attack_roll = "false"
+area_of_effect = ""
+scales_with_level = "true"
+scaling_dice = "1d6"
+scaling_levels = [5, 11, 17]

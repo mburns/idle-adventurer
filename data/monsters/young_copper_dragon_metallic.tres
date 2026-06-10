@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Young Copper Dragon (Metallic)"
+size = "Large dragon"
+type = "chaotic good"
+alignment = "chaotic good"
+armor_class = "17"
+hit_points = "119"
+speed = "40 ft., climb 40 ft., fly 80 ft."
+abilities = {
+"charisma": 15,
+"constitution": 17,
+"dexterity": 12,
+"intelligence": 16,
+"strength": 19,
+"wisdom": 13
+}
+saving_throws = Array[String](["Dex +4", "Con +6", "Wis +4", "Cha +5"])
+skills = Array[String](["Deception +5", "Perception +7", "Stealth +4"])
+damage_immunities = Array[String](["acid"])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "blindsight 30 ft., darkvision 120 ft., passive Perception 17"
+languages = Array[String](["Common", "Draconic"])
+challenge_rating = "7"
+xp = 2900
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The dragon makes three attacks: one with its bite and two with its claws"},
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +7 to hit, reach 10 ft., one target. *Hit:* 15 (2d10+4) piercing damage"},
+	{"name": "Claw", "description": "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6+4) slashing damage"},
+	{"name": "Breath Weapons (Recharge 5-6)", "description": "The dragon uses one of the following breath weapons.\n\n**Acid Breath**. The dragon exhales acid in an 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 40 (9d8) acid damage on a failed save, or half as much damage on a successful one.\n\n**Slowing Breath**. The dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 3
+passive_perception = "17"

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_2fx5q"]
+
+[resource]
+script = ExtResource("1_2fx5q")
+name = "Mage"
+size = "Medium humanoid (any race)"
+type = "any alignment"
+alignment = "any alignment"
+armor_class = "1215"
+hit_points = "4098"
+speed = "30 ft."
+abilities = {
+"charisma": 11,
+"constitution": 11,
+"dexterity": 14,
+"intelligence": 17,
+"strength": 9,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Arcana +6", "History +6"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 11"
+languages = Array[String](["any four languages"])
+challenge_rating = "6"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Dagger", "description": "*Melee or Ranged Weapon Attack:* +5 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 4 (1d4 + 1) piercing damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"

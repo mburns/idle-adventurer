@@ -1,0 +1,59 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"objective_types": {
+"category": "social",
+"description": "Build social connections",
+"icon": "'connection'",
+"name": "Make Connections",
+"objective_types": ["id: COLLECT_ITEMS", "id: PERFORM_ACTIVITY", "id: SPEND_TIME", "id: REACH_LEVEL", "id: GAIN_REPUTATION", "id: SPEND_GOLD", "id: LEARN_SKILL", "id: MAKE_CONNECTIONS"]
+},
+"quest_categories": {
+"community": {
+"description": "Town and community service quests",
+"name": "Community Service",
+"priority": 6
+},
+"faction": {
+"description": "Faction-specific missions and tasks",
+"name": "Faction Quests",
+"priority": 2
+},
+"personal": {
+"description": "Character development quests",
+"name": "Personal Development",
+"priority": 5
+},
+"social": {
+"description": "Social interaction and relationship quests",
+"name": "Social Quests",
+"priority": 4
+},
+"story": {
+"description": "Main storyline and narrative quests",
+"name": "Story Quests",
+"priority": 1
+},
+"work": {
+"description": "Work-related quests and contracts",
+"name": "Professional Work",
+"priority": 3
+}
+},
+"quest_statuses": {
+"category": "pending",
+"color": "'#808080'  # Gray",
+"description": "Requirements not met",
+"name": "Locked",
+"quest_statuses": ["id: AVAILABLE", "id: ACTIVE", "id: COMPLETED", "id: FAILED", "id: LOCKED"]
+},
+"quest_types": {
+"category": "community",
+"color": "'#FF8C00'  # Dark Orange",
+"description": "Town and community service quests",
+"name": "Community Service",
+"priority": 6,
+"quest_types": ["id: MAIN_STORY", "id: FACTION", "id: PROFESSION", "id: SOCIAL", "id: PERSONAL", "id: COMMUNITY"]
+}
+}

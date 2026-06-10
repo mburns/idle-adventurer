@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Lemure (Devil)"
+size = "Medium fiend (devil)"
+type = "lawful evil"
+alignment = "lawful evil"
+armor_class = "7"
+hit_points = "13"
+speed = "15 ft."
+abilities = {
+"charisma": 3,
+"constitution": 11,
+"dexterity": 5,
+"intelligence": 1,
+"strength": 10,
+"wisdom": 11
+}
+saving_throws = Array[String]([])
+skills = Array[String]([])
+damage_immunities = Array[String](["fire", "poison"])
+damage_resistances = Array[String](["cold"])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String](["charmed", "frightened", "poisoned"])
+senses = "darkvision 120 ft., passive Perception 10"
+languages = Array[String](["understands Infernal but can't speak"])
+challenge_rating = "0"
+xp = 10
+traits = Array[Dictionary]([
+	{"name": "Devil's Sight", "description": "Magical darkness doesn't impede the lemure's darkvision"},
+	{"name": "Hellish Rejuvenation", "description": "A lemure that dies in the Nine Hells comes back to life with all its hit points in 1d10 days unless it is killed by a good-aligned creature with a *bless* spell cast on that creature or its remains are sprinkled with holy water"}
+])
+actions = Array[Dictionary]([
+	{"name": "Fist", "description": "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 2 (1d4) bludgeoning damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 2
+passive_perception = "10"

@@ -1,5 +1,6 @@
-class_name CharacterClassResource
 extends Resource
+
+class_name CharacterClassResource
 
 # D&D Class as a Godot Resource for better editor integration
 

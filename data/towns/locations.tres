@@ -1,0 +1,242 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"locations": {
+"artisan_quarter": {
+"costs": {
+"artisan_goods": 25,
+"custom_crafting": 50,
+"repair_services": 15
+},
+"description": "Where skilled craftsmen ply their trade",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "artisan_quarter",
+"location_type": "MARKET",
+"name": "Artisan Quarter",
+"npcs": "['jeweler']",
+"reputation_required": 0,
+"services": "['custom_crafting', 'artisan_goods', 'repair_services']"
+},
+"craftsman_guild": {
+"costs": {
+"guild_membership": 100,
+"trade_opportunities": 0,
+"training": 25
+},
+"description": "The headquarters of the local craftsman guild",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "craftsman_guild",
+"location_type": "GUILD_HALL",
+"name": "Craftsman Guild Hall",
+"npcs": "['blacksmith']",
+"reputation_required": 20,
+"services": "['guild_membership', 'training', 'trade_opportunities']"
+},
+"golden_harp": {
+"costs": {
+"accommodation": 2,
+"entertainment": 3,
+"meals": 1,
+"social_gathering": 0
+},
+"description": "A warm and welcoming tavern known for its music",
+"hours": {
+"afternoon": "open",
+"evening": "open",
+"morning": "open"
+},
+"id": "golden_harp",
+"location_type": "TAVERN",
+"name": "The Golden Harp Tavern",
+"npcs": "['bard', 'ranger']",
+"reputation_required": 0,
+"services": "['accommodation', 'meals', 'entertainment', 'social_gathering']"
+},
+"guard_barracks": {
+"costs": {
+"combat_training": 30,
+"guard_recruitment": 0,
+"patrol_duty": 0,
+"security_advice": 15
+},
+"description": "The headquarters of the town guard",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "guard_barracks",
+"location_type": "GUARD_BARRACKS",
+"name": "Guard Barracks",
+"npcs": "['guard_captain']",
+"reputation_required": 15,
+"services": "['combat_training', 'security_advice', 'patrol_duty', 'guard_recruitment']"
+},
+"library": {
+"costs": {
+"book_access": 2,
+"language_learning": 15,
+"quiet_study": 0,
+"research": 5
+},
+"description": "A repository of knowledge and learning",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "library",
+"location_type": "LIBRARY",
+"name": "Town Library",
+"npcs": "['librarian']",
+"reputation_required": 0,
+"services": "['research', 'book_access', 'language_learning', 'quiet_study']"
+},
+"market_square": {
+"costs": {
+"food_vendor": 5,
+"general_shopping": 0,
+"information_broker": 10
+},
+"description": "The bustling heart of the town's commerce",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "market_square",
+"location_type": "MARKET",
+"name": "Market Square",
+"npcs": "['general_store', 'spy']",
+"reputation_required": 0,
+"services": "['general_shopping', 'food_vendor', 'information_broker']"
+},
+"noble_manor": {
+"costs": {
+"luxury_goods": 100,
+"noble_audience": 50,
+"political_advice": 75,
+"social_events": 25
+},
+"description": "The residence of the local nobility",
+"hours": {
+"afternoon": "open",
+"evening": "open",
+"morning": "closed"
+},
+"id": "noble_manor",
+"location_type": "NOBLE_DISTRICT",
+"name": "Noble Manor",
+"npcs": "['luxury_merchant']",
+"reputation_required": 50,
+"services": "['noble_audience', 'luxury_goods', 'political_advice', 'social_events']"
+},
+"residential_district": {
+"costs": {
+"community_events": 0,
+"housing": 5,
+"neighborhood_watch": 0
+},
+"description": "The quiet residential area of the town",
+"hours": {
+"afternoon": "open",
+"evening": "open",
+"morning": "open"
+},
+"id": "residential_district",
+"location_type": "RESIDENTIAL",
+"name": "Residential District",
+"npcs": Array[String]([]),
+"reputation_required": 0,
+"services": "['housing', 'neighborhood_watch', 'community_events']"
+},
+"smithy": {
+"costs": {
+"armor_repair": 25,
+"metalwork_training": 20,
+"tool_making": 30,
+"weapon_crafting": 75
+},
+"description": "A well-equipped forge for metalworking",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "smithy",
+"location_type": "SMITHY",
+"name": "Ironforge Smithy",
+"npcs": "['blacksmith']",
+"reputation_required": 0,
+"services": "['weapon_crafting', 'armor_repair', 'tool_making', 'metalwork_training']"
+},
+"temple": {
+"costs": {
+"donations": 0,
+"healing": 10,
+"religious_services": 0,
+"spiritual_guidance": 0
+},
+"description": "A beautiful temple dedicated to the gods of light and healing",
+"hours": {
+"afternoon": "open",
+"evening": "open",
+"morning": "open"
+},
+"id": "temple",
+"location_type": "TEMPLE",
+"name": "Temple of the Light",
+"npcs": "['priest']",
+"reputation_required": 0,
+"services": "['healing', 'spiritual_guidance', 'religious_services', 'donations']"
+},
+"town_hall": {
+"costs": {
+"legal_advice": 20,
+"official_documents": 5,
+"permits": 10,
+"town_meetings": 0
+},
+"description": "The center of local government and administration",
+"hours": {
+"afternoon": "open",
+"evening": "closed",
+"morning": "open"
+},
+"id": "town_hall",
+"location_type": "TOWN_HALL",
+"name": "Town Hall",
+"npcs": "['mayor']",
+"reputation_required": 10,
+"services": "['legal_advice', 'permits', 'official_documents', 'town_meetings']"
+},
+"travelers_rest": {
+"costs": {
+"accommodation": 1,
+"meals": 0.5,
+"stable_service": 1
+},
+"description": "A simple but clean inn for travelers",
+"hours": {
+"afternoon": "open",
+"evening": "open",
+"morning": "open"
+},
+"id": "travelers_rest",
+"location_type": "TAVERN",
+"name": "Traveler's Rest Inn",
+"npcs": Array[String]([]),
+"reputation_required": 0,
+"services": "['accommodation', 'meals', 'stable_service']"
+}
+}
+}

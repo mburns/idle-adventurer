@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_7ruvp"]
+
+[resource]
+script = ExtResource("1_7ruvp")
+name = "Blood Hawk"
+size = "Small beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "12"
+hit_points = "726"
+speed = "10 ft., fly 60 ft."
+abilities = {
+"charisma": 5,
+"constitution": 10,
+"dexterity": 14,
+"intelligence": 3,
+"strength": 6,
+"wisdom": 14
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +14"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 14"
+languages =Array[String]([])
+challenge_rating = "1/8"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Multiattack", "description": "The hawk makes two attacks: one with its beak and one with its talons"},
+	{"name": "Beak", "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6+3) piercing damage"},
+	{"name": "Talons", "description": "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8+3) slashing damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "14"

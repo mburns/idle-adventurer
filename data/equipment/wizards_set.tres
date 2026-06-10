@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EquipmentSetResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/equipment_set_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+set_id = "wizards_set"
+set_name = "Wizard's Set"
+description = "Magical equipment set for spellcasters"
+pieces = Array[String](["Wizard's Robe", "Wizard's Hat", "Wizard's Staff"])
+bonuses = {
+"spell_save_dc": 1,
+"spell_attack_bonus": 1
+}
+rarity = "uncommon"
+required_class = "wizard"
+required_level = 1

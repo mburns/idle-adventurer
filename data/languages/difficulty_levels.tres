@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/resource_data_loader.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+metadata/yaml_data = {
+  "0": {
+    "name": "Native",
+    "description": "Already known, no learning required",
+    "time_multiplier": 0.0,
+    "cost_multiplier": 0.0
+  },
+  "1": {
+    "name": "Easy",
+    "description": "Simple languages with common speakers",
+    "time_multiplier": 1.0,
+    "cost_multiplier": 1.0
+  },
+  "2": {
+    "name": "Moderate",
+    "description": "Languages with moderate complexity",
+    "time_multiplier": 1.2,
+    "cost_multiplier": 1.5
+  },
+  "3": {
+    "name": "Hard",
+    "description": "Complex languages from other planes",
+    "time_multiplier": 1.5,
+    "cost_multiplier": 2.0
+  },
+  "4": {
+    "name": "Extreme",
+    "description": "Nearly impossible languages to learn",
+    "time_multiplier": 2.0,
+    "cost_multiplier": 3.0
+  }
+}

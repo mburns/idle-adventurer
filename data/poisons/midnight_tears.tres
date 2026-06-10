@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"category": "poison",
+"description": "",
+"effects": "",
+"name": "Midnight tears",
+"price": "1,500 gp",
+"type": "Ingested"
+}

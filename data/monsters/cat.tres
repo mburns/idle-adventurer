@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/monster_resource.gd" id="1_wete7"]
+
+[resource]
+script = ExtResource("1_wete7")
+name = "Cat"
+size = "Tiny beast"
+type = "unaligned"
+alignment = "unaligned"
+armor_class = "12"
+hit_points = "214"
+speed = "40 ft., climb 30 ft."
+abilities = {
+"charisma": 7,
+"constitution": 10,
+"dexterity": 15,
+"intelligence": 3,
+"strength": 3,
+"wisdom": 12
+}
+saving_throws = Array[String]([])
+skills = Array[String](["Perception +2", "Stealth +4"])
+damage_immunities = Array[String]([])
+damage_resistances = Array[String]([])
+damage_vulnerabilities = Array[String]([])
+condition_immunities = Array[String]([])
+senses = "passive Perception 13"
+languages =Array[String]([])
+challenge_rating = "0"
+xp = 0
+traits = Array[Dictionary]([])
+actions = Array[Dictionary]([
+	{"name": "Bite", "description": "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 6 (1d6+2) piercing damage"}
+])
+reactions = Array[Dictionary]([])
+legendary_actions = Array[Dictionary]([])
+proficiency_bonus = 1
+passive_perception = "11"
