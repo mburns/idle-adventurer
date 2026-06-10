@@ -1,0 +1,10 @@
+[gd_resource type="SkillResource" format=3]
+
+[resource]
+skill_name = "Nature"
+description = "Knowledge of terrain, plants, animals, weather, and natural cycles"
+ability_resource = ExtResource("ability_intelligence")
+is_proficient = false
+proficiency_bonus = 0
+is_armor_penalty = false
+is_passive = false

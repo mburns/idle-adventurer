@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Play Instrument"
+ability_resource = null
+skill = "Performance"
+description = "Practice playing a musical instrument"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 8
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.0
+rewards = {"performance_skill": 1, "dexterity_exp": 15, "gold": 8}
+requirements = {"dexterity": 10, "tools": "musical_instrument"}

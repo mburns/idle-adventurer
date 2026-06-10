@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Wrestling Training"
+ability_resource = null
+skill = ""
+description = "Practice grappling and wrestling techniques"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 1.0
+daily_progress = 0.1
+cost_per_day = 0.3
+rewards = {"wrestling_skill": 1, "strength_exp": 10, "constitution_exp": 3}
+requirements = {"strength": 13, "gold": 15}

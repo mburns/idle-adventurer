@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Performance Arts"
+ability_resource = null
+skill = "Performance"
+description = "Dancing, juggling, and entertainment"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 3
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.0
+rewards = {"performance_skill": 1, "dexterity_exp": 8, "gold": 3}
+requirements = {"dexterity": 10}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Physical Labor"
+ability_resource = null
+ability_name = "strength"
+skill = ""
+description = "Construction, mining, or heavy lifting work"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 3
+cycle_cost = 0.0
+daily_progress = 0.15
+cost_per_day = 0.0
+rewards = {"gold": 2, "strength_exp": 15, "constitution_exp": 5}
+requirements = {"strength": 12}

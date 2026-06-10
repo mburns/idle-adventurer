@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Animal Handling"
+ability_resource = null
+ability_name = ""
+skill = "Animal Handling"
+description = "Train animals and practice veterinary skills"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.3
+rewards = {"animal_handling_skill": 1, "wisdom_exp": 10}
+requirements = {"wisdom": 11}

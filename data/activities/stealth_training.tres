@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Stealth Training"
+ability_resource = null
+skill = "Stealth"
+description = "Hiding, sneaking, and camouflage practice"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.1
+rewards = {"stealth_skill": 1, "dexterity_exp": 8}
+requirements = {"dexterity": 11}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Chess Tournament"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Compete in strategic board games"
+cycle_duration = 15.0
+cycle_xp = 7
+cycle_gold = 4
+cycle_cost = 0.0
+daily_progress = 0.12
+cost_per_day = 0.0
+rewards = {"intelligence_exp": 18, "gold": 8, "reputation": 3}
+requirements = {"intelligence": 12}

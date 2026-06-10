@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Stand-Up Comedy"
+ability_resource = null
+skill = "Performance"
+description = "Perform comedy routines at taverns"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 6
+cycle_cost = 0.0
+daily_progress = 0.12
+cost_per_day = 0.0
+rewards = {"performance_skill": 2, "charisma_exp": 15, "gold": 6}
+requirements = {"charisma": 13}

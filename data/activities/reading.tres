@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Reading"
+ability_resource = null
+skill = "Reading"
+description = "Study books and scrolls to gain knowledge"
+cycle_duration = 40.0
+cycle_xp = 7
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.0
+rewards = {"intelligence_exp": 7, "knowledge": 1, "spell_preparation": 1}
+requirements = {"intelligence": 11}

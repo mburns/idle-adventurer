@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Combat Training"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Weapon practice and sparring"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 0
+cycle_cost = 2.0
+daily_progress = 0.08
+cost_per_day = 1.0
+rewards = {"weapon_proficiency": 1, "strength_exp": 12}
+requirements = {"strength": 13, "gold": 50}

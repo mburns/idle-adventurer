@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Survival Skills"
+ability_resource = null
+skill = "Survival"
+description = "Foraging, tracking, and wilderness survival"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.0
+rewards = {"survival_skill": 1, "wisdom_exp": 8, "materials": 1}
+requirements = {"wisdom": 11}

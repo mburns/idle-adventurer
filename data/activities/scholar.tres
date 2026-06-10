@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Scholar"
+ability_resource = null
+skill = ""
+description = "Work as a scholar, researching and teaching"
+cycle_duration = 15.0
+cycle_xp = 16
+cycle_gold = 12
+cycle_cost = 0.0
+daily_progress = 0.02
+cost_per_day = 0.0
+rewards = {"profession_skill": 1, "intelligence_exp": 40, "gold": 12}
+requirements = {"intelligence": 14, "skills": ["Arcana", "History", "Religion"]}

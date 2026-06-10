@@ -49,7 +49,7 @@ func load_all_data() -> void:
 	print("Data loading complete!")
 
 func load_activities() -> void:
-	"""Load activities from .tres files with YAML data"""
+	"""Load activities from individual .tres files"""
 	var activities_dir = "res://data/activities/"
 	var dir = DirAccess.open(activities_dir)
 	if not dir:
@@ -65,25 +65,22 @@ func load_activities() -> void:
 	for file_name in files:
 		if file_name.ends_with(".tres"):
 			var file_path = activities_dir + file_name
-			var resource = load(file_path) as Resource
-			if resource:
-				var activity_data = resource.get("metadata/yaml_data")
-				if activity_data is Array:
-					# Handle array of activities
-					for activity_item in activity_data:
-						if activity_item is Dictionary and activity_item.has("ability"):
-							var ability = activity_item.get("ability", "general")
-							if ability in activities:
-								activities[ability].append(activity_item)
-							else:
-								activities["general"].append(activity_item)
-				elif activity_data is Dictionary and activity_data.has("ability"):
-					# Handle single activity
-					var ability = activity_data.get("ability", "general")
-					if ability in activities:
-						activities[ability].append(activity_data)
-					else:
-						activities["general"].append(activity_data)
+			var activity_resource = null
+
+			# Load as generic Resource and convert
+			var generic_resource = load(file_path) as Resource
+			if generic_resource:
+				activity_resource = _convert_resource_to_activity(generic_resource)
+
+			if activity_resource:
+				# Determine ability from activity name or default to general
+				var ability_name = _determine_ability_from_name(activity_resource.activity_name)
+				if ability_name in activities:
+					activities[ability_name].append(activity_resource)
+				else:
+					activities["general"].append(activity_resource)
+			else:
+				print("Failed to load activity: ", file_name)
 
 	var total_count = 0
 	for ability in activities.keys():
@@ -91,6 +88,186 @@ func load_activities() -> void:
 
 	print("Loaded ", total_count, " activities")
 	data_loaded.emit("activities", total_count)
+
+func _determine_ability_from_name(activity_name: String) -> String:
+	"""Determine ability from activity name"""
+	var name_lower = activity_name.to_lower()
+
+    # TODO remove this hacky mapping.
+
+	# Strength-based activities
+	if "athletics" in name_lower or "physical" in name_lower or "combat" in name_lower or "blacksmith" in name_lower or "strongman" in name_lower or "log" in name_lower or "wrestling" in name_lower:
+		return "strength"
+	# Dexterity-based activities
+	elif "acrobatics" in name_lower or "sleight" in name_lower or "stealth" in name_lower or "jewelry" in name_lower or "parkour" in name_lower or "archery" in name_lower or "pick" in name_lower or "instrument" in name_lower or "kickflip" in name_lower:
+		return "dexterity"
+	# Intelligence-based activities
+	elif "arcana" in name_lower or "history" in name_lower or "investigation" in name_lower or "nature" in name_lower or "religion" in name_lower or "academic" in name_lower or "alchemy" in name_lower or "chess" in name_lower or "codebreaking" in name_lower or "invention" in name_lower or "study" in name_lower or "research" in name_lower or "investigate" in name_lower or "forge" in name_lower:
+		return "intelligence"
+	# Wisdom-based activities
+	elif "animal" in name_lower or "insight" in name_lower or "medicine" in name_lower or "perception" in name_lower or "survival" in name_lower or "spiritual" in name_lower:
+		return "wisdom"
+	# Charisma-based activities
+	elif "performance" in name_lower or "deception" in name_lower or "intimidation" in name_lower or "persuasion" in name_lower or "social" in name_lower or "entertainment" in name_lower or "comedy" in name_lower or "court" in name_lower or "merchant" in name_lower or "royal" in name_lower:
+		return "charisma"
+	# Constitution-based activities
+	elif "endurance" in name_lower or "fasting" in name_lower or "conditioning" in name_lower or "resistance" in name_lower or "breath" in name_lower or "ale" in name_lower:
+		return "constitution"
+	# Rest activities
+	elif "rest" in name_lower or "meditation" in name_lower or "exercise" in name_lower or "reading" in name_lower or "relaxation" in name_lower:
+		return "general"
+	# Training activities
+	elif "language" in name_lower or "tool" in name_lower or "skill" in name_lower:
+		return "intelligence"
+	# Crafting activities
+	elif "leatherworking" in name_lower or "pottery" in name_lower or "weaving" in name_lower or "woodworking" in name_lower:
+		return "dexterity"
+	# Profession activities
+	elif "artisan" in name_lower or "merchant" in name_lower or "scholar" in name_lower or "guard" in name_lower or "priest" in name_lower or "entertainer" in name_lower:
+		if "artisan" in name_lower or "scholar" in name_lower: return "intelligence"
+		if "merchant" in name_lower or "entertainer" in name_lower: return "charisma"
+		if "guard" in name_lower: return "strength"
+		if "priest" in name_lower: return "wisdom"
+
+	return "general"
+
+func _convert_resource_to_activity(resource: Resource) -> ActivityResource:
+	"""Convert a generic Resource to ActivityResource by parsing the file content"""
+	var activity_resource = ActivityResource.new()
+
+	# Get the file path from the resource
+	var file_path = resource.resource_path
+	print("DEBUG: Converting resource with path: ", file_path)
+	if file_path == "":
+		print("No resource path available")
+		return activity_resource
+
+	# Read the file content as text
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if not file:
+		print("Failed to open file: ", file_path)
+		return activity_resource
+
+	var content = file.get_as_text()
+	file.close()
+
+	print("DEBUG: File content length: ", content.length())
+
+	# Parse the content to extract properties
+	var lines = content.split("\n")
+	for line in lines:
+		line = line.strip_edges()
+		if line.begins_with("activity_name = "):
+			activity_resource.activity_name = line.substr(15).strip_edges().trim_prefix('"').trim_suffix('"')
+			print("DEBUG: Found activity_name: ", activity_resource.activity_name)
+		elif line.begins_with("ability_name = "):
+			activity_resource.ability_name = line.substr(15).strip_edges().trim_prefix('"').trim_suffix('"')
+			print("DEBUG: Found ability_name: ", activity_resource.ability_name)
+		elif line.begins_with("skill = "):
+			activity_resource.skill = line.substr(8).strip_edges().trim_prefix('"').trim_suffix('"')
+		elif line.begins_with("description = "):
+			activity_resource.description = line.substr(14).strip_edges().trim_prefix('"').trim_suffix('"')
+		elif line.begins_with("cycle_duration = "):
+			activity_resource.cycle_duration = float(line.substr(17))
+		elif line.begins_with("cycle_xp = "):
+			activity_resource.cycle_xp = int(line.substr(11))
+		elif line.begins_with("cycle_gold = "):
+			activity_resource.cycle_gold = int(line.substr(13))
+		elif line.begins_with("cycle_cost = "):
+			activity_resource.cycle_cost = float(line.substr(13))
+		elif line.begins_with("daily_progress = "):
+			activity_resource.daily_progress = float(line.substr(17))
+		elif line.begins_with("cost_per_day = "):
+			activity_resource.cost_per_day = float(line.substr(15))
+
+	print("DEBUG: Final activity_name: ", activity_resource.activity_name)
+	print("DEBUG: Final ability_name: ", activity_resource.ability_name)
+
+	# Load ability resource based on ability_name or skill
+	var ability_resource = null
+	if activity_resource.ability_name != "":
+		# Direct ability mapping
+		ability_resource = _load_ability_by_name(activity_resource.ability_name)
+	elif activity_resource.skill != "":
+		# Skill-based mapping
+		ability_resource = _get_ability_for_skill(activity_resource.skill)
+	else:
+		# Fallback: determine from activity name
+		var ability_name = _determine_ability_from_name(activity_resource.activity_name)
+		ability_resource = _load_ability_by_name(ability_name)
+
+	activity_resource.ability_resource = ability_resource
+
+	return activity_resource
+
+func _load_ability_by_name(ability_name: String) -> AbilityResource:
+	"""Load ability resource by name"""
+	var ability_path = "res://data/abilities/" + ability_name + ".tres"
+	var ability_resource = load(ability_path)
+	if ability_resource:
+		# Convert generic Resource to AbilityResource
+		var converted_ability = AbilityResource.new()
+		converted_ability.id = ability_resource.get("id") if ability_resource.get("id") != null else ""
+		converted_ability.ability_name = ability_resource.get("ability_name") if ability_resource.get("ability_name") != null else ""
+		converted_ability.description = ability_resource.get("description") if ability_resource.get("description") != null else ""
+		converted_ability.modifier = ability_resource.get("modifier") if ability_resource.get("modifier") != null else 0
+		converted_ability.base_score = ability_resource.get("base_score") if ability_resource.get("base_score") != null else 10
+		converted_ability.is_core_ability = ability_resource.get("is_core_ability") if ability_resource.get("is_core_ability") != null else true
+
+		# Create properly typed arrays
+		var skills_array: Array[String] = []
+		var activities_array: Array[String] = []
+		converted_ability.associated_skills = skills_array
+		converted_ability.associated_activities = activities_array
+
+		converted_ability.saving_throw_proficiency = ability_resource.get("saving_throw_proficiency") if ability_resource.get("saving_throw_proficiency") != null else false
+		converted_ability.is_spellcasting_ability = ability_resource.get("is_spellcasting_ability") if ability_resource.get("is_spellcasting_ability") != null else false
+		return converted_ability
+	else:
+		print("Failed to load ability: ", ability_name)
+		return null
+
+func _get_ability_for_skill(skill_name: String) -> AbilityResource:
+	"""Get ability resource for a skill"""
+	# Convert skill name to file name (e.g., "Animal Handling" -> "animal_handling")
+	var skill_file_name = skill_name.to_lower().replace(" ", "_")
+	var skill_path = "res://data/skills/" + skill_file_name + ".tres"
+
+	var skill_resource = load(skill_path)
+	if skill_resource and skill_resource is SkillResource:
+		# If skill has ability_resource, use it
+		if skill_resource.ability_resource:
+			return skill_resource.ability_resource
+		else:
+			# Fallback: determine ability from skill name
+			var ability_name = _skill_to_ability_name(skill_name)
+			return _load_ability_by_name(ability_name)
+	else:
+		# Fallback: determine ability from skill name
+		var ability_name = _skill_to_ability_name(skill_name)
+		return _load_ability_by_name(ability_name)
+
+func _skill_to_ability_name(skill_name: String) -> String:
+	"""Map skill name to ability name"""
+	var skill_lower = skill_name.to_lower()
+
+	# Strength-based skills
+	if skill_lower in ["athletics"]:
+		return "strength"
+	# Dexterity-based skills
+	elif skill_lower in ["acrobatics", "sleight_of_hand", "stealth"]:
+		return "dexterity"
+	# Intelligence-based skills
+	elif skill_lower in ["arcana", "history", "investigation", "nature", "religion"]:
+		return "intelligence"
+	# Wisdom-based skills
+	elif skill_lower in ["animal_handling", "insight", "medicine", "perception", "survival"]:
+		return "wisdom"
+	# Charisma-based skills
+	elif skill_lower in ["deception", "intimidation", "performance", "persuasion"]:
+		return "charisma"
+	else:
+		return "general"
 
 func load_races() -> void:
 	"""Load races from .tres files"""

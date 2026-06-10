@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+id = "ability_intelligence"
+ability_name = "Intelligence"
+description = "Reasoning, memory, and analytical ability"
+modifier = 0
+base_score = 10
+is_core_ability = true
+associated_skills = ["Arcana", "History", "Investigation", "Nature", "Religion"]
+associated_activities = []
+saving_throw_proficiency = false
+is_spellcasting_ability = true

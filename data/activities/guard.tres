@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Guard"
+ability_resource = null
+skill = ""
+description = "Work as a city guard, maintaining security"
+cycle_duration = 15.0
+cycle_xp = 10
+cycle_gold = 18
+cycle_cost = 0.0
+daily_progress = 0.02
+cost_per_day = 0.0
+rewards = {"profession_skill": 1, "strength_exp": 25, "gold": 18}
+requirements = {"strength": 13, "skills": ["Athletics", "Intimidation"]}

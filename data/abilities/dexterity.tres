@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+id = "ability_dexterity"
+ability_name = "Dexterity"
+description = "Agility, reflexes, and balance"
+modifier = 0
+base_score = 10
+is_core_ability = true
+associated_skills = ["Acrobatics", "Sleight of Hand", "Stealth"]
+associated_activities = []
+saving_throw_proficiency = false
+is_spellcasting_ability = false

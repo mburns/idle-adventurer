@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Pottery"
+ability_resource = null
+skill = ""
+description = "Craft pottery and ceramic items"
+cycle_duration = 15.0
+cycle_xp = 7
+cycle_gold = 5
+cycle_cost = 0.0
+daily_progress = 0.05
+cost_per_day = 0.0
+rewards = {"crafting_skill": 1, "intelligence_exp": 18, "gold": 5}
+requirements = {"intelligence": 11, "tools": "potter_tools"}

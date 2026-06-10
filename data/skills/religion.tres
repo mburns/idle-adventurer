@@ -1,0 +1,10 @@
+[gd_resource type="SkillResource" format=3]
+
+[resource]
+skill_name = "Religion"
+description = "Knowledge of deities, religious rites, and divine magic"
+ability_resource = ExtResource("ability_intelligence")
+is_proficient = false
+proficiency_bonus = 0
+is_armor_penalty = false
+is_passive = false

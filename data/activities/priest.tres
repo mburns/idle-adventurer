@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Priest"
+ability_resource = null
+skill = ""
+description = "Work as a priest, providing religious services"
+cycle_duration = 15.0
+cycle_xp = 12
+cycle_gold = 10
+cycle_cost = 0.0
+daily_progress = 0.03
+cost_per_day = 0.0
+rewards = {"profession_skill": 1, "wisdom_exp": 30, "gold": 10}
+requirements = {"wisdom": 13, "skills": ["Religion", "Medicine"]}

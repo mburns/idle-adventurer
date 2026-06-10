@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Entertainment Business"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Running taverns and organizing events"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 10
+cycle_cost = 0.0
+daily_progress = 0.05
+cost_per_day = 0.0
+rewards = {"charisma_exp": 15, "gold": 10, "reputation": 3}
+requirements = {"charisma": 14, "gold": 200}

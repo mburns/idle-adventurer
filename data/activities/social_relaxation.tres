@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Social Relaxation"
+ability_resource = null
+skill = "Social Relaxation"
+description = "Spend time with friends and companions"
+cycle_duration = 35.0
+cycle_xp = 6
+cycle_gold = 2
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 2.0
+rewards = {"charisma_exp": 6, "social_bonds": 1, "morale": 1}
+requirements = {"charisma": 10, "gold": 5}

@@ -89,16 +89,14 @@ func load_all_activities() -> void:
 		print("Processing ability: ", ability, " with ", ability_activities.size(), " activities")
 		activities_by_ability[ability] = [] as Array[ActivityResource]
 
-		# Convert dictionaries to ActivityResource objects
-		for activity_dict in ability_activities:
-			# print("DEBUG: Converting activity dict: ", activity_dict)
-			var activity_resource = _dict_to_activity_resource(activity_dict)
+		# Activities are now ActivityResource objects directly
+		for activity_resource in ability_activities:
 			if activity_resource:
 				activities_by_ability[ability].append(activity_resource)
 				activities[activity_resource.activity_name] = activity_resource
-				# print("Loaded activity: ", activity_resource.activity_name)
+				print("Loaded activity: ", activity_resource.activity_name)
 			else:
-				print("DEBUG: Failed to convert activity dict to resource")
+				print("DEBUG: Failed to load activity resource")
 
 	# Organize activities by various criteria
 	organize_activities()

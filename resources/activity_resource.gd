@@ -5,7 +5,8 @@ class_name ActivityResource
 # D&D Activity as a Godot Resource for better editor integration and type safety
 
 @export var activity_name: String = ""
-@export var ability: String = "general"
+@export var ability_resource: AbilityResource
+@export var ability_name: String = ""  # String reference to ability (e.g., "strength", "wisdom")
 @export var skill: String = ""
 @export var description: String = ""
 
@@ -232,7 +233,7 @@ func get_cycle_rewards(character_level: int = 1) -> Dictionary:
 
 	# Add XP and gold from cycle values
 	if cycle_xp > 0:
-		var ability_exp_key = ability + "_exp"
+		var ability_exp_key = get_ability_name() + "_exp"
 		cycle_rewards[ability_exp_key] = get_cycle_xp(character_level)
 
 	if cycle_gold != 0:
@@ -244,3 +245,13 @@ func get_cycle_rewards(character_level: int = 1) -> Dictionary:
 			cycle_rewards[reward_type] = rewards[reward_type]
 
 	return cycle_rewards
+
+func get_ability_name() -> String:
+	"""Get ability name for backward compatibility"""
+	if ability_resource:
+		return ability_resource.ability_name.to_lower()
+	return "general"
+
+func get_ability() -> String:
+	"""Get ability name for backward compatibility (legacy method)"""
+	return get_ability_name()

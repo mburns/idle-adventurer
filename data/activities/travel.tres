@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Travel"
+ability_resource = null
+skill = ""
+description = "Explore new locations and discover places"
+cycle_duration = 15.0
+cycle_xp = 3
+cycle_gold = 1
+cycle_cost = 0.0
+daily_progress = 0.0167
+cost_per_day = 1.0
+rewards = {"exploration_exp": 20, "locations_discovered": 1}
+requirements = {"gold": 10}

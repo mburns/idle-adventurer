@@ -30,7 +30,49 @@ var current_scene: String = ""
 var game_time: float = 0.0
 var is_paused: bool = false
 
+func load_resource_classes():
+	"""Load all custom resource classes to ensure they're available in headless mode"""
+	print("Loading custom resource classes for headless mode...")
+
+	# Load the resource scripts to register the classes
+	var resource_scripts = [
+		"res://resources/activity_resource.gd",
+		"res://resources/ability_resource.gd",
+		"res://resources/skill_resource.gd",
+		"res://resources/item_resource.gd",
+		"res://resources/feat_resource.gd"
+	]
+
+	for script_path in resource_scripts:
+		var script = load(script_path)
+		if script:
+			print("Loaded resource script: ", script_path)
+			# Force the script to be instantiated to register the class
+			var instance = script.new()
+			if instance:
+				# Don't free references, just let them be garbage collected
+				pass
+		else:
+			print("Failed to load resource script: ", script_path)
+
+	print("Resource class loading complete!")
+
+	# Test if classes are registered
+	print("Testing class registration...")
+	if ClassDB.class_exists("ActivityResource"):
+		print("ActivityResource class is registered")
+	else:
+		print("ActivityResource class is NOT registered")
+
+	if ClassDB.class_exists("AbilityResource"):
+		print("AbilityResource class is registered")
+	else:
+		print("AbilityResource class is NOT registered")
+
 func _ready():
+	# Load custom resource classes first for headless mode compatibility
+	load_resource_classes()
+
 	# Initialize global data loader first
 	data_loader = ResourceDataLoader.new()
 	data_loader.load_all_data()

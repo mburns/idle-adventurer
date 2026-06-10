@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Parkour Training"
+ability_resource = null
+skill = "Acrobatics"
+description = "Urban acrobatics and free running"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.12
+cost_per_day = 0.0
+rewards = {"acrobatics_skill": 1, "dexterity_exp": 12, "constitution_exp": 3}
+requirements = {"dexterity": 11, "constitution": 10}

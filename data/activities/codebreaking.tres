@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Codebreaking"
+ability_resource = null
+ability_name = ""
+skill = "Investigation"
+description = "Decipher encrypted messages and puzzles"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 1
+cycle_cost = 1.0
+daily_progress = 0.08
+cost_per_day = 0.2
+rewards = {"investigation_skill": 2, "intelligence_exp": 12}
+requirements = {"intelligence": 14}

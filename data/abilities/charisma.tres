@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+id = "ability_charisma"
+ability_name = "Charisma"
+description = "Force of personality and leadership"
+modifier = 0
+base_score = 10
+is_core_ability = true
+associated_skills = ["Deception", "Intimidation", "Performance", "Persuasion"]
+associated_activities = []
+saving_throw_proficiency = false
+is_spellcasting_ability = true

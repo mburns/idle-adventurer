@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Drink Ale"
+ability_resource = null
+skill = ""
+description = "Quaff ale to build tolerance and constitution"
+cycle_duration = 15.0
+cycle_xp = 3
+cycle_gold = 3
+cycle_cost = 0.0
+daily_progress = 0.2
+cost_per_day = 0.0
+rewards = {"constitution_exp": 5, "gold": 3}
+requirements = {"constitution": 10}

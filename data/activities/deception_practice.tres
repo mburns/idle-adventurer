@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Deception Practice"
+ability_resource = null
+ability_name = ""
+skill = "Deception"
+description = "Acting, disguise, and social manipulation"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.08
+cost_per_day = 0.2
+rewards = {"deception_skill": 1, "charisma_exp": 10}
+requirements = {"charisma": 11}

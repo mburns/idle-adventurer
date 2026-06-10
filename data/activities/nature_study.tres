@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Nature Study"
+ability_resource = null
+skill = "Nature"
+description = "Study plants, animals, and natural phenomena"
+cycle_duration = 15.0
+cycle_xp = 3
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.2
+rewards = {"nature_skill": 1, "intelligence_exp": 8}
+requirements = {"intelligence": 10}

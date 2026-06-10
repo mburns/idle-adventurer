@@ -1,0 +1,10 @@
+[gd_resource type="SkillResource" format=3]
+
+[resource]
+skill_name = "Stealth"
+description = "Hiding and moving silently"
+ability_resource = ExtResource("ability_dexterity")
+is_proficient = false
+proficiency_bonus = 0
+is_armor_penalty = true
+is_passive = false

@@ -15,6 +15,9 @@ var enhanced_activities: EnhancedActivities
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Load custom resource classes first for headless mode compatibility
+	load_resource_classes()
+
 	# Debug configuration is now available as autoload
 
 	# Wait a frame to ensure all autoloads are ready
@@ -69,6 +72,44 @@ func _ready():
 
 	update_ui()
 
+
+func load_resource_classes():
+	"""Load all custom resource classes to ensure they're available in headless mode"""
+	print("Loading custom resource classes for headless mode...")
+
+	# Load the resource scripts to register the classes
+	var resource_scripts = [
+		"res://resources/activity_resource.gd",
+		"res://resources/ability_resource.gd",
+		"res://resources/skill_resource.gd",
+		"res://resources/item_resource.gd",
+		"res://resources/feat_resource.gd"
+	]
+
+	for script_path in resource_scripts:
+		var script = load(script_path)
+		if script:
+			print("Loaded resource script: ", script_path)
+			# Force the script to be instantiated to register the class
+			var instance = script.new()
+			if instance:
+				instance.free()
+		else:
+			print("Failed to load resource script: ", script_path)
+
+	print("Resource class loading complete!")
+
+	# Test if classes are registered
+	print("Testing class registration...")
+	if ClassDB.class_exists("ActivityResource"):
+		print("ActivityResource class is registered")
+	else:
+		print("ActivityResource class is NOT registered")
+
+	if ClassDB.class_exists("AbilityResource"):
+		print("AbilityResource class is registered")
+	else:
+		print("AbilityResource class is NOT registered")
 
 func register_activity_button(activity_name: String, button: Button):
 	"""Register an activity button for progress tracking"""

@@ -1,0 +1,25 @@
+[gd_resource type="ItemResource" format=3]
+
+[resource]
+item_name = "Chain Boots"
+description = "Heavy boots made of interlocking metal rings. Provides protection for the feet and lower legs."
+item_type = "armor"
+rarity = "common"
+cost = 25
+weight = 8.0
+is_magical = false
+is_consumable = false
+stack_size = 1
+equipment_slot = "feet"
+armor_class_bonus = 1
+damage_dice = ""
+damage_type = ""
+weapon_type = ""
+range = 0
+properties = ["stealth_disadvantage"]
+requirements = {}
+effects = []
+crafting_materials = ["iron_rings", "leather_sole", "metal_fasteners"]
+crafting_difficulty = 2
+is_tradeable = true
+vendor_price = 12

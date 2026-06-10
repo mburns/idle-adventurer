@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+id = "ability_constitution"
+ability_name = "Constitution"
+description = "Endurance, stamina, and health"
+modifier = 0
+base_score = 10
+is_core_ability = true
+associated_skills = []
+associated_activities = []
+saving_throw_proficiency = false
+is_spellcasting_ability = false

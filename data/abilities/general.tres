@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+id = "ability_general"
+ability_name = "General"
+description = "Activities that don't require specific abilities"
+modifier = 0
+base_score = 10
+is_core_ability = false
+associated_skills = []
+associated_activities = []
+saving_throw_proficiency = false
+is_spellcasting_ability = false

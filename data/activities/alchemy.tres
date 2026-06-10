@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Alchemy"
+ability_resource = null
+ability_name = ""
+skill = ""
+description = "Brew potions and study magical substances"
+cycle_duration = 15.0
+cycle_xp = 6
+cycle_gold = 2
+cycle_cost = 0.0
+daily_progress = 0.05
+cost_per_day = 0.0
+rewards = {"alchemy_skill": 1, "intelligence_exp": 15, "potions": 1}
+requirements = {"intelligence": 13, "tools": "alchemist_supplies"}

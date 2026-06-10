@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Skill Training"
+ability_resource = null
+skill = ""
+description = "Train to gain proficiency in a new skill"
+cycle_duration = 15.0
+cycle_xp = 20
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.004
+cost_per_day = 1.0
+rewards = {"skill_proficiency": 1, "intelligence_exp": 50}
+requirements = {"intelligence": 10, "gold": 250}

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+id = "ability_wisdom"
+ability_name = "Wisdom"
+description = "Awareness, intuition, and insight"
+modifier = 0
+base_score = 10
+is_core_ability = true
+associated_skills = ["Animal Handling", "Insight", "Medicine", "Perception", "Survival"]
+associated_activities = []
+saving_throw_proficiency = false
+is_spellcasting_ability = true

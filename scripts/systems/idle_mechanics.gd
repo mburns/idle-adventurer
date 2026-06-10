@@ -33,7 +33,7 @@ static func load_activities_from_resources():
 static func load_abilities_from_resources() -> Array[String]:
 	"""Load ability types from resource configuration"""
 	# Try to load from resource file first
-	var resource_path = "res://data/types/abilities.tres"
+	var resource_path = "res://data/types/ability_types.tres"
 	var resource = load(resource_path)
 
 	if resource and resource.has_method("get"):

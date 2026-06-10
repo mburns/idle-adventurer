@@ -1,0 +1,32 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/yaml_data = {
+"feat_types": {
+"feat_types": ["combat", "skill", "magic", "utility", "social", "defensive", "offensive", "support"]
+},
+"feat_categories": {
+"feat_categories": ["ability_score_increase", "skill_proficiency", "weapon_proficiency", "armor_proficiency", "spellcasting", "special_ability", "saving_throw", "language", "tool_proficiency"]
+},
+"prerequisite_types": {
+"prerequisite_types": ["ability_score", "class", "level", "race", "feat", "skill_proficiency", "spellcasting"]
+},
+"feat_rarity": {
+"feat_rarity": ["common", "uncommon", "rare", "very_rare", "legendary"]
+},
+"source_books": {
+"source_books": ["PHB", "XGE", "TCE", "FTD", "VRGR", "WBW", "SCC", "EGW", "MOT", "FTD", "GGR", "AI", "BGG", "EGW", "MOT", "VRGR", "WBW"]
+},
+"ability_scores": {
+"ability_scores": ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+},
+"skill_names": {
+"skill_names": ["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival", "deception", "intimidation", "performance", "persuasion"]
+},
+"weapon_categories": {
+"weapon_categories": ["simple_melee", "simple_ranged", "martial_melee", "martial_ranged", "finesse", "versatile", "two_handed", "light", "heavy", "reach", "thrown", "ammunition"]
+},
+"armor_categories": {
+"armor_categories": ["light_armor", "medium_armor", "heavy_armor", "shield"]
+}
+}

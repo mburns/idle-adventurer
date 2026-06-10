@@ -1,0 +1,25 @@
+[gd_resource type="ItemResource" format=3]
+
+[resource]
+item_name = "Chain Mail"
+description = "Heavy armor made of interlocking metal rings. Provides excellent protection but is noisy and restricts movement."
+item_type = "armor"
+rarity = "common"
+cost = 75
+weight = 55.0
+is_magical = false
+is_consumable = false
+stack_size = 1
+equipment_slot = "chest"
+armor_class_bonus = 6
+damage_dice = ""
+damage_type = ""
+weapon_type = ""
+range = 0
+properties = ["stealth_disadvantage", "strength_13"]
+requirements = {"strength": 13}
+effects = []
+crafting_materials = ["iron_rings", "leather_straps", "metal_fasteners"]
+crafting_difficulty = 3
+is_tradeable = true
+vendor_price = 37

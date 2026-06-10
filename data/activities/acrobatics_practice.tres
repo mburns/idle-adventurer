@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Acrobatics Practice"
+ability_resource = null
+ability_name = ""
+skill = "Acrobatics"
+description = "Balance, tumbling, and flexibility training"
+cycle_duration = 15.0
+cycle_xp = 5
+cycle_gold = 0
+cycle_cost = 0.0
+daily_progress = 0.12
+cost_per_day = 0.3
+rewards = {"acrobatics_skill": 1, "dexterity_exp": 12}
+requirements = {"dexterity": 10}

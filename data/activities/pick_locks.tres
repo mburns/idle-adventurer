@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+activity_name = "Pick Locks"
+ability_resource = null
+skill = "Sleight of Hand"
+description = "Practice lockpicking to improve dexterity"
+cycle_duration = 15.0
+cycle_xp = 4
+cycle_gold = 5
+cycle_cost = 0.0
+daily_progress = 0.1
+cost_per_day = 0.2
+rewards = {"sleight_of_hand_skill": 1, "dexterity_exp": 10, "gold": 5}
+requirements = {"dexterity": 12, "tools": "thieves_tools"}
